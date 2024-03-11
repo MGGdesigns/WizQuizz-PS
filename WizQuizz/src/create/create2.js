@@ -25,8 +25,15 @@ document.addEventListener("DOMContentLoaded", function() {
         // Aquí puedes enviar jsonData a tu servidor o realizar cualquier otra operación con él
         localStorage.setItem("questionsInfo", jsonData);
         var localCloudQuestions = localStorage.getItem("questionsInfo");
+    });
 
-        //PRUEBAS
+    let varAdd = 0;
+
+    document.getElementById("finishbutton").addEventListener("click", function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
         
+        varAdd = 1;
+        localStorage.setItem("varAdd", varAdd);
+        window.location.href = "quizz-create.html";
     });
 });
