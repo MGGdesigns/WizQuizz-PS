@@ -21,6 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Convertir el objeto JSON a una cadena JSON
         var jsonData = JSON.stringify(data);
+        const fs = require('fs');
+        fs.writeFile('questions-data.json', jsonData, (err)=>{
+            if(err){
+                console.error(err);
+            }else{
+                console.log("ok");
+            }
+        });
 
         // Aquí puedes enviar jsonData a tu servidor o realizar cualquier otra operación con él
         localStorage.setItem("questionsInfo", jsonData);
@@ -42,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
         numberofQuestions++;
         localStorage.setItem("varAdd", varAdd);
         localStorage.setItem("numberofQuestions", numberofQuestions);
-        console.log(data);
         window.location.href = "quizz-create.html";
     });
 });
