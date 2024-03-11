@@ -28,12 +28,21 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     let varAdd = 0;
+    let numberofQuestions;
+    if(numberofQuestions === null){
+        numberofQuestions = 0;
+    }else{
+        numberofQuestions = localStorage.getItem("numberofQuestions");
+    }
 
     document.getElementById("finishbutton").addEventListener("click", function(event) {
         event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
         
         varAdd = 1;
+        numberofQuestions++;
         localStorage.setItem("varAdd", varAdd);
+        localStorage.setItem("numberofQuestions", numberofQuestions);
+        console.log(data);
         window.location.href = "quizz-create.html";
     });
 });

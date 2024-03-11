@@ -3,25 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var parsedData = JSON.parse(localCloudQuestions);
 
     let varAdd = localStorage.getItem("varAdd");
+    let numberofQuestions = localStorage.getItem("numberofQuestions");
     questionAdder(varAdd);
-
-    // if(localCloudQuestions === null || localCloudQuestions.length === 0){
-    //     document.getElementById("goat").style.display = "none";
-    // }else{
-    //     document.getElementById("goat").style.display = "block";
-    //     document.getElementById("goat2").style.display = "none";
-
-    //     var tittle = parsedData.questionTittle;
-    //     var answer1 = parsedData.answer1;
-    //     var answer2 = parsedData.answer2;
-    //     var answer3 = parsedData.answer3;
-    //     var answer4 = parsedData.answer4;
-    //     document.getElementById("questionTitleJS").innerHTML = tittle;
-    //     document.getElementById("answer1JS").innerHTML = answer1;
-    //     document.getElementById("answer2JS").innerHTML = answer2;
-    //     document.getElementById("answer3JS").innerHTML = answer3;
-    //     document.getElementById("answer4JS").innerHTML = answer4;
-    // }
 
     //Create Quizz
     document.getElementById("descripcion").addEventListener("submit", function(event) {
@@ -53,46 +36,31 @@ document.addEventListener("DOMContentLoaded", function() {
     function questionAdder(indicator){
         if(varAdd === "1"){
             document.getElementById("goat2").style.display = "none";
+            console.log(numberofQuestions);
+            for(i=0; i<parseInt(numberofQuestions); i++){
+                console.log("Iteracion: " + i);
+                const Maincontainer = document.querySelector(".quizz-questions");
+                const questionscontainer = document.getElementById("goat");
+                const section = document.createElement('section');
+                section.classList.add('quizz-questions');
+                section.id = 'section' + i;
+                section.innerHTML = `<div class="question">
+                <div class="question-info">
+                    <p id="questionTitleJS">${parsedData["questionTittle"]}</p>
+                    <div class="num-of-question">
+                        <h2>${i}</h2>
+                    </div>  
+                </div>
+                <div class="answers">
+                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS"></span></button>
+                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS"></span></button>
+                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS"></span></button>
+                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS"></span></button>
+                </div>
+                </div>`;
 
-            const Maincontainer = document.querySelector(".quizz-questions");
-            const questionscontainer = document.getElementById("goat");
-            const section = document.createElement('section');
-            section.classList.add('quizz-questions');
-            section.innerHTML = `<div class="question">
-            <div class="question-info">
-                <p id="questionTitleJS"></p>
-                <div class="num-of-question">
-                    <h2>01</h2>
-                </div>  
-            </div>
-            <div class="answers">
-                <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS"></span></button>
-                <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS"></span></button>
-                <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS"></span></button>
-                <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS"></span></button>
-            </div>
-            </div>`;
-
-            Maincontainer.appendChild(section); 
-
-            const section2 = document.createElement('section2');
-            section2.classList.add('quizz-questions');
-            section2.innerHTML = `<div class="question">
-            <div class="question-info">
-                <p id="questionTitleJS"></p>
-                <div class="num-of-question">
-                    <h2>01</h2>
-                </div>  
-            </div>
-            <div class="answers">
-                <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS"></span></button>
-                <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS"></span></button>
-                <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS"></span></button>
-                <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS"></span></button>
-            </div>
-            </div>`;
-
-            Maincontainer.appendChild(section2); 
+                Maincontainer.appendChild(section); 
+            }
         }else{
             const Maincontainer2 = document.querySelector(".quizquestions");
             const questionscontainer2 = document.getElementById("goat2");
@@ -102,13 +70,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p></p>
                 <h2>Click in the button below for add questions</h2>
             </div>
-            </div>
-
-            <div class="addquestion1">
-                <a href="../create/create-questions.html"><input class="add" type="button" value="+ ADD QUESTION"></a>
             </div>`;
 
             Maincontainer2.appendChild(questionscontainer2); 
         }
+        console.log(localCloudQuestions);
     }
 });
