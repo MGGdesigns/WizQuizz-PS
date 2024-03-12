@@ -52,7 +52,7 @@ export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2
     });
 }
 
-export function getUserData(table, id, fieldNumber){
+export function getData(table, id, fieldNumber){
     const reference = ref(db, table + "/" + id);
 
 	return get(reference).then((snapshot)=>{
@@ -74,7 +74,7 @@ export function getUserData(table, id, fieldNumber){
 
 // addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
 
-// getUserData("quizes", "1", 0).then((userData) => {
+// getData("quizes", "1", 0).then((userData) => {
 //     const ejemplo = document.getElementById("test");
 //     ejemplo.innerHTML = userData;
 // });
