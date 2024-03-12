@@ -14,9 +14,10 @@ const firebaseConfig = {
     measurementId: "G-7RR6QBL85G"
   };
 
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+
 export function setUserData(email, username, description, imageUrl, password){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
     const reference = ref(db, "users/" + username);
 
     set(reference, {
@@ -28,8 +29,6 @@ export function setUserData(email, username, description, imageUrl, password){
 }
 
 export function setQuizData(id, name, description, imageUrl){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
     const reference = ref(db, "quizes/" + id);
 
     set(reference, {
@@ -40,8 +39,6 @@ export function setQuizData(id, name, description, imageUrl){
 }
 
 export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2, answer3, correctAnswer){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
     const reference = ref(db, "quizes/" + id + "/questions/" + number);
 
     set(reference, {
