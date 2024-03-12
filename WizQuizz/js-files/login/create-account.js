@@ -5,12 +5,19 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     
     createAccountButton.addEventListener('click', function() {
-        var nickname = document.getElementById("nickname-input").value;
+        var nickname = document.getElementById("nickname-input").value.toString();
         var email = document.getElementById('email-input').value.toString();
-        var password =  document.getElementById('password-input').value;
+        var password =  document.getElementById('password-input').value.toString();
         var description = "noDescription";
         var image = "noImage";
-        setUserData(email, nickname, description, image, password);
+        var confirmPassword = document.getElementById('confirm-password-input').value.toString();
+        if (password === confirmPassword){
+            setUserData(email, nickname, description, image, password);
+            console.log("La cuenta ha sido creada con éxito.")
+        } else {
+            console.log("Las contraseñas no coinciden.");
+        }
+        
     });
     
 })
