@@ -347,10 +347,6 @@ fieldset{
     display: inline-block;
 }
 
-.quizquestions input{
-    /*Para editar el estilo de los inputs en el cuadro*/
-}
-
 .question{
     background-color:#9F77C6;
     border-radius: 10px;
