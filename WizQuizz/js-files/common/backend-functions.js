@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, ref, set, get, onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -13,10 +13,11 @@ const firebaseConfig = {
     appId: "1:698142113065:web:ac9df1b25aba91759c8b38",
     measurementId: "G-7RR6QBL85G"
   };
+const app = initializeApp(firebaseConfig)
+const db = getDatabase()
+
 
 export function setUserData(email, username, description, imageUrl, password){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
     const reference = ref(db, "users/" + username);
 
     set(reference, {
@@ -28,8 +29,6 @@ export function setUserData(email, username, description, imageUrl, password){
 }
 
 export function setQuizData(id, name, description, imageUrl){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
     const reference = ref(db, "quizes/" + id);
 
     set(reference, {
@@ -39,9 +38,7 @@ export function setQuizData(id, name, description, imageUrl){
     });
 }
 
-export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2, answer3, correctAnswer){
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
+export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
     const reference = ref(db, "quizes/" + id + "/questions/" + number);
 
     set(reference, {
@@ -50,6 +47,25 @@ export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2
         answer1: answer1,
         answer2: answer2,
         answer3: answer3,
-        correctAnswer: correctAnswer
+        answer4: answer4,
+        correctAnswers: correctAnswers
     });
 }
+
+export function getQuizData(id){
+    alert("Entrando");
+    const reference = ref(db, "quizes/" + id);
+    reference.on("value", function(snapshot) {
+        alert("Hello")
+
+        var data = snapshot.val()
+
+    })
+}
+
+alert("Empezando")
+setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "noimage.png")
+
+addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
+
+getQuizData(1)
