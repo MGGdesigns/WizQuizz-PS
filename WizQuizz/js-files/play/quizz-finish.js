@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const finish = document.getElementById("finish");
     const mark = document.getElementById("mark");
+    const exit = document.getElementById("exit");
     var resultado = localStorage.getItem("results");
     var numofquestions = localStorage.getItem("numofquestions");
     var varInteger = parseInt(numofquestions);
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const resultBad = data.finishQuizz["result-bad"];
 
             if(resultado >= varInteger/2){
+                console.log(resultado);
                 mark.innerHTML = resultado + "/" + numofquestions;
             }else{
                 mark.innerHTML = resultado  + "/" + numofquestions;
@@ -24,13 +26,17 @@ document.addEventListener('DOMContentLoaded', async function() {
             }else{
                 finish.innerHTML = resultBad;
             }
-            if(resultado === null){
-                console.log("sisisisisi")
-                mark.innerHTML = "0/0";
+            if(resultado === "null"){
+                mark.innerHTML = "0/" + numofquestions;
             }
-            localStorage.clear();
         })
         .catch(error => {
             console.error('Error al cargar el archivo JSON:', error);
     }); 
+
+    exit.addEventListener("click", function() {
+        event.preventDefault();
+        localStorage.clear();
+        window.location.href = "../../src/play/quizz-preview.html";
+    });
 });

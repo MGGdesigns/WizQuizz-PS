@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.answers button:not(.next-question)');
     const correctButton = document.getElementById("correct-answer");
     const nextQuestion = document.getElementById("next-question");
-    var results = 0;
-    var numofquestions = 0;
+
+    let results = parseInt(localStorage.getItem("results")) || 0;
+    let numofquestions = parseInt(localStorage.getItem("numofquestions")) || 0;
+    
     function increaseNumOfQuestions(){
         numofquestions++;
         localStorage.setItem("numofquestions", numofquestions);
