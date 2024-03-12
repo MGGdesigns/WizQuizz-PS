@@ -34,46 +34,77 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function questionAdder(indicator){
-        if(varAdd === "1"){
-            document.getElementById("goat2").style.display = "none";
-            console.log(numberofQuestions);
-            for(i=0; i<parseInt(numberofQuestions); i++){
-                console.log("Iteracion: " + i);
-                const Maincontainer = document.querySelector(".quizz-questions");
-                const questionscontainer = document.getElementById("goat");
-                const section = document.createElement('section');
-                section.classList.add('quizz-questions');
-                section.id = 'section' + i;
-                section.innerHTML = `<div class="question">
-                <div class="question-info">
-                    <p id="questionTitleJS">${parsedData["questionTittle"]}</p>
-                    <div class="num-of-question">
-                        <h2>${i}</h2>
-                    </div>  
-                </div>
-                <div class="answers">
-                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS"></span></button>
-                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS"></span></button>
-                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS"></span></button>
-                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS"></span></button>
-                </div>
-                </div>`;
+        //Manejo del JSON con las preguntas
+        let id;
+        let title;
+        let Allanswers;
+        let answer1;
+        let answer2;
+        let answer3;
+        let answer4;
+        fetch('questions-data.json')
+            .then(response => response.json())
+            .then(data => {
+                data.questions.forEach(pregunta => {
+                    id = pregunta.id;
+                    title = pregunta.title;
+                    Allanswers = pregunta.answers;
+                    Allanswers.forEach(answer => {
+                        if(answer.text1) {
+                            answer1 = answer.text1;
+                        }
+                        if(answer.text2) {
+                            answer2 = answer.text2;
+                        }
+                        if(answer.text3) {
+                            answer3 = answer.text3;
+                        }
+                        if(answer.text4) {
+                            answer4 = answer.text4;
+                        }
+                    });
 
-                Maincontainer.appendChild(section); 
-            }
-        }else{
-            const Maincontainer2 = document.querySelector(".quizquestions");
-            const questionscontainer2 = document.getElementById("goat2");
-            questionscontainer2.innerHTML = `<div class="noquestions">
-            <div class="define">
-                <h1>At the moment you dont have questions!</h1>
-                <p></p>
-                <h2>Click in the button below for add questions</h2>
-            </div>
-            </div>`;
-
-            Maincontainer2.appendChild(questionscontainer2); 
-        }
-        console.log(localCloudQuestions);
+                    //Mostramos el cuadro de las preview
+                    if(varAdd === "1"){
+                        document.getElementById("goat2").style.display = "none";
+                        for(i=0; i<parseInt(numberofQuestions); i++){
+                            const Maincontainer = document.querySelector(".quizz-questions");
+                            const questionscontainer = document.getElementById("goat");
+                            const section = document.createElement('section');
+                            section.classList.add('quizz-questions');
+                            section.id = 'section' + i;
+                            section.innerHTML = `<div class="question">
+                            <div class="question-info">
+                                <p id="questionTitleJS">${title}</p>
+                                <div class="num-of-question">
+                                    <h2>${id}</h2>
+                                </div>  
+                            </div>
+                            <div class="answers">
+                                <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS">${answer1}</span></button>
+                                <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS">${answer2}</span></button>
+                                <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS">${answer3}</span></button>
+                                <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS">${answer4}</span></button>
+                            </div>
+                            </div>`;
+            
+                            Maincontainer.appendChild(section); 
+                        }
+                    }else{
+                        const Maincontainer2 = document.querySelector(".quizquestions");
+                        const questionscontainer2 = document.getElementById("goat2");
+                        questionscontainer2.innerHTML = `<div class="noquestions">
+                        <div class="define">
+                            <h1>At the moment you dont have questions!</h1>
+                            <p></p>
+                            <h2>Click in the button below for add questions</h2>
+                        </div>
+                        </div>`;
+            
+                        Maincontainer2.appendChild(questionscontainer2); 
+                    }
+                });
+            })
+            .catch(error => console.error("Error con el JSON", error));
     }
 });

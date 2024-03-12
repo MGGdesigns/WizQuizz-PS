@@ -324,7 +324,7 @@ fieldset{
 }
 
 .quizquestions{
-    margin-top: 7%;
+    margin-top: 2%;
     padding-bottom: 110px;
     display: flex;
     flex-direction: column;
@@ -419,15 +419,29 @@ fieldset{
     box-shadow: 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.addquestion1{
-    margin-top: 10%;
-}
-
 .addquestion {
     margin-top: 1%;
+    padding-bottom: 5%;
     display: flex;
+    text-align: center;
+    align-items: center;
     justify-content: center;
-    justify-content: space-between;
+}
+
+.addquestion .finishQuizzQuestions{
+    margin-left: 5%;
+}
+
+.finish{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    width: 120%;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
 }
 
 .add{
@@ -444,17 +458,6 @@ fieldset{
 .add:hover {
     background-color: #6E1EB4;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
-}
-
-.finish{
-    font-family: "Roboto Thin", sans-serif;
-    font-size: 20px;
-    background-color: #7B2CBF;
-    color: #FFFFFF;
-    padding: 14px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
 }
 
 .finish:hover {

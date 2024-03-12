@@ -1,0 +1,27 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "title": "¿Cuantas vidas tiene un gato? Responde con sinceridad y con cabeza.",
+        "image": "../../website-images/common/insert-image.png",
+        "answers": [
+          {
+            "icon": "<img src='../../website-images/answer-options/cauldron-x45.png'>",
+            "text1": "Un gato tiene 7 vidas."
+          },
+          {
+            "icon": "<img src='../../website-images/answer-options/mage-staff-x45.png'>",
+            "text2": "Los gatos viven y fallecen como cualquier especie."
+          },
+          {
+            "icon": "<img src='../../website-images/answer-options/mana-x45.png'>",
+            "text3": "Lo de las 7 vidas es una farsa."
+          },
+          {
+            "icon": "<img src='../../website-images/answer-options/magic-ball-x45.png'>",
+            "text4": "Vivan los gatos!!"
+          }
+        ]
+      }
+    ]
+  }
