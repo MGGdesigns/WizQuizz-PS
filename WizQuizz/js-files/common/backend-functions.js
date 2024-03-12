@@ -19,10 +19,11 @@ export function setUserData(email, username, description, imageUrl, password){
     const db = getDatabase();
     const reference = ref(db, "users/" + username);
 
-    set(reference, {
+ set(reference, {
         description: description,
         email: email,
         imageUrl: imageUrl,
-        password: password
+        password: password,
+        username: username
     });
 }
