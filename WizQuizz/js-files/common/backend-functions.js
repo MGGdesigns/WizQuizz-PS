@@ -52,20 +52,29 @@ export function addQuizQuestion(id, number, question, imageUrl, answer1, answer2
     });
 }
 
-export function getQuizData(id){
-    alert("Entrando");
-    const reference = ref(db, "quizes/" + id);
-    reference.on("value", function(snapshot) {
-        alert("Hello")
+export function getUserData(table, id, fieldNumber){
+    const reference = ref(db, table + "/" + id);
 
-        var data = snapshot.val()
+	return get(reference).then((snapshot)=>{
+		var user = [];
 
-    })
+		snapshot.forEach(childSnapshot=>{
+			user.push(childSnapshot.val());
+		})
+		
+		
+		return user[fieldNumber];
+	})
 }
 
-alert("Empezando")
-setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "noimage.png")
 
-addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
 
-getQuizData(1)
+// GETTER AND SETTERS EXAMPLES
+// setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "noimage.png")
+
+// addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
+
+// getUserData("quizes", "1", 0).then((userData) => {
+//     const ejemplo = document.getElementById("test");
+//     ejemplo.innerHTML = userData;
+// });
