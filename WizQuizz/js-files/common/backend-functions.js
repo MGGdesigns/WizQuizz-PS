@@ -67,14 +67,23 @@ export function getData(table, id, fieldNumber){
 	})
 }
 
+export function getQuizzes() {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const reference = ref(db, 'quizes/');
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            resolve(snapshot.val());
+        }, (error) => {
+            reject(error);
+        });
+    });
+}
+
 
 
 // GETTER AND SETTERS EXAMPLES
-// setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "noimage.png")
+setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "https://www.mundodeportivo.com/alfabeta/hero/2024/02/harry-potter-2.png?width=768&aspect_ratio=16:9&format=nowebp")
 
-// addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
-
-// getData("quizes", "1", 0).then((userData) => {
-//     const ejemplo = document.getElementById("test");
-//     ejemplo.innerHTML = userData;
-// });
+addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
