@@ -64,6 +64,7 @@ main {
 .quizz-description {
     display: flex;
     flex-direction: column;
+    flex: max-content;
 }
 
 .quizz-description h1 {
