@@ -32,9 +32,10 @@ export function setQuizData(id, name, description, imageUrl){
     const reference = ref(db, "quizes/" + id);
 
     set(reference, {
+        id: id,
         description: description,
         name: name,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl
     });
 }
 
@@ -67,14 +68,23 @@ export function getData(table, id, fieldNumber){
 	})
 }
 
+export function getQuizzes() {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const reference = ref(db, 'quizes/');
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            resolve(snapshot.val());
+        }, (error) => {
+            reject(error);
+        });
+    });
+}
+
 
 
 // GETTER AND SETTERS EXAMPLES
-// setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "noimage.png")
+setQuizData(6, "The Binding of Isaac", "Quiz about The Binding of Isaac videogame", "https://i.blogs.es/7c841a/the-binding-of-isaac-afterbirth-/1366_2000.jpg")
 
-// addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
-
-// getData("quizes", "1", 0).then((userData) => {
-//     const ejemplo = document.getElementById("test");
-//     ejemplo.innerHTML = userData;
-// });
+addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)

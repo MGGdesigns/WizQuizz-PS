@@ -1,3 +1,5 @@
+import {getData, getQuizzes} from "../common/backend-functions.js";
+
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -11,7 +13,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     ]);
 
     renderContent(filtersData.filters, 'aside');
-    renderContent(quizzData.quizz, '.quizz-selection');
+    getQuizzes().then((data) => {
+        renderContent(data, '.quizz-selection');
+    });
 });
 
 async function loadTemplate(url) {
@@ -43,10 +47,10 @@ function renderContent(content, containerSelector) {
                          <span>${item.text}</span>`;
         } else if (containerSelector === '.quizz-selection') {
             div.classList.add('quizz');
-            div.innerHTML = `<a href="quizz-preview.html">
-                            <img src="${item.image}" width="400" height="225" class="image">
-                            <h2>${item.title}</h2>
-                            </a>`;
+            div.innerHTML = `<a href="quizz-preview.html?id=${item.id}">
+                        <img src="${item.imageUrl}" width="400" height="225" class="image">
+                        <h2>${item.name}</h2>
+                        </a>`;
         }
         container.appendChild(div);
     });
