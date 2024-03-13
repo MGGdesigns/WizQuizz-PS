@@ -32,9 +32,10 @@ export function setQuizData(id, name, description, imageUrl){
     const reference = ref(db, "quizes/" + id);
 
     set(reference, {
+        id: id,
         description: description,
         name: name,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl
     });
 }
 
@@ -84,6 +85,6 @@ export function getQuizzes() {
 
 
 // GETTER AND SETTERS EXAMPLES
-setQuizData(1, "Harry Potter", "Quiz about Harry Potter's world", "https://www.mundodeportivo.com/alfabeta/hero/2024/02/harry-potter-2.png?width=768&aspect_ratio=16:9&format=nowebp")
+setQuizData(6, "The Binding of Isaac", "Quiz about The Binding of Isaac videogame", "https://i.blogs.es/7c841a/the-binding-of-isaac-afterbirth-/1366_2000.jpg")
 
 addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
