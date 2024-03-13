@@ -6,42 +6,121 @@
         "image": "../../website-images/common/insert-image.png",
         "answers": [
           {
-            "icon": "<img src='../../website-images/answer-options/cauldron-x45.png'>",
-            "text": "Un gato tiene 7 vidas."
+            "icon": "../../website-images/answer-options/cauldron-x45.png",
+            "text": "Un gato tiene 7 vidas.",
+            "class": "cauldron-button",
+            "result": "correct-answer"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/mage-staff-x45.png'>",
-            "text": "Los gatos viven y fallecen como cualquier especie."
+            "icon": "../../website-images/answer-options/mage-staff-x45.png",
+            "text": "Los gatos viven y fallecen como cualquier especie.",
+            "class": "mage-staff-button",
+            "result": "no"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/mana-x45.png'>",
-            "text": "Lo de las 7 vidas es una farsa."
+            "icon": "../../website-images/answer-options/mana-x45.png",
+            "text": "Lo de las 7 vidas es una farsa.",
+            "class": "mana-button",
+            "result": "no"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/magic-ball-x45.png'>",
-            "text": "Vivan los gatos!!"
+            "icon": "../../website-images/answer-options/magic-ball-x45.png",
+            "text": "Vivan los gatos!!",
+            "class": "magic-ball-button",
+            "result": "no"
           }
         ]
       },
       {
         "id": 2,
         "title": "¿Cuál es el color del cielo?",
+        "image": "../../website-images/common/insert-image.png",
         "answers": [
           {
-            "icon": "<img src='../../website-images/answer-options/blue-x45.png'>",
-            "text": "Azul"
+            "icon": "../../website-images/answer-options/cauldron-x45.png",
+            "text": "Azul",
+            "class": "cauldron-button",
+            "result": "correct-answer"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/red-x45.png'>",
-            "text": "Rojo"
+            "icon": "../../website-images/answer-options/mage-staff-x45.png",
+            "text": "Rojo",
+            "class": "mage-staff-button",
+            "result": "no"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/green-x45.png'>",
-            "text": "Verde"
+            "icon": "../../website-images/answer-options/mana-x45.png",
+            "text": "Verde",
+            "class": "mana-button",
+            "result": "no"
           },
           {
-            "icon": "<img src='../../website-images/answer-options/yellow-x45.png'>",
-            "text": "Amarillo"
+            "icon": "../../website-images/answer-options/magic-ball-x45.png",
+            "text": "Amarillo",
+            "class": "magic-ball-button",
+            "result": "no"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "¿Cuál es el color del cielo?",
+        "image": "../../website-images/common/insert-image.png",
+        "answers": [
+          {
+            "icon": "../../website-images/answer-options/cauldron-x45.png",
+            "text": "Azul",
+            "class": "cauldron-button",
+            "result": "correct-answer"
+          },
+          {
+            "icon": "../../website-images/answer-options/mage-staff-x45.png",
+            "text": "Rojo",
+            "class": "mage-staff-button",
+            "result": "no"
+          },
+          {
+            "icon": "../../website-images/answer-options/mana-x45.png",
+            "text": "Verde",
+            "class": "mana-button",
+            "result": "no"
+          },
+          {
+            "icon": "../../website-images/answer-options/magic-ball-x45.png",
+            "text": "Amarillo",
+            "class": "magic-ball-button",
+            "result": "no"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "¿Cuál es el color del cielo?",
+        "image": "../../website-images/common/insert-image.png",
+        "answers": [
+          {
+            "icon": "../../website-images/answer-options/cauldron-x45.png",
+            "text": "Azul",
+            "class": "cauldron-button",
+            "result": "correct-answer"
+          },
+          {
+            "icon": "../../website-images/answer-options/mage-staff-x45.png",
+            "text": "Rojo",
+            "class": "mage-staff-button",
+            "result": "no"
+          },
+          {
+            "icon": "../../website-images/answer-options/mana-x45.png",
+            "text": "Verde",
+            "class": "mana-button",
+            "result": "no"
+          },
+          {
+            "icon": "../../website-images/answer-options/magic-ball-x45.png",
+            "text": "Amarillo",
+            "class": "magic-ball-button",
+            "result": "no"
           }
         ]
       }
