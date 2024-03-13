@@ -12,8 +12,13 @@
     margin-inline: 5%;
 }
 
+main {
+    margin-top: 170px;
+    margin-bottom: 90px;
+    min-height: calc(100vh - 460px);
+}
+
 main h1 {
-    padding-top: 170px;
     padding-bottom: 30px;
     color: #73F6D0;
     text-decoration: none;
@@ -78,7 +83,6 @@ main h1 {
 
 .news {
     margin-top: 60px;
-    margin-bottom: 30px;
 }
 
 .news-title {

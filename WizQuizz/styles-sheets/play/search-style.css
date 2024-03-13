@@ -9,12 +9,13 @@
 }
 
 .container {
+    margin-top: 80px;
     display: flex;
 }
 
 aside {
     display: grid;
-    padding-top: 100px;
+    padding-top: 20px;
     padding-bottom: 20px;
     background-color: #4B2D56;
 }
@@ -49,8 +50,7 @@ aside {
 }
 
 .quizz-selection {
-    margin-top: 170px;
-    margin-bottom: 90px;
+    margin-top: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

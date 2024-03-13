@@ -4,8 +4,9 @@
 }
 
 main {
-    padding-top: 170px;
-    padding-bottom: 60px;
+    margin-top: 170px;
+    margin-bottom: 90px;
+    min-height: calc(100vh - 460px);
 }
 
 .preview {
