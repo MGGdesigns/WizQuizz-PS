@@ -1,5 +1,6 @@
 import {getData, getQuizzes} from "../common/backend-functions.js";
 
+console.log(getQuizzes());
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');

@@ -28,13 +28,15 @@ export function setUserData(email, username, description, imageUrl, password){
     });
 }
 
-export function setQuizData(id, name, description, imageUrl){
+export function setQuizData(id, name, description, author, submitDate, imageUrl){
     const reference = ref(db, "quizes/" + id);
 
     set(reference, {
         id: id,
         description: description,
         name: name,
+        author: author,
+        submitDate: submitDate,
         imageUrl: imageUrl
     });
 }
@@ -82,9 +84,23 @@ export function getQuizzes() {
     });
 }
 
+export function getQuizz(id) {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const reference = ref(db, 'quizes/' + id);
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            resolve(snapshot.val());
+        }, (error) => {
+            reject(error);
+        });
+    });
+}
+
 
 
 // GETTER AND SETTERS EXAMPLES
-setQuizData(6, "The Binding of Isaac", "Quiz about The Binding of Isaac videogame", "https://i.blogs.es/7c841a/the-binding-of-isaac-afterbirth-/1366_2000.jpg")
+setQuizData(6, "The Binding of Isaac", "Quiz about The Binding of Isaac videogame", "Zorro", "13/03/2024", "https://i.blogs.es/7c841a/the-binding-of-isaac-afterbirth-/1366_2000.jpg")
 
-addQuizQuestion(1,1,"2+2","noimage.png",1,2,3,4,1)
+addQuizQuestion(1,2,"Who were Harry's parents?","noimage.png","William and Elizabeth Potter","Mauro & Paula Potter","James and Lily Potter","Henry and Maggie Potter",4)
