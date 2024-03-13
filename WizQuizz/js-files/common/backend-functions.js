@@ -98,6 +98,21 @@ export function getQuizz(id) {
     });
 }
 
+export function getDataQuizz(id) {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const reference = ref(db, 'quizes/' + id);
+    let data;
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            data = snapshot.val();
+            resolve(data);
+        }, (error) => {
+            reject(error);
+        });
+    });
+}
 
 
 // GETTER AND SETTERS EXAMPLES
