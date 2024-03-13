@@ -9,6 +9,7 @@
 }
 
 .container {
+    min-height: calc(100vh - 280px);
     padding-top: 80px;
     display: flex;
 }
