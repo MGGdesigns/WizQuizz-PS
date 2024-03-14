@@ -50,6 +50,7 @@ main {
     height: auto;
     background-color: #7B2CBF;
     color: #FFFFFF;
+    margin-left: 5px;
     padding: 10px;
     margin-top: 10px;
     border-radius: 4px;
@@ -280,4 +281,32 @@ main {
 .magic-ball-button span {
     vertical-align: middle;
     display: table-cell;
+}
+
+/* Phone */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .quizz-info img {
+        width: 320px;
+        height: 180px;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .preview {
+        margin-inline: 5%;
+    }
+
+    .quizz-questions {
+        margin-inline: 5%;
+    }
+
+    .quizz-info img {
+        width: 320px;
+        height: 180px;
+    }
+
+    .quizz-description h1 {
+        font-size: 45px;
+    }
 }
