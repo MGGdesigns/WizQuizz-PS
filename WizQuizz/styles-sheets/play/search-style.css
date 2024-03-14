@@ -51,7 +51,8 @@ aside {
 }
 
 .quizz-selection {
-    margin-top: 90px;
+    padding-top: 90px;
+    padding-bottom: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -124,11 +125,11 @@ aside {
 /* Phone */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .container {
+        padding-top: 100px;
         flex-direction: column;
     }
 
     aside {
-        padding-top: 120px;
         display: flex;
         overflow-x: auto;
     }

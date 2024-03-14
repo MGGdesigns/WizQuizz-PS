@@ -16,10 +16,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     renderContent(filtersData.filters, 'aside');
     getQuizzes().then((data) => {
         renderContent(data, '.quizz-selection');
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     });
-
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((el) => observer.observe(el));
 });
 
 async function loadTemplate(url) {
