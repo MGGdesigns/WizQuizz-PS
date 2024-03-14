@@ -8,10 +8,6 @@
     transition: .5s ease;
 }
 
-.who-content, .news-content {
-    margin-inline: 5%;
-}
-
 main {
     padding-top: 170px;
     padding-bottom: 90px;
@@ -105,6 +101,7 @@ main h1 {
 }
 
 .news-content {
+    margin-inline: 5%;
     text-align: center;
     font-family: Poppins, serif;
     margin-top: 50px;
@@ -174,4 +171,71 @@ main h1 {
 
 .new:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(150px);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+h1.hidden {
+    filter: blur(10px);
+    transform: translateY(-100%);
+    transition: all 2s;
+}
+
+h1.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+.about-us-info:nth-child(1).hidden {
+    transform: translateX(-100%);
+    transition: all 1.25s;
+}
+
+.about-us-info:nth-child(2).hidden {
+    transition: all 1.25s;
+    transform: translateX(100%);
+}
+
+.about-us-info:nth-child(2).show, .about-us-info:nth-child(1).show {
+    transform: translateX(0);
+}
+
+/* Phone */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    main h1 {
+        font-size: 80px;
+    }
+}
+
+/* Tablet */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    main h1 {
+        font-size: 100px;
+    }
+
+    .about-us-info img {
+        width: 272px;
+        height: 153px;
+    }
+
+    .about-us-info p {
+        font-size: 12px;
+    }
+
+    .new img {
+        width: 272px;
+        height: 153px;
+    }
 }

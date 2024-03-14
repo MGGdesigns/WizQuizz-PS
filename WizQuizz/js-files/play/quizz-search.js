@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     getQuizzes().then((data) => {
         renderContent(data, '.quizz-selection');
     });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
 });
 
 async function loadTemplate(url) {
@@ -48,6 +51,7 @@ function renderContent(content, containerSelector) {
                          <span>${item.text}</span>`;
         } else if (containerSelector === '.quizz-selection') {
             div.classList.add('quizz');
+            div.classList.add('hidden');
             div.innerHTML = `<a href="quizz-preview.html?id=${item.id}">
                         <img src="${item.imageUrl}" width="400" height="225" class="image">
                         <h2>${item.name}</h2>
@@ -56,3 +60,14 @@ function renderContent(content, containerSelector) {
         container.appendChild(div);
     });
 }
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});

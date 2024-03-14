@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     renderContent(whoData.info, '.about-us-content');
     renderContent(newsData.news, '.news-content');
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
 });
 
 async function loadTemplate(url) {
@@ -40,6 +43,7 @@ function renderContent(content, containerSelector) {
         const div = document.createElement('div');
         if (containerSelector === '.about-us-content') {
             div.classList.add('about-us-info');
+            div.classList.add('hidden');
             if (count_news % 2 === 0) {
                 div.innerHTML = `<img src="${item.image}" width="320" height="180" class="image" alt="">
                                 <p>${item.text}</p>`;
@@ -51,6 +55,7 @@ function renderContent(content, containerSelector) {
             }
         } else if (containerSelector === '.news-content') {
             div.classList.add('new');
+            div.classList.add('hidden');
             div.innerHTML = `<a href=""><img src="${item.image}" width="560" height="315" alt=""></a>
                              <a href=""><h2>${item.headline}</h2></a>
                              <p>${item.description}</p>`;
@@ -58,3 +63,14 @@ function renderContent(content, containerSelector) {
         container.appendChild(div);
     });
 }
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
