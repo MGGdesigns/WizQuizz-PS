@@ -190,4 +190,35 @@ export function querySearch(query){
 
 // GETTER AND SETTERS EXAMPLES
 
-resetId();
+// THE LINE UNDER THE COMMENT WILL RESTART THE ID COUNTER, ONLY USE WHEN DB IS EMPTY
+
+// // // resetId();
+
+// YOU CAN UNCOMMENT UNDER THIS LINE 
+
+// createUser("user1", "email@gmail.com", "password", "description", "imageUrl", "15/03/2024", "0");
+// await createQuizz("title", "description", "imageUrl", "user1", "submitDate", "rating", "timesPlayed");
+// setQuizzQuestion(1,1,"2+2","noimage.png","1","2","3","4",1);
+// setQuizzQuestion(1,2,"1+1","noimage.png","1","2","3","4",4);
+
+// getUser("email@gmail.com").then((data) => {
+//     console.log(data);
+// })
+
+// getQuizz(1).then((data) => {
+//     console.log(data);
+// })
+
+// await createQuizz("title2", "This is a more elaborate description", "imageUrl", "user1", "submitDate", "rating", "timesPlayed");
+
+// getAllQuizzes().then((data) => {
+//     console.log(data);
+// })
+
+// getAllUsers().then((data) => {
+//     console.log(data);
+// })
+
+// querySearch("/quizzes/1/description").then((data) => {
+//     console.log(data);
+// })
