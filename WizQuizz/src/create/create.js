@@ -30,6 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("littledescription").innerHTML = littledescription;
     });
 
+    document.getElementById("finishButton").addEventListener("click", function(event) {
+        localStorage.clear();
+    });
+
     function questionAdder(indicator){
         let allInfo;
         //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS">${data.questions[i].answer4}</span></button>
                         </div>
                         </div>`;
-                        
+
                         Maincontainer.appendChild(section); 
                     }
                 }else{
