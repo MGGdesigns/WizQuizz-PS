@@ -192,7 +192,7 @@ export function querySearch(query){
 
 // THE LINE UNDER THE COMMENT WILL RESTART THE ID COUNTER, ONLY USE WHEN DB IS EMPTY
 
-// // // resetId();
+// resetId();
 
 // YOU CAN UNCOMMENT UNDER THIS LINE 
 

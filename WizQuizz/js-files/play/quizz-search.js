@@ -1,6 +1,6 @@
-import {getData, getQuizzes} from "../common/backend-functions.js";
+import {getAllQuizzes} from "../common/backend-functions.js";
 
-console.log(getQuizzes());
+console.log(getAllQuizzes());
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     ]);
 
     renderContent(filtersData.filters, 'aside');
-    getQuizzes().then((data) => {
+    getAllQuizzes().then((data) => {
         renderContent(data, '.quizz-selection');
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
@@ -42,6 +42,8 @@ async function loadJSON(file) {
 
 function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
+    const quizzIds = Object.keys(content);
+    let countQuizz = 0;
     content.forEach(item => {
         const div = document.createElement('div');
         if (containerSelector === 'aside') {
@@ -51,10 +53,11 @@ function renderContent(content, containerSelector) {
         } else if (containerSelector === '.quizz-selection') {
             div.classList.add('quizz');
             div.classList.add('hidden');
-            div.innerHTML = `<a href="quizz-preview.html?id=${item.id}">
+            div.innerHTML = `<a href="quizz-preview.html?id=${quizzIds[countQuizz]}">
                         <img src="${item.imageUrl}" width="400" height="225" class="image">
-                        <h2>${item.name}</h2>
+                        <h2>${item.title}</h2>
                         </a>`;
+            countQuizz++;
         }
         container.appendChild(div);
     });

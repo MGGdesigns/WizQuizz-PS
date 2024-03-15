@@ -73,7 +73,6 @@ function renderDescriptionContent(content, containerSelector) {
         const section = document.createElement('section');
         const aux_section = document.createElement('section');
         section.classList.add('quizz-info');
-        console.log(content.author);
         section.innerHTML = `<img src="${content.imageUrl}" width="560" height="315">
                      <div class="quizz-lower-info">
                          <div class="additional-info">
@@ -84,7 +83,7 @@ function renderDescriptionContent(content, containerSelector) {
                      </div>`;
 
         aux_section.classList.add('quizz-description');
-        aux_section.innerHTML = `<h1>${content.name}</h1>
+        aux_section.innerHTML = `<h1>${content.title}</h1>
                                 <p>${content.description}</p>`;
         container.appendChild(section);
         container.appendChild(aux_section);
