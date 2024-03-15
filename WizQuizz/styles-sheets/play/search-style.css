@@ -51,6 +51,7 @@ aside {
 }
 
 .quizz-selection {
+    overflow: hidden;
     padding-top: 90px;
     padding-bottom: 90px;
     display: flex;
