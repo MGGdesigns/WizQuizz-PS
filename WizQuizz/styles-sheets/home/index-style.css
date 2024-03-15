@@ -195,12 +195,12 @@ main h1 {
     text-align: justify;
 }
 
-.new:hover img {
+.new img:hover {
     opacity: 0.8;
     cursor: pointer;
 }
 
-.new:hover h2 {
+.new h2:hover {
     color: #ADFFDE;
     cursor: pointer;
 }

@@ -56,7 +56,7 @@ function renderContent(content, containerSelector) {
         } else if (containerSelector === '.news-content') {
             div.classList.add('new');
             div.classList.add('hidden')
-            div.innerHTML = `<img src="${item.image}" width="560" height="315" alt=""></a>
+            div.innerHTML = `<a href=""><img src="${item.image}" width="560" height="315" alt=""></a>
                              <div class="news-description"><a href=""><h2>${item.headline}</h2></a>
                              <p>${item.description}</p></div>`;
         }
