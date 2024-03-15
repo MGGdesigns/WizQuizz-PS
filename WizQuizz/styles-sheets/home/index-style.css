@@ -101,32 +101,69 @@ main h1 {
     text-shadow: 0 2px rgba(0, 0, 0, 0.1);
 }
 
-.news-content {
-    margin-inline: 5%;
-    text-align: center;
-    font-family: Poppins, serif;
-    margin-top: 50px;
-    text-shadow: 0 2px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: start;
+.news-slider {
+    overflow: hidden;
 }
 
-.new p {
+.news-slider .news-content {
+    position: relative;
+    width: 300%;
+    margin: 0;
+    left: 0;
+    animation: 12s news-slider infinite;
+}
+
+.news-slider .news-content .new {
+    float: left;
+    width: 33.3%;
+}
+
+@keyframes news-slider {
+    0% {
+        left: 0;
+    }
+    33.33% {
+        left: 0;
+    }
+    38.33% {
+        left: -100%;
+    }
+    66.66% {
+        left: -100%;
+    }
+    71.66% {
+        left: -200%;
+    }
+    100% {
+        left: -200%;
+    }
+}
+
+.news-content {
+    display: flex;
     text-align: center;
+    font-family: Poppins, serif;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.news-description {
+    display: flex;
+    flex-direction: column;
+    flex: max-content;
+    margin-inline: 30px;
+}
+
+.news-description p {
+    text-align: center;
+    flex: max-content;
 }
 
 .new {
-    padding: 8px;
-    margin-bottom: 52px;
-    margin-inline: 15px;
-    border-radius: 4px;
-    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 90px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #AB75BE;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -135,9 +172,11 @@ main h1 {
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #6E1EB4;
     padding: 3px;
+    margin-left: 30px;
 }
 
 .new h2 {
+    text-align: justify;
     color: #FFFFFF;
 }
 
@@ -148,26 +187,22 @@ main h1 {
 .new p {
     font-family: Poppins, serif;
     color: #000000;
-    width: 95%;
-    display: none;
     padding: 5px;
     margin: 5px;
     background-color: snow;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    text-align: justify;
 }
 
 .new:hover img {
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .new:hover h2 {
     color: #ADFFDE;
-}
-
-.new:hover p {
-    display: block;
+    cursor: pointer;
 }
 
 .new:hover {
