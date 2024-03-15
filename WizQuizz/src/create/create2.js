@@ -1,4 +1,4 @@
-import {addQuizQuestion} from "../../js-files/common/backend-functions.js";
+import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
 
 document.addEventListener("DOMContentLoaded", function() {
     let numberofQuestions;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Se guarda el JSON ESTO HAY QUE CAMBIARLO POR LA BASE DE DATOS PORQUE NO DEJA METER EN EL JSON
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        addQuizQuestion(7, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
+        setQuizzQuestion(7, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
         //HASTA AQUI ESTA MAAAAAAAAAAAAALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
     });
 
