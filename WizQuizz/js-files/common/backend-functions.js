@@ -225,10 +225,10 @@ export function querySearch(query){
 //     console.log(data);
 // })
 
-createQuizz("title3", "Description3", "imageUrl", "user1", "submitDate", "rating", "timesPlayed").then((id) => {
-    console.log(id);
-});
+// createQuizz("title3", "Description3", "imageUrl", "user1", "submitDate", "rating", "timesPlayed").then((id) => {
+//     console.log(id);
+// });
 
-getQuizz(1).then((data) => {
-    console.log(data.questions[1].answer2);
-})
+// getQuizz(1).then((data) => {
+//     console.log(data.questions[1].answer2);
+// })
