@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Crear un objeto JSON con los datos
         var data = {
-            "id": 9,
+            "id": 3,
             "title": title,
             "image": "../../website-images/common/insert-image.png",
             "answers": [
@@ -50,15 +50,15 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         };
 
-        // Se guarda el JSON ESTO HAY QUE CAMBIARLO POR LA BASE DE DATOS PORQUE NO DEJA METER EN EL JSON
+        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        setQuizzQuestion(7, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
-        //HASTA AQUI ESTA MAAAAAAAAAAAAALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+        setQuizzQuestion(3, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
+        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     });
 
     document.getElementById("finishbutton").addEventListener("click", function(event) {
-        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+        event.preventDefault(); 
         
         varAdd = 1;
         numberofQuestions++;

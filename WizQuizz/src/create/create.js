@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     questionAdder(varAdd);
 
     document.getElementById("descripcion").addEventListener("submit", function(event) {
-        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+        event.preventDefault();
 
         var titulo = document.getElementById("titulo").value;
         var littledescription = document.getElementById("littledescription").value;
@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function questionAdder(indicator){
         let allInfo;
-        getQuizz(numero)
+        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        getQuizz(3)
             .then(data => {
                 //Mostramos el cuadro de las preview
                 if(varAdd === "1"){
@@ -75,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
             .catch(error => {
-                // Este bloque se ejecutará si ocurre algún error durante la ejecución de la Promesa
-                console.error(error); // Imprime el error en la consola
+                console.error(error); 
             });   
     }
 });
