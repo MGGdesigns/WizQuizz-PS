@@ -73,7 +73,7 @@ export function createUser(username, email, password, description, imageUrl, acc
 export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed){
 	const id = await generateId();
 
-    set(ref(db, "quizzes/" + id), {
+    await set(ref(db, "quizzes/" + id), {
 		title: title,
         description: description,
 		imageUrl: imageUrl,
@@ -82,6 +82,8 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
 		rating: rating,
 		timesPlayed: timesPlayed,
     });
+
+    return id;
 }
 
 export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesPlayed){
@@ -222,3 +224,11 @@ export function querySearch(query){
 // querySearch("/quizzes/1/description").then((data) => {
 //     console.log(data);
 // })
+
+createQuizz("title3", "Description3", "imageUrl", "user1", "submitDate", "rating", "timesPlayed").then((id) => {
+    console.log(id);
+});
+
+getQuizz(1).then((data) => {
+    console.log(data.questions[1].answer2);
+})
