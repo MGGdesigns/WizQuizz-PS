@@ -173,6 +173,7 @@ main h1 {
     background-color: #6E1EB4;
     padding: 3px;
     margin-left: 30px;
+    transition: opacity 0.5s ease;
 }
 
 .new h2 {
@@ -186,10 +187,11 @@ main h1 {
 
 .new p {
     font-family: Poppins, serif;
-    color: #000000;
-    padding: 5px;
-    margin: 5px;
-    background-color: snow;
+    color: #FFFFFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #C1A6DA;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: justify;
@@ -198,6 +200,7 @@ main h1 {
 .new img:hover {
     opacity: 0.8;
     cursor: pointer;
+    transition: opacity 0.3s ease;
 }
 
 .new h2:hover {

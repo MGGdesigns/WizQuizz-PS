@@ -54,6 +54,7 @@ aside {
     overflow: hidden;
     padding-top: 90px;
     padding-bottom: 90px;
+    margin-inline: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
