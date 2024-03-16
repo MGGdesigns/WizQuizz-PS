@@ -61,41 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("titulo").innerHTML = titulo;
         document.getElementById("littledescription").innerHTML = littledescription;
 
-        //Descargamos la imagen en LOCAL
+        //Guardamos la imagen en LOCAL
         let image = localStorage.getItem("storageImage");
-        if(image.startsWith("data:image")){
-            // Realiza una solicitud HTTP para obtener el contenido de la imagen
-            fetch(image)
-            .then(response => {
-                // Verifica si la solicitud fue exitosa
-                if (!response.ok) {
-                throw new Error("Error al descargar la imagen: " + response.statusText);
-                }
-                // Convierte la respuesta en un blob (objeto binario grande)
-                return response.blob();
-            })
-            .then(blob => {
-                // Crea un objeto URL para la imagen descargada
-                let image = URL.createObjectURL(blob);
-                
-                // Crea un elemento <a> para descargar la imagen
-                let link = document.createElement("a");
-                link.href = image;
-                link.download = "imagen.png"; // Nombre del archivo a descargar
-                document.body.appendChild(link);
-                
-                // Simula hacer clic en el enlace para iniciar la descarga
-                link.click();
-
-                // Limpia el objeto URL después de la descarga
-                URL.revokeObjectURL(image);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-        }else{
-            console.log("estoy undefinded");
-        }
 
         //Añadimos a la base de datos la informacion
         result = createQuizz(titulo, littledescription, image, "Angel", "13/03/2024", "rating", "timesPlayed");
