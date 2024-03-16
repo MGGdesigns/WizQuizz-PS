@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let dia = fecha.getDate();
         let mes = fecha.getMonth() + 1;
         let año = fecha.getFullYear();
-        let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
+        let fechaCompleta = String(dia) + "/" + String(mes) + "/" + String(año);
 
         //Añadimos a la base de datos la informacion
         result = createQuizz(titulo, littledescription, image, "Angel", fechaCompleta, "rating", "timesPlayed");
