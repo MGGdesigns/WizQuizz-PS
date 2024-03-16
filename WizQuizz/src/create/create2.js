@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        setQuizzQuestion(quizzId, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
+        setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
     });
 
     document.getElementById("finishbutton").addEventListener("click", function(event) {
@@ -65,4 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("numberofQuestions", numberofQuestions);
         window.location.href = "quizz-create.html";
     });
+
+    let numberOfQuestion = localStorage.getItem("questionCount") || "1";
+    if(numberOfQuestion < 10){
+        numberOfQuestion = "0" + numberOfQuestion;
+    }else{
+        numberOfQuestion = numberOfQuestion;
+    }
+    document.getElementById("numberOfQuestion").innerHTML = numberOfQuestion;
 });

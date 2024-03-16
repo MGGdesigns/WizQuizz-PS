@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../styles-sheets/create/create-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
 
     <header include-file="../common/play-header.html"></header>
@@ -20,14 +21,14 @@
                 <div class="quizzcontainer">
                     <div class="quizinfo">
                         <div class="image-container" id="image-container">
-                            <img id="quizzImage" src="../../website-images/common/insert-image.png" width="370" height="300">
+                            <img id="quizzImage" src="../../website-images/common/insert-image.png" width="560" height="315">
                             <input class="addimage" id="addimage" type="button" value="+ Add Image">
                             <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
                         </div>
     
                         <form id="descripcion" class="quizdescription">
-                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required title="Por favor, ingresa el título del Quizz">
-                            <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required title="Por favor, ingresa el título del Quizz"></textarea>
+                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required>
+                            <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required></textarea>
                             <button type="submit" class="submit">Save</button>
                         </form>
                     </div>
@@ -35,24 +36,20 @@
                     <div class="quizz-questions" id="goat">
                         
                     </div>
-                </div>
-    
-                <div id="goat2" class="quizquestions">
+
+                    <div id="goat2" class="quizquestions">
                     
+                    </div>
                 </div>
 
                 <div class="addquestion">
                     <div class="addQuizzQuestion">
-                        <a href="../create/create-questions.html"><input class="add" type="button" value="+ ADD QUESTION"></a>
+                        <a><input class="add" id="AddQuestioN" type="button" value="+ ADD QUESTION"></a>
                     </div>
                     <div class="finishQuizzQuestions" id="finishQuizzQuestions">
                         <a id="finishButton" href="../../index.html"><input class="finish" type="button" value="FINISH QUIZZ"></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="infoanswer">
-                <p></p>
             </div>
         </div>
     </body>

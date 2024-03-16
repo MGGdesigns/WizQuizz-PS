@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let data;
     let image;
     let quizzImage;
+    let questionNumber;
     
     //Llamadas a funciones
     questionAdder(varAdd);
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let dia = fecha.getDate();
         let mes = fecha.getMonth() + 1;
         let año = fecha.getFullYear();
-        let fechaCompleta = String(dia) + "/" + String(mes) + "/" + String(año);
+        let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
 
         //Añadimos a la base de datos la informacion
         result = createQuizz(titulo, littledescription, image, "Angel", fechaCompleta, "rating", "timesPlayed");
@@ -97,13 +98,27 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 //--------------------------------------------------------------------------------------------------------------------------------------------
     function questionAdder(indicator){
+        //Ir al siguiente JScript al clickar al boton
+        document.getElementById("AddQuestioN").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "../create/create-questions.html";
+        });
+
         var quizzIdFinal = localStorage.getItem("quizzId");
         getQuizz(quizzIdFinal)
             .then(data => {
                 //Mostramos el cuadro de las preview
                 if(indicator === "1"){
                     document.getElementById("goat2").style.display = "none";
+                    let questionCount = 1;
                     for(let i=0; i<parseInt(numberofQuestions); i++){
+                        //Añadimos el 0 al numero en la bola
+                        if(questionCount < 10){
+                            questionNumber = "0" + questionCount;
+                        }else{
+                            questionNumber = questionCount;
+                        }
+
                         const Maincontainer = document.querySelector(".quizz-questions");
                         const questionscontainer = document.getElementById("goat");
                         const section = document.createElement('section');
@@ -113,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="question-info">
                             <p id="questionTitleJS">${data.questions[i].question}</p>
                             <div class="num-of-question">
-                                <h2>${Object.keys(data.questions)[i]}</h2>
+                                <h2>${questionNumber}</h2>
                             </div>  
                         </div>
                         <div class="answers">
@@ -124,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         </div>
                         </div>`;
 
+                        questionCount++;
+                        localStorage.setItem("questionCount", questionCount);
                         Maincontainer.appendChild(section); 
                     }
                 }
