@@ -71,7 +71,6 @@ function renderQuestionsContent(content, containerSelector) {
 
 function renderDescriptionContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
-
     if (containerSelector === '.preview') {
         const section = document.createElement('section');
         const aux_section = document.createElement('section');
@@ -82,7 +81,7 @@ function renderDescriptionContent(content, containerSelector) {
                              <p>Author: ${content.author}</p>
                              <p>Submit date: ${content.submitDate}</p>
                          </div>
-                         <a href="in-game.html"><input class="quizz-start-button" type="button" value="START GAME"></a>
+                         <a href="in-game.html?id=${idQuizz}"><input class="quizz-start-button" type="button" value="START GAME"></a>
                      </div>`;
 
         aux_section.classList.add('quizz-description');

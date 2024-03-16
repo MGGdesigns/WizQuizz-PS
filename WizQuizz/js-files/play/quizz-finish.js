@@ -1,42 +1,30 @@
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
     const finish = document.getElementById("finish");
     const mark = document.getElementById("mark");
     const exit = document.getElementById("exit");
-    var resultado = localStorage.getItem("results");
-    var numofquestions = localStorage.getItem("numofquestions");
+    var resultado = sessionStorage.getItem("results");
+    var numofquestions = sessionStorage.getItem("totalQuestions");
     var varInteger = parseInt(numofquestions);
-    const jsonFilePath = "../../data/play/quizz-finish.json";
 
-    // Hacer la solicitud HTTP usando fetch
-    fetch(jsonFilePath)
-        .then(response => response.json())
-        .then(data => {
-            const resultWell = data.finishQuizz["result-well"];
-            const resultBad = data.finishQuizz["result-bad"];
+    const currentUrl = window.location.href.split('=');
+    const idQuizz = currentUrl[1];
 
-            if(resultado >= varInteger/2){
-                console.log(resultado);
-                mark.innerHTML = resultado + "/" + numofquestions;
-            }else{
-                mark.innerHTML = resultado  + "/" + numofquestions;
-            }
-        
-            if(resultado === "1"){
-                finish.innerHTML = resultWell;
-            }else{
-                finish.innerHTML = resultBad;
-            }
-            if(resultado === "null"){
-                mark.innerHTML = "0/" + numofquestions;
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
-    }); 
+    console.log(numofquestions);
 
+    if(resultado >= varInteger/2){
+        finish.innerHTML = "Congratulations!";
+        mark.innerHTML = resultado + "/" + numofquestions;
+    }else{
+        finish.innerHTML = "Bad Luck!";
+        mark.innerHTML = resultado  + "/" + numofquestions;
+    }
+    if(resultado === null){
+        mark.innerHTML = "Leave";
+    }
+
+    sessionStorage.clear();
     exit.addEventListener("click", function() {
         event.preventDefault();
-        localStorage.clear();
-        window.location.href = "../../src/play/quizz-preview.html";
+        window.location.href = "../../src/play/quizz-preview.html?id=" + idQuizz;
     });
 });

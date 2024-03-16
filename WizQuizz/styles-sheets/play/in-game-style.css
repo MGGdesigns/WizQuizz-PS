@@ -28,7 +28,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-right: auto;
+    
 }
 
 .questionTitle{

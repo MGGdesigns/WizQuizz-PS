@@ -1,3 +1,8 @@
+import {getQuizz, getAllQuizzes} from "../../js-files/common/backend-functions.js";
+
+const currentUrl = window.location.href.split('=');
+const idQuizz = currentUrl[1];
+
 const music = new Audio('../../website-audio/play/in-game/in-game.mp3');
 const correct = new Audio('../../website-audio/play/in-game/correct-answer.mp3');
 const incorrect = new Audio('../../website-audio/play/in-game/incorrect-answer.mp3');
@@ -34,126 +39,105 @@ function fadeOutAudio(audio, duration) {
 document.addEventListener('DOMContentLoaded', async function() {
     const main = document.querySelector('main');
     let totalQuestions;
-    let questions;
-    try {
-        const response = await fetch('../../data/play/in-game.json');
-        const data = await response.json();
-        questions = data.questions;
-        totalQuestions = questions.length;
-        renderQuestion(questions[0], 0);
-    } catch (error) {
-        console.error('Error al cargar el archivo JSON:', error);
-    }
+    let quizzData;
+    let questionsNum;
+    let results = parseInt(sessionStorage.getItem("results")) || 0;
 
+    await getQuizz(idQuizz).then((data) => {
+        quizzData = data;
+    });
+
+    totalQuestions = quizzData.questions.length ;
+   
+    sessionStorage.setItem("totalQuestions", totalQuestions);
     
-
-    let results = parseInt(localStorage.getItem("results")) || 0;
-    let numofquestions = parseInt(localStorage.getItem("numofquestions")) || 0;
-    function increaseNumOfQuestions(){
-        numofquestions++;
-        localStorage.setItem("numofquestions", numofquestions);
-    } 
-
-    function renderQuestion(question, index) {
+    renderQuestion(0);
+    
+    function renderQuestion(index) {
         const section = document.createElement('section');
-        section.classList.add('question');
-
-        const leftSide = document.createElement('div');
-        leftSide.classList.add('leftSide');
-
-        if (question.image) {
-            const image = document.createElement('img');
-            image.src = question.image;
-            image.width = 200;
-            image.height = 200;
-            image.classList.add('portrait');
-            leftSide.appendChild(image);
+        let questionCount = localStorage.getItem("questionCount") || 1;
+        console.log(questionCount);
+        if (questionCount < 10) {
+            questionsNum = "0" + questionCount;
+        } else {
+            questionsNum = questionCount;
         }
-
-        const questionTitle = document.createElement('div');
-        questionTitle.classList.add('questionTitle');
-        questionTitle.innerHTML = `<p>${question.title}</p>`;
-
-        const questionNumber = document.createElement('div');
-        questionNumber.classList.add('questionNumber');
-        questionNumber.innerHTML = `<p>${index + 1}</p>`;
-
-        section.appendChild(leftSide);
-        section.appendChild(questionTitle);
-        section.appendChild(questionNumber);
+        section.classList.add('question');
+        section.innerHTML = ` <div class="leftSide">
+                                <img src="${quizzData.questions[index].imageUrl}" width="200" height="200" class="portrait">
+                            </div>
+                            <div class="questionTitle">
+                                <p> ${quizzData.questions[index].question}</p>
+                            </div>
+                            <div class="questionNumber">
+                                <p> ${questionsNum} </p>
+                            </div>`;
+        questionCount++;
+        localStorage.setItem("questionCount", questionCount);                    
         main.appendChild(section);
 
         const answersBox = document.createElement('section');
         answersBox.classList.add('answerBox');
-        const answersDiv = document.createElement('div');
-        answersDiv.classList.add('answers');
-        question.answers.forEach(answer => {
-            const button = document.createElement('button');
-            button.innerHTML = `<span><img src="${answer.icon}"></span><span>${answer.text}</span>`;
-            button.classList.add(answer.class);
-            if(answer.result === "correct-answer"){
-                button.id = "correct-answer";
-            }
-            answersDiv.appendChild(button);
-            
-        });
-
-        const nextButton = document.createElement('button');
-        nextButton.classList.add('next-question');
-        nextButton.id = "next-question";
-        nextButton.innerHTML = '<span>Next Question</span>';
-        const link = document.createElement('a');
-        
-        link.appendChild(nextButton);
+        answersBox.innerHTML = `<div class="answers">
+                                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron-x45.png"></span><span>${quizzData.questions[index].answer1}</span></button>
+                                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff-x45.png"></span><span>${quizzData.questions[index].answer2}</span></button>
+                                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana-x45.png"></span><span>${quizzData.questions[index].answer3}</span></button>
+                                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball-x45.png"></span><span>${quizzData.questions[index].answer4}</span></button>
+                                    <a href=""> <button class="next-question" id="next-question"> <span>Next Question</span></button></a>
+                                </div>`;
         main.appendChild(answersBox);
-        answersBox.appendChild(answersDiv);
-        answersDiv.appendChild(nextButton);
+        
+        const correctButtonIndex = quizzData.questions[index].correctAnswers;
+        const buttonSelector =  document.querySelectorAll('.cauldron-button, .mage-staff-button, .mana-button, .magic-ball-button');
+        const correctAnswers = buttonSelector[correctButtonIndex -1];
+        correctAnswers.id = "correct-answer";
 
         const nextQuestion = document.getElementById("next-question");
         nextQuestion.addEventListener('click', function() {
+            event.preventDefault();
             if (index < totalQuestions - 1) {
                 main.innerHTML = '';
-                renderQuestion(questions[index + 1], index + 1);
+                renderQuestion(index + 1);
             } else {
-                window.location.href = 'quizz-finish.html';
+                localStorage.setItem("questionCount", 1);
+                window.location.href = 'quizz-finish.html?id='+ idQuizz;
             }
-            });
+        });
 
-            const buttons = document.querySelectorAll('.answers button:not(.next-question)');
-            const correctButton = document.getElementById("correct-answer");
-        
-            buttons.forEach(button => {
-                button.style.transition = 'background-color 2s ease';
-            });
-            buttons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    if (button.disabled) {
-                        return;
+        const buttons = document.querySelectorAll('.answers button:not(.next-question)');
+        const correctButton = document.getElementById("correct-answer");
+
+        buttons.forEach(button => {
+            button.style.transition = 'background-color 2s ease';
+        });
+        buttons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                if (button.disabled) {
+                    return;
+                }
+                buttons.forEach(btn => {
+                    if (btn !== button && btn !== correctButton) {
+                        btn.style.opacity = '0.5';
                     }
-                    buttons.forEach(btn => {
-                        if (btn !== button && btn !== correctButton) {
-                            btn.style.opacity = '0.5';
-                        }
-                        btn.disabled = true;
-                    });
-        
-                    if (button === correctButton) {
-                        correctButton.style.backgroundColor = '#28fc64';
-                        music.volume = 0.1;
-                        correct.volume = 0.9;
-                        fadeOutAudio(correct, 3000);
-                        correct.play().then(r => fadeOutAudio(incorrect, 3000));
-                        results++;
-                    } else {
-                        correctButton.style.backgroundColor = '#28fc64';
-                        button.style.backgroundColor = '#FF3333';
-                        music.volume = 0.1;
-                        incorrect.volume = 0.9;
-                        incorrect.play().then(r => fadeOutAudio(incorrect, 3000));
-                    }
-                    increaseNumOfQuestions();
-                    localStorage.setItem("results", results);
+                    btn.disabled = true;
                 });
-            });    
+    
+                if (button === correctButton) {
+                    correctButton.style.backgroundColor = '#28fc64';
+                    music.volume = 0.1;
+                    correct.volume = 0.9;
+                    fadeOutAudio(correct, 3000);
+                    correct.play().then(r => fadeOutAudio(incorrect, 3000));
+                    results++;
+                } else {
+                    correctButton.style.backgroundColor = '#28fc64';
+                    button.style.backgroundColor = '#FF3333';
+                    music.volume = 0.1;
+                    incorrect.volume = 0.9;
+                    incorrect.play().then(r => fadeOutAudio(incorrect, 3000));
+                }
+                sessionStorage.setItem("results", results);
+            });
+        });    
     }
 });
