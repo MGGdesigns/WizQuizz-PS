@@ -1,13 +1,19 @@
 import {createQuizz, getQuizz} from "../../js-files/common/backend-functions.js";
 
 document.addEventListener("DOMContentLoaded", function() {
+    //Variables
     var localCloudQuestions = localStorage.getItem("questionsInfo");
     var parsedData = JSON.parse(localCloudQuestions);
-
     let result;
-
     let varAdd = localStorage.getItem("varAdd");
     let numberofQuestions = localStorage.getItem("numberofQuestions");
+    let titulo;
+    let littledescription;
+    let data;
+    let image;
+    let quizzImage;
+    
+    //Llamadas a funciones
     questionAdder(varAdd);
 
     //Reset localStorage when click on Finish button
@@ -17,12 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //Add an Quizz image
     const input_image = document.getElementById("inputFile")
-    const quizzImage = document.getElementById("quizzImage")
+    quizzImage = document.getElementById("quizzImage")
     document.getElementById("addimage").addEventListener("click", function(event) {
-        addimage.onclick = function(){
-            input_image.value = null;
-            input_image.click();
-        }
+        input_image.click();
 
         var fr;
         let imageUrl;
@@ -43,12 +46,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 //--------------------------------------------------------------------------------------------------------------------------------------------
+    //Comprobamos que se haya introducido un titulo y descripcion e imagen
+    let infoQuizz = localStorage.getItem("quizzInfo");
+    infoQuizz = JSON.parse(infoQuizz);
+    image = localStorage.getItem("storageImage");
+    if(image !== null){
+        quizzImage.src = image;
+    }
+    if(infoQuizz !== "null" && infoQuizz !== null){
+        document.getElementById("titulo").value = infoQuizz["titulo"];
+        document.getElementById("littledescription").innerHTML = infoQuizz["littledescription"];
+    }
+
     document.getElementById("descripcion").addEventListener("submit", function(event) {
         event.preventDefault();
 
-        var titulo = document.getElementById("titulo").value;
-        var littledescription = document.getElementById("littledescription").value;
-        var data = {
+        //Comprobamos si se ha introducido los campos
+        titulo = document.getElementById("titulo").value;
+        littledescription = document.getElementById("littledescription").value;
+        data = {
             "titulo": titulo,
             "littledescription": littledescription
         };
@@ -57,12 +73,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var jsonData = JSON.stringify(data);
         localStorage.setItem("quizzInfo", jsonData);
 
-        var localCloudQuizz = localStorage.getItem("quizzInfo");
-        document.getElementById("titulo").innerHTML = titulo;
-        document.getElementById("littledescription").innerHTML = littledescription;
-
         //Guardamos la imagen en LOCAL
-        let image = localStorage.getItem("storageImage");
+        image = localStorage.getItem("storageImage");
 
         //Añadimos a la base de datos la informacion
         result = createQuizz(titulo, littledescription, image, "Angel", "13/03/2024", "rating", "timesPlayed");
@@ -73,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 //--------------------------------------------------------------------------------------------------------------------------------------------
     function questionAdder(indicator){
-        console.log("quizzId");
         var quizzIdFinal = localStorage.getItem("quizzId");
         getQuizz(quizzIdFinal)
             .then(data => {
@@ -110,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="define">
                         <h1>At the moment you dont have questions!</h1>
                         <p></p>
-                        <h2>Click in the button below for add questions</h2>
+                        <h2>Click in the button below to add questions</h2>
                     </div>
                     </div>`;
 
