@@ -1,36 +1,30 @@
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
     const finish = document.getElementById("finish");
     const mark = document.getElementById("mark");
-    var resultado = localStorage.getItem("results");
-    var numofquestions = localStorage.getItem("numofquestions");
+    const exit = document.getElementById("exit");
+    var resultado = sessionStorage.getItem("results");
+    var numofquestions = sessionStorage.getItem("totalQuestions");
     var varInteger = parseInt(numofquestions);
-    const jsonFilePath = "../../data/play/quizz-finish.json";
 
-    // Hacer la solicitud HTTP usando fetch
-    fetch(jsonFilePath)
-        .then(response => response.json())
-        .then(data => {
-            const resultWell = data.finishQuizz["result-well"];
-            const resultBad = data.finishQuizz["result-bad"];
+    const currentUrl = window.location.href.split('=');
+    const idQuizz = currentUrl[1];
 
-            if(resultado >= varInteger/2){
-                mark.innerHTML = resultado + "/" + numofquestions;
-            }else{
-                mark.innerHTML = resultado  + "/" + numofquestions;
-            }
-        
-            if(resultado === "1"){
-                finish.innerHTML = resultWell;
-            }else{
-                finish.innerHTML = resultBad;
-            }
-            if(resultado === null){
-                console.log("sisisisisi")
-                mark.innerHTML = "0/0";
-            }
-            localStorage.clear();
-        })
-        .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
-    }); 
+    console.log(numofquestions);
+
+    if(resultado >= varInteger/2){
+        finish.innerHTML = "Congratulations!";
+        mark.innerHTML = resultado + "/" + numofquestions;
+    }else{
+        finish.innerHTML = "Bad Luck!";
+        mark.innerHTML = resultado  + "/" + numofquestions;
+    }
+    if(resultado === null){
+        mark.innerHTML = "Leave";
+    }
+
+    sessionStorage.clear();
+    exit.addEventListener("click", function() {
+        event.preventDefault();
+        window.location.href = "../../src/play/quizz-preview.html?id=" + idQuizz;
+    });
 });

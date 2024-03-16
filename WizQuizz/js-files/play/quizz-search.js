@@ -1,3 +1,6 @@
+import {getAllQuizzes} from "../common/backend-functions.js";
+
+console.log(getAllQuizzes());
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -11,7 +14,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     ]);
 
     renderContent(filtersData.filters, 'aside');
-    renderContent(quizzData.quizz, '.quizz-selection');
+    getAllQuizzes().then((data) => {
+        renderContent(data, '.quizz-selection');
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    });
 });
 
 async function loadTemplate(url) {
@@ -35,6 +42,8 @@ async function loadJSON(file) {
 
 function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
+    const quizzIds = Object.keys(content);
+    let countQuizz = 0;
     content.forEach(item => {
         const div = document.createElement('div');
         if (containerSelector === 'aside') {
@@ -43,11 +52,24 @@ function renderContent(content, containerSelector) {
                          <span>${item.text}</span>`;
         } else if (containerSelector === '.quizz-selection') {
             div.classList.add('quizz');
-            div.innerHTML = `<a href="quizz-preview.html">
-                            <img src="${item.image}" width="400" height="225" class="image">
-                            <h2>${item.title}</h2>
-                            </a>`;
+            div.classList.add('hidden');
+            div.innerHTML = `<a href="quizz-preview.html?id=${quizzIds[countQuizz]}">
+                        <img src="${item.imageUrl}" width="400" height="225" class="image">
+                        <h2>${item.title}</h2>
+                        </a>`;
+            countQuizz++;
         }
         container.appendChild(div);
     });
 }
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
