@@ -69,10 +69,6 @@
     flex-direction: column;
 }
 
-.quizinfo{
-    display: flex;
-}
-
 .quizdescription{
     display: flex;
     flex-direction: column;
@@ -327,6 +323,16 @@ fieldset{
     display: table-cell;
 }
 
+.quizinfo{
+    display: flex;
+    animation: animacionEscala 1s;
+}
+
+@keyframes animacionEscala {
+    from {transform: translateX(-100%);}
+    to {transform: translateX(0%);}
+}
+
 .quizquestions{
     margin-top: 2%;
     padding-bottom: 110px;
@@ -335,6 +341,18 @@ fieldset{
     text-align: center;
     align-items: center;
     justify-content: center;
+    animation-name: animacionquizquestions;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+}
+
+@keyframes animacionquizquestions {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .noquestions{
@@ -358,6 +376,18 @@ fieldset{
     border-color: #22242A;
     padding: 2.3%;
     text-align: center; 
+    animation-name: animacionquestion;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+}
+
+@keyframes animacionquestion {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .question input{

@@ -26,8 +26,8 @@
                         </div>
     
                         <form id="descripcion" class="quizdescription">
-                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required>
-                            <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required></textarea>
+                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required title="Por favor, ingresa el título del Quizz">
+                            <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required title="Por favor, ingresa el título del Quizz"></textarea>
                             <button type="submit" class="submit">Save</button>
                         </form>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="addQuizzQuestion">
                         <a href="../create/create-questions.html"><input class="add" type="button" value="+ ADD QUESTION"></a>
                     </div>
-                    <div class="finishQuizzQuestions">
+                    <div class="finishQuizzQuestions" id="finishQuizzQuestions">
                         <a id="finishButton" href="../../index.html"><input class="finish" type="button" value="FINISH QUIZZ"></a>
                     </div>
                 </div>

@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    //Escondemos el boton de Finish Quizz
+    if(varAdd !== "1"){
+        document.getElementById("finishQuizzQuestions").style.display = "none";
+    }
 //--------------------------------------------------------------------------------------------------------------------------------------------
     //Comprobamos que se haya introducido un titulo y descripcion e imagen
     let infoQuizz = localStorage.getItem("quizzInfo");
@@ -76,8 +81,15 @@ document.addEventListener("DOMContentLoaded", function() {
         //Guardamos la imagen en LOCAL
         image = localStorage.getItem("storageImage");
 
+        //Obtenemos la fecha de creación
+        const fecha = new Date();
+        let dia = fecha.getDate();
+        let mes = fecha.getMonth() + 1;
+        let año = fecha.getFullYear();
+        let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
+
         //Añadimos a la base de datos la informacion
-        result = createQuizz(titulo, littledescription, image, "Angel", "13/03/2024", "rating", "timesPlayed");
+        result = createQuizz(titulo, littledescription, image, "Angel", fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);
@@ -89,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
         getQuizz(quizzIdFinal)
             .then(data => {
                 //Mostramos el cuadro de las preview
-                if(varAdd === "1"){
+                if(indicator === "1"){
                     document.getElementById("goat2").style.display = "none";
                     for(let i=0; i<parseInt(numberofQuestions); i++){
                         const Maincontainer = document.querySelector(".quizz-questions");
@@ -114,22 +126,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         Maincontainer.appendChild(section); 
                     }
-                }else{
-                    const Maincontainer2 = document.querySelector(".quizquestions");
-                    const questionscontainer2 = document.getElementById("goat2");
-                    questionscontainer2.innerHTML = `<div class="noquestions">
-                    <div class="define">
-                        <h1>At the moment you dont have questions!</h1>
-                        <p></p>
-                        <h2>Click in the button below to add questions</h2>
-                    </div>
-                    </div>`;
-
-                    Maincontainer2.appendChild(questionscontainer2); 
                 }
             })
             .catch(error => {
                 console.error(error); 
             });   
+    }
+
+    //Comprobamos si se ha añadido alguna pregunta
+    if(varAdd !== "1"){
+        const Maincontainer2 = document.querySelector(".quizquestions");
+        const questionscontainer2 = document.getElementById("goat2");
+        questionscontainer2.innerHTML = `<div class="noquestions">
+        <div class="define">
+            <h1>At the moment you dont have questions!</h1>
+            <p></p>
+            <h2>Click in the button below to add questions</h2>
+        </div>
+        </div>`;
+
+        Maincontainer2.appendChild(questionscontainer2); 
     }
 });
