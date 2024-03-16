@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let image;
     let quizzImage;
     let questionNumber;
+    let check = localStorage.getItem("check") || 0;
     
     //Llamadas a funciones
     questionAdder(varAdd);
@@ -67,6 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("descripcion").addEventListener("submit", function(event) {
         event.preventDefault();
 
+        //Incrementamos el numero de veces que se ha clickado en "Save"
+        check++;
+        localStorage.setItem("check", check);
+
         //Comprobamos si se ha introducido los campos
         titulo = document.getElementById("titulo").value;
         littledescription = document.getElementById("littledescription").value;
@@ -101,7 +106,12 @@ document.addEventListener("DOMContentLoaded", function() {
         //Ir al siguiente JScript al clickar al boton
         document.getElementById("AddQuestioN").addEventListener("click", function(event) {
             event.preventDefault();
-            window.location.href = "../create/create-questions.html";
+            console.log(check);
+            if(check >= 1){
+                window.location.href = "../create/create-questions.html";
+            }else{
+                alert("Please to add questions first introduce a title and a description of your Quizz.");
+            }
         });
 
         var quizzIdFinal = localStorage.getItem("quizzId");
