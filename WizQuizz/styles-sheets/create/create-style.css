@@ -123,15 +123,16 @@ fieldset{
 .quizdescription .submit{
     margin-top: 1%;
     color: #FFFFFF;
-    background-color: green;
+    background-color: #8D77C6;
     border-radius: 4px;
     padding: 1%;
     font-size: 20px;
+    transition: all 0.5s linear;
 }
 
 .submit:hover {
     cursor: pointer;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px purple;
 }
 
 .quizz-questions {
