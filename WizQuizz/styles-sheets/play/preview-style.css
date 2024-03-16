@@ -4,6 +4,7 @@
 }
 
 main {
+    overflow: hidden;
     padding-top: 170px;
     padding-bottom: 90px;
     min-height: calc(100vh - 460px);
@@ -281,6 +282,32 @@ main {
 .magic-ball-button span {
     vertical-align: middle;
     display: table-cell;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-100%);
+    transition: all 1.25s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+.question.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1.25s;
+}
+
+.question.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
 
 /* Phone */

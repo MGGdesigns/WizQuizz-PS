@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     getQuizz(idQuizz).then((data) => {
         renderDescriptionContent(data, '.preview');
         renderQuestionsContent(data.questions, '.quizz-questions');
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     });
 });
 
@@ -48,6 +50,7 @@ function renderQuestionsContent(content, containerSelector) {
                 questionsNum = questionsCount;
             }
             section.classList.add('question');
+            section.classList.add('hidden');
             section.innerHTML = `<div class="question-info">
                          <p>${item.question}</p>
                          <div class="num-of-question">
@@ -89,3 +92,14 @@ function renderDescriptionContent(content, containerSelector) {
         container.appendChild(aux_section);
     }
 }
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
