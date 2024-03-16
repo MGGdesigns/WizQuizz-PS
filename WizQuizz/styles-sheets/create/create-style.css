@@ -17,10 +17,10 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
+    width: 100%;
 }
 
 .image-container{
-    background-color: #7B2CBF;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -35,7 +35,7 @@
 
 .image-container img{
     border: 1px solid purple;
-    background-color: #6E1EB4;
+    background-color: #D1AFFD;
     padding: 3px;
 }
 
@@ -60,13 +60,13 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
+#inputFile{
+	display: none;
+}
+
 .quizzcontainer{
     display: flex;
     flex-direction: column;
-}
-
-.quizinfo{
-    display: flex;
 }
 
 .quizdescription{
@@ -123,12 +123,16 @@ fieldset{
 .quizdescription .submit{
     margin-top: 1%;
     color: #FFFFFF;
-    background-color: green;
+    background-color: #8D77C6;
+    border-radius: 4px;
+    padding: 1%;
+    font-size: 20px;
+    transition: all 0.5s linear;
 }
 
 .submit:hover {
     cursor: pointer;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px purple;
 }
 
 .quizz-questions {
@@ -138,20 +142,34 @@ fieldset{
 
 .question {
     border-radius: 4px;
+    padding: 10px;
     margin-bottom: 30px;
     background-color: #8D77C6;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation-name: animacionquestion;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+}
+
+@keyframes animacionquestion {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .question-info {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
 }
 
 .question-info p {
     text-align: justify;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', serif;
+    flex: max-content;
     color: #FFFFFF;
     margin-inline: 4px;
     margin-bottom: 4px;
@@ -164,9 +182,16 @@ fieldset{
     text-shadow: 0 0 2px #000000;
     border-radius: 100px;
     padding: 5px;
+    margin-left: 4px;
+    align-self: flex-start;
+}
+
+.num-of-question h2{
+    color: white;
 }
 
 .answers {
+    text-align: center;
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -181,7 +206,7 @@ fieldset{
 }
 
 .cauldron-button {
-    font-family: "Roboto Thin", sans-serif;
+    font-family: 'Poppins', serif;
     width: 100%;
     height: auto;
     text-align: left;
@@ -217,7 +242,7 @@ fieldset{
 }
 
 .mage-staff-button {
-    font-family: "Roboto Thin", sans-serif;
+    font-family: 'Poppins', serif;
     width: 100%;
     height: auto;
     text-align: left;
@@ -253,7 +278,7 @@ fieldset{
 }
 
 .mana-button {
-    font-family: "Roboto Thin", sans-serif;
+    font-family: 'Poppins', serif;
     width: 100%;
     height: auto;
     text-align: left;
@@ -289,7 +314,7 @@ fieldset{
 }
 
 .magic-ball-button {
-    font-family: "Roboto Thin", sans-serif;
+    font-family: 'Poppins', serif;
     width: 100%;
     height: auto;
     text-align: left;
@@ -323,23 +348,59 @@ fieldset{
     display: table-cell;
 }
 
+.quizinfo{
+    display: flex;
+    animation: animacionEscala 1s;
+}
+
+@keyframes animacionEscala {
+    from {transform: translateX(-100%);}
+    to {transform: translateX(0%);}
+}
+
+@keyframes animacionquizquestions {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
 .quizquestions{
-    margin-top: 7%;
-    padding-bottom: 110px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.noquestions {
     text-align: center;
     align-items: center;
     justify-content: center;
-}
-
-.noquestions{
-    width: 246%;
-    text-align: center;
+    background-image: url("../../website-images/createPage/backgroundImage.jpeg");
     background-color: #D1AFFD;
     padding: 2%;
     margin-top: 4%;
     border-radius: 4px;
+    animation-name: animacionquestion;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+}
+
+.define h1,h2{
+    color: yellow;
+    text-shadow: 0 0 5px black, 
+                 0 0 5px black,
+                 0 0 5px black;
+}
+
+@keyframes animacionquestion {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .quizquestions p{
@@ -347,20 +408,7 @@ fieldset{
     display: inline-block;
 }
 
-.question{
-    background-color:#9F77C6;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: #22242A;
-    padding: 2.3%;
-    text-align: center; 
-}
-
 .question input{
-    text-align: center;
-}
-
-.answers{
     text-align: center;
 }
 
@@ -419,15 +467,29 @@ fieldset{
     box-shadow: 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.addquestion1{
-    margin-top: 10%;
-}
-
 .addquestion {
     margin-top: 1%;
+    padding-bottom: 5%;
     display: flex;
+    text-align: center;
+    align-items: center;
     justify-content: center;
-    justify-content: space-between;
+}
+
+.addquestion .finishQuizzQuestions{
+    margin-left: 5%;
+}
+
+.finish{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    width: 120%;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
 }
 
 .add{
@@ -444,17 +506,6 @@ fieldset{
 .add:hover {
     background-color: #6E1EB4;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
-}
-
-.finish{
-    font-family: "Roboto Thin", sans-serif;
-    font-size: 20px;
-    background-color: #7B2CBF;
-    color: #FFFFFF;
-    padding: 14px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
 }
 
 .finish:hover {

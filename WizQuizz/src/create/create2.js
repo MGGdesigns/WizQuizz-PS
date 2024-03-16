@@ -1,50 +1,63 @@
+import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
+
 document.addEventListener("DOMContentLoaded", function() {
+    let numberofQuestions;
+    let varAdd = 0;
+
     //Create Questions
     document.getElementById("submit").addEventListener("click", function(event) {
         event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
 
         // Obtener los valores del formulario
-        var tittle = document.getElementById("questionTittle").value;
+        var title = document.getElementById("questionTittle").value;
         var answer1 = document.getElementById("answer1").value;
         var answer2 = document.getElementById("answer2").value;
         var answer3 = document.getElementById("answer3").value;
         var answer4 = document.getElementById("answer4").value;
+        var opciones = document.getElementsByClassName("questionAnswer");
+        var respuesta;
+        for (var i = 0; i < opciones.length; i++) {
+            if (opciones[i].checked) {
+                respuesta = i+1;
+                break;
+            }
+        }
 
+        numberofQuestions = parseInt(localStorage.getItem("numberofQuestions")) || 0;
+
+        var quizzId = localStorage.getItem("quizzId");
         // Crear un objeto JSON con los datos
         var data = {
-            "questionTittle": tittle,
-            "answer1": answer1,
-            "answer2": answer2,
-            "answer3": answer3,
-            "answer4": answer4
+            "id": quizzId,
+            "title": title,
+            "image": "../../website-images/common/insert-image.png",
+            "answers": [
+                {
+                    "icon": "<img src='../../website-images/answer-options/cauldron-x45.png'>",
+                    "text1": answer1
+                },
+                {
+                    "icon": "<img src='../../website-images/answer-options/mage-staff-x45.png'>",
+                    "text2": answer2
+                },
+                {
+                    "icon": "<img src='../../website-images/answer-options/mana-x45.png'>",
+                    "text3": answer3
+                },
+                {
+                    "icon": "<img src='../../website-images/answer-options/magic-ball-x45.png'>",
+                    "text4": answer4
+                }
+            ]
         };
 
-        // Convertir el objeto JSON a una cadena JSON
-        var jsonData = JSON.stringify(data);
-        const fs = require('fs');
-        fs.writeFile('questions-data.json', jsonData, (err)=>{
-            if(err){
-                console.error(err);
-            }else{
-                console.log("ok");
-            }
-        });
-
-        // Aquí puedes enviar jsonData a tu servidor o realizar cualquier otra operación con él
-        localStorage.setItem("questionsInfo", jsonData);
-        var localCloudQuestions = localStorage.getItem("questionsInfo");
+        var jsonData1 = JSON.stringify(data);
+        localStorage.setItem("questionsInfo", jsonData1);
+        setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
     });
 
-    let varAdd = 0;
-    let numberofQuestions;
-    if(numberofQuestions === null){
-        numberofQuestions = 0;
-    }else{
-        numberofQuestions = localStorage.getItem("numberofQuestions");
-    }
-
     document.getElementById("finishbutton").addEventListener("click", function(event) {
-        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+        event.preventDefault(); 
         
         varAdd = 1;
         numberofQuestions++;
@@ -52,4 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("numberofQuestions", numberofQuestions);
         window.location.href = "quizz-create.html";
     });
+
+    let numberOfQuestion = localStorage.getItem("questionCount") || "1";
+    if(numberOfQuestion < 10){
+        numberOfQuestion = "0" + numberOfQuestion;
+    }else{
+        numberOfQuestion = numberOfQuestion;
+    }
+    document.getElementById("numberOfQuestion").innerHTML = numberOfQuestion;
 });

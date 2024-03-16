@@ -5,7 +5,6 @@
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
         <meta name="viewport">
-        <script src="../../js-files/play/in-game.js"></script>
         <script src="../../js-files/common/include-file.js"></script>
         <link rel="stylesheet" href="../../styles-sheets/play/in-game-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
@@ -14,27 +13,7 @@
     <body>
 
         <main>
-            <section class="question">
-                <div class="leftSide">
-                    <img src="../../website-images/common/insert-image.png" width="200" height="200" class="portrait">
-                </div>
-                <div class="questionTitle">
-                    <p> ¿Cuantas vidas tiene un gato? Responde con sinceridad y con cabeza.</p>
-                </div>
-                <div class="questionNumber">
-                    <p> 01 </p>
-                </div>
-            </section>
-
-            <section class="answerBox">
-                <div class="answers">
-                    <button class="cauldron-button" id="correct-answer"><span><img src="../../website-images/answer-options/cauldron-x45.png"></span><span>Un gato tiene 7 vidas.</span></button>
-                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff-x45.png"></span><span>Los gatos viven y fallecen como cualquier especie.</span></button>
-                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana-x45.png"></span><span>Lo de las 7 vidas es una farsa.</span></button>
-                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball-x45.png"></span><span>Vivan los gatos!!</span></button>
-                    <a href=""> <button class="next-question" id="next-question"> <span>Next Question</span></button></a>
-                </div>
-            </section>
+            <script type="module" src="../../js-files/play/in-game.js" defer></script>
         </main>
     </body>
 </html>
