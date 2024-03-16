@@ -4,10 +4,45 @@ document.addEventListener("DOMContentLoaded", function() {
     var localCloudQuestions = localStorage.getItem("questionsInfo");
     var parsedData = JSON.parse(localCloudQuestions);
 
+    let result;
+
     let varAdd = localStorage.getItem("varAdd");
     let numberofQuestions = localStorage.getItem("numberofQuestions");
     questionAdder(varAdd);
 
+    //Reset localStorage when click on Finish button
+    document.getElementById("finishButton").addEventListener("click", function(event) {
+        localStorage.clear();
+    });
+
+    //Add an Quizz image
+    const input_image = document.getElementById("inputFile")
+    const quizzImage = document.getElementById("quizzImage")
+    document.getElementById("addimage").addEventListener("click", function(event) {
+        addimage.onclick = function(){
+            input_image.value = null;
+            input_image.click();
+        }
+
+        var fr;
+        let imageUrl;
+        let storageImage;
+        input_image.onchange = function (evt){
+            var tgt = evt.target || window,
+                files = tgt.files;
+            
+            if (FileReader && files && files.length) {
+                fr = new FileReader();
+                fr.onload = function () {
+                    quizzImage.src = fr.result;
+                    imageUrl = fr.result;
+                    storageImage = localStorage.setItem("storageImage", imageUrl);
+                }
+                fr.readAsDataURL(files[0]);
+            }
+        }
+    });
+//--------------------------------------------------------------------------------------------------------------------------------------------
     document.getElementById("descripcion").addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -18,9 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
             "littledescription": littledescription
         };
 
-        //Añadimos a la base de datos la informacion
-        createQuizz(titulo, littledescription, "", "Angel", "13/03/2024", "rating", "timesPlayed");
-
         // Convertir el objeto JSON a una cadena JSON
         var jsonData = JSON.stringify(data);
         localStorage.setItem("quizzInfo", jsonData);
@@ -28,16 +60,55 @@ document.addEventListener("DOMContentLoaded", function() {
         var localCloudQuizz = localStorage.getItem("quizzInfo");
         document.getElementById("titulo").innerHTML = titulo;
         document.getElementById("littledescription").innerHTML = littledescription;
-    });
 
-    document.getElementById("finishButton").addEventListener("click", function(event) {
-        localStorage.clear();
-    });
+        //Descargamos la imagen en LOCAL
+        let image = localStorage.getItem("storageImage");
+        if(image.startsWith("data:image")){
+            // Realiza una solicitud HTTP para obtener el contenido de la imagen
+            fetch(image)
+            .then(response => {
+                // Verifica si la solicitud fue exitosa
+                if (!response.ok) {
+                throw new Error("Error al descargar la imagen: " + response.statusText);
+                }
+                // Convierte la respuesta en un blob (objeto binario grande)
+                return response.blob();
+            })
+            .then(blob => {
+                // Crea un objeto URL para la imagen descargada
+                let image = URL.createObjectURL(blob);
+                
+                // Crea un elemento <a> para descargar la imagen
+                let link = document.createElement("a");
+                link.href = image;
+                link.download = "imagen.png"; // Nombre del archivo a descargar
+                document.body.appendChild(link);
+                
+                // Simula hacer clic en el enlace para iniciar la descarga
+                link.click();
 
+                // Limpia el objeto URL después de la descarga
+                URL.revokeObjectURL(image);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }else{
+            console.log("estoy undefinded");
+        }
+
+        //Añadimos a la base de datos la informacion
+        result = createQuizz(titulo, littledescription, image, "Angel", "13/03/2024", "rating", "timesPlayed");
+        result.then(data =>{
+            let quizzId = data;
+            localStorage.setItem("quizzId", quizzId);
+        })
+    });
+//--------------------------------------------------------------------------------------------------------------------------------------------
     function questionAdder(indicator){
-        let allInfo;
-        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        getQuizz(3)
+        console.log("quizzId");
+        var quizzIdFinal = localStorage.getItem("quizzId");
+        getQuizz(quizzIdFinal)
             .then(data => {
                 //Mostramos el cuadro de las preview
                 if(varAdd === "1"){

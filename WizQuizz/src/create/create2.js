@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         numberofQuestions = parseInt(localStorage.getItem("numberofQuestions")) || 0;
 
+        var quizzId = localStorage.getItem("quizzId");
         // Crear un objeto JSON con los datos
         var data = {
-            "id": 3,
+            "id": quizzId,
             "title": title,
             "image": "../../website-images/common/insert-image.png",
             "answers": [
@@ -50,11 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         };
 
-        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        setQuizzQuestion(3, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
-        //HAY QUE CAMBIAR LE NUMERO 3 POR EL ID DE LA PREGUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        setQuizzQuestion(quizzId, numberofQuestions, title, "", answer1, answer2, answer3, answer4, respuesta);
     });
 
     document.getElementById("finishbutton").addEventListener("click", function(event) {

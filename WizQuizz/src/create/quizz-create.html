@@ -19,9 +19,10 @@
             <div class="quizinformation">
                 <div class="quizzcontainer">
                     <div class="quizinfo">
-                        <div class="image-container">
-                            <img src="../../website-images/common/sample-news-image.png" width="400" height="300">
-                            <input class="addimage" type="button" value="+ Add Image">
+                        <div class="image-container" id="image-container">
+                            <img id="quizzImage" src="../../website-images/common/sample-news-image.png" width="400" height="300">
+                            <input class="addimage" id="addimage" type="button" value="+ Add Image">
+                            <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
                         </div>
     
                         <form id="descripcion" class="quizdescription">
