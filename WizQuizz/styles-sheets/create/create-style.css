@@ -186,6 +186,10 @@ fieldset{
     align-self: flex-start;
 }
 
+.num-of-question h2{
+    color: white;
+}
+
 .answers {
     text-align: center;
     display: flex;
@@ -383,7 +387,7 @@ fieldset{
     animation-timing-function: ease;
 }
 
-.noquestions h1,h2{
+.define h1,h2{
     color: yellow;
     text-shadow: 0 0 5px black, 
                  0 0 5px black,
