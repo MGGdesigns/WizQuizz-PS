@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
 
         //Añadimos a la base de datos la informacion
-        let nameuser = sessionStorage.getItem("actualUser") || "Angel";
+        let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
         console.log(nameuser);
 
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
