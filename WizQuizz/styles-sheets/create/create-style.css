@@ -20,43 +20,6 @@
     background: #8860d0;
 }
 
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    transition: opacity 0.75s, visibility 0.75s;
-}
-
-.loader-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader::after {
-    content: "";
-    width: 75px;
-    height: 75px;
-    border: 15px solid #DDDDDD;
-    border-top-color: #9C63E3;
-    border-radius: 50%;
-    animation: loading 0.75s ease infinite;
-}
-
-@keyframes loading {
-    from {
-        transform: rotate(0turn);
-    }
-    to {
-        transform: rotate(1turn);
-    }
-}
-
 .container{
     padding-top: 100px;
     background-color: white;
@@ -403,21 +366,12 @@ fieldset{
 
 .quizinfo{
     display: flex;
-    animation: animacionEscala 1s;
+    animation: animacionEscala 1.3s;
 }
 
 @keyframes animacionEscala {
     from {transform: translateX(-100%);}
     to {transform: translateX(0%);}
-}
-
-@keyframes animacionquizquestions {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
 }
 
 .quizquestions{
@@ -435,8 +389,8 @@ fieldset{
     padding: 2%;
     margin-top: 4%;
     border-radius: 4px;
-    animation-name: animacionquestion;
-    animation-duration: 2s;
+    animation-name: Noanimacionquestion;
+    animation-duration: 1.3s;
     animation-timing-function: ease;
 }
 
@@ -447,13 +401,9 @@ fieldset{
                  0 0 5px black;
 }
 
-@keyframes animacionquestion {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
+@keyframes Noanimacionquestion {
+    from {transform: translateX(100%);}
+    to {transform: translateX(0%);}
 }
 
 .quizquestions p{
