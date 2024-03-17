@@ -1,8 +1,17 @@
 import { getAllUsers } from "../common/backend-functions.js";
 
 document.addEventListener('DOMContentLoaded', function() {
-    var loginButton = document.querySelector(".login-button");
+    //Prueba
+    let actualUser = sessionStorage.getItem("actualUser");
+    if(actualUser === null){
+        console.log("vacio");
+    }else{
+        event.preventDefault();
+        console.log("hay alguien");
+        window.location.href = "../../src/login/user-profile.html";
+    }
 
+    var loginButton = document.querySelector(".login-button");
     loginButton.addEventListener('click', async function() {
         var email = document.getElementById('email-input').value.toString().trim();
         var password = document.getElementById('password-input').value.toString().trim();
