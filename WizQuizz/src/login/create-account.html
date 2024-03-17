@@ -22,32 +22,34 @@
             <div class="create-account-container">
                 <section class="create-account-box">
                     <section class="create-account-data">
-                        <h1>Create Account</h1>
+                        <form>
+                            <h1>Create Account</h1>
     
-                        <div class="user-data" id="nickname-data">
-                            <h2>In-game username</h2>
-                            <input class="data-input" id="email-input" type="text">
-                        </div>
+                            <div class="user-data" id="nickname-data">
+                                <h2>In-game username</h2>
+                                <input class="data-input" id="nickname-input" type="text" required>
+                            </div>
 
-                        <div class="user-data" id="email-data">
-                            <h2>Email address</h2>
-                            <input class="data-input" id="email-input" type="text">
-                        </div>
-    
-                        <div class="user-data" id="password-data">
-                            <h2>Password</h2>
-                            <input class="data-input" id="password-input" type="password">
-                        </div>
+                            <div class="user-data" id="email-data">
+                                <h2>Email address</h2>
+                                <input class="data-input" id="email-input" type="text" required>
+                            </div>
+        
+                            <div class="user-data" id="password-data">
+                                <h2>Password</h2>
+                                <input class="data-input" id="password-input" type="password" required>
+                            </div>
 
-                        <div class="user-data" id="confirm-password-data">
-                            <h2>Confirm your password</h2>
-                            <input class="data-input" id="password-input" type="password">
-                        </div>
-                        
-                        <div class="login-and-message">
-                            <button class="create-account-button" type="button">Create Account</button>
-                            <p>By continuing, you agree to the Terms of use and Privacy Policy.</p>
-                        </div>
+                            <div class="user-data" id="confirm-password-data">
+                                <h2>Confirm your password</h2>
+                                <input class="data-input" id="confirm-password-input" type="password" required>
+                            </div>
+                            
+                            <div class="login-and-message">
+                                <button class="create-account-button" type="button">Create Account</button>
+                                <p>By continuing, you agree to the Terms of use and Privacy Policy.</p>
+                            </div>
+                        </form>
                     </section>
     
                     <section class="login-account">
@@ -64,6 +66,7 @@
     </body>
 
     <footer include-file="../common/footer.html"></footer>
-
-    <script>IncludeFile()</script>
+    <script type = module src="../../js-files/login/create-account.js"></script>
+    <script type = module src="../../js-files/common/backend-functions.js"></script>
+   <script>IncludeFile()</script>
 </html>

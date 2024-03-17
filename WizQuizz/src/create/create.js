@@ -72,6 +72,9 @@ document.addEventListener("DOMContentLoaded", function() {
         check++;
         localStorage.setItem("check", check);
 
+        //Mostramos por pantalla un aviso de creacion
+        alert("Quizz information saved succesfully!");
+
         //Comprobamos si se ha introducido los campos
         titulo = document.getElementById("titulo").value;
         littledescription = document.getElementById("littledescription").value;
