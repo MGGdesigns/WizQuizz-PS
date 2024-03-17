@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
     })
 })
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function(event) {
     //Prueba
     let actualUser = sessionStorage.getItem("actualUser");
     if(actualUser === null){
@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("hay alguien");
         window.location.href = "../../src/login/user-profile.html";
     }
-
+    
     var loginButton = document.querySelector(".login-button");
     loginButton.addEventListener('click', async function() {
         var email = document.getElementById('email-input').value.toString().trim();
         var password = document.getElementById('password-input').value.toString().trim();
-
+        console.log(email, password);
         try {
             const users = await getAllUsers();
 
@@ -33,18 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
             for (const user of Object.values(users)) {
                 if (user.email === email && user.password === password) {
                     loggedIn = true;
+                    event.preventDefault();
                     sessionStorage.setItem("actualUser", user.username);
                     sessionStorage.setItem("userMail", user.email);
-                    console.log("Inicio de sesión correcto");
+                    window.location.href = '../../src/login/user-profile.html';
+                    alert("Inicio de sesión correcto");
                     break;
                 }
             }
 
             if (!loggedIn) {
-                console.log("Correo electrónico o contraseña incorrectos");
+                alert("Correo electrónico o contraseña incorrectos");
             }
         } catch (error) {
-            console.error("Error al obtener todos los usuarios:", error);
+            alert("Error al obtener todos los usuarios:", error);
         }
     });
 });
