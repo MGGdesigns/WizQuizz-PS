@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if(check >= 1){
                 window.location.href = "../create/create-questions.html";
             }else{
-                alert("Please to add questions first introduce a title and a description of your Quizz.");
+                alert("Please to add questions first save your Quizz Information clicking on Save.");
             }
         });
 
