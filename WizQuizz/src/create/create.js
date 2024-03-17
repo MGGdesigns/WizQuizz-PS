@@ -166,9 +166,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const questionscontainer2 = document.getElementById("goat2");
         questionscontainer2.innerHTML = `<div class="noquestions">
         <div class="define">
-            <h1>At the moment you dont have questions!</h1>
+            <h1 class="h1define">At the moment you dont have questions!</h1>
             <p></p>
-            <h2>Click in the button below to add questions</h2>
+            <h2 class="h2define">Click in the button below to add questions</h2>
         </div>
         </div>`;
 

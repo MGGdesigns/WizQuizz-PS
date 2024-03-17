@@ -179,7 +179,6 @@ fieldset{
     border: 1px solid rgba(0, 0, 0, 0.7);
     background-color: #7B2CBF;
     color: #FFFFFF;
-    text-shadow: 0 0 2px #000000;
     border-radius: 100px;
     padding: 5px;
     margin-left: 4px;
@@ -387,7 +386,7 @@ fieldset{
     animation-timing-function: ease;
 }
 
-.define h1,h2{
+.h1define,.h2define{
     color: yellow;
     text-shadow: 0 0 5px black, 
                  0 0 5px black,
