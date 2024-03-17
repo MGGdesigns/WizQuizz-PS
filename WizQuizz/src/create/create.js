@@ -98,8 +98,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
 
         //Añadimos a la base de datos la informacion
-        let nameuser = localStorage.getItem("actualUser");
+        let nameuser = sessionStorage.getItem("actualUser");
         console.log(nameuser);
+
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{
             let quizzId = data;
