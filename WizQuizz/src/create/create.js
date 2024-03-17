@@ -1,4 +1,44 @@
-import {createQuizz, getQuizz} from "../../js-files/common/backend-functions.js";
+import {createQuizz, getQuizz, getAllUsers} from "../../js-files/common/backend-functions.js";
+
+//LO DE CAMBIAR LA IMAGEN
+document.addEventListener('DOMContentLoaded', async function() {
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+    let actualUser = sessionStorage.getItem("actualUser");
+    let actualUserMail = sessionStorage.getItem("userMail");
+    let userImage = document.getElementById("userImage");
+
+    if(actualUser === null){
+        userImage.style.display = "none";
+        console.log("Nadie logeado");
+    }else{
+        document.getElementById("signInButton").style.display = "none";
+
+        //Recorremos todos los usuarios para seleccionar el de current session
+        const users = await getAllUsers();
+        let targetUser = sessionStorage.getItem("userMail");
+        let userToLoad;
+        for (const user of Object.values(users)) {
+            if (user.email === targetUser) {
+                userToLoad = user;
+                break;
+            }
+        }
+        userImage.src = String(userToLoad.imageUrl);
+        userImage.style.display = "block";
+    }
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
+    async function loadTemplate(url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch template: ${response.statusText}`);
+        }
+        const text = await response.text();
+        const template = document.createElement('template');
+        template.innerHTML = text;
+        return document.importNode(template.content, true);
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     //Variables

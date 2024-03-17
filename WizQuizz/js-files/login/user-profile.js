@@ -11,7 +11,6 @@ const input_image = document.getElementById("image-input-file")
 const users = await getAllUsers();
 let targetUser = sessionStorage.getItem("userMail");
 let userToLoad;
-console.log("entre bien");
 for (const user of Object.values(users)) {
     if (user.email === targetUser) {
         userToLoad = user;
@@ -26,15 +25,10 @@ document.getElementById("log-out").addEventListener('click', function(){
 });
 
 nickname_display.innerHTML = userToLoad.username;
-console.log(userToLoad.username);
 user_image_display.src = userToLoad.imageUrl;
-console.log(userToLoad.imageUrl);
 user_description_display.innerHTML = userToLoad.description;
-console.log(userToLoad.description);
 account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDate;
-console.log(userToLoad.accountCreationDate);
 quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
-console.log(userToLoad.quizzesFinished );
 
 user_image_display.onclick = function(){
     input_image.click();
@@ -48,6 +42,7 @@ input_image.onchange = function (evt){
         var fr = new FileReader();
         fr.onload = function () {
             user_image_display.src = fr.result;
+            console.log(user_image_display.src);
         }
         fr.readAsDataURL(files[0]);
     }

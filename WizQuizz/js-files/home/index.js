@@ -1,3 +1,5 @@
+import { getAllUsers } from "../common/backend-functions.js"
+
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -15,6 +17,33 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
+
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+    let actualUser = sessionStorage.getItem("actualUser");
+    let actualUserMail = sessionStorage.getItem("userMail");
+    let userImage = document.getElementById("userImage");
+
+    if(actualUser === null){
+        userImage.style.display = "none";
+        console.log("Nadie logeado");
+    }else{
+        document.getElementById("signInButton").style.display = "none";
+
+        //Recorremos todos los usuarios para seleccionar el de current session
+        const users = await getAllUsers();
+        let targetUser = sessionStorage.getItem("userMail");
+        let userToLoad;
+        for (const user of Object.values(users)) {
+            if (user.email === targetUser) {
+                userToLoad = user;
+                break;
+            }
+        }
+        console.log(userToLoad.imageUrl);
+        userImage.src = String(userToLoad.imageUrl);
+        userImage.style.display = "block";
+    }
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
 });
 
 async function loadTemplate(url) {
