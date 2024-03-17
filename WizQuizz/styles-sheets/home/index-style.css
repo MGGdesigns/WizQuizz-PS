@@ -3,6 +3,23 @@
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9C63E3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8860d0;
+}
+
 .image {
     opacity: 1;
     transition: .5s ease;
@@ -36,6 +53,7 @@ main h1 {
     background-color: #8D77C6;
     margin-bottom: 30px;
     width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .about-us-title hr {
@@ -93,6 +111,7 @@ main h1 {
 .news-title {
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #8D77C6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .news-title hr {

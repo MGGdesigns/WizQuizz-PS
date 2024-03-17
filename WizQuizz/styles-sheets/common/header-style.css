@@ -23,10 +23,12 @@
     .title-nav {
         color: #73F6D0;
         filter: drop-shadow(0 2px 4px rgba(115, 246, 208, 0.4));
+        transition: .5s ease;
     }
 
     .header-logo {
         filter: drop-shadow(0 2px 4px rgba(115, 246, 208, 0.4));
+        transition: .5s ease;
     }
 }
 
