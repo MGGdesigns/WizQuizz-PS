@@ -1,17 +1,31 @@
-import { setUserData } from "../common/backend-functions.js";
+import { getAllUsers } from "../common/backend-functions.js";
 
-document.addEventListener('DOMContentLoaded', async function() {
-    var createAccountButton = document.querySelector(".create-account-button");
+document.addEventListener('DOMContentLoaded', function() {
+    var loginButton = document.querySelector(".login-button");
 
-    
-    
-    createAccountButton.addEventListener('click', signup(){
-        var nickname = document.getElementById("nickname-data");
-        var email = document.getElementById('email-data');
-        var password =  document.getElementById('password-data');
-        var description = "jfkdjflksd";
-        var image = "dkjdksjf";
-        setUserData(email, nickname, description, image, password);
+    loginButton.addEventListener('click', async function() {
+        var email = document.getElementById('email-input').value.toString().trim();
+        var password = document.getElementById('password-input').value.toString().trim();
+
+        try {
+            const users = await getAllUsers();
+
+            let loggedIn = false;
+            for (const user of Object.values(users)) {
+                if (user.email === email && user.password === password) {
+                    loggedIn = true;
+                    localStorage.setItem("actualUser", user.username);
+                    console.log(localStorage.getItem("actualUser"));
+                    console.log("Inicio de sesión correcto");
+                    break;
+                }
+            }
+
+            if (!loggedIn) {
+                console.log("Correo electrónico o contraseña incorrectos");
+            }
+        } catch (error) {
+            console.error("Error al obtener todos los usuarios:", error);
+        }
     });
-
 });
