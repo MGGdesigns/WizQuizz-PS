@@ -22,37 +22,39 @@
             <div class="create-account-container">
                 <section class="create-account-box">
                     <section class="create-account-data">
-                        <h1>Create Account</h1>
+                        <form>
+                            <h1>Create Account</h1>
     
-                        <div class="user-data" id="nickname-data">
-                            <h2>In-game username</h2>
-                            <input class="data-input" id="nickname-input" type="text">
-                        </div>
+                            <div class="user-data" id="nickname-data">
+                                <h2>In-game username</h2>
+                                <input class="data-input" id="nickname-input" type="text" required>
+                            </div>
 
-                        <div class="user-data" id="email-data">
-                            <h2>Email address</h2>
-                            <input class="data-input" id="email-input" type="text">
-                        </div>
-    
-                        <div class="user-data" id="password-data">
-                            <h2>Password</h2>
-                            <input class="data-input" id="password-input" type="password">
-                        </div>
+                            <div class="user-data" id="email-data">
+                                <h2>Email address</h2>
+                                <input class="data-input" id="email-input" type="text" required>
+                            </div>
+        
+                            <div class="user-data" id="password-data">
+                                <h2>Password</h2>
+                                <input class="data-input" id="password-input" type="password" required>
+                            </div>
 
-                        <div class="user-data" id="confirm-password-data">
-                            <h2>Confirm your password</h2>
-                            <input class="data-input" id="confirm-password-input" type="password">
-                        </div>
-                        
-                        <div class="login-and-message">
-                            <button class="create-account-button" type="button">Create Account</button>
-                            <p>By continuing, you agree to the Terms of use and Privacy Policy.</p>
-                        </div>
+                            <div class="user-data" id="confirm-password-data">
+                                <h2>Confirm your password</h2>
+                                <input class="data-input" id="confirm-password-input" type="password" required>
+                            </div>
+                            
+                            <div class="login-and-message">
+                                <button class="create-account-button" type="submit">Create Account</button>
+                                <p>By continuing, you agree to the Terms of use and Privacy Policy.</p>
+                            </div>
+                        </form>
                     </section>
     
                     <section class="login-account">
                         <h1><span>Already have an account?</span></h1>
-                        <a href="./sign-in.html"><button class="login-button" type="button">Sign in</button></a>
+                        <a href="./sign-in.html"><button class="login-button" type="submit">Sign in</button></a>
                     </section>
                 </section>
     
