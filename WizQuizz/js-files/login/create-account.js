@@ -27,12 +27,15 @@ document.addEventListener('DOMContentLoaded', async function() {
                     // Crear la cuenta
                     await createUser(username, email, password, description, "", "", "0");
                     console.log("La cuenta ha sido creada con éxito.");
+                    
                 }
             } catch (error) {
                 console.error("Error al obtener usuarios:", error);
+                alert("Error al obtener usuarios:", error);
             }
         } else {
             console.log("Las contraseñas no coinciden.");
+            alert("Las contraseñas no coinciden.");
         }
     });
 });
