@@ -26,6 +26,7 @@
     height: 80%;
     padding-inline: 100px;
     padding-bottom: 100px;
+    overflow: hidden;
 }
 
 .quizinformation{
