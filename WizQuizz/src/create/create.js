@@ -149,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Añadimos a la base de datos la informacion
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
-        console.log(nameuser);
 
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{

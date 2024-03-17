@@ -30,11 +30,11 @@
 	justify-content: center;
 	align-items: center;
 	background-color: #FFFFFF;
-	transition: opacity 0.75s, visibility 0.75s;
+	transition: opacity 6s, visibility 1s;
 }
 
 .loader-hidden {
-	opacity: 0;
+	opacity: 0.8;
 	visibility: hidden;
 }
 

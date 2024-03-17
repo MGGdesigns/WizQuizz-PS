@@ -1,3 +1,5 @@
+import { getAllUsers } from "../common/backend-functions.js"
+
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
@@ -7,9 +9,6 @@ window.addEventListener("load", () => {
         document.body.removeChild(loader);
     })
 })
-
-
-import { getAllUsers } from "../common/backend-functions.js"
 
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');

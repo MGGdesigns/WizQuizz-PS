@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 break;
             }
         }
-        console.log(userToLoad.imageUrl);
         userImage.src = String(userToLoad.imageUrl);
         userImage.style.display = "block";
     }

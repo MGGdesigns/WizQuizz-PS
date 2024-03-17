@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
                     sessionStorage.setItem("actualUser", user.username);
                     sessionStorage.setItem("userMail", user.email);
                     window.location.href = '../../src/login/user-profile.html';
-                    alert("Inicio de sesión correcto");
                     break;
                 }
             }
