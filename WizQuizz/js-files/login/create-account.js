@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         var username = document.getElementById("nickname-input").value.trim();
         var email = document.getElementById('email-input').value.trim();
         var password = document.getElementById('password-input').value.trim();
-        var description = "noDescription";
+        var description = "HOLA ME LLAMO PEPITO Y SOY EL PUTO AAAAAAAAAAAAAAAA";
         var confirmPassword = document.getElementById('confirm-password-input').value.trim();
         
         if (password === confirmPassword) {
@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                     alert("Usuario con cuenta ya registrada");
                 } else {
                     // Crear la cuenta
-                    await createUser(username, email, password, description, "", "", "0");
+                    //Obtenemos la fecha de creación
+                    const fecha = new Date();
+                    let dia = fecha.getDate();
+                    let mes = fecha.getMonth() + 1;
+                    let año = fecha.getFullYear();
+                    let fechaCompleta = String(dia) + "-" + String(mes) + "-" + String(año);
+                    await createUser(username, email, password, description, "../../website-images/common/insert-image.png", fechaCompleta, "0");
                     console.log("La cuenta ha sido creada con éxito.");
                     
                 }

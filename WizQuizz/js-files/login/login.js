@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (user.email === email && user.password === password) {
                     loggedIn = true;
                     sessionStorage.setItem("actualUser", user.username);
+                    sessionStorage.setItem("userMail", user.email);
                     console.log("Inicio de sesión correcto");
                     break;
                 }

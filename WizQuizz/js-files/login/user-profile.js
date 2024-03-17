@@ -1,3 +1,5 @@
+import { getAllUsers } from "../common/backend-functions.js"
+
 const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
@@ -5,13 +7,28 @@ const account_date_display = document.querySelector(".account-creation-date p")
 const quizs_finished_display = document.querySelector(".quizs-finished p")
 const input_image = document.getElementById("image-input-file")
 
-fetch("../../data/current_session.json").then(res => res.json()).then(data => {
-    nickname_display.innerHTML = data.user.nickname;
-    user_image_display.src = data.user.profile_picture;
-    user_description_display.innerHTML = data.user.user_description;
-    account_date_display.innerHTML = "MEMBER SINCE " + data.user.account_creation;
-    quizs_finished_display.innerHTML = data.user.quizs_played + " QUIZS FINISHED";
-});
+//Recorremos todos los usuarios para seleccionar el de current session
+const users = await getAllUsers();
+let targetUser = sessionStorage.getItem("userMail");
+let userToLoad;
+console.log("entre bien");
+for (const user of Object.values(users)) {
+    if (user.email === targetUser) {
+        userToLoad = user;
+        break;
+    }
+}
+
+nickname_display.innerHTML = userToLoad.username;
+console.log(userToLoad.username);
+user_image_display.src = userToLoad.imageUrl;
+console.log(userToLoad.imageUrl);
+user_description_display.innerHTML = userToLoad.description;
+console.log(userToLoad.description);
+account_date_display.innerHTML = "MEMBER SINCE " + userToLoad.accountCreationDate;
+console.log(userToLoad.accountCreationDate);
+quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
+console.log(userToLoad.quizzesFinished );
 
 user_image_display.onclick = function(){
     input_image.click();
