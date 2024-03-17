@@ -17,10 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getDatabase()
 
-<<<<<<< HEAD
- set(reference, {
-        description: description,
-=======
 export function stringToHash(string) {
  
     let hash = 0;
@@ -65,18 +61,12 @@ export function createUser(username, email, password, description, imageUrl, acc
     const reference = ref(db, "users/" + stringToHash(email));
     set(reference, {
         username: username,
->>>>>>> 7df25a00d2677fdd18304570e8e729a2d47311bb
         email: email,
         password: password,
         description: description,
         imageUrl: imageUrl,
-<<<<<<< HEAD
-        password: password,
-        username: username
-=======
         accountCreationDate: accountCreationDate,
         quizzesFinished: quizzesFinished
->>>>>>> 7df25a00d2677fdd18304570e8e729a2d47311bb
     });
 }
 
