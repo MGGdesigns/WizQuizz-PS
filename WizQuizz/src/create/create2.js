@@ -1,5 +1,15 @@
 import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
 document.addEventListener("DOMContentLoaded", function() {
     let numberofQuestions;
     let varAdd = 0;

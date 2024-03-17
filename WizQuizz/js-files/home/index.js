@@ -1,3 +1,14 @@
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
+
 import { getAllUsers } from "../common/backend-functions.js"
 
 document.addEventListener('DOMContentLoaded', async function() {

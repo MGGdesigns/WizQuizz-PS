@@ -1,5 +1,15 @@
 import { getAllUsers, createUser } from "../common/backend-functions.js";
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
 document.addEventListener('DOMContentLoaded', async function() {
     var createAccountButton = document.querySelector(".create-account-button");
    
