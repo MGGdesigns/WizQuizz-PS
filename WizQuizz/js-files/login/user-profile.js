@@ -19,6 +19,12 @@ for (const user of Object.values(users)) {
     }
 }
 
+//Log-Out
+document.getElementById("log-out").addEventListener('click', function(){
+    sessionStorage.clear();
+    window.location.href = "../../index.html";
+});
+
 nickname_display.innerHTML = userToLoad.username;
 console.log(userToLoad.username);
 user_image_display.src = userToLoad.imageUrl;

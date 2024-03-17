@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         var username = document.getElementById("nickname-input").value.trim();
         var email = document.getElementById('email-input').value.trim();
         var password = document.getElementById('password-input').value.trim();
-        var description = "HOLA ME LLAMO PEPITO Y SOY EL PUTO AAAAAAAAAAAAAAAA";
+        var description = "In the annals of magic, there exists a whispered legend of a wizard unparalleled: Zephyrion, the Arcane Sovereign. With robes swirling like tempests, he wields spells of unfathomable power. From ancient tomes, he conjures storms of brilliance, shaping reality itself. His name resonates through time as a beacon of mystic mastery.";
         var confirmPassword = document.getElementById('confirm-password-input').value.trim();
         
         if (password === confirmPassword) {
