@@ -47,7 +47,7 @@ user_image_display.onclick = function(){
 input_image.onchange = function (evt){
     var tgt = evt.target || window,
         files = tgt.files;
-    
+
     if (FileReader && files && files.length) {
         var fr = new FileReader();
         fr.onload = function () {
