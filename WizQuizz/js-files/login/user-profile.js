@@ -31,7 +31,7 @@ user_image_display.src = userToLoad.imageUrl;
 console.log(userToLoad.imageUrl);
 user_description_display.innerHTML = userToLoad.description;
 console.log(userToLoad.description);
-account_date_display.innerHTML = "MEMBER SINCE " + userToLoad.accountCreationDate;
+account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDate;
 console.log(userToLoad.accountCreationDate);
 quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
 console.log(userToLoad.quizzesFinished );
