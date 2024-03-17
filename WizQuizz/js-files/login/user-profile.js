@@ -1,5 +1,15 @@
 import { getAllUsers } from "../common/backend-functions.js"
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
 const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")

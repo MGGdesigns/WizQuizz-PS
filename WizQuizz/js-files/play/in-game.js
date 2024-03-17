@@ -7,6 +7,16 @@ const music = new Audio('../../website-audio/play/in-game/in-game.mp3');
 const correct = new Audio('../../website-audio/play/in-game/correct-answer.mp3');
 const incorrect = new Audio('../../website-audio/play/in-game/incorrect-answer.mp3');
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
 window.onload = function() {
     music.play();
 

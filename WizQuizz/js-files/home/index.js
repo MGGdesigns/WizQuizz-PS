@@ -1,3 +1,14 @@
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
+
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
