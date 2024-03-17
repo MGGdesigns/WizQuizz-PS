@@ -1,3 +1,13 @@
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitionend", () =>{
+        document.body.removeChild(loader);
+    })
+})
+
 document.addEventListener('DOMContentLoaded', function() {
     const finish = document.getElementById("finish");
     const mark = document.getElementById("mark");
