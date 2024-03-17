@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     incorrect.volume = 0.9;
                     incorrect.play().then(r => fadeOutAudio(incorrect, 3000));
                 }
-                sessionStorage.setItem("results", results);
+                localStorage.setItem("results", results);
             });
         });    
     }
