@@ -63,7 +63,7 @@
 }
 
 .container {
-    min-height: calc(100vh - 280px);
+    min-height: 100vh;
     padding-top: 80px;
     display: flex;
 }
@@ -108,7 +108,6 @@ aside {
     overflow: hidden;
     padding-top: 90px;
     padding-bottom: 90px;
-    margin-inline: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -181,7 +180,6 @@ aside {
 /* Phone */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .container {
-        padding-top: 100px;
         flex-direction: column;
     }
 

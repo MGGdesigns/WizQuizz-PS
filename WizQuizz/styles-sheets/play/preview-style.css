@@ -58,10 +58,10 @@
 }
 
 main {
+    min-height: 100vh;
     overflow: hidden;
     padding-top: 170px;
     padding-bottom: 90px;
-    min-height: calc(100vh - 460px);
 }
 
 .preview {
@@ -430,6 +430,7 @@ main {
     main {
         padding-top: 140px;
         padding-bottom: 49px;
+        min-height: calc(100vh - 300px);
     }
 
     .preview {
