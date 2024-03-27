@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     header.appendChild(await loadTemplate('main-header.html'));
     footer.appendChild(await loadTemplate('main-footer.html'));
 
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     const [whoData, newsData] = await Promise.all([
         loadJSON('data/home/who_content.json'),
         loadJSON('data/home/news_content.json')

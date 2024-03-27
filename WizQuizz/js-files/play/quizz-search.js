@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     header.appendChild(await loadTemplate('../common/create-header.html'));
     footer.appendChild(await loadTemplate('../common/footer.html'));
 
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     const [filtersData, quizzData] = await Promise.all([
         loadJSON('../../data/play/filters_content.json'),
         loadJSON('../../data/play/quizz_content.json')

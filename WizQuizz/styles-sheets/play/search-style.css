@@ -188,6 +188,13 @@ aside {
     aside {
         display: flex;
         overflow-x: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .filter img {
+        width: 32px;
+        height: 32px;
     }
 
     .hidden {
@@ -224,12 +231,14 @@ aside {
     }
 
     .quizz-selection {
-        padding-top: 90px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        margin-inline: 5px;
     }
 
     .quizz img {
-        width: 320px;
-        height: 180px;
+        height: 144px;
+        width: 256px;
     }
 }
 
@@ -242,6 +251,13 @@ aside {
     aside {
         display: flex;
         overflow-x: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .filter img {
+        width: 48px;
+        height: 48px;
     }
 
     .hidden {
@@ -278,11 +294,13 @@ aside {
     }
 
     .quizz-selection {
-        padding-top: 90px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        margin-inline: 5px;
     }
 
     .quizz img {
-        width: 320px;
         height: 180px;
+        width: 320px;
     }
 }

@@ -124,6 +124,7 @@ main h1 {
 
 .about-us-info img {
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     background-color: #6E1EB4;
     padding: 3px;
 }
@@ -236,8 +237,9 @@ main h1 {
 }
 
 .new img {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     background-color: #6E1EB4;
+    border-radius: 20px;
     padding: 3px;
     margin-left: 30px;
     transition: opacity 0.5s ease;
@@ -320,28 +322,110 @@ h1.show {
 
 /* Phone */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    main {
+        padding-top: 140px;
+        padding-bottom: 0;
+    }
+
     main h1 {
-        font-size: 80px;
+        font-size: 64px;
+    }
+
+    .about-us-title {
+        font-size: 12px;
+    }
+
+    .about-us-info {
+        flex-direction: column;
+        margin-inline: 40px;
+    }
+
+    .about-us-info img {
+        height: 153px;
+        width: 272px;
+    }
+
+    .about-us-info p {
+        font-size: 12px;
+        margin-inline: 5px;
+    }
+
+    .news-title {
+        font-size: 12px;
+    }
+
+    .new {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .new img {
+        height: 171px;
+        width: 304px;
+        margin-inline: 5px;
+    }
+
+    .news-description h2 {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .news-description p {
+        display: none;
     }
 }
 
 /* Tablet */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    main {
+        padding-top: 140px;
+        padding-bottom: 0;
+    }
+
     main h1 {
         font-size: 100px;
     }
 
+    .about-us-title {
+        font-size: 16px;
+    }
+
+    .about-us-info {
+        flex-direction: column;
+    }
+
     .about-us-info img {
-        width: 272px;
-        height: 153px;
+        height: 315px;
+        width: 560px;
     }
 
     .about-us-info p {
-        font-size: 12px;
+        font-size: 16px;
+        margin-inline: 5px;
+    }
+
+    .news-title {
+        font-size: 16px;
+    }
+
+    .new {
+        flex-direction: column;
+        align-items: center;
     }
 
     .new img {
-        width: 272px;
-        height: 153px;
+        height: 378px;
+        width: 672px;
+        margin-inline: 5px;
+    }
+
+    .news-description h2 {
+        margin-top: 5px;
+        font-size: 18px;
+    }
+
+    .news-description p {
+        font-size: 16px;
     }
 }
