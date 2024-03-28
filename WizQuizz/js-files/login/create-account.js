@@ -4,6 +4,19 @@ import { getAllUsers, createUser } from "../../../../WizQuizz-PS/WizQuizz/js-fil
 
 document.addEventListener('DOMContentLoaded', async function() {
     var createAccountButton = document.querySelector(".create-account-button");
+
+    
+
+    function mostrarAviso(mensaje) {
+        var aviso = document.getElementById("aviso");
+        aviso.textContent = mensaje;
+        aviso.style.display = "block";
+
+        var password = document.getElementById("password").value;
+        if (password) {
+            aviso.innerHTML += '<span onclick="cerrarAviso()" class="cerrar">&times;</span>';
+        }
+    }
    
     createAccountButton.addEventListener('click', async function(e) {
         event.preventDefault(e);
@@ -12,9 +25,28 @@ document.addEventListener('DOMContentLoaded', async function() {
         var password = document.getElementById('password-input').value.trim();
         var description = "In the annals of magic, there exists a whispered legend of a wizard unparalleled: Zephyrion, the Arcane Sovereign. With robes swirling like tempests, he wields spells of unfathomable power. From ancient tomes, he conjures storms of brilliance, shaping reality itself. His name resonates through time as a beacon of mystic mastery.";
         var confirmPassword = document.getElementById('confirm-password-input').value.trim();
-       
+
+        /**/
+
+        const expresionRegular = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+        if (!expresionRegular.test(password)) {
+            mostrarAviso("The password must be at least 8 characters long, including uppercase, lowercase and numbers");
+            
+        return;
+        }
+
+        if (password!=confirmPassword) {
+            mostrarAviso("The passwords do not match. Please try again.");
+            
+        return;
+        }
+
+    
+       /**/
+
         if (!username || !email || !password || !confirmPassword) {
-            alert("Por favor, completa todos los campos.");
+            mostrarAviso("Por favor, completa todos los campos.");
             return;
         }
         if (password === confirmPassword) {

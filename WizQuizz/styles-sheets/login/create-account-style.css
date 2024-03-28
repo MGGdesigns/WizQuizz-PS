@@ -177,3 +177,20 @@ main {
     background-color: #555151;
     box-shadow: 0 0 15px purple;
 }
+
+.aviso {
+    background-color: #ffeeba;
+    color: #856404;
+    padding: 10px;
+    border: 1px solid #ffc107;
+    margin-bottom: 10px;
+    display: none; 
+}
+
+.cerrar {
+    color: #000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
