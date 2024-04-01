@@ -1,42 +1,16 @@
-import {setQuizzQuestion, getAllUsers} from "../../js-files/common/backend-functions.js";
+import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
     loader.classList.add("loader-hidden");
 
-    loader.addEventListener("transitionend", () =>{
-        document.body.removeChild(loader);
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
     })
 })
 
-document.addEventListener("DOMContentLoaded", async function() {
-    //PRUEBA CAMBIAR IMAGEN---------------------------------------
-    let actualUser = sessionStorage.getItem("actualUser");
-    let actualUserMail = sessionStorage.getItem("userMail");
-    let userImage = document.getElementById("userImage");
-
-    if(actualUser === null){
-        userImage.style.display = "none";
-        console.log("Nadie logeado");
-    }else{
-        document.getElementById("signInButton").style.display = "none";
-
-        //Recorremos todos los usuarios para seleccionar el de current session
-        const users = await getAllUsers();
-        let targetUser = sessionStorage.getItem("userMail");
-        let userToLoad;
-        for (const user of Object.values(users)) {
-            if (user.email === targetUser) {
-                userToLoad = user;
-                break;
-            }
-        }
-        userImage.src = String(userToLoad.imageUrl);
-        userImage.style.display = "block";
-    }
-    //PRUEBA CAMBIAR IMAGEN---------------------------------------
-
+document.addEventListener("DOMContentLoaded", function() {
     let numberofQuestions;
     let varAdd = 0;
 

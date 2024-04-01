@@ -20,13 +20,49 @@
     background: #8860d0;
 }
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #DDDDDD;
+    border-top-color: #9C63E3;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 .container{
     padding-top: 100px;
     background-color: white;
     height: 80%;
     padding-inline: 100px;
     padding-bottom: 100px;
-    overflow: hidden;
 }
 
 .quizinformation{
@@ -85,17 +121,6 @@
 .quizzcontainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-.quizinfo{
-    display: flex;
-    animation: animacionEscala 1.3s;
-}
-
-@keyframes animacionEscala {
-    from {transform: translateX(-100%);}
-    to {transform: translateX(0%);}
 }
 
 .quizdescription{
@@ -103,7 +128,7 @@
     flex-direction: column;
 }
 
-.quizdescription .descriptionBig{
+.quizdescription .description{
     margin-top: 3%;
     text-align: left;
     color: white;
@@ -113,12 +138,8 @@
     background-color: rgba(159, 119, 198, 0.65);
     border-radius: 4px;
 }
-.descriptionBig::placeholder{
+.description::placeholder{
     color: white;
-}
-
-.descriptionSmall .description{
-    display: none;
 }
 
 .quizinfo .quizdescription{
@@ -171,18 +192,6 @@ fieldset{
 .quizz-questions {
     margin-top: 3%;
     width: 100%;
-    animation-name: quizz-questions;
-    animation-duration: 1.3s;
-    animation-timing-function: ease;
-}
-
-@keyframes quizz-questions {
-    0% {
-    transform: scale(0);
-    }
-    100% {
-    transform: scale(1);
-    }
 }
 
 .question {
@@ -394,12 +403,21 @@ fieldset{
 
 .quizinfo{
     display: flex;
-    animation: animacionEscala 1.3s;
+    animation: animacionEscala 1s;
 }
 
 @keyframes animacionEscala {
     from {transform: translateX(-100%);}
     to {transform: translateX(0%);}
+}
+
+@keyframes animacionquizquestions {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .quizquestions{
@@ -413,34 +431,12 @@ fieldset{
     align-items: center;
     justify-content: center;
     background-image: url("../../website-images/createPage/backgroundImage.jpeg");
-    animation-name: Noanimacionquestion;
-    animation-duration: 1.3s;
-    animation-timing-function: ease;
-}
-
-@keyframes Noanimacionquestion {
-    0% {
-    transform: scale(0);
-    }
-    100% {
-    transform: scale(1);
-    }
-}
-
-.quizquestions p{
-    margin: 30px;
-    display: inline-block;
-}
-
-.noquestions{
-    width: 246%;
-    text-align: center;
     background-color: #D1AFFD;
     padding: 2%;
     margin-top: 4%;
     border-radius: 4px;
-    animation-name: Noanimacionquestion;
-    animation-duration: 1.3s;
+    animation-name: animacionquestion;
+    animation-duration: 2s;
     animation-timing-function: ease;
 }
 
@@ -451,24 +447,18 @@ fieldset{
                  0 0 5px black;
 }
 
-@keyframes Noanimacionquestion {
-    from {transform: translateX(100%);}
-    to {transform: translateX(0%);}
+@keyframes animacionquestion {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
 }
 
 .quizquestions p{
     margin: 30px;
     display: inline-block;
-}
-
-.question{
-    background-color:#9F77C6;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: #22242A;
-    padding: 2.3%;
-    text-align: center; 
-
 }
 
 .question input{
@@ -574,116 +564,4 @@ fieldset{
 .finish:hover {
     background-color: #6E1EB4;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
-}
-
-/* PHONE */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
-    .container{
-        margin-top: 10%;
-        box-sizing: border-box;
-        padding-top: 100px;
-        padding: 0; 
-    }
-
-    .quizzcontainer{
-        width: 100%;
-        height: 100%;
-        margin-top: 10%;
-        box-sizing: border-box;
-    }
-    
-    /* NOSE PORQUE NO AUMENTA EL TAMAÑO DEL TEXTO */ 
-    .quizinfo{
-        width: 100%;
-        height: 100%;
-    }
-
-    .image-container input{
-        font-size: 35px;
-    }
-
-    .quizdescription{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-    }
-    
-    .quizdescription .descriptionBig{
-        display: none;
-    }
-    
-    .quizdescription .quizztitle{
-        width: 100%;
-        font-size: 85px;
-    }
-    
-    .quizdescription .submit{
-        margin-top: 1%;
-        color: #FFFFFF;
-        font-size: 25px;
-        background-color: green;
-    }
-
-    .quizquestions{
-        width: 100%;
-        animation-name: Noanimacionquestion;
-        animation-duration: 1.3s;
-    }
-
-    .noquestions{
-        width: 96%;
-    }
-
-    .descriptionSmall .description{
-        display: block;
-        margin-top: 5%;
-        width: 19em;
-        height: 7em;
-        color: white;
-        resize: none;
-        font-size: 50px;
-        background-color: rgba(159, 119, 198, 0.65);
-        border-radius: 4px;
-        animation-name: animacionquestion;
-        animation-duration: 1.3s;
-    }
-
-    @keyframes animacionquestion {
-        from {transform: translateX(100%);}
-        to {transform: translateX(0%);}
-    }
-
-    .description::placeholder{
-        color: white;
-    }
-
-    .quizz-questions{
-        margin-top: 10%;
-        animation-name: quizz-questions;
-        animation-duration: 1.3s;
-        animation-timing-function: ease;
-    }
-
-    @keyframes quizz-questions {
-        0% {
-        transform: scale(0);
-        }
-        100% {
-        transform: scale(1);
-        }
-    }
-
-    .quizz-questions p, span, h2{
-        font-size: 35px;
-    }
-
-    .addquestion input{
-        font-size: 35px;
-    }
-}
-
-/* TABLET */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
-
 }

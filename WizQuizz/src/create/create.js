@@ -40,14 +40,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
 document.addEventListener("DOMContentLoaded", function() {
     //Variables
-    const menuIcon = document.querySelector('.mobile-bars');
-    const mobileMenu = document.querySelector('.mobile-menu');
-
-    menuIcon.addEventListener('click', function () {
-        mobileMenu.classList.toggle('show-menu');
-    });
     var localCloudQuestions = localStorage.getItem("questionsInfo");
     var parsedData = JSON.parse(localCloudQuestions);
     let result;
@@ -145,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Añadimos a la base de datos la informacion
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
+        console.log(nameuser);
 
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{
