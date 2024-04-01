@@ -23,12 +23,10 @@
     .title-nav {
         color: #73F6D0;
         filter: drop-shadow(0 2px 4px rgba(115, 246, 208, 0.4));
-        transition: .5s ease;
     }
 
     .header-logo {
         filter: drop-shadow(0 2px 4px rgba(115, 246, 208, 0.4));
-        transition: .5s ease;
     }
 }
 
@@ -171,7 +169,24 @@
 
 /* Tablet */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    #head {
-        height: 80px;
+
+    .header-button {
+        display: none;
+    }
+
+    .sign {
+        display: none;
+    }
+
+    .mobile-bars {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    #header-buttons {
+        margin-right: 5vw;
     }
 }
