@@ -424,6 +424,7 @@ fieldset{
     display: flex;
     flex-direction: column;
     width: 100%;
+    font-family: 'Poppins';
 }
 
 .noquestions {
@@ -564,4 +565,14 @@ fieldset{
 .finish:hover {
     background-color: #6E1EB4;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* PHONE */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+
+}
+
+/* TABLET */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+
 }
