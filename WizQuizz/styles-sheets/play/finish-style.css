@@ -58,8 +58,8 @@
 }
 
 main {
-    padding-top: 170px;
-    padding-bottom: 90px;
+    margin-top: 170px;
+    margin-bottom: 100px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -138,4 +138,109 @@ main {
 .finish-button:hover {
     background-color: #6E1EB4;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* PHONE */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+    main {
+        width: 100%;
+        height: 90%;
+        margin-top: -0%;
+        padding-top: 30%;
+}
+
+#wand-icon {
+    display: none;
+    transform: scaleX(-1);
+    margin-top: 50px;
+}
+
+.quizz-mark {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin-top: -5%;
+}
+
+
+#quizz-description p {
+    width: 60%;
+    height: 10%;
+    padding: 4%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.quizz-mark  h1 {
+    font-size: 55px;
+}
+
+.quizz-mark h2 {
+    width: 100%;
+    height: 100%;
+}
+
+.buttons-and-mark {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.finish-button {
+    width: 175px;
+    height: auto;
+    margin-bottom: 10%;
+    border-radius: 4px;
+}
+
+
+}
+
+/* TABLET */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    main {
+        width: 100%;
+        height: 100vh;
+        margin-top: -0%;
+        padding-top: 30%;
+}
+
+#wand-icon {
+    display: none;
+    transform: scaleX(-1);
+    margin-left: 5%;
+}
+
+.quizz-mark {
+    height: 100%;
+    margin-top: 10%;
+}
+
+#quizz-description p {
+    
+    justify-content: center;
+    font-size: 25px;
+    padding: 3%;
+}
+
+.quizz-mark  h1 {
+    font-size: 85px;
+    margin-top: -20%;
+}
+
+.quizz-mark h2 {
+}
+
+.buttons-and-mark {
+}
+
+.finish-button {
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 3%;
+    height: 80px;
+    width: 250px;
+    white-space: normal;
+}
+
 }
