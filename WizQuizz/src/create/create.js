@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     let actualUserMail = sessionStorage.getItem("userMail");
     let userImage = document.getElementById("userImage");
 
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     if(actualUser === null){
         userImage.style.display = "none";
         console.log("Nadie logeado");
