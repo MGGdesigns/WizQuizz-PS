@@ -183,14 +183,7 @@ main {
     color: #856404;
     padding: 10px;
     border: 1px solid #ffc107;
+    margin-top: 10px;
     margin-bottom: 10px;
     display: none; 
-}
-
-.cerrar {
-    color: #000;
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
 }
