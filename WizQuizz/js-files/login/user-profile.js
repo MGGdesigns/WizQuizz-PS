@@ -24,6 +24,9 @@ let userToLoad;
 for (const user of Object.values(users)) {
     if (user.email === targetUser) {
         userToLoad = user;
+        //GUARDAMOS LA IMAGEN PARA QUE NO SE TENGA QUE CARGAR TODO EL RATO DESDE LA DB
+        sessionStorage.setItem("imageUrl", user.imageUrl);
+        sessionStorage.setItem("userName", user.username);
         break;
     }
 }
@@ -38,7 +41,8 @@ nickname_display.innerHTML = userToLoad.username;
 user_image_display.src = userToLoad.imageUrl;
 user_description_display.innerHTML = userToLoad.description;
 account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDate;
-quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
+//quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
+quizs_finished_display.innerHTML = "CLICK AQUI PARA VER TUS QUIZZ";
 
 user_image_display.onclick = function(){
     input_image.click();

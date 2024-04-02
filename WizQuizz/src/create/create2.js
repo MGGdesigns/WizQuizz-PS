@@ -1,4 +1,4 @@
-import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
+import {setQuizzQuestion, getAllUsers} from "../../js-files/common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", async function() {
                 break;
             }
         }
-        console.log(userToLoad.imageUrl);
-        userImage.src = String(userToLoad.imageUrl);
+        let finalUserImage = sessionStorage.getItem("imageUrl");
+        userImage.src = String(finalUserImage);
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------

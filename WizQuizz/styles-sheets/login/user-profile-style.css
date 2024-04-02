@@ -163,7 +163,7 @@ main {
 	color: #000000;
     text-decoration: none;
     font-family: Poppins, Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
 	border: 2px solid rgba(0, 0, 0);
 }
 
@@ -185,6 +185,21 @@ main {
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 15px;
 	border: 2px solid rgba(0, 0, 0);
+}
+
+.quizs-finished a{
+	color: black;
+	font-size: 20px;
+    text-decoration: none;
+}
+
+.quizs-finished a:hover{
+	color: white;
+}
+
+.quizs-finished:hover{
+	color: white;
+	background-color: #6E1EB4;
 }
 
 .sectionlogOut{

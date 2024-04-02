@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     if(actualUser === null){
         userImage.style.display = "none";
-        console.log("Nadie logeado");
     }else{
         document.getElementById("signInButton").style.display = "none";
 
@@ -30,7 +29,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 break;
             }
         }
-        userImage.src = String(userToLoad.imageUrl);
+        let finalUserImage = sessionStorage.getItem("imageUrl");
+        userImage.src = String(finalUserImage);
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
