@@ -30,11 +30,11 @@
 	justify-content: center;
 	align-items: center;
 	background-color: #FFFFFF;
-	transition: opacity 2s, visibility 1s;
+	transition: opacity 4s, visibility 1s;
 }
 
 .loader-hidden {
-	opacity: 0.8;
+	opacity: 2.5;
 	visibility: hidden;
 }
 
@@ -85,4 +85,85 @@ main{
 
 .quizzes img{
     border: solid 5px #6E1EB4;
+}
+
+.noQuizzesFinished{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.box1{
+    margin: 50px;
+    display: inline-block;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 22px;
+}
+
+.box1 p{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.box1 .logoWiz{
+    text-align: center;
+}
+
+.box1 hr{
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.box1 .title{
+    font-family: 'Harry Potter', sans-serif;
+    font-size: 60px;
+    color: #73F6D0;
+    margin-bottom: 2%;
+}
+
+.box1 .logo{
+    text-align: center;
+    justify-content: center;
+}
+
+.titleAndLogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleAndLogo img{
+    margin-left: 2%;
+}
+
+.information{
+    background-color: #9f77c6a6;
+    border-radius: 4px;
+    border: 2px solid rgba(110, 30, 180, 0.5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.information p{
+    margin: 10px;
+}
+
+.box1 .boton{
+    text-align: center;
+    justify-content: center;
+}
+
+.boton .button{
+    margin-top: 1%;
+    width: 12%;
+    color: #FFFFFF;
+    background-color: #8D77C6;
+    border-radius: 4px;
+    padding: 1%;
+    font-size: 20px;
+    transition: all 0.5s linear;
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px purple;
 }
