@@ -53,6 +53,11 @@
     display: flex;
 }
 
+.lower {
+    display: flex;
+    flex-direction: column;
+}
+
 .lower a {
     color: #FFFFFF;
 }

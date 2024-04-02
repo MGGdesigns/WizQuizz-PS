@@ -365,6 +365,7 @@ main {
     transform: translateY(0);
 }
 
+/* Phone */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     main {
         padding-top: 140px;
