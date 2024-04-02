@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const allQuizzes = await getAllQuizzes();
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
+    let quizzId = 0;
     let quizz;
     let i;
     for (quizz of Object.values(allQuizzes)) {
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         i++;
         if (quizz.author === userName) {
             numberOfUserQuizzes++;
+            quizzId = numberOfQuizz;
             quizzAdder();
         }
     }
@@ -36,9 +38,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         const section = document.createElement('section');
         section.classList.add('quizzes');
         section.id = 'section' + i;
+        console.log(quizzId);
         section.innerHTML = `<div class="eachQuizz">
-            <img src=${quizz.imageUrl} width="400" height="225">
-            <h1>${quizz.title}</h1>
+            <a class="linkQuizz" href="../play/quizz-preview.html?id=${quizzId}">
+                <img src=${quizz.imageUrl} width="400" height="225">
+                <h1>${quizz.title}</h1>
+            </a>
         </div>`;
         Maincontainer.appendChild(section); 
     }

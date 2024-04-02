@@ -83,6 +83,20 @@ main{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.linkQuizz{
+    cursor: pointer;
+    text-decoration: none;   
+    color: white;
+}
+
+.linkQuizz:hover img {
+    opacity: 0.8;
+}
+
+.linkQuizz:hover h1 {
+    color: #ADFFDE;
+}
+
 .quizzes img{
     border: solid 5px #6E1EB4;
 }
