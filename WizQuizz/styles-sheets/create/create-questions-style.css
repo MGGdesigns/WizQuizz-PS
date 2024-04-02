@@ -371,10 +371,141 @@ textarea::placeholder{
 
 /* PHONE */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+    .container{
+        margin-top: 0%;
+        padding-bottom: 5%;
+    }
 
+    .prueba{
+        padding-top: 25%;
+    }
+
+    .preview{
+        border-radius: 30px;
+    }
+
+    .loadimages{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .images{
+        width: 100%;
+        height: 100%;
+    }
+
+    .images img{
+        margin: 2%;
+        width: 100%;
+        height: 75%;
+    }
+
+    .loadimages textarea{
+        margin-top: -15%;
+    }
+
+    .loadimages .description{
+        font-family: 'Poppins';
+        font-size: 22px;
+        width: 115%;
+    }
+
+    .preview .numofquestion{
+        font-size: 14px;
+    }
+
+    .quizquestions{
+        border-radius: 30px;
+    }
+
+    .infocontainer .answers{
+        margin: 2%;
+    }
+
+    .answers input{
+        font-size: 15px;
+    }
+
+    .allbuttons{
+        margin-top: 5%;
+        justify-content: center;
+    }
+
+    .allbuttons .removebuttons{
+        display: none;
+    }
+
+    .allbuttons input{
+        width: 90%;
+        display: block;
+        font-size: 12px;
+        text-decoration: none;
+    }
 }
 
 /* TABLET */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    .container{
+        margin-top: 0%;
+        padding-bottom: 1%;
+    }
 
+    .prueba{
+        padding-top: 9%;
+    }
+
+    .preview{
+        border-radius: 30px;
+    }
+
+    .preview .numofquestion{
+        font-size: 14px;
+    }
+
+    .loadimages{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .images{
+        width: 100%;
+        height: 100%;
+    }
+
+    .images img{
+        width: 100%;
+        height: 60%;
+    }
+
+    .loadimages textarea{
+        width: 100%;
+        margin-top: -30%;
+        font-size: 28px;
+        resize: none;
+    }
+
+    .quizquestions{
+        border-radius: 30px;
+    }
+
+    .infocontainer .answers{
+        margin: 1%;
+    }
+
+    .answers input{
+        font-size: 24px;
+    }
+
+    .allbuttons .header-button{
+        display: block;
+    }
+
+    .allbuttons{
+        margin-top: 2%;
+        justify-content: center;
+    }
+
+    .allbuttons .removebuttons{
+        display: none;
+    }
 }
