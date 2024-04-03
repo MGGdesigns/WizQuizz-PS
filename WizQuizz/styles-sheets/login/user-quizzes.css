@@ -185,7 +185,24 @@ main{
 /* PHONE */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px){
     .container{
-        margin-top: 8%;
+        margin-top: 8%;   
+    }
+
+    .box1 .boton{
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .boton .button{
+        margin-top: 1%;
+        width: 25%;
+        height: 4em;
+        color: #FFFFFF;
+        background-color: #8D77C6;
+        border-radius: 4px;
+        padding: 1%;
+        font-size: 20px;
+        transition: all 0.5s linear;
     }
 }
 
@@ -194,11 +211,44 @@ main{
     .container{
         margin-top: 8%;
     }
+
+    .box1 .boton{
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .boton .button{
+        margin-top: 1%;
+        width: 25%;
+        height: 4em;
+        color: #FFFFFF;
+        background-color: #8D77C6;
+        border-radius: 4px;
+        padding: 1%;
+        font-size: 20px;
+        transition: all 0.5s linear;
+    }
 }
 
 /* LITTLE DESKTOP */
 @media only screen and (min-device-width : 1280px) and (max-device-width : 1710px){
     .container{
         margin-top: 5%;
+    }
+
+    .box1 .boton{
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .boton .button{
+        margin-top: 1%;
+        width: 17%;
+        color: #FFFFFF;
+        background-color: #8D77C6;
+        border-radius: 4px;
+        padding: 1%;
+        font-size: 20px;
+        transition: all 0.5s linear;
     }
 }
