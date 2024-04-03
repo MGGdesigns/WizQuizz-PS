@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    cursor: url("../../website-images/common/cursorVarita.png") 10 10, auto !important;
 }
 
 ::-webkit-scrollbar {
