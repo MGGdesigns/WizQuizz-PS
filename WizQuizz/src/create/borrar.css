@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursor{
+    z-index: 9999;
+    position: relative;
+}
+
+.cursor .click-animation{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursor .click-animation .shape{
+    position: absolute;
+}
+
+/*TRIANGULO 1--------------------------------*/
+.cursor.active .click-animation .shape.triangle.yellow{
+    border-style: solid;
+    border-width: 0 5px 10px 5px;
+    border-color: transparent transparent yellow;
+    animation: click-animation-triangle-yellow 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-yellow{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(50px, -50px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 2--------------------------------*/
+.cursor.active .click-animation .shape.triangle.green{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent green;
+    animation: click-animation-triangle-green 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-green{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(20px, 50px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 3--------------------------------*/
+.cursor.active .click-animation .shape.triangle.orange{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent orange;
+    animation: click-animation-triangle-orange 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-orange{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(10px, -30px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 4--------------------------------*/
+.cursor.active .click-animation .shape.triangle.purple{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent purple;
+    animation: click-animation-triangle-purple 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-purple{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(20px, -10px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 5--------------------------------*/
+.cursor.active .click-animation .shape.triangle.pink{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent pink;
+    animation: click-animation-triangle-pink 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-pink{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(-20px, 10px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 6--------------------------------*/
+.cursor.active .click-animation .shape.triangle.yellow2{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent yellow;
+    animation: click-animation-triangle-yellow2 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-yellow2{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(-50px, 60px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 7--------------------------------*/
+.cursor.active .click-animation .shape.triangle.purple2{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent purple;
+    animation: click-animation-triangle-purple2 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-purple2{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(-90px, 0px) rotate(360deg);
+    }
+}
+
+/*TRIANGULO 8--------------------------------*/
+.cursor.active .click-animation .shape.triangle.black{
+    border-style: solid;
+    border-width: 0 3.5px 7px 3.5px;
+    border-color: transparent transparent black;
+    animation: click-animation-triangle-black 3s ease-out infinite;
+}
+@keyframes click-animation-triangle-black{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+        transform: scale(2.5) translate(-50px, -90px) rotate(360deg);
+    }
+}

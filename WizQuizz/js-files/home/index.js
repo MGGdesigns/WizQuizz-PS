@@ -10,8 +10,6 @@ window.addEventListener("load", () => {
     })
 })
 
-
-
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
