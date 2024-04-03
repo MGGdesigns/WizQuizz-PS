@@ -1,5 +1,15 @@
 import {createQuizz, getQuizz, getAllUsers} from "../../js-files/common/backend-functions.js";
 
+//Comprobamos si estamos en DarkMode o LightMode
+console.log(sessionStorage.getItem("screenMode"));
+if(sessionStorage.getItem("screenMode") === "1"){
+    console.log("dark");
+    document.body.style.backgroundColor = '#292e39';
+}else{
+    console.log("light");
+    document.body.style.backgroundColor = '#FFFFFF';
+}
+
 //LO DE CAMBIAR LA IMAGEN
 document.addEventListener('DOMContentLoaded', async function() {
     //PRUEBA CAMBIAR IMAGEN---------------------------------------

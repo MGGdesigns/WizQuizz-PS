@@ -14,10 +14,12 @@ window.addEventListener("load", () => {
 console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
     console.log("dark");
-    document.body.style.backgroundColor = '#060100';
+    document.body.style.backgroundColor = '#292e39';
+    document.getElementById("username").style.color = '#FFFFFF'
 }else{
     console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
+    document.getElementById("username").style.color = '#060100'
 }
 
 const nickname_display = document.getElementById("username")
@@ -46,7 +48,7 @@ for (const user of Object.values(users)) {
 document.getElementById("darkMode").addEventListener('click', function(){
     screenMode = 1;
     sessionStorage.setItem("screenMode", screenMode);
-    document.body.style.backgroundColor = '#060100';
+    document.body.style.backgroundColor = '#292e39';
     document.getElementById("username").style.color = '#FFFFFF'
 });
 
