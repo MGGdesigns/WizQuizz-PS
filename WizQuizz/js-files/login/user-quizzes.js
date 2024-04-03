@@ -36,6 +36,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     function quizzAdder(){
         //Ponemos el nombre del user
         document.getElementById("userName").innerHTML = userName;
+
+        //Compruebo que el quizz tenga preguntas, si hay error tiene 0 preguntas
+        let questionsLength;
+        if(quizz.questions && quizz.questions.length) {
+            questionsLength = quizz.questions.length;
+        }else {
+            questionsLength = 0;
+        }        
         const Maincontainer = document.querySelector(".quizzes");
         const section = document.createElement('section');
         section.classList.add('quizzes');
@@ -45,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <img src=${quizz.imageUrl} width="400" height="225">
                 <div class="infoAboutQuizz">
                     <div class="info1" id="infos">
-                        <h1 class="infoBox">${quizz.questions.length} Qs</h1>
+                        <h1 class="infoBox">${questionsLength} Qs</h1>
                         <p class="additionalText1">Nº de preguntas</p>
                     </div>
 
