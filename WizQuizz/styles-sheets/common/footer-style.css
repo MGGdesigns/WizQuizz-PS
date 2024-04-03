@@ -55,7 +55,7 @@
 
 .lower {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 }
 
 .lower a {
