@@ -54,17 +54,17 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <div class="infoAboutQuizz">
                     <div class="info1" id="infos">
                         <h1 class="infoBox">${questionsLength} Qs</h1>
-                        <p class="additionalText1">Nº de preguntas</p>
+                        <p class="additionalText1">Nº of questions</p>
                     </div>
 
                     <div class="info3" id="infos">
                         <h1 class="infoBox"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h1>
-                        <p class="additionalText3">Ranking del quizz</p>
+                        <p class="additionalText3">Ranking of quizz</p>
                     </div>
                 </div>
                 <div class="info2" id="infos">
                     <h1 class="infoBox">${quizz.title}</h1>
-                    <p class="additionalText2">Titulo del cuestionario</p>
+                    <p class="additionalText2">Title of the questionnaire</p>
                 </div>
             </a>
         </div>`;
