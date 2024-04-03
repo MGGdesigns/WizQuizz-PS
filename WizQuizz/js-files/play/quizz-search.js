@@ -93,14 +93,10 @@ function renderContent(content, containerSelector) {
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
                          <span>${item.text}</span>`;
             div.addEventListener('click', async () => {
-                console.log("click");
                 const quizzes = await getAllQuizzes();
-                const filteredQuizzes = quizzes.filter(quizz => quizz.tag === item.text);
-
                 const quizzContainer = document.querySelector('.quizz-selection');
                 quizzContainer.innerHTML = '';
-                console.log(item.text);
-
+                const filteredQuizzes = quizzes.filter(quizz => quizz.tag === item.text);
                 renderContent(filteredQuizzes, '.quizz-selection');
                 const hiddenElements = document.querySelectorAll('.hidden');
                 hiddenElements.forEach((el) => observer.observe(el));
@@ -117,6 +113,16 @@ function renderContent(content, containerSelector) {
         container.appendChild(div);
     });
 }
+
+const clearFilters = document.querySelector('.clear-filters');
+clearFilters.addEventListener('click', async async => {
+    const quizzes = await getAllQuizzes();
+    const quizzContainer = document.querySelector('.quizz-selection');
+    quizzContainer.innerHTML = '';
+    renderContent(quizzes, '.quizz-selection');
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+});
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach((entry) => {
