@@ -58,11 +58,67 @@
     }
 }
 
+body{
+    background-color: #22242A;
+    margin-top: 1%;
+}
+
 main{
-    padding-top: 5%;
+    padding-top: 1.5%;
     background-color: #22242A;
     padding-bottom: 5%;
     
+}
+
+.userExperience{
+    background-color: #22242A;
+    display: flex;
+    margin-left: 3%;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 3%;
+}
+
+.userExperience .buttons{
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+.buttons .musicOf{
+    border: none;
+    text-decoration: none;
+}
+
+.userExperience i{
+    background-color: gray;
+    color: white;
+    font-size: 50px;
+}
+
+.userExperience .quizzTitle{
+    text-align: center;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: gray;
+    font-family: 'Poppins';
+    color: white;
+}
+
+.records{
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+.records .record{
+    background-color: gray;
+    color: white;
+    font-size: 50px;
 }
 
 .question{
