@@ -34,12 +34,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //-----------------------------------------------------------------------------------
     function quizzAdder(){
+        //Ponemos el nombre del user
         document.getElementById("userName").innerHTML = userName;
+        
         const Maincontainer = document.querySelector(".quizzes");
         const section = document.createElement('section');
         section.classList.add('quizzes');
         section.id = 'section' + i;
-        console.log(quizzId);
         section.innerHTML = `<div class="eachQuizz">
             <a class="linkQuizz" href="../play/quizz-preview.html?id=${quizzId}">
                 <img src=${quizz.imageUrl} width="400" height="225">
