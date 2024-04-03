@@ -10,12 +10,23 @@ window.addEventListener("load", () => {
     })
 })
 
+//Comprobamos si estamos en DarkMode o LightMode
+console.log(sessionStorage.getItem("screenMode"));
+if(sessionStorage.getItem("screenMode") === "1"){
+    console.log("dark");
+    document.body.style.backgroundColor = '#060100';
+}else{
+    console.log("light");
+    document.body.style.backgroundColor = '#FFFFFF';
+}
+
 const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
 const account_date_display = document.querySelector(".account-creation-date p")
 const quizs_finished_display = document.querySelector(".quizs-finished p")
 const input_image = document.getElementById("image-input-file")
+let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
 const users = await getAllUsers();
@@ -30,6 +41,22 @@ for (const user of Object.values(users)) {
         break;
     }
 }
+
+//Dark Mode
+document.getElementById("darkMode").addEventListener('click', function(){
+    screenMode = 1;
+    sessionStorage.setItem("screenMode", screenMode);
+    document.body.style.backgroundColor = '#060100';
+    document.getElementById("username").style.color = '#FFFFFF'
+});
+
+//Light Mode
+document.getElementById("lightModeButton").addEventListener('click', function(){
+    screenMode = 0;
+    sessionStorage.setItem("screenMode", screenMode);
+    document.body.style.backgroundColor = '#FFFFFF';
+    document.getElementById("username").style.color = '#060100'
+});
 
 //Log-Out
 document.getElementById("log-out").addEventListener('click', function(){
