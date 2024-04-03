@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //-----------------------------------------------------------------------------------
     function quizzAdder(){
+        document.getElementById("userName").innerHTML = userName;
         const Maincontainer = document.querySelector(".quizzes");
         const section = document.createElement('section');
         section.classList.add('quizzes');
@@ -56,9 +57,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         section.id = 'section' + i;
         section.innerHTML = `<div class="box1">
             <div class="texto">
-            <div class="logoWiz">
-                <img class="logo" src="../../website-images/common/wizquizz-logo.png" width=200 height=200>
-            </div>
+                <div class="logoWiz">
+                    <img class="logo" src="../../website-images/common/wizquizz-logo.png" width=200 height=200>
+                </div>
                 <hr>
                 <div class="titleAndLogo">
                     <p class="title">¡Bienvenido a tu perfil en WizQuizz!</p>
