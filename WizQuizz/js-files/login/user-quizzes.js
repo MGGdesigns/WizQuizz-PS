@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     function quizzAdder(){
         //Ponemos el nombre del user
         document.getElementById("userName").innerHTML = userName;
-        
         const Maincontainer = document.querySelector(".quizzes");
         const section = document.createElement('section');
         section.classList.add('quizzes');
@@ -44,7 +43,21 @@ document.addEventListener('DOMContentLoaded', async function() {
         section.innerHTML = `<div class="eachQuizz">
             <a class="linkQuizz" href="../play/quizz-preview.html?id=${quizzId}">
                 <img src=${quizz.imageUrl} width="400" height="225">
-                <h1>${quizz.title}</h1>
+                <div class="infoAboutQuizz">
+                    <div class="info1" id="infos">
+                        <h1 class="infoBox">${quizz.questions.length} Qs</h1>
+                        <p class="additionalText1">Nº de preguntas</p>
+                    </div>
+
+                    <div class="info3" id="infos">
+                        <h1 class="infoBox"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h1>
+                        <p class="additionalText3">Ranking del quizz</p>
+                    </div>
+                </div>
+                <div class="info2" id="infos">
+                    <h1 class="infoBox">${quizz.title}</h1>
+                    <p class="additionalText2">Titulo del cuestionario</p>
+                </div>
             </a>
         </div>`;
         Maincontainer.appendChild(section); 
