@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("littledescription").innerHTML = infoQuizz["littledescription"];
     }
 
-    document.getElementById("descripcion").addEventListener("submit", function(event) {
+    document.getElementById("descripcion").addEventListener("submit", async function(event) {
         event.preventDefault();
 
         //Incrementamos el numero de veces que se ha clickado en "Save"
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
         console.log(nameuser);
 
-        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
+        result = await createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);

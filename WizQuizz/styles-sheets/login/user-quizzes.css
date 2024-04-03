@@ -102,6 +102,54 @@ main{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.infoAboutQuizz{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1px;
+}
+
+.infoBox{
+    background-color: #7f5f9e;
+    border-radius: 5px;
+    padding: 1%;
+    word-wrap: break-word; 
+    max-width: 100%;
+}
+
+.additionalText1 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.additionalText2 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.additionalText3 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.info1:hover .additionalText1 {
+    opacity: 1;
+}
+
+#infos{
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.info2:hover .additionalText2 {
+    opacity: 1;
+}
+
+.info3:hover .additionalText3 {
+    opacity: 1;
+}
+
 .linkQuizz{
     cursor: pointer;
     text-decoration: none;   

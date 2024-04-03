@@ -24,12 +24,12 @@
                     <div class="quizinfo">
                         <div class="image-container" id="image-container">
                             <img id="quizzImage" src="../../website-images/common/insert-image.png" width="560" height="315">
-                            <input class="addimage" id="addimage" type="button" value="+ Add Image">
+                            <input class="addimage" id="addimage" type="button" value="+ ADD IMAGE">
                             <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
                         </div>
     
                         <form id="descripcion" class="quizdescription">
-                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required>
+                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" maxlength="25" required>
                             <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required></textarea>
                             <button type="submit" class="submit">Save</button>
                         </form>
