@@ -202,10 +202,94 @@ main {
 	background-color: #6E1EB4;
 }
 
+.configButtons{
+	display: flex;
+	justify-content: space-between;
+}
+
+.changeDarkMode{
+	width: 10%;
+	text-align: center;
+	padding: 2%;
+	border-radius: 15px;
+	background-color: rgb(208, 174, 240);
+	color: #000000;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+	border: 2px solid rgba(0, 0, 0);
+	cursor: pointer;
+}
+
+.changeDarkMode .darkMode{
+	margin-top: 4%;
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(208, 174, 240);
+	background-color: transparent;
+}
+
+.darkMode:hover {
+	color: white;
+}
+
+.changeDarkMode:hover {
+    background-color: #9355c9;
+	color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.lightMode{
+	margin-top: 0.5%;
+	width: 10%;
+	text-align: center;
+	padding: 2%;
+	border-radius: 15px;
+	background-color: rgb(208, 174, 240);
+	color: #000000;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+	border: 2px solid rgba(0, 0, 0);
+	cursor: pointer;
+}
+
+.lightMode .lightModeButton{
+	margin-top: 4%;
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(208, 174, 240);
+	background-color: transparent;
+}
+
+.lightModeButton:hover {
+	color: white;
+}
+
+.lightMode:hover {
+    background-color: #9355c9;
+	color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
 .sectionlogOut{
 	width: 10%;
-	margin-left: auto;
-	margin-right: 0;
 	text-align: center;
 	padding: 2%;
 	border-radius: 15px;
