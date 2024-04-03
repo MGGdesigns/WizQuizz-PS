@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //-----------------------------------------------------------------------------------
     function noQuizzAdded(){
+        document.getElementById("infoaboutQuizzes").style.display = "none";
         const Maincontainer = document.querySelector(".noQuizzesFinished");
         const section = document.createElement('section');
         section.classList.add('noQuizzesFinished');
