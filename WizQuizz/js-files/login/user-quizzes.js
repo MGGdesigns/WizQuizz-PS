@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                 </div>
                 <hr>
                 <div class="titleAndLogo">
-                    <p class="title">¡Bienvenido a tu perfil en WizQuizz!</p>
+                    <p class="title">Welcome to your WizQuizz profile!</p>
                 </div>
                 <div class="information">
-                    <p>Actualmente no tienes ningún cuestionario creado, ¡pero no te preocupes! ¡Estás a solo unos pasos de empezar a crear tu propio cuestionario y compartirlo con el mundo!</p>
-                    <p>Con WizQuizz, puedes diseñar cuestionarios divertidos y educativos en cuestión de minutos. ¡Deja volar tu imaginación y crea algo único que desafíe y entretenga a tus amigos, familiares o compañeros!</p>
-                    <p>Haz clic en el botón "Crear cuestionario" para comenzar tu viaje en la creación de quizz con WizQuizz. ¡Es hora de convertirte en un creador de cuestionarios!</p>
-                    <p>¡Gracias por ser parte de la comunidad de WizQuizz!</p>
+                    <p>You don't currently have any quizzes created, but don't worry! You're just a few steps away from starting to create your own quiz and share it with the world!</p>
+                    <p>With WizQuizz, you can design fun and educational quizzes in a matter of minutes. Let your imagination run wild and create something unique that will challenge and entertain your friends, family, or colleagues!</p>
+                    <p>Click on the "Create Quiz" button to start your quiz creation journey with WizQuizz. It's time to become a quiz maker!</p>
+                    <p>Thank you for being a part of the WizQuizz community!</p>
                 </div>
                 <hr>
             </div>
