@@ -97,6 +97,13 @@ function renderContent(content, containerSelector) {
                 const quizzContainer = document.querySelector('.quizz-selection');
                 quizzContainer.innerHTML = '';
                 const filteredQuizzes = quizzes.filter(quizz => quizz.tag === item.text);
+                const selected = document.getElementsByClassName('selected');
+                if (selected.length === 0) {
+                    div.classList.add('selected');
+                } else {
+                    selected[0].classList.remove('selected');
+                    div.classList.add('selected');
+                }
                 renderContent(filteredQuizzes, '.quizz-selection');
                 const hiddenElements = document.querySelectorAll('.hidden');
                 hiddenElements.forEach((el) => observer.observe(el));

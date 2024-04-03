@@ -75,6 +75,10 @@ main {
     width: 100%;
 }
 
+.filter-selected {
+    background-color: #6b427c;
+}
+
 .clear-filters {
     width: 164px;
     height: 56px;
@@ -85,13 +89,14 @@ main {
     display: table;
     font-size: 16px;
     color: #FFFFFF;
-    background-color: #6E1EB4;
+    background-color: #7B2CBF;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 6px;
 }
 
 .clear-filters:hover {
+    background-color: #6E1EB4;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
     color: #73F6D0;
@@ -146,6 +151,12 @@ aside {
     color: #73F6D0;
     background-color: #6b427c;
     cursor: pointer;
+}
+
+.selected {
+    background-color: #6b427c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .quizz-selection {
