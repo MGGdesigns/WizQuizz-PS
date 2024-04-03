@@ -92,6 +92,19 @@ function renderContent(content, containerSelector) {
             div.classList.add('filter');
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
                          <span>${item.text}</span>`;
+            div.addEventListener('click', async () => {
+                console.log("click");
+                const quizzes = await getAllQuizzes();
+                const filteredQuizzes = quizzes.filter(quizz => quizz.tag === item.text);
+
+                const quizzContainer = document.querySelector('.quizz-selection');
+                quizzContainer.innerHTML = '';
+                console.log(item.text);
+
+                renderContent(filteredQuizzes, '.quizz-selection');
+                const hiddenElements = document.querySelectorAll('.hidden');
+                hiddenElements.forEach((el) => observer.observe(el));
+            });
         } else if (containerSelector === '.quizz-selection') {
             div.classList.add('quizz');
             div.classList.add('hidden');
