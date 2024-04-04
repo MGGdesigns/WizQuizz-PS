@@ -613,6 +613,40 @@ fieldset{
         flex-direction: column;
         align-items: center;
     }
+
+    .imageAndCategory {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .imageButton {
+        margin-left: -5%;
+    }
+
+    .imageButton .addimage{
+        font-size: 15px;
+        text-align: center;
+        width: 150px;
+        height: 41.5px;
+    }
+    
+    .quizzCategory select{
+        margin-top: 4%;
+        margin-left: -7%;
+        font-family: 'Poppins';
+        font-size: 15px;
+        padding: 5%;
+        background-color: #7B2CBF;
+        color: white;
+        border-radius: 4px;
+    }
+    
+    .quizzCategory option{
+        font-family: 'Poppins';
+        font-size: 15px;
+    }
     
     .image-container{
         margin-top: 25%;
@@ -654,6 +688,10 @@ fieldset{
         height: 7em;
         font-family: 'Poppins';
         margin: 0 auto; 
+    }
+
+    .quizdescription .submit{
+        width: 101%;
     }
 
     .quizquestions{
@@ -731,6 +769,39 @@ fieldset{
         height: 100%;
     }
 
+    .imageAndCategory {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .imageButton {
+        margin-left: -5%;
+    }
+
+    .imageButton .addimage{
+        font-size: 15px;
+        text-align: center;
+        width: 150px;
+        height: 41.5px;
+    }
+    
+    .quizzCategory select{
+        margin-top: 4%;
+        margin-left: 0%;
+        font-family: 'Poppins';
+        font-size: 15px;
+        padding: 5%;
+        background-color: #7B2CBF;
+        color: white;
+        border-radius: 4px;
+    }
+    
+    .quizzCategory option{
+        font-family: 'Poppins';
+        font-size: 15px;
+    }
+
     .quizdescription .quizztitle{
         margin-top: 3%;
         font-size: 70px;
@@ -743,6 +814,10 @@ fieldset{
         height: 10em;
         font-family: 'Poppins';
         margin: 0 auto; 
+    }
+
+    .quizdescription .submit{
+        width: 100.3%;
     }
 
     .quizquestions{
