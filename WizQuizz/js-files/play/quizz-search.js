@@ -104,7 +104,7 @@ function renderContent(content, containerSelector) {
                 const quizzes = await getAllQuizzes();
                 const quizzContainer = document.querySelector('.quizz-selection');
                 quizzContainer.innerHTML = '';
-                const filteredQuizzes = quizzes.filter(quizz => quizz.tag === item.text);
+                const filteredQuizzes = quizzes.filter(quizz => quizz.category === item.text);
                 const selected = document.getElementsByClassName('selected');
                 if (selected.length === 0) {
                     div.classList.add('selected');
