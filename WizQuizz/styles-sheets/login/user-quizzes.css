@@ -64,10 +64,12 @@ main{
 
 .container{
     padding-bottom: 30%;
+    margin-top: 6%;
 }
 
 .infoaboutQuizzes{
     margin-top: 5%;
+    margin: 2.2%;
     text-align: center;
     font-family: 'Poppins';
     font-size: 20px;
@@ -169,7 +171,7 @@ main{
 }
 
 .noQuizzesFinished{
-    margin-top: 3%;
+    margin-top: 0%;
     text-align: center;
 }
 
@@ -252,7 +254,7 @@ main{
 /* PHONE */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px){
     .container{
-        margin-top: 8%;   
+        margin-top: 15%;   
     }
 
     .box1 .boton{
@@ -270,13 +272,30 @@ main{
         padding: 1%;
         font-size: 20px;
         transition: all 0.5s linear;
+    }
+
+    .infoaboutQuizzes{
+        margin: 25px;
+    }
+
+    .infoaboutQuizzes h1{
+        font-size: 60px;
+    }
+
+    .quizzes{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3%;
+        text-align: center;
+        justify-content: center;
+        margin-inline: 25px;
     }
 }
 
 /* TABLET */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
     .container{
-        margin-top: 8%;
+        margin-top: 13%;
     }
 
     .box1 .boton{
@@ -295,12 +314,34 @@ main{
         font-size: 20px;
         transition: all 0.5s linear;
     }
+
+    .infoaboutQuizzes{
+        margin: 35px;
+    }
+
+    .infoaboutQuizzes h1{
+        font-size: 60px;
+    }
+
+    .infoaboutQuizzes p{
+        font-size: 23px;
+    }
+
+    .quizzes{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3%;
+        text-align: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* LITTLE DESKTOP */
 @media only screen and (min-device-width : 1280px) and (max-device-width : 1710px){
     .container{
-        margin-top: 5%;
+        margin-top: 10%;
     }
 
     .box1 .boton{
@@ -317,5 +358,25 @@ main{
         padding: 1%;
         font-size: 20px;
         transition: all 0.5s linear;
+    }
+
+    .infoaboutQuizzes{
+        margin: 25px;
+    }
+
+    .infoaboutQuizzes h1{
+        font-size: 60px;
+    }
+
+    .infoaboutQuizzes p{
+        font-size: 23px;
+    }
+
+    .quizzes{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3%;
+        text-align: center;
+        justify-content: center;
     }
 }
