@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
         console.log(nameuser);
 
-        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
+        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", "Movies");
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);

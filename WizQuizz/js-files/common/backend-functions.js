@@ -70,7 +70,7 @@ export function createUser(username, email, password, description, imageUrl, acc
     });
 }
 
-export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed){
+export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed, category){
 	const id = await generateId();
 
     await set(ref(db, "quizzes/" + id), {
@@ -81,6 +81,7 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
         submitDate: submitDate,
 		rating: rating,
 		timesPlayed: timesPlayed,
+        category: category
     });
 
     return id;
