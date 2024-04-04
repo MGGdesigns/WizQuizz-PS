@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
 }
 
 ::-webkit-scrollbar {
@@ -59,44 +58,46 @@
 }
 
 main {
+    padding: 0;
     font-size: 15px;
     padding-top: 170px;
     padding-bottom: 90px;
     min-height: calc(100vh - 460px);
-}
 
-.login {
-    width: 90%;
-    padding-top: 0%;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 80%;
+
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
 }
 
-.login-box{
-    width: 40%;
-
-    margin-left: auto;
-    margin-right: 3%;
-    padding-right: 0%;
-
+.login-box,
+.login-image{
+    flex: 1;
 }
 
 .login-image {
-    height: 400px;
-
+    max-width: auto;
+    height: 100%;
+    margin-left: 10%;
     margin-right: auto;
-    margin-left: 3%;
-    
+    display: flex;
+    justify-content: left;
     align-items: center;
+
     z-index: -1;
 }
 
+#wand-image {
+    display:block;
+    margin:auto;
+}
+
 .login-data {
-    width: 96%;
-    margin-bottom: 3%;
-    padding: 2%;
-    padding-top: 2%;
+    width: 100%;
     border: 2px solid rgba(0, 0, 0);
     border-radius: 20px;
     align-items: left;
@@ -107,6 +108,7 @@ main {
 .login-data h1 {
     margin: 0%;
     padding: 2%;
+    padding-top: 10%;
     color: #000000;
     text-decoration: none;
     font-family: 'Harry Potter', sans-serif;
@@ -128,7 +130,7 @@ main {
     color: #000000;
     text-decoration: none;
     font-family: Poppins, Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 2rem;
     text-align: left;
 }
 
@@ -141,7 +143,7 @@ main {
     height: 35px;
     width: 95%;
 
-    font-size: 100%;
+    font-size: 1.5rem;
     text-align: left;
     border-radius: 10px;
 }
@@ -149,6 +151,7 @@ main {
 .login-and-message{
     padding-left: 5%;
     padding-right: 5%;
+    padding-bottom: 4%;
 }
 
 .login-and-message p{
@@ -232,4 +235,38 @@ main {
 .create-account-button:hover {
     background-color: #555151;
     box-shadow: 0 0 15px purple;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .login-image{
+        display: none;
+    }
+
+    .login-data{
+        padding: 0;
+        margin: 0 0;
+    }
+
+    .login-box {
+        margin-right: 0;
+    }
+
+    .login-data h2{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    .login-image{
+        display: none;
+    }
+
+    .login-data{
+        padding: 0;
+        margin: 0 0;
+    }
+
+    .login-box {
+        margin-right: 0;
+    }
 }

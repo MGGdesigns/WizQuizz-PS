@@ -11,9 +11,48 @@ window.addEventListener("load", () => {
 })
 
 document.addEventListener('DOMContentLoaded', async function() {
-    var createAccountButton = document.querySelector(".create-account-button");
+
+    const passwordInput = document.getElementById('password-input');
+    passwordInput.addEventListener('input', function(evt) {
+        let specialChars =/[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
+        if (passwordInput.value.length < 8){
+            passwordInput.setCustomValidity("Password must be at least 8 characters");
+        } else if (!specialChars.test(passwordInput.value)){
+            passwordInput.setCustomValidity("Password must contain at least 1 special character");
+        }
+        else {
+            passwordInput.setCustomValidity("");
+        }
+    });
+
+    const confpasswordInput = document.getElementById('confirm-password-input');
+    confpasswordInput.addEventListener('input', function(evt) {
+        let specialChars =/[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
+        if (confpasswordInput.value.length < 8){
+            confpasswordInput.setCustomValidity("Password must be at least 8 characters");
+        } else if (!specialChars.test(confpasswordInput.value)){
+            confpasswordInput.setCustomValidity("Password must contain at least 1 special character");
+        } else if (!(confpasswordInput.value === passwordInput.value)){
+            confpasswordInput.setCustomValidity("Passwords must match");
+        }
+        else {
+            confpasswordInput.setCustomValidity("");
+        }
+    });
+
+    const usernameInput = document.getElementById('nickname-input');
+    usernameInput.addEventListener('input', function(evt) {
+        if (usernameInput.value.length < 5){
+            usernameInput.setCustomValidity("Username must be at least 5 characters");
+        } else {
+            usernameInput.setCustomValidity("");
+        }
+    });
+
+
+    const createAccountForm = document.getElementById('inputs'); // Cambia esto para apuntar al formulario
    
-    createAccountButton.addEventListener('click', async function(e) {
+    createAccountForm.addEventListener('submit', async function(e) {
         var username = document.getElementById("nickname-input").value.trim();
         var email = document.getElementById('email-input').value.trim();
         var password = document.getElementById('password-input').value.trim();
