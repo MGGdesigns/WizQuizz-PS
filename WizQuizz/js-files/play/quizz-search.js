@@ -83,16 +83,13 @@ async function loadJSON(file) {
 }
 
 let filtered = 0;
+let quizzId = 0;
 
 function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
     const quizzIds = Object.keys(content);
+    console.log(quizzIds)
     let countQuizz = 0;
-    if (filtered === 0) {
-        countQuizz = 0;
-    } else {
-        countQuizz = 1;
-    }
     content.forEach(item => {
         const div = document.createElement('div');
         if (containerSelector === 'aside') {
@@ -100,11 +97,18 @@ function renderContent(content, containerSelector) {
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
                          <span>${item.text}</span>`;
             div.addEventListener('click', async () => {
-                filtered = 1;
-                const quizzes = await getAllQuizzes();
                 const quizzContainer = document.querySelector('.quizz-selection');
                 quizzContainer.innerHTML = '';
-                const filteredQuizzes = quizzes.filter(quizz => quizz.category === item.text);
+                let quizz;
+                let countFilteredQuizz = 1;
+                let allQuizzes = await getAllQuizzes();
+                for (quizz of Object.values(allQuizzes)) {
+                    if (quizz.category === item.text) {
+                        quizzId = countFilteredQuizz;
+                        renderQuizz(quizz, '.quizz-selection');
+                    }
+                    countFilteredQuizz++;
+                }
                 const selected = document.getElementsByClassName('selected');
                 if (selected.length === 0) {
                     div.classList.add('selected');
@@ -112,7 +116,6 @@ function renderContent(content, containerSelector) {
                     selected[0].classList.remove('selected');
                     div.classList.add('selected');
                 }
-                renderContent(filteredQuizzes, '.quizz-selection');
                 const hiddenElements = document.querySelectorAll('.hidden');
                 hiddenElements.forEach((el) => observer.observe(el));
             });
@@ -127,6 +130,20 @@ function renderContent(content, containerSelector) {
         }
         container.appendChild(div);
     });
+}
+
+function renderQuizz(content, containerSelector) {
+    const container = document.querySelector(containerSelector);
+    const div = document.createElement('div');
+    if (containerSelector === '.quizz-selection') {
+        div.classList.add('quizz');
+        div.classList.add('hidden');
+        div.innerHTML = `<a href="quizz-preview.html?id=${quizzId}">
+                        <img src="${content.imageUrl}" width="400" height="225" class="image">
+                        <h2>${content.title}</h2>
+                        </a>`;
+    }
+    container.appendChild(div);
 }
 
 const clearFilters = document.querySelector('.clear-filters');
