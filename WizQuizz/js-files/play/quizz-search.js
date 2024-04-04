@@ -82,10 +82,17 @@ async function loadJSON(file) {
     return response.json();
 }
 
+let filtered = 0;
+
 function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
     const quizzIds = Object.keys(content);
     let countQuizz = 0;
+    if (filtered === 0) {
+        countQuizz = 0;
+    } else {
+        countQuizz = 1;
+    }
     content.forEach(item => {
         const div = document.createElement('div');
         if (containerSelector === 'aside') {
@@ -93,6 +100,7 @@ function renderContent(content, containerSelector) {
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
                          <span>${item.text}</span>`;
             div.addEventListener('click', async () => {
+                filtered = 1;
                 const quizzes = await getAllQuizzes();
                 const quizzContainer = document.querySelector('.quizz-selection');
                 quizzContainer.innerHTML = '';
@@ -124,6 +132,7 @@ function renderContent(content, containerSelector) {
 const clearFilters = document.querySelector('.clear-filters');
 clearFilters.addEventListener('click', async async => {
     const selected = document.getElementsByClassName('selected');
+    filtered = 0;
     if (selected.length !== 0) {
         selected[0].classList.remove('selected');
     }
