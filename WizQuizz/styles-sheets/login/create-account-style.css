@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
 }
 
 ::-webkit-scrollbar {
@@ -103,6 +104,15 @@ main {
     align-items: left;
 
     background-color: #ffffff;
+}
+
+#inputs p{
+    font-family: 'Poppins';
+    font-size: 17px;
+}
+
+#inputs .copy{
+    color: #7B2CBF;
 }
 
 #inputs h1 {

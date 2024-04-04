@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+	cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
 }
 
 ::-webkit-scrollbar {
@@ -30,7 +31,7 @@
     justify-content: center;
     align-items: center;
     background-color: #FFFFFF;
-    transition: opacity 0.75s, visibility 0.75s;
+    transition: opacity 20s, visibility 1s;
 }
 
 .loader-hidden {
@@ -214,6 +215,7 @@ main {
 }
 
 .lightMode{
+	margin-top: 0.5%;
 	width: 10%;
 	text-align: center;
 	padding: 2%;
