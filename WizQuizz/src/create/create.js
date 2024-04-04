@@ -173,6 +173,11 @@ document.addEventListener("DOMContentLoaded", function() {
         //Añadimos a la base de datos la informacion
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
 
+        //Comprobamos que haya alguna categoria
+        if(quizzCategory === "" || quizzCategory === undefined){
+            quizzCategory = "";
+        }
+
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", quizzCategory);
         result.then(data =>{
             let quizzId = data;
