@@ -77,10 +77,10 @@
 .image-container{
     display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
     border-radius: 4px;
+    padding: 10px;
     margin-right: 30px;
     background-color: #9F77C6;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -88,13 +88,15 @@
 }
 
 .image-container img{
-    border: 1px solid purple;
-    background-color: #D1AFFD;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #6E1EB4;
     padding: 3px;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .image-container .addimage{
-    margin-top: 4%;
+    margin-top: 5%;
     font-family: "Roboto Thin", sans-serif;
     font-size: 20px;
     width: 170px;
@@ -107,6 +109,36 @@
     border-radius: 4px;
     cursor: pointer;
     border: none;
+}
+
+.imageAndCategory {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imageButton {
+    margin-left: -10%;
+}
+
+.categoryBox {
+    
+}
+
+.quizzCategory select{
+    margin-top: 4%;
+    margin-left: 10%;
+    font-family: 'Poppins';
+    font-size: 18px;
+    padding: 5%;
+    background-color: #7B2CBF;
+    color: white;
+    border-radius: 4px;
+}
+
+.quizzCategory option{
+    font-family: 'Poppins';
+    font-size: 18px;
 }
 
 .addimage:hover {
@@ -135,7 +167,9 @@
     height: 100%;
     resize: none;
     font-size: 20px;
-    background-color: rgba(159, 119, 198, 0.65);
+    background-color: #9f77c6a6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 .description::placeholder{

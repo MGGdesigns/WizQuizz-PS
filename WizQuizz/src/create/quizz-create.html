@@ -24,10 +24,36 @@
                     <div class="quizinfo">
                         <div class="image-container" id="image-container">
                             <img id="quizzImage" src="../../website-images/common/insert-image.png" width="560" height="315">
-                            <input class="addimage" id="addimage" type="button" value="+ ADD IMAGE">
-                            <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
+                            <div class="imageAndCategory">
+                                <div class="imageButton">
+                                    <input class="addimage" id="addimage" type="button" value="+ ADD IMAGE">
+                                    <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
+                                </div>
+                                
+                                <div class="categoryBox">
+                                    <form class="quizzCategory">
+                                        <select name="categories" id="categories">
+                                          <option value="" disabled selected>Choose the category</option>
+                                          <option value="Science">Science</option>
+                                          <option value="Music">Music</option>
+                                          <option value="Geography">Geography</option>
+                                          <option value="Sports">Sports</option>
+                                          <option value="Movies">Movies</option>
+                                          <option value="Animals">Animals</option>
+                                          <option value="Nature">Nature</option>
+                                          <option value="Love">Love</option>
+                                          <option value="Technology">Technology</option>
+                                          <option value="Food">Food</option>
+                                          <option value="Education">Education</option>
+                                          <option value="Space">Space</option>
+                                          <option value="Economy">Economy</option>
+                                          <option value="Gaming">Gaming</option>
+                                          <option value="Art">Art</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-    
                         <form id="descripcion" class="quizdescription">
                             <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" maxlength="25" required>
                             <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required></textarea>

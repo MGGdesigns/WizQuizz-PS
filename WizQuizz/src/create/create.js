@@ -130,9 +130,17 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("littledescription").innerHTML = infoQuizz["littledescription"];
     }
 
+    //Obtenemos su categoria
+    let quizzCategory;
+    let formCategory = document.getElementById("categories");
+    formCategory.addEventListener('change', function(){
+        var selectedOption = this.options[formCategory.selectedIndex];
+        quizzCategory = selectedOption.text;
+    });
+    
     document.getElementById("descripcion").addEventListener("submit", function(event) {
         event.preventDefault();
-
+        
         //Incrementamos el numero de veces que se ha clickado en "Save"
         check++;
         localStorage.setItem("check", check);
@@ -164,9 +172,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Añadimos a la base de datos la informacion
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
-        console.log(nameuser);
 
-        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", "Movies");
+        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", quizzCategory);
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);
