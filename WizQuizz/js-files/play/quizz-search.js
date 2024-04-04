@@ -123,6 +123,10 @@ function renderContent(content, containerSelector) {
 
 const clearFilters = document.querySelector('.clear-filters');
 clearFilters.addEventListener('click', async async => {
+    const selected = document.getElementsByClassName('selected');
+    if (selected.length !== 0) {
+        selected[0].classList.remove('selected');
+    }
     const quizzes = await getAllQuizzes();
     const quizzContainer = document.querySelector('.quizz-selection');
     quizzContainer.innerHTML = '';
