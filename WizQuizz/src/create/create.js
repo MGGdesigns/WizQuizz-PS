@@ -1,7 +1,6 @@
 import {createQuizz, getQuizz, getAllUsers} from "../../js-files/common/backend-functions.js";
 
 //Comprobamos si estamos en DarkMode o LightMode
-console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#292e39';
 }else{
@@ -74,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let numberofQuestions = localStorage.getItem("numberofQuestions");
     let titulo;
     let littledescription;
+    let quizzCategory;
+    let quizzCategoryStorage;
     let data;
     let image;
     let quizzImage;
@@ -131,11 +132,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //Obtenemos su categoria
-    let quizzCategory;
+    quizzCategoryStorage = localStorage.getItem("quizzCategoryStorage");
+    if(quizzCategoryStorage !== null){
+        document.getElementById("categories").value = quizzCategoryStorage;
+    }
+
     let formCategory = document.getElementById("categories");
     formCategory.addEventListener('change', function(){
         var selectedOption = this.options[formCategory.selectedIndex];
         quizzCategory = selectedOption.text;
+        localStorage.setItem("quizzCategoryStorage", quizzCategory);
     });
     
     document.getElementById("descripcion").addEventListener("submit", function(event) {
