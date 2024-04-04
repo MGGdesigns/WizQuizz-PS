@@ -3,10 +3,8 @@ import {createQuizz, getQuizz, getAllUsers} from "../../js-files/common/backend-
 //Comprobamos si estamos en DarkMode o LightMode
 console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
-    console.log("dark");
     document.body.style.backgroundColor = '#292e39';
 }else{
-    console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
 }
 
@@ -132,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("littledescription").innerHTML = infoQuizz["littledescription"];
     }
 
-    document.getElementById("descripcion").addEventListener("submit", async function(event) {
+    document.getElementById("descripcion").addEventListener("submit", function(event) {
         event.preventDefault();
 
         //Incrementamos el numero de veces que se ha clickado en "Save"
@@ -168,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let nameuser = sessionStorage.getItem("actualUser") || "WizQuizz";
         console.log(nameuser);
 
-        result = await createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
+        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed");
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);

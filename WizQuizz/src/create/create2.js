@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     let userImage = document.getElementById("userImage");
     if(actualUser === null){
         userImage.style.display = "none";
-        console.log("Nadie logeado");
     }else{
         document.getElementById("signInButton").style.display = "none";
         //Recorremos todos los usuarios para seleccionar el de current session
@@ -120,9 +119,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 //Comprobamos si estamos en DarkMode o LightMode
 console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
-    console.log("dark");
     document.body.style.backgroundColor = '#292e39';
 }else{
-    console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
 }
