@@ -70,6 +70,21 @@ export function createUser(username, email, password, description, imageUrl, acc
     });
 }
 
+//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+    //El id tiene que ser esto stringToHash(email)
+    set(ref(db, "users/" + id), {
+		username: username,
+        email: email,
+		password: password,
+        description: description,
+        imageUrl: imageUrl,
+		accountCreationDate: accountCreationDate,
+		quizzesFinished: quizzesFinished
+    });
+}
+//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
 export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed, category){
 	const id = await generateId();
 

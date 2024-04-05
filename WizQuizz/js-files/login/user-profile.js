@@ -1,4 +1,4 @@
-import { getAllUsers } from "../common/backend-functions.js"
+import {getAllUsers, modifyUserImage, stringToHash} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -11,13 +11,10 @@ window.addEventListener("load", () => {
 })
 
 //Comprobamos si estamos en DarkMode o LightMode
-console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
-    console.log("dark");
     document.body.style.backgroundColor = '#292e39';
     document.getElementById("username").style.color = '#FFFFFF'
 }else{
-    console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById("username").style.color = '#060100'
 }
@@ -85,7 +82,9 @@ input_image.onchange = function (evt){
         var fr = new FileReader();
         fr.onload = function () {
             user_image_display.src = fr.result;
-            console.log(user_image_display.src);
+            sessionStorage.setItem("imageUrl", fr.result); 
+            modifyUserImage(stringToHash(userToLoad.email), userToLoad.username, userToLoad.email, userToLoad.password, userToLoad.description, fr.result, userToLoad.accountCreationDate, "");
+            alert("Image changed correctly");
         }
         fr.readAsDataURL(files[0]);
     }

@@ -41,25 +41,12 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     if(actualUser === null){
         userImage.style.display = "none";
-        console.log("Nadie logeado");
     }else{
         document.getElementById("signInButton").style.display = "none";
-
-        //Recorremos todos los usuarios para seleccionar el de current session
-        const users = await getAllUsers();
-        let targetUser = sessionStorage.getItem("userMail");
-        let userToLoad;
-        for (const user of Object.values(users)) {
-            if (user.email === targetUser) {
-                userToLoad = user;
-                break;
-            }
-        }
-        userImage.src = String(userToLoad.imageUrl);
+        userImage.src = sessionStorage.getItem("imageUrl");
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
-
 });
 
 async function loadTemplate(url) {
