@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     if(actualUser === null){
         userImage.style.display = "none";
-        console.log("Nadie logeado");
     }else{
         document.getElementById("signInButton").style.display = "none";
 
@@ -56,7 +55,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 break;
             }
         }
-        console.log(userToLoad.imageUrl);
         userImage.src = String(userToLoad.imageUrl);
         userImage.style.display = "block";
     }
@@ -111,7 +109,6 @@ function renderContent(content, containerSelector) {
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach((entry) => {
-        console.log(entry)
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {
@@ -121,13 +118,10 @@ const observer = new IntersectionObserver(entries => {
 });
 
 //Comprobamos si estamos en DarkMode o LightMode
-console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
-    console.log("dark");
     document.body.style.backgroundColor = '#292e39';
     document.getElementById("username").style.color = '#FFFFFF'
 }else{
-    console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById("username").style.color = '#060100'
 }

@@ -1,4 +1,4 @@
-import {getAllUsers, getAllQuizzes} from "../common/backend-functions.js"
+import {getAllUsers, getAllQuizzes, modifyQuizz} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -107,6 +107,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     createQuizzButton.addEventListener("click", function() {
         window.location.href = "../../src/create/quizz-create.html";
     });
+
+    //MODIFICACION DE QUIZZ
+    //const xd = document.getElementById("modify");
+    //xd.addEventListener("click", function() {
+        //console.log("xd");
+        //modifyQuizz(12, "xd", "xd", "xd", "Iniesta", "xd", "xd", "xd")
+    //});
 });
 
 //Comprobamos si estamos en DarkMode o LightMode

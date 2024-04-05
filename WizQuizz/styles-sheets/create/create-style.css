@@ -456,8 +456,7 @@ fieldset{
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-image: url("../../website-images/createPage/backgroundImage.jpeg");
-    background-color: #D1AFFD;
+    background-color: #9f77c6a6;
     padding: 2%;
     margin-top: 4%;
     border-radius: 4px;
@@ -467,7 +466,7 @@ fieldset{
 }
 
 .h1define,.h2define{
-    color: yellow;
+    color: white;
     text-shadow: 0 0 5px black, 
                  0 0 5px black,
                  0 0 5px black;
@@ -547,7 +546,7 @@ fieldset{
 }
 
 .addquestion {
-    margin-top: 1%;
+    margin-top: 2%;
     padding-bottom: 5%;
     display: flex;
     text-align: center;

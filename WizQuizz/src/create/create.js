@@ -183,6 +183,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if(quizzCategory === "" || quizzCategory === undefined){
             quizzCategory = "";
         }
+        
+        //Comprobamos si hay una imagen
+        if(image === null){
+            image = localStorage.getItem("defaultImage");
+        }
 
         result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", quizzCategory);
         result.then(data =>{
