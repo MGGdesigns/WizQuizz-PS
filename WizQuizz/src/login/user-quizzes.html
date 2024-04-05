@@ -19,6 +19,13 @@
 
     <body>
         <header include-file="../common/basic-header.html"></header>
+        <script>
+            function getButtonIndex(index){
+                localStorage.setItem("quizzId", index);
+                window.location.href = "../../src/login/user-quizz-modify.html?id=${quizzId}";
+                console.log("QuizzID: ", index);
+            }
+        </script>
 
         <main>
             <div class="container">

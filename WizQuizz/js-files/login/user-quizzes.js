@@ -9,6 +9,7 @@ window.addEventListener("load", () => {
         document.body.removeChild(loader);
     })
 })
+
 document.addEventListener('DOMContentLoaded', async function() {
     //Recorremos todos los usuarios para seleccionar el de current session
     let userName = sessionStorage.getItem("userName");
@@ -17,13 +18,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     let numberOfUserQuizzes = 0;
     let quizzId = 0;
     let quizz;
-    let i;
+    let i = 0;
+    console.log(allQuizzes);
     for (quizz of Object.values(allQuizzes)) {
         numberOfQuizz++;
         i++;
         if (quizz.author === userName) {
             numberOfUserQuizzes++;
-            quizzId = numberOfQuizz;
+            quizzId = numberOfQuizz;    //HAY QUE HACER QUE CADA QUIZZ TENGA UN ID UNICO PORQUE CUANDO SE BORRA UNO Y NO VA DE 1 A 5 pjm, EL FOR LO PILLA COMO EL NUMERO LOGICO, NO EL ID
+            console.log(quizzId);
             quizzAdder();
         }
     }
@@ -49,6 +52,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         section.classList.add('quizzes');
         section.id = 'section' + i;
         section.innerHTML = `<div class="eachQuizz">
+            <div class="modifyQuizz">
+                <a><button type="button" class="modifyButton" id="modifyButton${quizzId}" onclick="getButtonIndex(${quizzId})">Modify Quizz</button></a>
+            </div>
+
             <a class="linkQuizz" href="../play/quizz-preview.html?id=${quizzId}">
                 <img src=${quizz.imageUrl} width="400" height="225">
                 <div class="infoAboutQuizz">
@@ -68,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 </div>
             </a>
         </div>`;
-        Maincontainer.appendChild(section); 
+        Maincontainer.appendChild(section);
     }
 
     //-----------------------------------------------------------------------------------
@@ -117,12 +124,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 //Comprobamos si estamos en DarkMode o LightMode
-console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
-    console.log("dark");
     document.body.style.backgroundColor = '#292e39';
     document.getElementById('infoaboutQuizzes').style.color = '#FFFFFF';
 }else{
-    console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
 }

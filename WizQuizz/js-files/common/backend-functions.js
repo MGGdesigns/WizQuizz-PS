@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, get, onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import { getDatabase, ref, set, get, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -102,7 +102,8 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
     return id;
 }
 
-export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesPlayed){
+//CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
+export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesPlayed, category){
 
     set(ref(db, "quizzes/" + id), {
 		title: title,
@@ -111,9 +112,24 @@ export function modifyQuizz(id, title, description, imageUrl, author, submitDate
         author: author,
         submitDate: submitDate,
 		rating: rating,
-		timesPlayed: timesPlayed
+		timesPlayed: timesPlayed,
+        category: category
     });
 }
+//CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
+
+
+
+
+//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+export function removeQuizz(id){
+    //Hay un problema y es que al eliminarse el targetQuizz, no baja pero me imagino que suda
+    remove(ref(db, "quizzes/" + id));
+}
+//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+
+
 
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
     const reference = await ref(db, "quizzes/" + id + "/questions/" + number);

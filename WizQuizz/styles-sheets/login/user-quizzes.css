@@ -103,6 +103,24 @@ main{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.modifyQuizz{
+
+}
+
+.modifyQuizz .modifyButton{
+    background-color: #7f5f9e;
+    border-radius: 5px;
+    padding: 1%;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 17px;
+    margin-bottom: 2%;
+}
+
+.modifyQuizz .modifyButton:hover{
+    background-color: purple;
+}
+
 .infoAboutQuizz{
     display: flex;
     text-align: center;
