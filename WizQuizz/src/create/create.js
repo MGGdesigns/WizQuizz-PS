@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
             image = localStorage.getItem("defaultImage");
         }
 
-        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, "rating", "timesPlayed", quizzCategory);
+        result = createQuizz(titulo, littledescription, image, nameuser, fechaCompleta, 0, 0, quizzCategory);
         result.then(data =>{
             let quizzId = data;
             localStorage.setItem("quizzId", quizzId);

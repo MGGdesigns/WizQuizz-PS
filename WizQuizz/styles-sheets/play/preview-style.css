@@ -21,6 +21,19 @@
     background: #8860d0;
 }
 
+.quizz-description h2 {
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.quizz-description .enable {
+    color: gold;
+}
+
+.quizz-description .disable {
+    color: #CCC;
+}
+
 .loader {
     position: fixed;
     top: 0;

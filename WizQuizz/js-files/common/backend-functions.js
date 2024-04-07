@@ -1,5 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, get, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    onValue,
+    remove,
+    update
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -85,7 +93,7 @@ export function modifyUserImage(id, username, email, password, description, imag
 }
 //CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed, category){
+export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 	const id = await generateId();
 
     await set(ref(db, "quizzes/" + id), {
@@ -95,7 +103,7 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
         author: author,
         submitDate: submitDate,
 		rating: rating,
-		timesPlayed: timesPlayed,
+		timesReviewed: timesReviewed,
         category: category
     });
 
@@ -103,7 +111,7 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
 }
 
 //CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
-export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesPlayed, category){
+export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 
     set(ref(db, "quizzes/" + id), {
 		title: title,
@@ -112,7 +120,7 @@ export function modifyQuizz(id, title, description, imageUrl, author, submitDate
         author: author,
         submitDate: submitDate,
 		rating: rating,
-		timesPlayed: timesPlayed,
+		timesReviewed: timesReviewed,
         category: category
     });
 }
@@ -220,6 +228,15 @@ export function querySearch(query){
             reject(error);
         })
     })
+}
+
+export function updateRating(id, rating, timesReviewed) {
+    const reference = ref(db, "quizzes/" + id);
+
+    update(reference, {
+        rating: rating,
+        timesReviewed: timesReviewed
+    });
 }
 
 // GETTER AND SETTERS EXAMPLES

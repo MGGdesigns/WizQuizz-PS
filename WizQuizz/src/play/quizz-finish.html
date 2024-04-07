@@ -8,6 +8,7 @@
         <script src="../../js-files/common/include-file.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
                 crossorigin="anonymous"></script>
+        <script type="module" src="../../js-files/play/quizz-finish.js"></script>
         <link rel="stylesheet" href="../../styles-sheets/play/finish-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,11 +19,10 @@
 
     <body>
         <main>
-            <script type="module" src="../../js-files/play/quizz-finish.js"></script>
             <div id="wand-icon">
                 <img src="../../website-images/common/wizquizz-wand.png" height="300">
             </div>
-            <div class="quizz-mark">
+            <section class="quizz-mark">
                 <div id="quizz-description">
                     <h1 id="finish"></h1>
                     <p>De manera grandilocuente y maravillosa, has obtenido un aprobado en este cuestionario. Gracias, pues demuestra por tu parte un gran elenco de conocimiento sobre el tema del
@@ -34,7 +34,18 @@
                     <a href=""><input id="exit" class="finish-button" type="button" value="PLAY AGAIN"></a>
                     <a href=""><input class="finish-button" type="button" value="DOWNLOAD RESULTS"></a>
                 </div>
-            </div>
+            </section>
+            <hr>
+            <section class="quizz-rating">
+                <h1>Review the quizz</h1>
+                <div class="star-rating">
+                    <i class="fa fa-star" data-rating="1"></i>
+                    <i class="fa fa-star" data-rating="2"></i>
+                    <i class="fa fa-star" data-rating="3"></i>
+                    <i class="fa fa-star" data-rating="4"></i>
+                    <i class="fa fa-star" data-rating="5"></i>
+                </div>
+            </section>
         </main>
         <div class="loader"></div>
     </body>
