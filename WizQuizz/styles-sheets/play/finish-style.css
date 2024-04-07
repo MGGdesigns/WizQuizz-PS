@@ -21,6 +21,16 @@
     background: #8860d0;
 }
 
+.star-rating .fa.active,
+.star-rating .fa:hover {
+    color: gold;
+    cursor: pointer
+}
+
+.star-rating .fa {
+    color: #CCC;
+}
+
 .loader {
     position: fixed;
     top: 0;
@@ -105,6 +115,25 @@ main {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     animation: animate 10s linear reverse infinite;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+main hr {
+    border: none;
+    width: 3px;
+    border-radius: 50px;
+    background-color: rgba(110, 30, 180, 0.5);
+    margin-inline: 20px;
+}
+
+.star-rating {
+    font-size: 42px;
+}
+
+.quizz-rating h1 {
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 70px;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -243,5 +272,4 @@ main {
     width: 250px;
     white-space: normal;
 }
-
 }

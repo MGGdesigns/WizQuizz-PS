@@ -1,4 +1,8 @@
-import {getAllUsers} from "../common/backend-functions.js";
+import {getQuizz, updateRating} from "../common/backend-functions.js";
+
+
+const currentUrl = window.location.href.split('=');
+const quizzId = currentUrl[1];
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -11,6 +15,14 @@ window.addEventListener("load", () => {
 })
 
 document.addEventListener('DOMContentLoaded', async function() {
+
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
     let actualUser = sessionStorage.getItem("actualUser");
     let actualUserMail = sessionStorage.getItem("userMail");
@@ -54,6 +66,59 @@ document.addEventListener('DOMContentLoaded', async function() {
         window.location.href = "../../src/play/quizz-preview.html?id=" + idQuizz;
     });
 });
+
+let quizzRating = 0;
+let quizzTimesReviewed = 0;
+
+getQuizz(quizzId).then((data) => {
+    quizzRating = data.rating;
+    quizzTimesReviewed = data.timesReviewed;
+});
+
+console.log(quizzRating);
+console.log(quizzTimesReviewed);
+
+const stars = document.querySelectorAll('.star-rating i');
+let rating = 0;
+
+stars.forEach((star, index) => {
+    star.addEventListener('mouseover', function() {
+        const hoveredRating = parseInt(this.getAttribute('data-rating'));
+        if (rating === 0) {
+            stars.forEach((star, i) => {
+                if (i < hoveredRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        console.log("Hovered rating:", hoveredRating);
+    });
+
+    star.addEventListener('click', handleClick);
+});
+
+function handleClick() {
+    rating = parseInt(this.getAttribute('data-rating'));
+    stars.forEach((star) => {
+        star.removeEventListener('click', handleClick);
+    });
+    stars.forEach((star, i) => {
+        if (i < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+    console.log("Current rating:", rating);
+    quizzRating = (quizzRating * quizzTimesReviewed + rating)
+    quizzTimesReviewed += 1;
+    quizzRating = quizzRating / quizzTimesReviewed
+    console.log(quizzRating)
+    updateRating(quizzId, quizzRating, quizzTimesReviewed);
+}
+
 
 //Comprobamos si estamos en DarkMode o LightMode
 console.log(sessionStorage.getItem("screenMode"));

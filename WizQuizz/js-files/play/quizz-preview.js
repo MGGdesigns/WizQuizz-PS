@@ -116,7 +116,15 @@ function renderDescriptionContent(content, containerSelector) {
                      </div>`;
 
         aux_section.classList.add('quizz-description');
+        const ratingStarsHTML = Array.from({ length: 5 }, (_, index) => {
+            if (index < Math.round(content.rating)) {
+                return '<i class="fa fa-star enable" aria-hidden="true"></i>';
+            } else {
+                return '<i class="fa fa-star disable" aria-hidden="true"></i>';
+            }
+        }).join('');
         aux_section.innerHTML = `<h1>${content.title}</h1>
+                                <h2>${ratingStarsHTML}</h2>
                                 <p>${content.description}</p>`;
         container.appendChild(section);
         container.appendChild(aux_section);
