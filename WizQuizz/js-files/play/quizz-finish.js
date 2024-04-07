@@ -84,7 +84,6 @@ let rating = 0;
 stars.forEach((star, index) => {
     star.addEventListener('mouseover', function() {
         const hoveredRating = parseInt(this.getAttribute('data-rating'));
-        // Verificar si la calificación no está establecida para evitar animaciones hover después de que se haya hecho clic
         if (rating === 0) {
             stars.forEach((star, i) => {
                 if (i < hoveredRating) {
@@ -100,10 +99,8 @@ stars.forEach((star, index) => {
     star.addEventListener('click', handleClick);
 });
 
-// Función para manejar el evento de clic en una estrella
 function handleClick() {
     rating = parseInt(this.getAttribute('data-rating'));
-    // Desactivar la opción de clic después de que se ha hecho clic en una estrella
     stars.forEach((star) => {
         star.removeEventListener('click', handleClick);
     });
