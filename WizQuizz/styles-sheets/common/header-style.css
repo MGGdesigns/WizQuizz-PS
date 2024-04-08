@@ -63,6 +63,10 @@
     filter: drop-shadow(0 2px 4px rgba(115, 246, 208, 0.4));
 }
 
+.userImage {
+    margin-inline: 10px;
+}
+
 .mobile-bars {
     color: #FFFFFF;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
