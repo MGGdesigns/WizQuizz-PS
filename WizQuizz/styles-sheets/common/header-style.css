@@ -68,6 +68,8 @@
 }
 
 .userImage img {
+    background-color: #6E1EB4;
+    padding: 2px;
     border-radius: 50%;
 }
 
