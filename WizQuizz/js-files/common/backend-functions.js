@@ -65,9 +65,14 @@ async function generateId() {
     }
 }
 
-export function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
     const reference = ref(db, "users/" + stringToHash(email));
-    set(reference, {
+    const refUsername = ref(db, "username-user/" + stringToHash(username));
+    await set(refUsername, {
+        email: email
+    });
+
+    await set(reference, {
         username: username,
         email: email,
         password: password,
@@ -78,7 +83,6 @@ export function createUser(username, email, password, description, imageUrl, acc
     });
 }
 
-//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
     //El id tiene que ser esto stringToHash(email)
     set(ref(db, "users/" + id), {
@@ -91,7 +95,6 @@ export function modifyUserImage(id, username, email, password, description, imag
 		quizzesFinished: quizzesFinished
     });
 }
-//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 	const id = await generateId();
@@ -110,7 +113,6 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
     return id;
 }
 
-//CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
 export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 
     update(ref(db, "quizzes/" + id), {
@@ -124,20 +126,11 @@ export function modifyQuizz(id, title, description, imageUrl, author, submitDate
         category: category
     });
 }
-//CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
 
-
-
-
-//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 export function removeQuizz(id){
     //Hay un problema y es que al eliminarse el targetQuizz, no baja pero me imagino que suda
     remove(ref(db, "quizzes/" + id));
 }
-//CREADO POR MIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-
-
-
 
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
     const reference = await ref(db, "quizzes/" + id + "/questions/" + number);
@@ -162,6 +155,12 @@ export async function getUser(email){
             reject(error);
         });
     });
+}
+
+export async function getUserByName(name){
+    const id = await stringToHash(name);
+    const a = await querySearch("/username-user/" + name).email;
+    return await getUser(a);
 }
 
 export function getQuizz(id) {
@@ -217,7 +216,7 @@ export function getQuizzField(id, field){
     })
 }
 
-export function querySearch(query){
+export async function querySearch(query){
     const reference = ref(db, query);
     let data;
     return new Promise((resolve, reject) => {
