@@ -113,7 +113,7 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
 //CUIDADO CON ESTA FUNCION, SE BORRAN LAS PREGUNTASSSSSSSSSSSSSSSSSSSSSSSS
 export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 
-    set(ref(db, "quizzes/" + id), {
+    update(ref(db, "quizzes/" + id), {
 		title: title,
         description: description,
 		imageUrl: imageUrl,
