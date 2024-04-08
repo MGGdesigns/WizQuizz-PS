@@ -67,6 +67,10 @@
     margin-inline: 10px;
 }
 
+.userImage img {
+    border-radius: 50%;
+}
+
 .mobile-bars {
     color: #FFFFFF;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);

@@ -120,7 +120,8 @@ main {
 .user-image-container input{
 	display: block;
 	width: auto;
-	height: 80%;
+	height: 95%;
+	border-radius: 50%;
 	margin: auto;
 	text-align: center;
 }
