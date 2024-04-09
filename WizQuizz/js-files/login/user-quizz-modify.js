@@ -96,8 +96,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         let finalQuizzImage = quizzImage.src;
         let finalCategory = document.getElementById("categories").value;
         let finalDescription = document.getElementById("littledescription").value;
-
-        modifyQuizz(quizId, finalTitulo, finalDescription, finalQuizzImage, objectiveQuizz.author, objectiveQuizz.submitDate, objectiveQuizz.rating, objectiveQuizz.timesPlayed, finalCategory)
+        
+        modifyQuizz(quizId, finalTitulo, finalDescription, finalQuizzImage, objectiveQuizz.author, objectiveQuizz.submitDate, objectiveQuizz.rating, objectiveQuizz.timesReviewed, finalCategory)
     });
 
     //Boton para borrar quizz
