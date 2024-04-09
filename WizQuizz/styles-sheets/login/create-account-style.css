@@ -252,6 +252,19 @@ main {
     box-shadow: 0 0 15px purple;
 }
 
+
+.aviso {
+    background-color: #ffeeba;
+    color: #856404;
+    padding: 2%;
+    border: 1px solid #ffc107;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 6%;
+    display: none; 
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .login-image{
         display: none;
@@ -299,3 +312,4 @@ main {
         padding: 3% 5%;
     }
 }
+

@@ -10,57 +10,44 @@ window.addEventListener("load", () => {
     })
 })
 
+
 document.addEventListener('DOMContentLoaded', async function() {
-
-    const passwordInput = document.getElementById('password-input');
-    passwordInput.addEventListener('input', function(evt) {
-        let specialChars =/[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
-        if (passwordInput.value.length < 8){
-            passwordInput.setCustomValidity("Password must be at least 8 characters");
-        } else if (!specialChars.test(passwordInput.value)){
-            passwordInput.setCustomValidity("Password must contain at least 1 special character");
-        }
-        else {
-            passwordInput.setCustomValidity("");
-        }
-    });
-
-    const confpasswordInput = document.getElementById('confirm-password-input');
-    confpasswordInput.addEventListener('input', function(evt) {
-        let specialChars =/[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
-        if (confpasswordInput.value.length < 8){
-            confpasswordInput.setCustomValidity("Password must be at least 8 characters");
-        } else if (!specialChars.test(confpasswordInput.value)){
-            confpasswordInput.setCustomValidity("Password must contain at least 1 special character");
-        } else if (!(confpasswordInput.value === passwordInput.value)){
-            confpasswordInput.setCustomValidity("Passwords must match");
-        }
-        else {
-            confpasswordInput.setCustomValidity("");
-        }
-    });
-
-    const usernameInput = document.getElementById('nickname-input');
-    usernameInput.addEventListener('input', function(evt) {
-        if (usernameInput.value.length < 5){
-            usernameInput.setCustomValidity("Username must be at least 5 characters");
-        } else {
-            usernameInput.setCustomValidity("");
-        }
-    });
-
-
-    const createAccountForm = document.getElementById('inputs'); // Cambia esto para apuntar al formulario
+    var createAccountButton = document.querySelector(".create-account-button");
    
-    createAccountForm.addEventListener('submit', async function(e) {
+    createAccountButton.addEventListener('click', async function(e) {
+        event.preventDefault(e);
         var username = document.getElementById("nickname-input").value.trim();
         var email = document.getElementById('email-input').value.trim();
         var password = document.getElementById('password-input').value.trim();
         var description = "In the annals of magic, there exists a whispered legend of a wizard unparalleled: Zephyrion, the Arcane Sovereign. With robes swirling like tempests, he wields spells of unfathomable power. From ancient tomes, he conjures storms of brilliance, shaping reality itself. His name resonates through time as a beacon of mystic mastery.";
         var confirmPassword = document.getElementById('confirm-password-input').value.trim();
-       
+
+        function mostrarAviso(mensaje) {
+            var aviso = document.getElementById("aviso");
+            aviso.textContent = mensaje;
+            aviso.style.display = "block";
+        }
+
         if (!username || !email || !password || !confirmPassword) {
-            alert("Por favor, completa todos los campos.");
+            mostrarAviso("Please, fill out all of the fields");
+            return;
+        } 
+
+        const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailFormat.test(email)){
+            mostrarAviso("Wrong email format");
+            return;
+        } 
+       
+        if (password!=confirmPassword) {
+            mostrarAviso("The passwords do not match. Please try again.");
+            return;
+        }
+
+        const passwordFormat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+        if (!passwordFormat.test(password)) {
+            mostrarAviso("The password must be at least 8 characters long, including uppercase, lowercase and numbers");
             return;
         }
 
@@ -75,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const existingUser = Object.values(users).find(user => user.username === username);
 
                 if (existingUser) {
-                    alert("Usuario con cuenta ya registrada");
+                    mostrarAviso("Account already registered. Please sign up");
                 } else {
                     // Crear la cuenta
                     const fecha = new Date();
@@ -87,10 +74,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                     window.location.href = '../../src/login/user-profile.html';
                 }
             } catch (error) {
-                alert("Error al obtener usuarios:", error);
+                mostrarAviso(error);
             }
-        } else {
-            alert("Las contraseñas no coinciden.");
         }
     });
 });
