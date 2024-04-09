@@ -6,6 +6,9 @@
             <meta charset="UTF-8">
             <meta name="viewport">
             <script src="../../js-files/common/include-file.js"></script>
+            <script type="module" src="../../js-files/login/user-profile.js"></script>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
+                crossorigin="anonymous"></script>
             <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="../../styles-sheets/login/user-profile-style.css">
@@ -39,12 +42,26 @@
 					</section>
 	
 					<section class="quizs-finished">
-						<p>107 QUIZS FINISHED</p>
+						<a href="user-quizzes.html"><p class="quizzFinished">107 QUIZS FINISHED</p></a>
 					</section>
 				</div>
+                    
+                <div class="configButtons">
+                    <section class="changeDarkMode" id="changeDarkMode">
+                        <input id="darkMode" class="darkMode" type="button" value="Dark Mode">
+                    </section>
+    
+                    <section class="sectionlogOut" id="log-out">
+                        <input id="log-out" class="logOut" type="button" value="Log-Out">
+                    </section>
+                </div>
+                
+                <div class="lightMode">
+                    <input id="lightModeButton" class="lightModeButton" type="button" value="Light Mode">
+                </div>
             </div>
         </main>
-        <script src="../../js-files/login/user-profile.js"></script>
+        <div class="loader"></div>
         <footer include-file="../common/footer.html"></footer>
     </body>
 

@@ -1,0 +1,523 @@
+*{
+    margin: 0;
+    padding: 0;
+    cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #9C63E3;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #8860d0;
+}
+
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFFFFF;
+	transition: opacity 4s, visibility 1s;
+}
+
+.loader-hidden {
+	opacity: 2.5;
+	visibility: hidden;
+}
+
+.loader::after {
+	content: "";
+	width: 75px;
+	height: 75px;
+	border: 15px solid #DDDDDD;
+	border-top-color: #9C63E3;
+	border-radius: 50%;
+	animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+	from {
+		transform: rotate(0turn);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+.container{
+    padding-top: 100px;
+    height: 80%;
+    padding-inline: 100px;
+    padding-bottom: 100px;
+}
+
+.quizinformation{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.deleteQuizz{
+    width: 8%;
+    margin-left: 87.8%;
+    margin-bottom: 2%;
+}
+
+.iconandButton{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    width: 120%;
+    background-color: red;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.deleteQuizz i{
+    font-size: 30px;
+    margin-right: 4%;
+}
+
+.deleteQuizz .deleteButtonQuizz{
+    border: none;
+    line-height: 0;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.iconandButton:hover{
+    background-color: orangered;
+}
+
+.image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 10px;
+    margin-right: 30px;
+    background-color: #9F77C6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #6E1EB4;
+    padding: 3px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.image-container .addimage{
+    margin-top: 5%;
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    width: 195px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.imageAndCategory {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imageButton {
+    margin-left: -10%;
+}
+
+.categoryBox {
+    
+}
+
+.quizzCategory select{
+    margin-top: 4%;
+    margin-left: 10%;
+    font-family: 'Poppins';
+    font-size: 18px;
+    padding: 5%;
+    background-color: #7B2CBF;
+    color: white;
+    border-radius: 4px;
+}
+
+.quizzCategory option{
+    font-family: 'Poppins';
+    font-size: 18px;
+}
+
+.addimage:hover {
+    background-color: #6E1EB4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+#inputFile{
+	display: none;
+}
+
+.quizzcontainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.quizdescription{
+    display: flex;
+    flex-direction: column;
+}
+
+.quizdescription .description{
+    margin-top: 3%;
+    text-align: left;
+    color: white;
+    height: 100%;
+    resize: none;
+    font-size: 20px;
+    background-color: #9f77c6a6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.description::placeholder{
+    color: white;
+}
+
+.quizinfo{
+    display: flex;
+}
+
+.quizinfo .quizdescription{
+    color:aqua;
+    font-family: 'Harry Potter', sans-serif;
+}
+
+.quizdescription .quizztitle{
+    font-size: 70px;
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    border-radius: 4px;
+    border: solid gray 1px;
+}
+
+.quizztitle::placeholder{
+    color: #73F6D0;
+}
+
+fieldset{
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.quizdescription p{
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: #22242A;
+}
+
+.quizdescription a{
+    margin-left: 100px;
+}
+
+.quizdescription .submit{
+    margin-top: 1%;
+    color: #FFFFFF;
+    background-color: #8D77C6;
+    border-radius: 4px;
+    padding: 1%;
+    font-size: 20px;
+    transition: all 0.5s linear;
+}
+
+.submit:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px purple;
+}
+
+.quizz-questions {
+    margin-top: 3%;
+    width: 100%;
+}
+
+.question {
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: #8D77C6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation-name: animacionquestion;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+}
+
+@keyframes animacionquestion {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+.question-info {
+    align-items: center;
+    display: flex;
+}
+
+.question-info p {
+    text-align: justify;
+    font-family: 'Poppins', serif;
+    flex: max-content;
+    color: #FFFFFF;
+    margin-inline: 4px;
+    margin-bottom: 4px;
+}
+
+.num-of-question {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    border-radius: 100px;
+    padding: 5px;
+    margin-left: 4px;
+    align-self: flex-start;
+}
+
+.num-of-question h2{
+    color: white;
+}
+
+.answers {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ebaeff;
+}
+
+.answers img {
+    padding-right: 10px;
+}
+
+.cauldron-button {
+    font-family: 'Poppins', serif;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #D5546D;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cauldron-button:hover {
+    background-color: #EA677E;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cauldron-button:focus {
+    outline: none;
+    background-color: #e22a4c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cauldron-button img {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.cauldron-button span {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.mage-staff-button {
+    font-family: 'Poppins', serif;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #EFA928;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mage-staff-button:hover {
+    background-color: #F8C059;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.mage-staff-button:focus {
+    outline: none;
+    background-color: #e49604;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.mage-staff-button img {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.mage-staff-button span {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.mana-button {
+    font-family: 'Poppins', serif;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #2C70AE;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mana-button:hover {
+    background-color: #559DE1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.mana-button:focus {
+    outline: none;
+    background-color: #0e88fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.mana-button img {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.mana-button span {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.magic-ball-button {
+    font-family: 'Poppins', serif;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #2E9DA6;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.magic-ball-button:hover {
+    background-color: #36B9C2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.magic-ball-button:focus {
+    outline: none;
+    background-color: #22d2df;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.magic-ball-button img {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.magic-ball-button span {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.addquestion {
+    margin-top: 2%;
+    padding-bottom: 5%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.addquestion .finishQuizzQuestions{
+    margin-left: 5%;
+}
+
+.finish{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    width: 120%;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.add{
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 20px;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.add:hover {
+    background-color: #6E1EB4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.finish:hover {
+    background-color: #6E1EB4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}

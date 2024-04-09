@@ -7,6 +7,16 @@ const music = new Audio('../../website-audio/play/in-game/in-game.mp3');
 const correct = new Audio('../../website-audio/play/in-game/correct-answer.mp3');
 const incorrect = new Audio('../../website-audio/play/in-game/incorrect-answer.mp3');
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitionend", () =>{
+        document.body.removeChild(loader);
+    })
+})
+
 window.onload = function() {
     music.play();
 
@@ -36,6 +46,21 @@ function fadeOutAudio(audio, duration) {
     }, intervalDuration);
 }
 
+//BOTON DE MUTE MUSICA
+document.getElementById("musicOn").style.display = "none";
+
+document.getElementById("musicOf").addEventListener("click", function(event) {
+    music.pause();
+    document.getElementById("musicOf").style.display = "none";
+    document.getElementById("musicOn").style.display = "block";
+});
+//BOTON DE UNMUTE MUSICA
+document.getElementById("musicOn").addEventListener("click", function(event) {
+    music.play();
+    document.getElementById("musicOf").style.display = "block";
+    document.getElementById("musicOn").style.display = "none";
+});
+
 document.addEventListener('DOMContentLoaded', async function() {
     const main = document.querySelector('main');
     let totalQuestions;
@@ -54,6 +79,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     renderQuestion(0);
     
     function renderQuestion(index) {
+        //Escribimos el titulo del quizz
+        document.getElementById("quizTitle").innerHTML = quizzData.title;
+
         const section = document.createElement('section');
         let questionCount = localStorage.getItem("questionCount") || 1;
         console.log(questionCount);
@@ -136,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     incorrect.volume = 0.9;
                     incorrect.play().then(r => fadeOutAudio(incorrect, 3000));
                 }
-                sessionStorage.setItem("results", results);
+                localStorage.setItem("results", results);
             });
         });    
     }

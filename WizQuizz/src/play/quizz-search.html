@@ -4,8 +4,10 @@
         <title>WizQuizz</title>
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="module" src="../../js-files/play/quizz-search.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
+                crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../../styles-sheets/play/search-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,12 +17,15 @@
     <header></header>
 
     <body>
-    <div class="container">
-        <aside class="hidden"></aside>
-        <main>
-            <section class="quizz-selection"></section>
-        </main>
-    </div>
+        <div class="container">
+            <aside class="hidden"></aside>
+            <main>
+                <button class="clear-filters hidden"><span><img src="../../website-images/filters/clear.png" alt="NavIcon" width="64" height="64"></span>
+                    <span>Clear Filters</span></button>
+                <section class="quizz-selection"></section>
+            </main>
+        </div>
+        <div class="loader"></div>
     </body>
 
     <footer></footer>

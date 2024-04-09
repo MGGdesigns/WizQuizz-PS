@@ -4,9 +4,12 @@
         <title>WizQuizz</title>
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../../js-files/common/include-file.js"></script>
         <script type="module" src="create.js"></script>
+        <script type="module" src="saveImage.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
+                crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../../styles-sheets/create/create-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,18 +19,44 @@
     <header include-file="../common/play-header.html"></header>
 
     <body>
-        <div class="container">
+        <div class="container" id="container">
             <div class="quizinformation">
                 <div class="quizzcontainer">
                     <div class="quizinfo">
                         <div class="image-container" id="image-container">
-                            <img id="quizzImage" src="../../website-images/common/insert-image.png" width="560" height="315">
-                            <input class="addimage" id="addimage" type="button" value="+ Add Image">
-                            <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
+                            <img id="quizzImage" src="../../website-images/createPage/backgroundImage.jpeg" width="560" height="315">
+                            <div class="imageAndCategory">
+                                <div class="imageButton">
+                                    <input class="addimage" id="addimage" type="button" value="+ ADD IMAGE">
+                                    <input type="file" id="inputFile" accept=".jpg, .jpeg, .png"/>
+                                </div>
+                                
+                                <div class="categoryBox">
+                                    <form class="quizzCategory">
+                                        <select name="categories" id="categories">
+                                          <option value="" disabled selected>Choose the category</option>
+                                          <option value="Science">Science</option>
+                                          <option value="Music">Music</option>
+                                          <option value="Geography">Geography</option>
+                                          <option value="Sports">Sports</option>
+                                          <option value="Movies">Movies</option>
+                                          <option value="Animals">Animals</option>
+                                          <option value="Nature">Nature</option>
+                                          <option value="Love">Love</option>
+                                          <option value="Technology">Technology</option>
+                                          <option value="Food">Food</option>
+                                          <option value="Education">Education</option>
+                                          <option value="Space">Space</option>
+                                          <option value="Economy">Economy</option>
+                                          <option value="Gaming">Gaming</option>
+                                          <option value="Art">Art</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-    
                         <form id="descripcion" class="quizdescription">
-                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" required>
+                            <input id="titulo" class="quizztitle" placeholder="Quizz´s Title" maxlength="25" required>
                             <textarea id="littledescription" class="description" placeholder="Add here the quizz description." required></textarea>
                             <button type="submit" class="submit">Save</button>
                         </form>
@@ -52,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <div class="loader"></div>
     </body>
 
     <footer include-file="../common/footer.html"></footer>

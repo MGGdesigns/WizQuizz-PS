@@ -1,8 +1,39 @@
-import {setQuizzQuestion} from "../../js-files/common/backend-functions.js";
+import {setQuizzQuestion, getAllUsers} from "../../js-files/common/backend-functions.js";
 
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitioned", () =>{
+        document.body.removeChild("loader");
+    })
+})
+
+document.addEventListener("DOMContentLoaded", async function() {
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+    let actualUser = sessionStorage.getItem("actualUser");
+    let actualUserMail = sessionStorage.getItem("userMail");
+    let userImage = document.getElementById("userImage");
+
+    if(actualUser === null){
+        userImage.style.display = "none";
+    }else{
+        document.getElementById("signInButton").style.display = "none";
+        userImage.src = sessionStorage.getItem("imageUrl");
+        userImage.style.display = "block";
+    }
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
     let numberofQuestions;
     let varAdd = 0;
+
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
 
     //Create Questions
     document.getElementById("submit").addEventListener("click", function(event) {
@@ -74,3 +105,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     document.getElementById("numberOfQuestion").innerHTML = numberOfQuestion;
 });
+
+//Comprobamos si estamos en DarkMode o LightMode
+console.log(sessionStorage.getItem("screenMode"));
+if(sessionStorage.getItem("screenMode") === "1"){
+    document.body.style.backgroundColor = '#292e39';
+}else{
+    document.body.style.backgroundColor = '#FFFFFF';
+}

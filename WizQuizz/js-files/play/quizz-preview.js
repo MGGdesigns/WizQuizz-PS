@@ -1,7 +1,17 @@
-import {getQuizz} from "../common/backend-functions.js";
+import {getQuizz, getAllUsers} from "../common/backend-functions.js";
 
 const currentUrl = window.location.href.split('=');
 const idQuizz = currentUrl[1];
+
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader-hidden");
+
+    loader.addEventListener("transitionend", () =>{
+        document.body.removeChild(loader);
+    })
+})
 
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
@@ -10,12 +20,33 @@ document.addEventListener('DOMContentLoaded', async function() {
     header.appendChild(await loadTemplate('../common/create-header.html'));
     footer.appendChild(await loadTemplate('../common/footer.html'));
 
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     getQuizz(idQuizz).then((data) => {
         renderDescriptionContent(data, '.preview');
         renderQuestionsContent(data.questions, '.quizz-questions');
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
     });
+
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
+    let actualUser = sessionStorage.getItem("actualUser");
+    let actualUserMail = sessionStorage.getItem("userMail");
+    let userImage = document.getElementById("userImage");
+
+    if(actualUser === null){
+        userImage.style.display = "none";
+    }else{
+        document.getElementById("signInButton").style.display = "none";
+        userImage.src = sessionStorage.getItem("imageUrl");
+        userImage.style.display = "block";
+    }
+    //PRUEBA CAMBIAR IMAGEN---------------------------------------
 });
 
 async function loadTemplate(url) {
@@ -85,7 +116,15 @@ function renderDescriptionContent(content, containerSelector) {
                      </div>`;
 
         aux_section.classList.add('quizz-description');
+        const ratingStarsHTML = Array.from({ length: 5 }, (_, index) => {
+            if (index < Math.round(content.rating)) {
+                return '<i class="fa fa-star enable" aria-hidden="true"></i>';
+            } else {
+                return '<i class="fa fa-star disable" aria-hidden="true"></i>';
+            }
+        }).join('');
         aux_section.innerHTML = `<h1>${content.title}</h1>
+                                <h2>${ratingStarsHTML}</h2>
                                 <p>${content.description}</p>`;
         container.appendChild(section);
         container.appendChild(aux_section);
@@ -102,3 +141,13 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 });
+
+//Comprobamos si estamos en DarkMode o LightMode
+console.log(sessionStorage.getItem("screenMode"));
+if(sessionStorage.getItem("screenMode") === "1"){
+    console.log("dark");
+    document.body.style.backgroundColor = '#292e39';
+}else{
+    console.log("light");
+    document.body.style.backgroundColor = '#FFFFFF';
+}

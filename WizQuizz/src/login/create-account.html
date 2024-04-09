@@ -4,8 +4,11 @@
         <title>WizQuizz</title>
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <script src="../../js-files/common/include-file.js"></script>
+        <script type="module" src="../../js-files/login/create-account.js"></script>
+
         <link rel="stylesheet" href="../../styles-sheets/login/create-account-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,56 +22,52 @@
 
     <body>
         <main>
-            <div class="create-account-container">
-                <section class="create-account-box">
-                    <section class="create-account-data">
-                        <form>
-                            <h1>Create Account</h1>
-    
-                            <div class="user-data" id="nickname-data">
-                                <h2>In-game username</h2>
-                                <input class="data-input" id="nickname-input" type="text" required>
-                            </div>
+            
+            <section class="login-box">
+                <form id="inputs">
+                    <h1>Create Account</h1>
 
-                            <div class="user-data" id="email-data">
-                                <h2>Email address</h2>
-                                <input class="data-input" id="email-input" type="text" required>
-                            </div>
-        
-                            <div class="user-data" id="password-data">
-                                <h2>Password</h2>
-                                <input class="data-input" id="password-input" type="password" required>
-                               
-                            </div>
+                    <div class="user-data" id="nickname-data">
+                        <h2>In-game username</h2>
+                        <input class="data-input" id="nickname-input" type="text" required>
+                    </div>
 
-                            <div class="user-data" id="confirm-password-data">
-                                <h2>Confirm your password</h2>
-                                <input class="data-input" id="confirm-password-input" type="password" required>
-                            </div>
-                            
-                            <div class="login-and-message">
-                                <div id="aviso" class="aviso"></div>
-                                <button class="create-account-button" type="submit">Create Account</button>
-                                <p>By continuing, you agree to the Terms of use and Privacy Policy.</p>
-                            </div>
-                        </form>
-                    </section>
+                    <div class="user-data" id="email-data">
+                        <h2>Email address</h2>
+                        <input class="data-input" id="email-input" type="email" required>
+                    </div>
+
+                    <div class="user-data" id="password-data">
+                        <h2>Password</h2>
+                        <input class="data-input" id="password-input"
+                        type="password"
+                        required
+                        required>
+                    </div>
+
+                    <div class="user-data" id="confirm-password-data">
+                        <h2>Confirm your password</h2>
+                        <input class="data-input" id="confirm-password-input" type="password" required>
+                    </div>
+                    
+                    <div id="aviso" class="aviso"></div>
+                    <input class="create-account-button" id="create-account-button" type="submit" value="Create Account"/>
+                    <p>By continuing, you agree to the Terms of use and <a class="copy" href="../../privacy-policy.html">Privacy Policy.</a></p>
+                </form>
+                <section class="login-account">
+                    <h1><span>Already have an account?</span></h1>
+                    <a href="./sign-in.html"><button class="login-button" type="submit">Sign in</button></a>
+                </section>               
+            </section>
+
+            <section class="login-image">
+                <img id= "wand-image" src="../../website-images/common/wizquizz-logo.png">
+            </section>
     
-                    <section class="login-account">
-                        <h1><span>Already have an account?</span></h1>
-                        <a href="./sign-in.html"><button class="login-button" type="submit">Sign in</button></a>
-                    </section>
-                </section>
-    
-                <section class="create-account-image">
-                    <img id= "logo-image" src="../../website-images/common/wizquizz-logo.png">
-                </section>
-            </div>
+            
         </main>
+        <div class="loader"></div>
     </body>
-
     <footer include-file="../common/footer.html"></footer>
-    <script type = module src="../../js-files/login/create-account.js"></script>
-    <script type = module src="../../js-files/common/backend-functions.js"></script>
-   <script>IncludeFile()</script>
+    <script>IncludeFile()</script>
 </html>

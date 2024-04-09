@@ -1,5 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, set, get, onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    onValue,
+    remove,
+    update
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -12,7 +20,7 @@ const firebaseConfig = {
     messagingSenderId: "698142113065",
     appId: "1:698142113065:web:ac9df1b25aba91759c8b38",
     measurementId: "G-7RR6QBL85G"
-    };
+};
 
 const app = initializeApp(firebaseConfig)
 const db = getDatabase()
@@ -57,9 +65,14 @@ async function generateId() {
     }
 }
 
-export function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
     const reference = ref(db, "users/" + stringToHash(email));
-    set(reference, {
+    const refUsername = ref(db, "username-user/" + stringToHash(username));
+    await set(refUsername, {
+        email: email
+    });
+
+    await set(reference, {
         username: username,
         email: email,
         password: password,
@@ -70,7 +83,20 @@ export function createUser(username, email, password, description, imageUrl, acc
     });
 }
 
-export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesPlayed){
+export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+    //El id tiene que ser esto stringToHash(email)
+    set(ref(db, "users/" + id), {
+		username: username,
+        email: email,
+		password: password,
+        description: description,
+        imageUrl: imageUrl,
+		accountCreationDate: accountCreationDate,
+		quizzesFinished: quizzesFinished
+    });
+}
+
+export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 	const id = await generateId();
 
     await set(ref(db, "quizzes/" + id), {
@@ -80,23 +106,42 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
         author: author,
         submitDate: submitDate,
 		rating: rating,
-		timesPlayed: timesPlayed,
+		timesReviewed: timesReviewed,
+        category: category
     });
+    const authorHash = await stringToHash(author);
+    await set(ref(db, "username-quizzes/" + authorHash + "/" + id), {
+        dummy: "dummy"
+    })
 
     return id;
 }
 
-export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesPlayed){
+export async function getUserQuizzes(username){
+    const authorHash = await stringToHash(username);
+    return await querySearch("/username-quizzes/" + authorHash);
+}
 
-    set(ref(db, "quizzes/" + id), {
+export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
+
+    update(ref(db, "quizzes/" + id), {
 		title: title,
         description: description,
 		imageUrl: imageUrl,
         author: author,
         submitDate: submitDate,
 		rating: rating,
-		timesPlayed: timesPlayed
+		timesReviewed: timesReviewed,
+        category: category
     });
+}
+
+export async function removeQuizz(id){
+    //Hay un problema y es que al eliminarse el targetQuizz, no baja pero me imagino que suda
+    const author = await querySearch("quizzes/" + id + "/author");
+    const authorHash = await stringToHash(author);
+    await remove(ref(db, "quizzes/" + id));
+    await remove(ref(db, "username-quizzes/" + authorHash + "/" + id));
 }
 
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
@@ -122,6 +167,12 @@ export async function getUser(email){
             reject(error);
         });
     });
+}
+
+export async function getUserByName(name){
+    const id = await stringToHash(name);
+    const a = await querySearch("/username-user/" + name).email;
+    return await getUser(a);
 }
 
 export function getQuizz(id) {
@@ -177,7 +228,7 @@ export function getQuizzField(id, field){
     })
 }
 
-export function querySearch(query){
+export async function querySearch(query){
     const reference = ref(db, query);
     let data;
     return new Promise((resolve, reject) => {
@@ -188,6 +239,15 @@ export function querySearch(query){
             reject(error);
         })
     })
+}
+
+export function updateRating(id, rating, timesReviewed) {
+    const reference = ref(db, "quizzes/" + id);
+
+    update(reference, {
+        rating: rating,
+        timesReviewed: timesReviewed
+    });
 }
 
 // GETTER AND SETTERS EXAMPLES

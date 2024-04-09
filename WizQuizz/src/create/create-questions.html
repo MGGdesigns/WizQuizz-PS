@@ -4,11 +4,14 @@
         <title>WizQuizz</title>
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../../js-files/common/include-file.js"></script>
         <script type="module" src="create2.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
+                crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../../styles-sheets/create/create-questions-style.css">
         <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
@@ -16,42 +19,45 @@
 
     <body>
         <div class="container">
-            <div class="preview">
-                <div class="loadimages">
-                    <div class="images">
-                        <img src="../../website-images/common/insert-image.png" width="350" height="300">
-                        <!-- <a href=""><input class="header-button" type="button" value="+ Add Image"></a> -->
+            <div class="prueba">
+                <div class="preview">
+                    <div class="loadimages">
+                        <div class="images">
+                            <img src="../../website-images/common/insert-image.png" width="350" height="300">
+                            <!-- <a href=""><input class="header-button" type="button" value="+ Add Image"></a> -->
+                        </div>
+                        
+                        <textarea id="questionTittle" class="description" placeholder="Question Title"></textarea>
                     </div>
-                    
-                    <textarea id="questionTittle" class="description" placeholder="Question Title"></textarea>
+    
+                    <div class="numofquestion">
+                        <h1 id="numberOfQuestion">01</h1>
+                    </div>
                 </div>
-
-                <div class="numofquestion">
-                    <h1 id="numberOfQuestion">01</h1>
+    
+                <div id="quizquestions" class="quizquestions">
+                    <div class="infocontainer">
+                        <form id="answers" class="answers">
+                            <button type="button" class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron-x45.png"></span><input id="answer1" class="answer" placeholder="Write the answer 1"><input class="questionAnswer" type="radio" name="correctanswer"></button>
+                            <button type="button" class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff-x45.png"></span><input id="answer2" class="answer" placeholder="Write the answer 2"><input class="questionAnswer" type="radio" name="correctanswer"></button>
+                            <button type="button" class="mana-button"><span><img src="../../website-images/answer-options/mana-x45.png"></span><input id="answer3" class="answer" placeholder="Write the answer 3"><input type="radio" class="questionAnswer" name="correctanswer"></button>
+                            <button type="button" class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball-x45.png"></span><input id="answer4" class="answer" placeholder="Write the answer 4"><input type="radio" class="questionAnswer" name="correctanswer"></button>
+                        </form>
+        
+                        <div class="allbuttons">
+                            <div class="removebuttons">
+                                <a href=""><input class="header-button" type="button" value="Delete Question"></a>
+                            </div>
+                            <div id="editbuttons" class="editbuttons">
+                                <a href=""><input class="header-button" id="submit" type="submit" value="Add Answer"></a>
+                                <a href="quizz-create.html"><input id="finishbutton" class="header-button" type="button" value="Finish Question"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div id="quizquestions" class="quizquestions">
-                <div class="infocontainer">
-                    <form id="answers" class="answers">
-                        <button type="button" class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron-x45.png"></span><input id="answer1" class="answer" placeholder="Write the answer 1"><input class="questionAnswer" type="radio" name="correctanswer"></button>
-                        <button type="button" class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff-x45.png"></span><input id="answer2" class="answer" placeholder="Write the answer 2"><input class="questionAnswer" type="radio" name="correctanswer"></button>
-                        <button type="button" class="mana-button"><span><img src="../../website-images/answer-options/mana-x45.png"></span><input id="answer3" class="answer" placeholder="Write the answer 3"><input type="radio" class="questionAnswer" name="correctanswer"></button>
-                        <button type="button" class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball-x45.png"></span><input id="answer4" class="answer" placeholder="Write the answer 4"><input type="radio" class="questionAnswer" name="correctanswer"></button>
-                    </form>
-    
-                    <div class="allbuttons">
-                        <div class="removebuttons">
-                            <a href=""><input class="header-button" type="button" value="Delete Question"></a>
-                        </div>
-                        <div id="editbuttons" class="editbuttons">
-                            <a href=""><input class="header-button" id="submit" type="submit" value="Add Answer"></a>
-                            <a href="quizz-create.html"><input id="finishbutton" class="header-button" type="button" value="Finish Question"></a>
-                        </div>
-                    </div>
-                </div>
-             </div>
         </div>
+        <div class="loader"></div>
     </body>
 
     <footer include-file="../common/footer.html"></footer>
