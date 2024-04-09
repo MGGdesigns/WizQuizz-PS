@@ -1,4 +1,4 @@
-import {getAllUsers, getAllQuizzes, modifyQuizz} from "../common/backend-functions.js"
+import {getAllUsers, getAllQuizzes, modifyQuizz, getUserQuizzes} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -13,20 +13,20 @@ window.addEventListener("load", () => {
 document.addEventListener('DOMContentLoaded', async function() {
     //Recorremos todos los usuarios para seleccionar el de current session
     let userName = sessionStorage.getItem("userName");
+    var var1 = await getUserQuizzes(userName);      //LO NUEVO
+    console.log(var1);                              //LO NUEVO
     const allQuizzes = await getAllQuizzes();
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
     let quizzId = 0;
     let quizz;
     let i = 0;
-    console.log(allQuizzes);
     for (quizz of Object.values(allQuizzes)) {
         numberOfQuizz++;
         i++;
         if (quizz.author === userName) {
             numberOfUserQuizzes++;
             quizzId = numberOfQuizz;    //HAY QUE HACER QUE CADA QUIZZ TENGA UN ID UNICO PORQUE CUANDO SE BORRA UNO Y NO VA DE 1 A 5 pjm, EL FOR LO PILLA COMO EL NUMERO LOGICO, NO EL ID
-            console.log(quizzId);
             quizzAdder();
         }
     }
