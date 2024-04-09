@@ -49,6 +49,30 @@ document.addEventListener('DOMContentLoaded', async function() {
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
+    const searchButton = document.getElementById("search-tab-button");
+
+    searchButton.addEventListener('click', async function () {
+        var input = document.getElementById('search-tab-input').value.toString().trim();
+        
+        try {
+            const users = await getAllUsers();
+            
+            for (const user of Object.values(users)) {
+                if (user.username === input) {
+                    event.preventDefault();
+                    
+                    window.location.href = '';
+                    break;
+                } else {
+                    
+                }
+            }
+        } catch (error) {
+            alert("Error al obtener todos los usuarios:", error);
+        }
+    });
+
 });
 
 async function loadTemplate(url) {
