@@ -256,10 +256,12 @@ main {
 .aviso {
     background-color: #ffeeba;
     color: #856404;
-    padding: 10px;
+    padding: 2%;
     border: 1px solid #ffc107;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 6%;
     display: none; 
 }
 
