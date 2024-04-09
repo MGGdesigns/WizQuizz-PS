@@ -20,13 +20,17 @@ document.addEventListener('DOMContentLoaded', async function() {
     let quizzId = 0;
     let quizz;
     let j = 0;
-    let quizzOfUser = Object.keys(quizzByUser);
-    for(let i=0; i<quizzOfUser.length; i++){
-        j++;
-        numberOfUserQuizzes++;
-        quizz = await getQuizz(quizzOfUser[i]);
-        quizzId = quizzOfUser[i];
-        quizzAdder();
+    if(quizzByUser === null){
+        console.log("falle");
+    }else{
+        let quizzOfUser = Object.keys(quizzByUser);
+        for(let i=0; i<quizzOfUser.length; i++){
+            j++;
+            numberOfUserQuizzes++;
+            quizz = await getQuizz(quizzOfUser[i]);
+            quizzId = quizzOfUser[i];
+            quizzAdder();
+        }
     }
 
     //Comprobamos que el user tenga mas de 1 quizz creado
