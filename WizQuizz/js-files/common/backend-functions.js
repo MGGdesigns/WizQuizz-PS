@@ -110,8 +110,8 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
         category: category
     });
     const authorHash = await stringToHash(author);
-    await set(ref(db, "username-quizzes/" + author + id), {
-
+    await set(ref(db, "username-quizzes/" + author + "/quizzes/"), {
+        id: id
     })
 
     return id;
