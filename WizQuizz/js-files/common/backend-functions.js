@@ -109,8 +109,17 @@ export async function createQuizz(title, description, imageUrl, author, submitDa
 		timesReviewed: timesReviewed,
         category: category
     });
+    const authorHash = await stringToHash(author);
+    await set(ref(db, "username-quizzes/" + author + id), {
+
+    })
 
     return id;
+}
+
+export async function getUserQuizzes(username){
+    const authorHash = await stringToHash(username);
+    return await querySearch("/username-quizzes/" + username);
 }
 
 export function modifyQuizz(id, title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
