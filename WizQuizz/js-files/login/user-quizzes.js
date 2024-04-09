@@ -13,8 +13,13 @@ window.addEventListener("load", () => {
 document.addEventListener('DOMContentLoaded', async function() {
     //Recorremos todos los usuarios para seleccionar el de current session
     let userName = sessionStorage.getItem("userName");
-    var var1 = await getUserQuizzes(userName);      //LO NUEVO
-    console.log(var1);                              //LO NUEVO
+    //LO NUEVOOOOOOOOOOOOOOOO
+    var var1 = await getUserQuizzes(userName);
+    let xd = Object.keys(var1);
+    for(let i=0; i<xd.length; i++){
+        console.log(xd[i]);
+    }
+    //LO NUEVOOOOOOOOOOOOOOOO
     const allQuizzes = await getAllQuizzes();
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
