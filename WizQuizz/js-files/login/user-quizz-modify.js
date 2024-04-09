@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     //Boton para borrar quizz
-    document.getElementById("removeQuizz").addEventListener("click", function(event) {
-        removeQuizz(quizId);
+    document.getElementById("removeQuizz").addEventListener("click", async function(event) {
+        await removeQuizz(quizId);
         window.location.href = "../../index.html";
     });
 
