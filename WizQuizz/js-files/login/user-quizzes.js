@@ -1,4 +1,4 @@
-import {getAllUsers, getAllQuizzes, modifyQuizz, getUserQuizzes} from "../common/backend-functions.js"
+import {getAllUsers, getAllQuizzes, modifyQuizz, getUserQuizzes, getQuizz} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -13,28 +13,22 @@ window.addEventListener("load", () => {
 document.addEventListener('DOMContentLoaded', async function() {
     //Recorremos todos los usuarios para seleccionar el de current session
     let userName = sessionStorage.getItem("userName");
-    //LO NUEVOOOOOOOOOOOOOOOOOOOO
-    var var1 = await getUserQuizzes(userName);
-    let xd = Object.keys(var1);
-    for(let i=0; i<xd.length; i++){
-        console.log(xd[i]);
-    }
-    //LO NUEVOOOOOOOOOOOOOOOOOOOO
-    const allQuizzes = await getAllQuizzes();
+
+    var quizzByUser = await getUserQuizzes(userName);
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
     let quizzId = 0;
     let quizz;
-    let i = 0;
-    for (quizz of Object.values(allQuizzes)) {
-        numberOfQuizz++;
-        i++;
-        if (quizz.author === userName) {
-            numberOfUserQuizzes++;
-            quizzId = numberOfQuizz;    //HAY QUE HACER QUE CADA QUIZZ TENGA UN ID UNICO PORQUE CUANDO SE BORRA UNO Y NO VA DE 1 A 5 pjm, EL FOR LO PILLA COMO EL NUMERO LOGICO, NO EL ID
-            quizzAdder();
-        }
+    let j = 0;
+    let quizzOfUser = Object.keys(quizzByUser);
+    for(let i=0; i<quizzOfUser.length; i++){
+        j++;
+        numberOfUserQuizzes++;
+        quizz = await getQuizz(quizzOfUser[i]);
+        quizzId = quizzOfUser[i];
+        quizzAdder();
     }
+
     //Comprobamos que el user tenga mas de 1 quizz creado
     if(numberOfUserQuizzes === 0){
         noQuizzAdded();
@@ -55,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const Maincontainer = document.querySelector(".quizzes");
         const section = document.createElement('section');
         section.classList.add('quizzes');
-        section.id = 'section' + i;
+        section.id = 'section' + j;
         section.innerHTML = `<div class="eachQuizz">
             <div class="modifyQuizz">
                 <a><button type="button" class="modifyButton" id="modifyButton${quizzId}" onclick="getButtonIndex(${quizzId})">Modify Quizz</button></a>
@@ -89,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const Maincontainer = document.querySelector(".noQuizzesFinished");
         const section = document.createElement('section');
         section.classList.add('noQuizzesFinished');
-        section.id = 'section' + i;
+        section.id = 'section' + j;
         section.innerHTML = `<div class="box1">
             <div class="texto">
                 <div class="logoWiz">
