@@ -46,17 +46,17 @@ svg{
 }
 
 label{
-	border: solid ;
+	border: solid 2px;
 	width: 100px;
 	height: 50px;
 	border-radius: 999px;
-	background: #f3f3f3;
+	background: #e5e5e5;
 	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05) inset;
 	position: relative;
 }
 
 .circle{
-	border: solid;
+	border: solid 2px;
 	width: 40px;
 	height: 40px;
 	border-radius: 99px;
@@ -81,7 +81,7 @@ label{
 }
 
 .toogle[type=checkbox]:checked + .display label{
-	background: #1f1f21;
+	background: #49494b;
 	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5) inset;
 }
 
@@ -103,7 +103,7 @@ label{
 }
 
 label:active .circle{ 
-	width: 70px;
+	width: 60px;
 }
 /*FIN DARK MODE*/
 
