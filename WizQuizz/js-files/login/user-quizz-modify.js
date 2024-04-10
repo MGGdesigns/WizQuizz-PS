@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let correctAnswer;
 
     //Mostramos las preguntas que tiene ese quizz
+    let index = 0;
     await getQuizz(quizId)
         .then(data => {
             numberofQuestions = data.questions.length;
@@ -67,15 +68,23 @@ document.addEventListener('DOMContentLoaded', async function() {
                     </div>  
                 </div>
                 <div class="answers">
-                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><textarea class="answerX" id="answer1JS${i}">${data.questions[i].answer1}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
-                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><textarea class="answerX" id="answer2JS${i}">${data.questions[i].answer2}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
-                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><textarea class="answerX" id="answer3JS${i}">${data.questions[i].answer3}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
-                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><textarea class="answerX" id="answer4JS${i}">${data.questions[i].answer4}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><textarea class="answerX" id="answer1JS${i}">${data.questions[i].answer1}</textarea><input id="radioButton${index}" class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><textarea class="answerX" id="answer2JS${i}">${data.questions[i].answer2}</textarea><input id="radioButton${index}" class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><textarea class="answerX" id="answer3JS${i}">${data.questions[i].answer3}</textarea><input id="radioButton${index}" class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><textarea class="answerX" id="answer4JS${i}">${data.questions[i].answer4}</textarea><input id="radioButton${index}" class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
                 </div>
                 </div>`;
 
                 Maincontainer.appendChild(section); 
                 questionCount++;
+                index++;
+                
+                let radioButtons = document.querySelectorAll('.questionAnswer' + i);
+                for(let j=0; j<=4; j++){
+                    if(objectiveQuizz.questions[i].correctAnswers === j){
+                        radioButtons[j-1].checked = true;
+                    }
+                }
             }
         })
         .catch(error => {
