@@ -11,6 +11,7 @@ window.addEventListener("load", () => {
 });
 
 //Comprobamos si estamos en DarkMode o LightMode
+let screenMode = sessionStorage.getItem("screenMode") | 0;
 if(sessionStorage.getItem("screenMode") === "1"){
     document.getElementById("toogle").checked = true;
     document.body.style.backgroundColor = '#292e39';
