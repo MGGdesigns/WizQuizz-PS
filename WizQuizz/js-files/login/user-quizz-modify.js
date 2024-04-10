@@ -126,9 +126,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     //Boton para borrar quizz
     document.getElementById("removeQuizz").addEventListener("click", async function(event) {
-        await removeQuizz(quizId);
-        alert("Quizz removed correctly!");
-        window.location.href = "../../index.html";
+        var resultado = window.confirm("¿Estás seguro de que deseas continuar?");
+        if (resultado) {
+            await removeQuizz(quizId);
+            alert("Quizz removed correctly!");
+            window.location.href = "../../index.html";
+        }
     });
 
     //Reset localStorage when click on Finish button

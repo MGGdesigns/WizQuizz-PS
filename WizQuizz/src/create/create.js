@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("quizzCategoryStorage", quizzCategory);
     });
     
-    document.getElementById("descripcion").addEventListener("submit", function(event) {
+    document.getElementById("descripcion").addEventListener("submit", async function(event) {
         event.preventDefault();
         
         //Incrementamos el numero de veces que se ha clickado en "Save"
@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function() {
         //Ir al siguiente JScript al clickar al boton
         document.getElementById("AddQuestioN").addEventListener("click", function(event) {
             event.preventDefault();
-            console.log(check);
             if(check >= 1){
                 window.location.href = "../create/create-questions.html";
             }else{
