@@ -61,16 +61,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 section.id = 'section' + i;
                 section.innerHTML = `<div class="question">
                 <div class="question-info">
-                    <textarea id="questionTitleJS">${data.questions[i].question}</textarea>
+                    <textarea class="questionTitleJS" id="questionTitleJS${i}">${data.questions[i].question}</textarea>
                     <div class="num-of-question">
                         <h2>${questionNumber}</h2>
                     </div>  
                 </div>
                 <div class="answers">
-                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><textarea id="answer1JS">${data.questions[i].answer1}</textarea></button>
-                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><textarea id="answer2JS">${data.questions[i].answer2}</textarea></button>
-                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><textarea id="answer3JS">${data.questions[i].answer3}</textarea></button>
-                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><textarea id="answer4JS">${data.questions[i].answer4}</textarea></button>
+                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><textarea class="answerX" id="answer1JS${i}">${data.questions[i].answer1}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><textarea class="answerX" id="answer2JS${i}">${data.questions[i].answer2}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><textarea class="answerX" id="answer3JS${i}">${data.questions[i].answer3}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
+                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><textarea class="answerX" id="answer4JS${i}">${data.questions[i].answer4}</textarea><input class="questionAnswer${i}" type="radio" name="correctanswer${i}"></button></button>
                 </div>
                 </div>`;
 
@@ -133,17 +133,21 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //Reset localStorage when click on Finish button
     document.getElementById("finishButton").addEventListener("click", function(event) {
-        //Moficamos las preguntas
-        let quizzId = localStorage.getItem("quizzId");
-        let finalQuestion = document.getElementById("questionTitleJS").value;
-        let finalAnswer1 = document.getElementById("answer1JS").value;
-        let finalAnswer2 = document.getElementById("answer2JS").value;
-        let finalAnswer3 = document.getElementById("answer3JS").value;
-        let finalAnswer4 = document.getElementById("answer4JS").value;
-        //let finalCorrectAnswers = ;
-
         for(let i=0; i<numberofQuestions; i++){
-            modifyQuizzQuestions(quizzId, i, finalAnswer1, finalAnswer2, finalAnswer3, finalAnswer4, 2, "imageUrl", finalQuestion)
+            let quizzId = localStorage.getItem("quizzId");
+            let finalQuestion = document.getElementById("questionTitleJS" + i).value;
+            let finalAnswer1 = document.getElementById("answer1JS" + i).value;
+            let finalAnswer2 = document.getElementById("answer2JS" + i).value;
+            let finalAnswer3 = document.getElementById("answer3JS" + i).value;
+            let finalAnswer4 = document.getElementById("answer4JS" + i).value;
+            let opciones = document.getElementsByClassName("questionAnswer" + i);
+            var finalCorrectAnswers;
+            for (let j=0; j<4; j++) {
+                if (opciones[j].checked) {
+                    finalCorrectAnswers = j+1;
+                }
+            }
+            modifyQuizzQuestions(quizzId, i, finalAnswer1, finalAnswer2, finalAnswer3, finalAnswer4, finalCorrectAnswers, "../../website-images/common/insert-image.png", finalQuestion)
         }
         localStorage.clear();
     });
