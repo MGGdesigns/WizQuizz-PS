@@ -117,22 +117,30 @@ document.addEventListener('DOMContentLoaded', async function() {
     createQuizzButton.addEventListener("click", function() {
         window.location.href = "../../src/create/quizz-create.html";
     });
+});
 
-    //MODIFICACION DE QUIZZ
-    //const xd = document.getElementById("modify");
-    //xd.addEventListener("click", function() {
-        //console.log("xd");
-        //modifyQuizz(12, "xd", "xd", "xd", "Iniesta", "xd", "xd", "xd")
-    //});
+let screenMode = sessionStorage.getItem("screenMode") | 0;
+document.getElementById("circleMode").addEventListener('click', function(){
+    if(screenMode === 0){
+        screenMode = 1;
+        document.body.style.backgroundColor = '#292e39';
+        sessionStorage.setItem("screenMode", screenMode);
+        document.getElementById("infoaboutQuizzes").style.color = '#FFFFFF';
+    }else{
+        document.body.style.backgroundColor = '#FFFFFF';
+        document.getElementById("infoaboutQuizzes").style.color = '#060100';
+        screenMode = 0;
+        sessionStorage.setItem("screenMode", screenMode);
+    }
 });
 
 //Comprobamos si estamos en DarkMode o LightMode
 if(sessionStorage.getItem("screenMode") === "1"){
     document.getElementById("toogle").checked = true;
     document.body.style.backgroundColor = '#292e39';
-    document.getElementById("username").style.color = '#FFFFFF'
+    document.getElementById("infoaboutQuizzes").style.color = '#FFFFFF';
 }else{
     document.getElementById("toogle").checked = false;
     document.body.style.backgroundColor = '#FFFFFF';
-    document.getElementById("username").style.color = '#060100'
+    document.getElementById("infoaboutQuizzes").style.color = '#060100';
 }
