@@ -1,4 +1,4 @@
-import {getQuizz, modifyQuizz, removeQuizz} from "../common/backend-functions.js"
+import {getQuizz, modifyQuizz, removeQuizz, modifyQuizzQuestions} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -34,17 +34,19 @@ document.getElementById("circleMode").addEventListener('click', function(){
 
 document.addEventListener('DOMContentLoaded', async function() {
     let quizId = localStorage.getItem("quizzId");
-    console.log(quizId);
     const objectiveQuizz = await getQuizz(quizId);
+    let numberofQuestions;
+    let correctAnswer;
 
     //Mostramos las preguntas que tiene ese quizz
-    getQuizz(quizId)
+    await getQuizz(quizId)
         .then(data => {
-            let numberofQuestions = data.questions.length;
+            numberofQuestions = data.questions.length;
             let questionCount = 1;
             let questionNumber;
             //Mostramos el cuadro de las preview
             for(let i=0; i<parseInt(numberofQuestions); i++){
+                correctAnswer = data.questions[0].correctAnswers;
                 //Añadimos el 0 al numero en la bola
                 if(questionCount < 10){
                     questionNumber = "0" + questionCount;
@@ -59,16 +61,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 section.id = 'section' + i;
                 section.innerHTML = `<div class="question">
                 <div class="question-info">
-                    <p id="questionTitleJS">${data.questions[i].question}</p>
+                    <textarea id="questionTitleJS">${data.questions[i].question}</textarea>
                     <div class="num-of-question">
                         <h2>${questionNumber}</h2>
                     </div>  
                 </div>
                 <div class="answers">
-                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><span id="answer1JS">${data.questions[i].answer1}</span></button>
-                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><span id="answer2JS">${data.questions[i].answer2}</span></button>
-                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><span id="answer3JS">${data.questions[i].answer3}</span></button>
-                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><span id="answer4JS">${data.questions[i].answer4}</span></button>
+                    <button class="cauldron-button"><span><img src="../../website-images/answer-options/cauldron.png"></span><textarea id="answer1JS">${data.questions[i].answer1}</textarea></button>
+                    <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff.png"></span><textarea id="answer2JS">${data.questions[i].answer2}</textarea></button>
+                    <button class="mana-button"><span><img src="../../website-images/answer-options/mana.png"></span><textarea id="answer3JS">${data.questions[i].answer3}</textarea></button>
+                    <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball.png"></span><textarea id="answer4JS">${data.questions[i].answer4}</textarea></button>
                 </div>
                 </div>`;
 
@@ -121,15 +123,28 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         modifyQuizz(quizId, finalTitulo, finalDescription, finalQuizzImage, objectiveQuizz.author, objectiveQuizz.submitDate, objectiveQuizz.rating, objectiveQuizz.timesReviewed, finalCategory)
     });
-
+    
     //Boton para borrar quizz
     document.getElementById("removeQuizz").addEventListener("click", async function(event) {
         await removeQuizz(quizId);
+        alert("Quizz removed correctly!");
         window.location.href = "../../index.html";
     });
 
     //Reset localStorage when click on Finish button
     document.getElementById("finishButton").addEventListener("click", function(event) {
+        //Moficamos las preguntas
+        let quizzId = localStorage.getItem("quizzId");
+        let finalQuestion = document.getElementById("questionTitleJS").value;
+        let finalAnswer1 = document.getElementById("answer1JS").value;
+        let finalAnswer2 = document.getElementById("answer2JS").value;
+        let finalAnswer3 = document.getElementById("answer3JS").value;
+        let finalAnswer4 = document.getElementById("answer4JS").value;
+        //let finalCorrectAnswers = ;
+
+        for(let i=0; i<numberofQuestions; i++){
+            modifyQuizzQuestions(quizzId, i, finalAnswer1, finalAnswer2, finalAnswer3, finalAnswer4, 2, "imageUrl", finalQuestion)
+        }
         localStorage.clear();
     });
 });
