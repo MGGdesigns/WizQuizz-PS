@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     </div>
 
                     <div class="info3" id="infos">
-                        <h1 class="infoBox"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h1>
+                        <h1 class="infoBox" id="rankigAboutQuizz${j}"></h1>
                         <p class="additionalText3">Ranking of quizz</p>
                     </div>
                 </div>
@@ -79,6 +79,22 @@ document.addEventListener('DOMContentLoaded', async function() {
             </a>
         </div>`;
         Maincontainer.appendChild(section);
+
+        //Ranking de cada Quizz
+        let quizzRanking = quizz.rating;
+        if(quizzRanking >= 0 && quizzRanking <= 0.99){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>`;
+        }else if(quizzRanking >= 1 && quizzRanking <= 1.99){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>`;
+        }else if(quizzRanking >= 2 && quizzRanking <= 2.99){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>`;
+        }else if(quizzRanking >= 3 && quizzRanking <= 3.99){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>`;
+        }else if(quizzRanking >= 4 && quizzRanking <= 4.99){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>`;
+        }else if(quizzRanking === 5){
+            document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>`;
+        }
     }
 
     //-----------------------------------------------------------------------------------
