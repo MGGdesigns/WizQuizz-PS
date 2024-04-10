@@ -17,6 +17,11 @@
 }
 
 /*DARK MODE*/
+.switchScreenMode{
+    position: absolute;
+    margin-left: 90%;
+}
+
 svg{
 	width: 40px;
 	position: absolute;
@@ -38,7 +43,6 @@ svg{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
 }
 
 label{

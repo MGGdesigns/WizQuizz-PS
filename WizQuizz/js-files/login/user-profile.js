@@ -41,20 +41,18 @@ for (const user of Object.values(users)) {
     }
 }
 
-//Dark Mode
-document.getElementById("darkMode").addEventListener('click', function(){
-    screenMode = 1;
-    sessionStorage.setItem("screenMode", screenMode);
-    document.body.style.backgroundColor = '#292e39';
-    document.getElementById("username").style.color = '#FFFFFF'
-});
-
-//Light Mode
-document.getElementById("lightModeButton").addEventListener('click', function(){
-    screenMode = 0;
-    sessionStorage.setItem("screenMode", screenMode);
-    document.body.style.backgroundColor = '#FFFFFF';
-    document.getElementById("username").style.color = '#060100'
+document.getElementById("circleMode").addEventListener('click', function(){
+    if(screenMode === 0){
+        screenMode = 1;
+        document.body.style.backgroundColor = '#292e39';
+        document.getElementById("username").style.color = '#FFFFFF'
+        sessionStorage.setItem("screenMode", screenMode);
+    }else{
+        document.body.style.backgroundColor = '#FFFFFF';
+        document.getElementById("username").style.color = '#060100'
+        screenMode = 0;
+        sessionStorage.setItem("screenMode", screenMode);
+    }
 });
 
 //Log-Out
