@@ -12,9 +12,11 @@ window.addEventListener("load", () => {
 
 //Comprobamos si estamos en DarkMode o LightMode
 if(sessionStorage.getItem("screenMode") === "1"){
+    document.getElementById("toogle").checked = true;
     document.body.style.backgroundColor = '#292e39';
     document.getElementById("username").style.color = '#FFFFFF'
 }else{
+    document.getElementById("toogle").checked = false;
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById("username").style.color = '#060100'
 }
