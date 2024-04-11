@@ -56,44 +56,52 @@ document.addEventListener('DOMContentLoaded', async function() {
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
 
     //BUSCAR USUARIO ---------------------------------------------
-    let resultsContainer = document.getElementById("resultsContainer");
-    resultsContainer.style.display = "none";
-
+    
     const searchButton = document.getElementById("search-tab-button");
     document.getElementById("resultsContainer").style.display = "block";
-    const searchButton = document.getElementById("search-tab-button");
-searchButton.addEventListener('click', async function () {
-    var input = document.getElementById('search-tab-input').value.toString().trim();
-    var foundUsers = [];
-    const resultsContainer = document.getElementById("resultsContainer"); // Declarado dentro del manejador de eventos
-    resultsContainer.innerHTML = "";
-    
-    try {
-        const users = await getAllUsers();
-        for (const user of Object.values(users)) {
-            if (user.username === input) {
-                foundUsers.push({email: user.email, username: input});
-            } 
-        }
-        if (foundUsers.length === 0) {
-            userContainer.textContent = "User not found";
-        } else {
-            foundUsers.forEach(result => {
+    searchButton.addEventListener('click', async function () {
+        var input = document.getElementById('search-tab-input').value.toString().trim();
+        var foundUsers = [];
+        const resultsContainer = document.getElementById("resultsContainer");
+        resultsContainer.innerHTML = "";
+        
+        try {
+            const users = await getAllUsers();
+            for (const user of Object.values(users)) {
+                if (user.username === input) {
+                    foundUsers.push({email: user.email, username: input});
+                } 
+            }
+            if (foundUsers.length === 0) {
                 const userContainer = document.createElement("div");
-                userContainer.classList.add("userContainer");
-                userContainer.textContent = result.username;
-                userContainer.appendChild(userContainer);
-                console.log(result.username);
-            });
+                    userContainer.classList.add("userContainer");
+                    userContainer.textContent = "User not found";
+                    resultsContainer.appendChild(userContainer); 
+                
+            } else {
+                foundUsers.forEach(result => {
+                    const userContainer = document.createElement("div");
+                    userContainer.classList.add("userContainer");
+                    userContainer.textContent = result.username;
+                    resultsContainer.appendChild(userContainer); 
+                    console.log(result.username);
+                });
+            }
+        } catch (error) {
+            userContainer.classList.add("userContainer");
+                    userContainer.textContent = "User not found";
+                    resultsContainer.appendChild(userContainer); 
         }
-    } catch (error) {
-        userContainer.textContent = "User not found";
-        ///alert("Error al obtener todos los usuarios:", error);
-    }
 
-    //// Showing results BUSCAR USUARIO
+        //// Showing results
+        
+
+  
+        //BUSCAR USUARIO ---------------------------------------------
+    });
+
+
 });
-
 
 async function loadTemplate(url) {
     const response = await fetch(url);
