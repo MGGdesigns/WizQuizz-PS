@@ -1,4 +1,4 @@
-import {getAllQuizzes, getAllUsers} from "../common/backend-functions.js";
+import {getAllQuizzes, getAllUsers, getUserByName} from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -10,7 +10,12 @@ window.addEventListener("load", () => {
     })
 })
 
+export function getSearchedUsername() {
+    return searchedUsernameInput;
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
+
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
@@ -50,30 +55,45 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
 
+    //BUSCAR USUARIO ---------------------------------------------
+    let resultsContainer = document.getElementById("resultsContainer");
+    resultsContainer.style.display = "none";
+
     const searchButton = document.getElementById("search-tab-button");
-
-    searchButton.addEventListener('click', async function () {
-        var input = document.getElementById('search-tab-input').value.toString().trim();
-        
-        try {
-            const users = await getAllUsers();
-            
-            for (const user of Object.values(users)) {
-                if (user.username === input) {
-                    event.preventDefault();
-                    
-                    window.location.href = '';
-                    break;
-                } else {
-                    
-                }
-            }
-        } catch (error) {
-            alert("Error al obtener todos los usuarios:", error);
+    document.getElementById("resultsContainer").style.display = "block";
+    const searchButton = document.getElementById("search-tab-button");
+searchButton.addEventListener('click', async function () {
+    var input = document.getElementById('search-tab-input').value.toString().trim();
+    var foundUsers = [];
+    const resultsContainer = document.getElementById("resultsContainer"); // Declarado dentro del manejador de eventos
+    resultsContainer.innerHTML = "";
+    
+    try {
+        const users = await getAllUsers();
+        for (const user of Object.values(users)) {
+            if (user.username === input) {
+                foundUsers.push({email: user.email, username: input});
+            } 
         }
-    });
+        if (foundUsers.length === 0) {
+            userContainer.textContent = "User not found";
+        } else {
+            foundUsers.forEach(result => {
+                const userContainer = document.createElement("div");
+                userContainer.classList.add("userContainer");
+                userContainer.textContent = result.username;
+                userContainer.appendChild(userContainer);
+                console.log(result.username);
+            });
+        }
+    } catch (error) {
+        userContainer.textContent = "User not found";
+        ///alert("Error al obtener todos los usuarios:", error);
+    }
 
+    //// Showing results BUSCAR USUARIO
 });
+
 
 async function loadTemplate(url) {
     const response = await fetch(url);

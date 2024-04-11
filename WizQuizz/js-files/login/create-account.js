@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const users = await getAllUsers();
 
                 // Verificar si el usuario ya existe
-                const existingUser = Object.values(users).find(user => user.username === username);
+                const existingUser = Object.values(users).find(user => user.email === email);
 
                 if (existingUser) {
                     mostrarAviso("Account already registered. Please sign up");

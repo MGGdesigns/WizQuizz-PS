@@ -11,8 +11,12 @@ window.addEventListener("load", () => {
 })
 
 document.addEventListener('DOMContentLoaded', async function() {
+    let userName = sessionStorage.getItem("searchedUsername")
+    if ( userName === NULL){
+        userName = sessionStorage.getItem("userName");
+    }
+    console.log(userName);
     //Recorremos todos los usuarios para seleccionar el de current session
-    let userName = sessionStorage.getItem("userName");
     const allQuizzes = await getAllQuizzes();
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
