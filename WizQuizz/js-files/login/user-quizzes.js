@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
 
 document.addEventListener('DOMContentLoaded', async function() {
     let userName = sessionStorage.getItem("searchedUsername")
-    if ( userName === NULL){
+    if ( userName === ""){
         userName = sessionStorage.getItem("userName");
     }
     console.log(userName);

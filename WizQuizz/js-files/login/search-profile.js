@@ -18,22 +18,28 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById("username").style.color = '#060100'
 }
-console.log("entra");
-const user = getUserByName(getSearched);
-console.log(user.nickname);
-const nickname_display = document.getElementById("nickname")
-const user_image_display = document.getElementById("user-image-button")
-const user_description_display = document.querySelector(".description p")
-const account_date_display = document.querySelector(".account-creation-date p")
-const quizs_finished_display = document.querySelector(".quizs-finished p")
-const input_image = document.getElementById("image-input-file")
-
-nickname_display.innerHTML = user.username;
-
-
+document.addEventListener('DOMContentLoaded', async function() {
+    let nickname = sessionStorage.getItem("searchedUsername");
+    if ( nickname != ""){
+        console.log("entra");
+    } else {
+        console.log("da error al crargar");
+    }
 
 /*
-const nickname_display = getUserByName(getSearched);
+alert("hace algo");
+let userName = sessionStorage.getItem("searchedUsername")
+    if ( userName === ""){
+        userName = sessionStorage.getItem("userName");
+    }
+    console.log(userName);
+
+
+sessionStorage.setItem("actualUser", username);
+sessionStorage.setItem("userMail", email);
+*/
+
+
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
 const account_date_display = document.querySelector(".account-creation-date p")
@@ -43,7 +49,11 @@ let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
 const users = await getAllUsers();
-let targetUser = sessionStorage.getItem("userMail");
+let targetUser = sessionStorage.getItem("searchedUsername")
+    if ( targetUser === ""){
+        targetUser = sessionStorage.getItem("userName");
+    }
+    console.log(userName);
 let userToLoad;
 for (const user of Object.values(users)) {
     if (user.email === targetUser) {
@@ -53,7 +63,7 @@ for (const user of Object.values(users)) {
         sessionStorage.setItem("userName", user.username);
         break;
     }
-}*/
+}
 
 //Dark Mode
 document.getElementById("darkMode").addEventListener('click', function(){
@@ -103,3 +113,4 @@ input_image.onchange = function (evt){
         fr.readAsDataURL(files[0]);
     }
 }
+})
