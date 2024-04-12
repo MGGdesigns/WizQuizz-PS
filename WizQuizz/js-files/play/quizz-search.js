@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const users = await getAllUsers();
             for (const user of Object.values(users)) {
                 if (user.username === input) {
-                    foundUsers.push({email: user.email, username: input});
+                    foundUsers.push({email: user.email, username: input, imageUrl: user.imageUrl});
                 } 
             }
             if (foundUsers.length === 0) {
@@ -82,21 +82,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                 foundUsers.forEach(result => {
                     const userContainer = document.createElement("div");
                     userContainer.classList.add("userContainer");
-                    userContainer.textContent = result.username;
+                
+                    const profileImage = document.createElement("img");
+                    profileImage.src = result.imageUrl; 
+                    profileImage.alt = "Profile Image";
+                    profileImage.classList.add("users-found-profile-image");
+                
+                    userContainer.appendChild(profileImage);
+                
+                    const usernameText = document.createElement("span");
+                    usernameText.textContent = result.username;
+                    userContainer.appendChild(usernameText);
+                
                     resultsContainer.appendChild(userContainer); 
-                    console.log(result.username);
                 });
+                
             }
         } catch (error) {
-            userContainer.classList.add("userContainer");
-                    userContainer.textContent = "User not found";
-                    resultsContainer.appendChild(userContainer); 
+            alert(error);
         }
-
-        //// Showing results
-        
-
-  
         //BUSCAR USUARIO ---------------------------------------------
     });
 
