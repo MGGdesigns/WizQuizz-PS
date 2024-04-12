@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         section.id = 'section' + j;
         section.innerHTML = `<div class="eachQuizz">
             <div class="modifyQuizz">
-                <a><button type="button" class="modifyButton" id="modifyButton${quizzId}" onclick="getButtonIndex(${quizzId})">Modify Quizz</button></a>
+                <a>
+                    <button type="button" class="modifyButton" id="modifyButton${quizzId}" onclick="getButtonIndex(${quizzId})"><i id="pencil" class="fa fa-pencil" aria-hidden="true"></i>Modify Quizz</button>
+                </a>
             </div>
 
             <a class="linkQuizz" href="../play/quizz-preview.html?id=${quizzId}">

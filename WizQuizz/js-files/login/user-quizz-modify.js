@@ -120,18 +120,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById("quizzImage").src = objectiveQuizz.imageUrl;
     document.getElementById("categories").value = objectiveQuizz.category;
     document.getElementById("littledescription").value = objectiveQuizz.description;
-
-    //Al hacer click en el boton de submit
-    document.getElementById("descripcion").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        let finalTitulo = document.getElementById("titulo").value;
-        let finalQuizzImage = quizzImage.src;
-        let finalCategory = document.getElementById("categories").value;
-        let finalDescription = document.getElementById("littledescription").value;
-        
-        modifyQuizz(quizId, finalTitulo, finalDescription, finalQuizzImage, objectiveQuizz.author, objectiveQuizz.submitDate, objectiveQuizz.rating, objectiveQuizz.timesReviewed, finalCategory)
-    });
     
     //Boton para borrar quizz
     document.getElementById("removeQuizz").addEventListener("click", async function(event) {
@@ -145,22 +133,32 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //Reset localStorage when click on Finish button
     document.getElementById("finishButton").addEventListener("click", function(event) {
-        for(let i=0; i<numberofQuestions; i++){
-            let quizzId = localStorage.getItem("quizzId");
-            let finalQuestion = document.getElementById("questionTitleJS" + i).value;
-            let finalAnswer1 = document.getElementById("answer1JS" + i).value;
-            let finalAnswer2 = document.getElementById("answer2JS" + i).value;
-            let finalAnswer3 = document.getElementById("answer3JS" + i).value;
-            let finalAnswer4 = document.getElementById("answer4JS" + i).value;
-            let opciones = document.getElementsByClassName("questionAnswer" + i);
-            var finalCorrectAnswers;
-            for (let j=0; j<4; j++) {
-                if (opciones[j].checked) {
-                    finalCorrectAnswers = j+1;
+        let finalTitulo = document.getElementById("titulo").value;
+        let finalQuizzImage = quizzImage.src;
+        let finalCategory = document.getElementById("categories").value;
+        let finalDescription = document.getElementById("littledescription").value;
+
+        modifyQuizz(quizId, finalTitulo, finalDescription, finalQuizzImage, objectiveQuizz.author, objectiveQuizz.submitDate, objectiveQuizz.rating, objectiveQuizz.timesReviewed, finalCategory)
+
+        setTimeout(function() {
+            for(let i=0; i<numberofQuestions; i++){
+                let quizzId = localStorage.getItem("quizzId");
+                let finalQuestion = document.getElementById("questionTitleJS" + i).value;
+                let finalAnswer1 = document.getElementById("answer1JS" + i).value;
+                let finalAnswer2 = document.getElementById("answer2JS" + i).value;
+                let finalAnswer3 = document.getElementById("answer3JS" + i).value;
+                let finalAnswer4 = document.getElementById("answer4JS" + i).value;
+                let opciones = document.getElementsByClassName("questionAnswer" + i);
+                var finalCorrectAnswers;
+                for (let j=0; j<4; j++) {
+                    if (opciones[j].checked) {
+                        finalCorrectAnswers = j+1;
+                    }
                 }
+                modifyQuizzQuestions(quizzId, i, finalAnswer1, finalAnswer2, finalAnswer3, finalAnswer4, finalCorrectAnswers, "../../website-images/common/insert-image.png", finalQuestion)
             }
-            modifyQuizzQuestions(quizzId, i, finalAnswer1, finalAnswer2, finalAnswer3, finalAnswer4, finalCorrectAnswers, "../../website-images/common/insert-image.png", finalQuestion)
-        }
-        localStorage.clear();
+            localStorage.clear();
+            window.location.href="user-quizzes.html";
+        }, 500);
     });
 });

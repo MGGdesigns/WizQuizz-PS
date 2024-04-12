@@ -108,6 +108,10 @@ main{
 
 }
 
+#pencil{
+    margin: 5px;
+}
+
 .modifyQuizz .modifyButton{
     background-color: #7f5f9e;
     border-radius: 5px;

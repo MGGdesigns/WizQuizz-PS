@@ -127,10 +127,6 @@
     color: #FFFFFF;
 }
 
-.iconandButton:hover{
-    background-color: orangered;
-}
-
 .image-container{
     display: flex;
     flex-direction: column;
