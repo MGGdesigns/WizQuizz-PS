@@ -327,6 +327,7 @@ aside {
 .userContainer {
     
     font-family: Poppins, serif;
+    display: flex;
     border-radius: 4px;
     text-align: center;
     color: #ADFFDE;
@@ -343,23 +344,24 @@ aside {
     color: #FFFFFF;
     display: flex;
     align-items: center; 
-    /*
-    position:relative;
-    margin-left: 28%;
-    margin-right: 50%;
-    margin-top: 5%;
-    height: 1%;
-
-
-    font-family: Poppins, serif;
-    border-radius: 4px;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
 }
 
 .userContainer:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    color: #73F6D0;
+    background-color: #9059a7;
+    cursor: pointer;
 
+}
+
+.users-found-profile-image{
+    width: 15%; /* El ancho de la imagen de perfil será el 20% del ancho del contenedor padre */
+    height: 100%;
+    margin-right: 5%; /* Añadimos un poco de margen a la derecha de la imagen */
+    border-radius: 50%; /* Hacemos que la imagen tenga forma de círculo */
+    border: 2px solid #000000; /* Añadimos un borde a la imagen para mayor claridad */
+    flex-shrink: 0; 
 }
 
 /* BUSCAR USUARIO */
