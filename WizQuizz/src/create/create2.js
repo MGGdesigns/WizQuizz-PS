@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     });
 
     //Create Questions
-    document.getElementById("submit").addEventListener("click", function(event) {
+    document.getElementById("submit").addEventListener("click", async function(event) {
         event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
 
         // Obtener los valores del formulario
@@ -52,6 +52,27 @@ document.addEventListener("DOMContentLoaded", async function() {
                 respuesta = i+1;
                 break;
             }
+        }
+
+        // Verificar que los campos requeridos no estén vacíos
+        if (title.trim() === ''){
+            alert("Por favor, completa el campo del titulo.");
+            return;
+        }else if(answer1.trim() === ''){
+            alert("Por favor, completa la respuesta 1.");
+            return;
+        }else if(answer2.trim() === ''){
+            alert("Por favor, completa la respuesta 2.");
+            return;
+        }else if(answer3.trim() === ''){
+            alert("Por favor, completa la respuesta 3.");
+            return;
+        }else if(answer4.trim() === ''){
+            alert("Por favor, completa la respuesta 4.");
+            return;
+        }else if(!respuesta){
+            alert("Por favor, seleccione una respuesta correcta.");
+            return;
         }
 
         numberofQuestions = parseInt(localStorage.getItem("numberofQuestions")) || 0;
@@ -84,17 +105,14 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
-    });
-
-    document.getElementById("finishbutton").addEventListener("click", function(event) {
-        event.preventDefault(); 
-        
+        await setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
         varAdd = 1;
         numberofQuestions++;
         localStorage.setItem("varAdd", varAdd);
         localStorage.setItem("numberofQuestions", numberofQuestions);
-        window.location.href = "quizz-create.html";
+        setTimeout(function() {
+            window.location.href = "quizz-create.html";
+        }, 500);
     });
 
     let numberOfQuestion = localStorage.getItem("questionCount") || "1";
@@ -107,7 +125,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 //Comprobamos si estamos en DarkMode o LightMode
-console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#292e39';
 }else{

@@ -136,8 +136,20 @@ export function modifyQuizz(id, title, description, imageUrl, author, submitDate
     });
 }
 
+export async function modifyQuizzQuestions(id, questionNumber, answer1, answer2, answer3, answer4, correctAnswers, imageUrl, question){
+
+    await update(ref(db, "quizzes/" + id + "/questions/" + questionNumber), {
+		answer1: answer1,
+        answer2: answer2,
+        answer3: answer3,
+        answer4: answer4,
+        correctAnswers: correctAnswers,
+        imageUrl: imageUrl,
+        question: question
+    });
+}
+
 export async function removeQuizz(id){
-    //Hay un problema y es que al eliminarse el targetQuizz, no baja pero me imagino que suda
     const author = await querySearch("quizzes/" + id + "/author");
     const authorHash = await stringToHash(author);
     await remove(ref(db, "quizzes/" + id));

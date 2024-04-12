@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
 	cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
+	transition: 0.5s;
 }
 
 ::-webkit-scrollbar {
@@ -31,7 +32,7 @@
     justify-content: center;
     align-items: center;
     background-color: #FFFFFF;
-    transition: opacity 20s, visibility 1s;
+    transition: opacity 30s, visibility 2s;
 }
 
 .loader-hidden {
@@ -59,7 +60,7 @@
 }
 
 body {
-	/* background-color: #121212; */
+	
 }
 
 main {

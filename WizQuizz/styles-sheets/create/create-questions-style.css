@@ -96,8 +96,9 @@
 }
 
 .description{
-    height: 100%;
+    height: 98%;
     width: 100%;
+    resize: none;
     font-size: 30px;
     font-family: 'Poppins';
     text-align: start;
@@ -320,7 +321,7 @@ textarea::placeholder{
     margin-top: 2%;
     display: flex;
     justify-content: space-between;
-    margin-right: 1.5%;
+    margin-right: 0.5%;
 }
 
 .removebuttons input{
@@ -431,14 +432,10 @@ textarea::placeholder{
     .allbuttons{
         margin-top: 5%;
         justify-content: center;
-    }
-
-    .allbuttons .removebuttons{
-        display: none;
+        text-decoration: none;
     }
 
     .allbuttons input{
-        width: 90%;
         display: block;
         font-size: 12px;
         text-decoration: none;
@@ -508,6 +505,6 @@ textarea::placeholder{
     }
 
     .allbuttons .removebuttons{
-        display: none;
+        
     }
 }

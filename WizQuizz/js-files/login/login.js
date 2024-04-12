@@ -8,7 +8,29 @@ window.addEventListener("load", () => {
     loader.addEventListener("transitionend", () =>{
         document.body.removeChild(loader);
     })
-})
+});
+
+//Comprobamos si estamos en DarkMode o LightMode
+let screenMode = sessionStorage.getItem("screenMode") | 0;
+if(sessionStorage.getItem("screenMode") === "1"){
+    document.getElementById("toogle").checked = true;
+    document.body.style.backgroundColor = '#292e39';
+}else{
+    document.getElementById("toogle").checked = false;
+    document.body.style.backgroundColor = '#FFFFFF';
+}
+
+document.getElementById("circleMode").addEventListener('click', function(){
+    if(screenMode === 0){
+        screenMode = 1;
+        document.body.style.backgroundColor = '#292e39';
+        sessionStorage.setItem("screenMode", screenMode);
+    }else{
+        document.body.style.backgroundColor = '#FFFFFF';
+        screenMode = 0;
+        sessionStorage.setItem("screenMode", screenMode);
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function(event) {
     //Prueba

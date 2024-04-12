@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
+    transition: 0.5s;
 }
 
 ::-webkit-scrollbar {
@@ -105,6 +106,10 @@ main{
 
 .modifyQuizz{
 
+}
+
+#pencil{
+    margin: 5px;
 }
 
 .modifyQuizz .modifyButton{
