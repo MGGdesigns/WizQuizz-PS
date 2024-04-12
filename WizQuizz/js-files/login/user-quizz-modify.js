@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (resultado) {
             await removeQuizz(quizId);
             alert("Quizz removed correctly!");
-            window.location.href = "../../index.html";
+            window.location.href = "../../src/login/user-quizzes.html";
         }
     });
 
