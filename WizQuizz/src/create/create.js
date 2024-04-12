@@ -46,6 +46,13 @@ window.addEventListener("load", () => {
 })
 
 document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.querySelector('.mobile-bars');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuIcon.addEventListener('click', function () {
+        mobileMenu.classList.toggle('show-menu');
+    });
+
     //Variables
     var localCloudQuestions = localStorage.getItem("questionsInfo");
     var parsedData = JSON.parse(localCloudQuestions);
