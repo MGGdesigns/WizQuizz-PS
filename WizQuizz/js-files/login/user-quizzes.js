@@ -21,7 +21,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     ///-------------------------------------------------------------------
 
     //Recorremos todos los usuarios para seleccionar el de current session
-    const allQuizzes = await getAllQuizzes();
+    let userName = sessionStorage.getItem("userName");
+    
+    ///LO DE ROSMARY------------------------------------------------------
+    if ( userName === ""){
+        userName = sessionStorage.getItem("userName");
+        userName = sessionStorage.getItem("userName"); ////
+    }
+    ///LO DE ROSMARY------------------------------------------------------
+
+    var quizzByUser = await getUserQuizzes(userName);
     let numberOfQuizz = 0;
     let numberOfUserQuizzes = 0;
     let quizzId = 0;
