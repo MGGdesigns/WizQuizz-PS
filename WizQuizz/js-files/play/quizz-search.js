@@ -1,4 +1,4 @@
-import {getAllQuizzes, getAllUsers} from "../common/backend-functions.js";
+import {getAllQuizzes, getAllUsers, getUserByName} from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -10,7 +10,12 @@ window.addEventListener("load", () => {
     })
 })
 
+export function getSearchedUsername() {
+    return searchedUsernameInput;
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
+
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
@@ -49,6 +54,57 @@ document.addEventListener('DOMContentLoaded', async function() {
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
+    //BUSCAR USUARIO ---------------------------------------------
+    
+    const searchButton = document.getElementById("search-tab-button");
+    document.getElementById("resultsContainer").style.display = "block";
+    searchButton.addEventListener('click', async function () {
+        var input = document.getElementById('search-tab-input').value.toString().trim();
+        var foundUsers = [];
+        const resultsContainer = document.getElementById("resultsContainer");
+        resultsContainer.innerHTML = "";
+        
+        try {
+            const users = await getAllUsers();
+            for (const user of Object.values(users)) {
+                if (user.username === input) {
+                    foundUsers.push({email: user.email, username: input, imageUrl: user.imageUrl});
+                } 
+            }
+            if (foundUsers.length === 0) {
+                const userContainer = document.createElement("div");
+                    userContainer.classList.add("userContainer");
+                    userContainer.textContent = "User not found";
+                    resultsContainer.appendChild(userContainer); 
+                
+            } else {
+                foundUsers.forEach(result => {
+                    const userContainer = document.createElement("div");
+                    userContainer.classList.add("userContainer");
+                
+                    const profileImage = document.createElement("img");
+                    profileImage.src = result.imageUrl; 
+                    profileImage.alt = "Profile Image";
+                    profileImage.classList.add("users-found-profile-image");
+                
+                    userContainer.appendChild(profileImage);
+                
+                    const usernameText = document.createElement("span");
+                    usernameText.textContent = result.username;
+                    userContainer.appendChild(usernameText);
+                
+                    resultsContainer.appendChild(userContainer); 
+                });
+                
+            }
+        } catch (error) {
+            alert(error);
+        }
+        //BUSCAR USUARIO ---------------------------------------------
+    });
+
+
 });
 
 async function loadTemplate(url) {
