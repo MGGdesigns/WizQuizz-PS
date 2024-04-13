@@ -1,4 +1,4 @@
-import {getQuizz, getAllQuizzes} from "../../js-files/common/backend-functions.js";
+import {getQuizz, getAllQuizzes, getQuizzField} from "../../js-files/common/backend-functions.js";
 
 const currentUrl = window.location.href.split('=');
 const idQuizz = currentUrl[1];
@@ -46,6 +46,7 @@ function fadeOutAudio(audio, duration) {
     }, intervalDuration);
 }
 
+
 //BOTON DE MUTE MUSICA
 document.getElementById("musicOn").style.display = "none";
 
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let totalQuestions;
     let quizzData;
     let questionsNum;
+    const correctArray = [];
     let results = parseInt(sessionStorage.getItem("results")) || 0;
 
     await getQuizz(idQuizz).then((data) => {
@@ -79,12 +81,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     renderQuestion(0);
     
     function renderQuestion(index) {
-        //Escribimos el titulo del quizz
         document.getElementById("quizTitle").innerHTML = quizzData.title;
 
         const section = document.createElement('section');
         let questionCount = localStorage.getItem("questionCount") || 1;
-        console.log(questionCount);
         if (questionCount < 10) {
             questionsNum = "0" + questionCount;
         } else {
@@ -116,19 +116,74 @@ document.addEventListener('DOMContentLoaded', async function() {
         main.appendChild(answersBox);
         
         const correctButtonIndex = quizzData.questions[index].correctAnswers;
+       
+        correctArray.push(correctButtonIndex -1);
         const buttonSelector =  document.querySelectorAll('.cauldron-button, .mage-staff-button, .mana-button, .magic-ball-button');
         const correctAnswers = buttonSelector[correctButtonIndex -1];
         correctAnswers.id = "correct-answer";
+        
+        
+        ///Voy loco
+        function createPDFdoc(){
+            const doc = new jsPDF();
+            let docInfo = "";
+            let text_height = 20;
+            quizzData.questions.forEach((question, i) => {
+                const pregunta = quizzData.questions[i].question;
+                const respuesta1 = quizzData.questions[i].answer1;
+                const respuesta2 = quizzData.questions[i].answer2;
+                const respuesta3 = quizzData.questions[i].answer3;
+                const respuesta4 = quizzData.questions[i].answer4;
+                const questionLines = doc.splitTextToSize(pregunta, 140);
+
+                // Pregunta
+                doc.setFont('Poppins');
+                doc.setFontStyle("bold");
+                doc.setFontSize(16);
+                doc.setTextColor(0, 0, 255);
+                doc.text("Question nº " + (i + 1) + ":", 10, text_height);
+                doc.setTextColor(0);
+
+                // Enunciado de la pregunta
+                doc.setFontSize(14);
+                doc.setFontStyle("normal");
+                doc.text(questionLines, 20, text_height + 10);
+
+                // Respuestas
+                const answers = [respuesta1, respuesta2, respuesta3, respuesta4];
+                
+                for (let j = 0; j < answers.length; j++) {
+                    const y = text_height + 30 + j * 10;
+                    if(j === correctArray[i]){
+                        doc.setFillColor(0, 255, 0);
+                        doc.rect(20, y - 4, 5, 5, "F");
+                    }
+                    
+                    doc.text(answers[j], 30, y);
+                }
+                text_height += 80;
+                if(text_height > 240){
+                    doc.addPage();
+                    text_height = 20;
+                }
+            });
+            const pdfBase64 = doc.output('datauristring');
+            sessionStorage.setItem("WizQuizz pdf", pdfBase64);   
+        }
+        
 
         const nextQuestion = document.getElementById("next-question");
         nextQuestion.addEventListener('click', function() {
             event.preventDefault();
             if (index < totalQuestions - 1) {
+                
                 main.innerHTML = '';
                 renderQuestion(index + 1);
             } else {
                 localStorage.setItem("questionCount", 1);
+                createPDFdoc();
                 window.location.href = 'quizz-finish.html?id='+ idQuizz;
+                
             }
         });
 

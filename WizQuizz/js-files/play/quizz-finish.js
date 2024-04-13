@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const finish = document.getElementById("finish");
     const mark = document.getElementById("mark");
     const exit = document.getElementById("exit");
+    const download = document.getElementById("download");
     var resultado = localStorage.getItem("results");
     var numofquestions = sessionStorage.getItem("totalQuestions");
     var varInteger = parseInt(numofquestions);
@@ -61,6 +62,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     localStorage.clear();
+    download.addEventListener("click", function() {
+        event.preventDefault();
+        console.log("pulsado download");
+        const pdfBase64 = sessionStorage.getItem("WizQuizz pdf");
+        console.log(pdfBase64);
+        const link = document.createElement('a');
+        link.href = pdfBase64;
+        link.download = 'WizQuizz pdf';
+        link.click()
+        
+    });
+
     exit.addEventListener("click", function() {
         event.preventDefault();
         window.location.href = "../../src/play/quizz-preview.html?id=" + idQuizz;
