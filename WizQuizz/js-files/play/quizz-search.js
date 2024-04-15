@@ -1,4 +1,4 @@
-import {getAllQuizzes, getAllUsers, getUserByName} from "../common/backend-functions.js";
+import {getAllQuizzes, getAllUsers, getUserQuizzes} from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -10,9 +10,6 @@ window.addEventListener("load", () => {
     })
 })
 
-export function getSearchedUsername() {
-    return searchedUsernameInput;
-}
 
 document.addEventListener('DOMContentLoaded', async function() {
 
@@ -79,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     resultsContainer.appendChild(userContainer); 
                 
             } else {
-                foundUsers.forEach(result => {
+                foundUsers.forEach(async result => {
                     const userContainer = document.createElement("div");
                     userContainer.classList.add("userContainer");
                 
@@ -89,12 +86,51 @@ document.addEventListener('DOMContentLoaded', async function() {
                     profileImage.classList.add("users-found-profile-image");
                 
                     userContainer.appendChild(profileImage);
-                
-                    const usernameText = document.createElement("span");
-                    usernameText.textContent = result.username;
-                    userContainer.appendChild(usernameText);
+
+                    var quizzByUser = await getUserQuizzes(result.username);
+                    var usernameQuizzezNumber = 0;
+
+                    if (quizzByUser=== null){
+                        console.log("error");
+                        usernameQuizzezNumber = 0;
+                    } else {
+                        let quizzOfUser = Object.keys(quizzByUser);
+                        usernameQuizzezNumber = quizzOfUser.length;
+                    }
+
+
+                    ////
+                    
+                    const usernameInfo = document.createElement("div");
+                    const usernameQuizzezInfo = document.createElement("div");
+                    usernameQuizzezInfo.textContent = usernameQuizzezNumber;
+                    const QuizzesPlayedText = document.createElement("div");
+                    console.log(usernameQuizzezInfo);
+                    usernameInfo.textContent = result.username;
+                    QuizzesPlayedText.textContent = "Quizzes";
+                    
+                    if (usernameQuizzezNumber === 1){
+                        QuizzesPlayedText.textContent = "Quizz";
+                    }
+                    usernameInfo.className = "usernameInfo";
+                    usernameQuizzezInfo.className = "usernameQuizzezInfo";
+                    QuizzesPlayedText.className = "QuizzesPlayedText";
+
+                    userContainer.appendChild(usernameInfo);
+                    userContainer.appendChild(usernameQuizzezInfo);
+                    userContainer.appendChild(QuizzesPlayedText);
+
+                    
+                    
+                    userContainer.classList.add("userContainer");
+                    userContainer.addEventListener('click', async function() {
+                        // Redirigir a la página deseada, por ejemplo, la página de perfil del usuario
+                        sessionStorage.setItem("foundUserMail", result.email);
+                        window.location.href = '../../src/login/user-profile.html';
+                    });
                 
                     resultsContainer.appendChild(userContainer); 
+                    
                 });
                 
             }
