@@ -32,9 +32,10 @@ let targetUser = sessionStorage.getItem("userMail");
 
 //Como acceder al usuario desde la url
 const currentUrl = window.location.href.split('=');
-let userToLoad = await getUserByName(currentUrl[1]);
+const userToLoad = await getUserByName(currentUrl[1]);
 
 //GUARDAMOS LA IMAGEN PARA QUE NO SE TENGA QUE CARGAR TODO EL RATO DESDE LA DB
+console.log(userToLoad);
 sessionStorage.setItem("imageUrl", userToLoad.imageUrl);
 sessionStorage.setItem("userName", userToLoad.username);
 

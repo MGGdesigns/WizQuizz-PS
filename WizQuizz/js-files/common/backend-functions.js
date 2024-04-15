@@ -175,8 +175,17 @@ export async function getUser(email){
 
 export async function getUserByName(name){
     const id = await stringToHash(name);
-    const a = await querySearch("/username-user/" + name).email;
-    return await getUser(a);
+    try {
+        const a = await querySearch("/username-user/" + id);
+        console.log(a);
+        const b = await getUser(a);
+        console.log()
+        return await getUser(a);
+    } catch (error) {
+        // Manejar el error aquí si es necesario
+        console.error("Error al buscar el usuario:", error);
+        return null;
+    }
 }
 
 export function getQuizz(id) {
@@ -234,15 +243,14 @@ export function getQuizzField(id, field){
 
 export async function querySearch(query){
     const reference = ref(db, query);
-    let data;
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
+    try {
+        const snapshot = await get(reference);
+        return snapshot.val();
+    } catch (error) {
+        // Manejar el error aquí si es necesario
+        console.error("Error al realizar la búsqueda:", error);
+        throw error;
+    }
 }
 
 export function updateRating(id, rating, timesReviewed) {
