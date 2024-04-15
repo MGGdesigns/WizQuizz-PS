@@ -144,6 +144,10 @@ export async function removeQuizz(id){
     await remove(ref(db, "username-quizzes/" + authorHash + "/" + id));
 }
 
+export async function unfollow(user, userToUnfollow){
+    await remove (ref(db, "users/" + user + "/following/" + userToUnfollow));
+}
+
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
     const reference = await ref(db, "quizzes/" + id + "/questions/" + number);
 
@@ -249,6 +253,17 @@ export function updateRating(id, rating, timesReviewed) {
         timesReviewed: timesReviewed
     });
 }
+
+export async function follow(userMail, userToFollow){
+    const user = stringToHash(userMail);
+    const reference = ref(db, "users/" + user + "/following/" + userToFollow);
+
+    set(reference, {
+        dummy:empty
+    })
+}
+
+
 
 // GETTER AND SETTERS EXAMPLES
 
