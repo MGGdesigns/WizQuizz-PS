@@ -156,6 +156,10 @@ export async function removeQuizz(id){
     await remove(ref(db, "username-quizzes/" + authorHash + "/" + id));
 }
 
+export async function unfollow(user, userToUnfollow){
+    await remove (ref(db, "users/" + user + "/following/" + userToUnfollow));
+}
+
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
     const reference = await ref(db, "quizzes/" + id + "/questions/" + number);
 
@@ -182,9 +186,30 @@ export async function getUser(email){
 }
 
 export async function getUserByName(name){
-    const id = await stringToHash(name);
-    const a = await querySearch("/username-user/" + name).email;
-    return await getUser(a);
+    try {
+        const id = await stringToHash(name);
+        
+        const usernameUserRef = ref(db, "username-user/" + id + "/email");
+        
+        const snapshot = await get(usernameUserRef);
+        console.log(snapshot.val());
+        const userEmail = snapshot.val();
+        
+        if (!userEmail) {
+            throw new Error('Usuario no encontrado');
+            // return null;
+        }
+        
+        const userHash = await stringToHash(userEmail);
+        const userRef = ref(db, "users/" + userHash);
+        
+        const userSnapshot = await get(userRef);
+
+        return userSnapshot.val();
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
 }
 
 export function getQuizz(id) {
@@ -242,15 +267,14 @@ export function getQuizzField(id, field){
 
 export async function querySearch(query){
     const reference = ref(db, query);
-    let data;
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
+    try {
+        const snapshot = await get(reference);
+        return snapshot.val();
+    } catch (error) {
+        // Manejar el error aquí si es necesario
+        console.error("Error al realizar la búsqueda:", error);
+        throw error;
+    }
 }
 
 export function updateRating(id, rating, timesReviewed) {
@@ -261,6 +285,17 @@ export function updateRating(id, rating, timesReviewed) {
         timesReviewed: timesReviewed
     });
 }
+
+export async function follow(userMail, userToFollow){
+    const user = stringToHash(userMail);
+    const reference = ref(db, "users/" + user + "/following/" + userToFollow);
+
+    set(reference, {
+        dummy:empty
+    })
+}
+
+
 
 // GETTER AND SETTERS EXAMPLES
 
