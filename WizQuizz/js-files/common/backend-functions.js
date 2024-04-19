@@ -174,17 +174,29 @@ export async function getUser(email){
 }
 
 export async function getUserByName(name){
-    const id = await stringToHash(name);
     try {
-        const a = await querySearch("/username-user/" + id);
-        console.log(a);
-        const b = await getUser(a);
-        console.log()
-        return await getUser(a);
+        const id = await stringToHash(name);
+        
+        const usernameUserRef = ref(db, "username-user/" + id + "/email");
+        
+        const snapshot = await get(usernameUserRef);
+        console.log(snapshot.val());
+        const userEmail = snapshot.val();
+        
+        if (!userEmail) {
+            throw new Error('Usuario no encontrado');
+            // return null;
+        }
+        
+        const userHash = await stringToHash(userEmail);
+        const userRef = ref(db, "users/" + userHash);
+        
+        const userSnapshot = await get(userRef);
+
+        return userSnapshot.val();
     } catch (error) {
-        // Manejar el error aquí si es necesario
-        console.error("Error al buscar el usuario:", error);
-        return null;
+        console.error('Error:', error);
+        throw error;
     }
 }
 
