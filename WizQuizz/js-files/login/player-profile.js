@@ -34,11 +34,6 @@ let targetUser = sessionStorage.getItem("userMail");
 const currentUrl = window.location.href.split('=');
 const userToLoad = await getUserByName(currentUrl[1]);
 
-//GUARDAMOS LA IMAGEN PARA QUE NO SE TENGA QUE CARGAR TODO EL RATO DESDE LA DB
-console.log(userToLoad);
-sessionStorage.setItem("imageUrl", userToLoad.imageUrl);
-sessionStorage.setItem("userName", userToLoad.username);
-
 //Dark/Light Mode
 
 if(sessionStorage.getItem("screenMode" === 1)){
@@ -53,9 +48,9 @@ if(sessionStorage.getItem("screenMode" === 1)){
 document.getElementById("follow-button").addEventListener('click', async function(){
     alert("nice");
     const actualUser = sessionStorage.getItem("userName");
-    const userToFollow = await getUserByName(document.getElementById("username"));
+    console.log(actualUser);
     //Falta comprobar si se está o no siguiendo al usuario para que lo siga o lo deje de seguir
-    await follow(actualUser, userToFollow);
+    await follow(actualUser, userToLoad);
 });
 
 nickname_display.innerHTML = userToLoad.username;
@@ -65,24 +60,4 @@ account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDa
 //quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
 
 //meter aqui follow/unfollow
-quizs_finished_display.innerHTML = "XD";
-
-user_image_display.onclick = function(){
-    input_image.click();
-}
-
-input_image.onchange = function (evt){
-    var tgt = evt.target || window,
-        files = tgt.files;
-
-    if (FileReader && files && files.length) {
-        var fr = new FileReader();
-        fr.onload = function () {
-            user_image_display.src = fr.result;
-            sessionStorage.setItem("imageUrl", fr.result); 
-            modifyUserImage(stringToHash(userToLoad.email), userToLoad.username, userToLoad.email, userToLoad.password, userToLoad.description, fr.result, userToLoad.accountCreationDate, "");
-            alert("Image changed correctly");
-        }
-        fr.readAsDataURL(files[0]);
-    }
-}
+//quizs_finished_display.innerHTML = "XD";

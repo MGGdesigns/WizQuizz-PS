@@ -288,10 +288,10 @@ export function updateRating(id, rating, timesReviewed) {
 
 export async function follow(userMail, userToFollow){
     const user = stringToHash(userMail);
-    const reference = ref(db, "users/" + user + "/following/" + userToFollow);
+    const reference = ref(db, "users/" + user + "/following/" + stringToHash(userToFollow.email));
 
     set(reference, {
-        dummy:empty
+        dummy:"empty"
     })
 }
 
