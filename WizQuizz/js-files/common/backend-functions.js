@@ -157,6 +157,7 @@ export async function removeQuizz(id){
 }
 
 export async function unfollow(user, userToUnfollow){
+    
     await remove (ref(db, "users/" + user + "/following/" + userToUnfollow));
 }
 

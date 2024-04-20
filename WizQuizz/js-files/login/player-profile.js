@@ -1,4 +1,4 @@
-import {getAllUsers, modifyUserImage, stringToHash, follow, getUserByName, getUserQuizzes, getQuizz} from "../common/backend-functions.js"
+import {stringToHash, follow, getUserByName, getUserQuizzes, getQuizz} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -27,7 +27,6 @@ const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
-const users = await getAllUsers();
 let targetUser = sessionStorage.getItem("userMail");
 
 //Como acceder al usuario desde la url
@@ -83,10 +82,6 @@ account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDa
             quizzAdder();
         }
     }
-    //Comprobamos que el user tenga mas de 1 quizz creado
-    if(numberOfUserQuizzes === 0){
-        noQuizzAdded();
-    }
     //-----------------------------------------------------------------------------------
     function quizzAdder(){
         //Ponemos el nombre del user
@@ -138,35 +133,6 @@ account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDa
         }
     }
     //-----------------------------------------------------------------------------------
-    function noQuizzAdded(){
-        document.getElementById("infoaboutQuizzes").style.display = "none";
-        const Maincontainer = document.querySelector(".noQuizzesFinished");
-        const section = document.createElement('section');
-        section.classList.add('noQuizzesFinished');
-        section.id = 'section' + j;
-        section.innerHTML = `<div class="box1">
-            <div class="texto">
-                <div class="logoWiz">
-                    <img class="logo" src="../../website-images/common/wizquizz-logo.png" width=200 height=200>
-                </div>
-                <hr>
-                <div class="titleAndLogo">
-                    <p class="title">Welcome to your WizQuizz profile!</p>
-                </div>
-                <div class="information">
-                    <p>You don't currently have any quizzes created, but don't worry! You're just a few steps away from starting to create your own quiz and share it with the world!</p>
-                    <p>With WizQuizz, you can design fun and educational quizzes in a matter of minutes. Let your imagination run wild and create something unique that will challenge and entertain your friends, family, or colleagues!</p>
-                    <p>Click on the "Create Quiz" button to start your quiz creation journey with WizQuizz. It's time to become a quiz maker!</p>
-                    <p>Thank you for being a part of the WizQuizz community!</p>
-                </div>
-                <hr>
-            </div>
-            <div class="boton">
-                <button type="button" class="button" id="createQuizzButton">+ CREATE QUIZZ</button>
-            </div>
-        </div>`;
-        Maincontainer.appendChild(section);
-    }
     //-----------------------------------------------------------------------------------
     const createQuizzButton = document.getElementById("createQuizzButton");
     createQuizzButton.addEventListener("click", function() {
