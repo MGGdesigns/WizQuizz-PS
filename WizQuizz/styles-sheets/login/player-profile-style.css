@@ -1,51 +1,51 @@
-main{
-	display: block;
+ain{
+    display: block;
 }
 
 .user-image-container:hover{
-	background-color: #eedcee;
+    background-color: #eedcee;
     box-shadow: 0 0 0px purple;
 }
 
 .follow p{
-	color: #000000;
-	font-size: 20px;
+    color: #000000;
+    font-size: 20px;
 }
 
 .follow{
-	display: inline-block;
-	width: 40%;
+    display: inline-block;
+    width: 40%;
 
-	margin-left: auto;
-	margin-right: 0;
-	text-align: center;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: center;
 
-	padding: 2%;
+    padding: 2%;
 
-	border-radius: 15px;
-	background-color: rgb(206, 120, 178);
+    border-radius: 15px;
+    background-color: rgb(206, 120, 178);
 
-	color: #000000;
+    color: #000000;
     text-decoration: none;
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 15px;
-	border: 2px solid rgba(0, 0, 0);
+    border: 2px solid rgba(0, 0, 0);
 }
 
 #follow{
-	width: 10%;
-	margin-left: auto;
-	margin-right: 0;
-	text-align: center;
-	padding: 2%;
-	border-radius: 15px;
-	background-color: rgb(208, 174, 240);
-	color: #000000;
+    width: 10%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: center;
+    padding: 2%;
+    border-radius: 15px;
+    background-color: rgb(208, 174, 240);
+    color: #000000;
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 15px;
-	border: 2px solid rgba(0, 0, 0);
-	cursor: pointer;
-	background-color: rgb(206, 80, 195);
+    border: 2px solid rgba(0, 0, 0);
+    cursor: pointer;
+    background-color: rgb(206, 80, 195);
 }
 
 #follow #follow-button{
@@ -58,19 +58,19 @@ main{
     border-radius: 4px;
     cursor: pointer;
     border: none;
-	width: 100%;
-	height: 100%;
-	background-color: rgb(208, 174, 240);
-	background-color: transparent;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(208, 174, 240);
+    background-color: transparent;
 }
 
 #follow-button:hover {
-	color: white;
+    color: white;
 }
 
 #follow:hover {
     background-color: #f778ef;
-	color: white;
+    color: white;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -93,10 +93,10 @@ main{
 
 .quizzes{
     display: flex;
-	justify-content: center;
+    justify-content: center;
     flex-wrap: wrap;
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
     margin-top: 4%;
 
 }
@@ -113,9 +113,6 @@ main{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.modifyQuizz{
-
-}
 
 #pencil{
     margin: 5px;
@@ -150,6 +147,7 @@ main{
     word-wrap: break-word; 
     max-width: 100%;
 }
+
 
 .additionalText1 {
     opacity: 0;
@@ -189,8 +187,8 @@ main{
     color: white;
 }
 .linkQuizz a{
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .linkQuizz:hover img {
     opacity: 0.8;
@@ -289,29 +287,29 @@ main{
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
     #follow{
-		display: flex; /* Utilizar flexbox */
-		justify-content: center; /* Centrar horizontalmente */
-		align-items: center; /* Centrar verticalmente */
-		width: 30%;
-		margin-left: auto;
-		margin-right: auto;
-	}
+        display: flex; /* Utilizar flexbox */
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
     #follow-button{
-		display: flex;
-	}
+        display: flex;
+    }
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
-	#follow{
-		display: flex; /* Utilizar flexbox */
-		justify-content: center; /* Centrar horizontalmente */
-		align-items: center; /* Centrar verticalmente */
-		width: 30%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	#follow-button{
-		display: flex;
-	}
+    #follow{
+        display: flex; /* Utilizar flexbox */
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #follow-button{
+        display: flex;
+    }
 }

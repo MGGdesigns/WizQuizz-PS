@@ -1,4 +1,4 @@
-import {getAllQuizzes, getAllUsers, getUserQuizzes} from "../common/backend-functions.js";
+import {getAllQuizzes, getUserQuizzes, getQuizz, getUserByName} from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -10,6 +10,43 @@ window.addEventListener("load", () => {
     })
 })
 
+const quizzData = [];
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
+
+
+////////////////////////////////////////////////////////////////
+/*
+// Función para manejar la calificación con estrellas
+function handleStarRating() {
+    const stars = document.querySelectorAll('.fa-star');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            const rating = index + 1;
+            console.log(`Calificación: ${rating}`);
+            stars.forEach((s, i) => {
+                if (i < rating) {
+                    s.classList.remove('disable');
+                    s.classList.add('enable');
+                } else {
+                    s.classList.remove('enable');
+                    s.classList.add('disable');
+                }
+            });
+        });
+    });
+}
+*/
+////////////////////////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async function() {
 
@@ -53,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
 
     //BUSCAR USUARIO ---------------------------------------------
-    
     const searchButton = document.getElementById("search-tab-button");
     document.getElementById("resultsContainer").style.display = "block";
     searchButton.addEventListener('click', async function () {
@@ -63,76 +99,85 @@ document.addEventListener('DOMContentLoaded', async function() {
         resultsContainer.innerHTML = "";
         
         try {
-            const users = await getAllUsers();
-            for (const user of Object.values(users)) {
-                if (user.username === input) {
-                    foundUsers.push({email: user.email, username: input, imageUrl: user.imageUrl});
-                } 
+            //Buscamos el ususario
+            const user = await getUserByName(input);
+            if (user) {
+                foundUsers.push(user);
             }
+
+            //Si el usuario no existe
             if (foundUsers.length === 0) {
                 const userContainer = document.createElement("div");
-                    userContainer.classList.add("userContainer");
+                    userContainer.classList.add("UserNotfoundContainer");
                     userContainer.textContent = "User not found";
                     resultsContainer.appendChild(userContainer); 
-                
+            
+            //Preview de usuarios encontrados
             } else {
                 foundUsers.forEach(async result => {
                     const userContainer = document.createElement("div");
                     userContainer.classList.add("userContainer");
                 
+                    //Imagen de perfil
                     const profileImage = document.createElement("img");
                     profileImage.src = result.imageUrl; 
                     profileImage.alt = "Profile Image";
                     profileImage.classList.add("users-found-profile-image");
-                
                     userContainer.appendChild(profileImage);
+                    
+                    //Numero de usuarios
+                    var userListFollowers = result.followers;
+                    var usernameFollowersNumber = userListFollowers.length;
+                    const usernameFollowersInfo = document.createElement("div");
+                    usernameFollowersInfo.textContent = usernameFollowersNumber + " Followers";
+                    if (usernameFollowersNumber === 1){
+                        usernameFollowersInfo.textContent = usernameFollowersNumber + " Follower";
+                    }
 
+                    usernameFollowersInfo.textContent = usernameFollowersNumber;
+                    usernameFollowersInfo.className = "usernameFollowersInfo";
+                    
+
+                    //Quizzes del usuario
                     var quizzByUser = await getUserQuizzes(result.username);
                     var usernameQuizzezNumber = 0;
 
                     if (quizzByUser=== null){
-                        console.log("error");
                         usernameQuizzezNumber = 0;
                     } else {
                         let quizzOfUser = Object.keys(quizzByUser);
                         usernameQuizzezNumber = quizzOfUser.length;
                     }
 
-
-                    ////
-                    
-                    const usernameInfo = document.createElement("div");
                     const usernameQuizzezInfo = document.createElement("div");
-                    usernameQuizzezInfo.textContent = usernameQuizzezNumber;
                     const QuizzesPlayedText = document.createElement("div");
-                    console.log(usernameQuizzezInfo);
-                    usernameInfo.textContent = result.username;
+                    usernameQuizzezInfo.className = "usernameQuizzezInfo";
+                    QuizzesPlayedText.className = "QuizzesPlayedText";
+                    usernameQuizzezInfo.textContent = usernameQuizzezNumber;
                     QuizzesPlayedText.textContent = "Quizzes";
                     
                     if (usernameQuizzezNumber === 1){
                         QuizzesPlayedText.textContent = "Quizz";
                     }
+                    usernameFollowersInfo.textContent = usernameFollowersNumber;
+
+                    //Nombre de usuario
+                    const usernameInfo = document.createElement("div");
+                    usernameInfo.textContent = result.username;
                     usernameInfo.className = "usernameInfo";
-                    usernameQuizzezInfo.className = "usernameQuizzezInfo";
-                    QuizzesPlayedText.className = "QuizzesPlayedText";
+                    
 
                     userContainer.appendChild(usernameInfo);
+                    userContainer.appendChild(usernameFollowersInfo);
                     userContainer.appendChild(usernameQuizzezInfo);
                     userContainer.appendChild(QuizzesPlayedText);
 
-                    
-                    
                     userContainer.classList.add("userContainer");
                     userContainer.addEventListener('click', async function() {
-                        // Redirigir a la página deseada, por ejemplo, la página de perfil del usuario
-                        sessionStorage.setItem("foundUserMail", result.email);
-                        window.location.href = '../../src/login/user-profile.html';
+                        window.location.href = "../login/player-profile.html?id=" + result.username;
                     });
-                
                     resultsContainer.appendChild(userContainer); 
-                    
                 });
-                
             }
         } catch (error) {
             alert(error);
@@ -143,6 +188,92 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 });
 
+//BUSCAR QUIZZ ----------------------------------------------------------------------------------
+let selectedQuizzes = []
+    
+const searchQuizzButton = document.getElementById("search-quizz-button");
+document.getElementById("resultsContainer").style.display = "block";
+searchQuizzButton.addEventListener('click', async function () {
+
+        const quizzResultsContainer = document.getElementById("quizzResultsContainer");
+        quizzResultsContainer.innerHTML="";
+        quizzResultsContainer.classList.add("quizz-selection")
+        var input = document.getElementById('search-tab-input').value.toString().trim();        
+        
+        const quizzes = await getAllQuizzes();
+        let found = Object.values(quizzes).find(quizz => quizz.title === input)
+        selectedQuizzes.push(found)
+        console.log(found)
+
+        selectedQuizzes.forEach(async result => {
+            const quizzContainer = document.createElement("div");
+            quizzContainer.classList.add('quizz');  
+            quizzContainer.style.width = "400px"; 
+            quizzContainer.style.height = "380px";
+            quizzContainer.style.display = "flex"; 
+            quizzContainer.style.flexDirection = "column"; 
+        
+            //Titulp
+            const quizzTitle = document.createElement("h2");
+            quizzTitle.textContent = result.title;
+            quizzTitle.style.textAlign = "center"; 
+            quizzContainer.appendChild(quizzTitle);
+        
+            //Nombre del autor
+            const authorContainer = document.createElement("div");
+            authorContainer.style.marginBottom = "10px"; 
+            authorContainer.style.textAlign = "left"; 
+            const quizzAuthor = document.createElement("p");
+            quizzAuthor.textContent = "Author: " + result.author;
+            authorContainer.appendChild(quizzAuthor);
+            quizzContainer.appendChild(authorContainer);
+        
+            //Numero de preguntas y puntuacion
+            const infoContainer = document.createElement("div");
+            infoContainer.style.display = "flex"; 
+            infoContainer.style.justifyContent = "space-between"; 
+            infoContainer.style.alignItems = "center"; 
+            const quizzSize = document.createElement("p");
+            quizzSize.textContent = "Number of Questions: " + result.questions.length;
+            infoContainer.appendChild(quizzSize);
+        
+            const starsHTML = Array.from({ length: 5 }, (_, index) => {
+                if (index < Math.round(result.rating)) {
+                    return '<i class="fa fa-star enable" aria-hidden="true"></i>';
+                } else {
+                    return '<i class="fa fa-star disable" aria-hidden="true"></i>';
+                }
+            }).join('');
+        
+            const ratingStars = document.createElement("div");
+            ratingStars.classList.add("rating-stars");
+            ratingStars.innerHTML = starsHTML;
+            infoContainer.appendChild(ratingStars);
+            quizzContainer.appendChild(infoContainer);
+        
+            //Imagen
+            const quizzImage = document.createElement("img");
+            quizzImage.src = result.imageUrl;
+            quizzImage.alt = "Quizz Image";
+            quizzImage.style.width = "98%"; 
+            quizzImage.style.height = "70%";
+            quizzImage.style.marginBottom = "10px"; 
+            quizzImage.style.marginRight = "10px";
+            quizzImage.style.marginTop = "10px";
+            quizzContainer.appendChild(quizzImage);
+        
+            const quizzLink = document.createElement("a");
+
+            //Siguiente pagina
+            const ident = quizzData.find(item => item.quizzname === result.title)?.id;
+            quizzLink.href = "quizz-preview.html?id=" + ident;
+            quizzLink.appendChild(quizzContainer);
+            quizzResultsContainer.appendChild(quizzLink);
+
+        });
+    });
+
+    //BUSCAR QUIZZ ----------------------------------------------------------
 async function loadTemplate(url) {
     const response = await fetch(url);
     if (!response.ok) {
@@ -168,9 +299,11 @@ let quizzId = 0;
 function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
     const quizzIds = Object.keys(content);
-    console.log(quizzIds)
     let countQuizz = 0;
     content.forEach(item => {
+        quizzData.push({quizzname: item.title, id: quizzIds[countQuizz]})
+        
+        
         const div = document.createElement('div');
         if (containerSelector === 'aside') {
             div.classList.add('filter');
@@ -181,12 +314,12 @@ function renderContent(content, containerSelector) {
                 quizzContainer.innerHTML = '';
                 let quizz;
                 let countFilteredQuizz = 1;
-                let allQuizzes = await getAllQuizzes();
                 for (quizz of Object.values(allQuizzes)) {
                     if (quizz.category === item.text) {
                         quizzId = countFilteredQuizz;
                         renderQuizz(quizz, '.quizz-selection');
                     }
+                    
                     countFilteredQuizz++;
                 }
                 const selected = document.getElementsByClassName('selected');
@@ -210,6 +343,7 @@ function renderContent(content, containerSelector) {
         }
         container.appendChild(div);
     });
+    
 }
 
 function renderQuizz(content, containerSelector) {
@@ -222,7 +356,12 @@ function renderQuizz(content, containerSelector) {
                         <img src="${content.imageUrl}" width="400" height="225" class="image">
                         <h2>${content.title}</h2>
                         </a>`;
+    console.log(content.title)
+    console.log(quizzId)
+    console.log("ahora")
+    quizzData.push({quizzname: content.title, id: quizzId})
     }
+    
     container.appendChild(div);
 }
 
@@ -241,17 +380,6 @@ clearFilters.addEventListener('click', async async => {
     hiddenElements.forEach((el) => observer.observe(el));
 });
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry) => {
-        console.log(entry)
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        } else {
-            entry.target.classList.remove('show');
-        }
-    });
-});
-
 //Comprobamos si estamos en DarkMode o LightMode
 console.log(sessionStorage.getItem("screenMode"));
 if(sessionStorage.getItem("screenMode") === "1"){
@@ -260,4 +388,4 @@ if(sessionStorage.getItem("screenMode") === "1"){
 }else{
     console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
-}
+} 
