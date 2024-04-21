@@ -1,0 +1,19 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #8D77C6;
+    padding: 20px;
+    z-index: -1;
+}
+
+#followers-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#followers-list li {
+    margin-bottom: 10px;
+}

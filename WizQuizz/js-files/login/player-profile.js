@@ -23,7 +23,6 @@ const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
 const account_date_display = document.querySelector(".account-creation-date p")
-let account_followers_display = document.querySelector(".followers-number p")
 const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
@@ -57,8 +56,6 @@ nickname_display.innerHTML = userToLoad.username;
 user_image_display.src = userToLoad.imageUrl;
 user_description_display.innerHTML = userToLoad.description;
 account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDate;
-const number_followers = userToLoad.followers.length
-account_followers_display.innerHTML = userToLoad.followers.length + " FOLLOWERS"
 //quizs_finished_display.innerHTML = userToLoad.quizzesFinished + " QUIZS FINISHED";
 
 //meter aqui follow/unfollow

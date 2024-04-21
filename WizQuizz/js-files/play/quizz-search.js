@@ -101,10 +101,13 @@ document.addEventListener('DOMContentLoaded', async function() {
         try {
             //Buscamos el ususario
             const user = await getUserByName(input);
+            
+
             if (user) {
                 foundUsers.push(user);
             }
 
+            console.log(foundUsers)
             //Si el usuario no existe
             if (foundUsers.length === 0) {
                 const userContainer = document.createElement("div");
@@ -127,14 +130,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                     
                     //Numero de usuarios
                     var userListFollowers = result.followers;
-                    var usernameFollowersNumber = userListFollowers.length;
+                    var usernameFollowersNumber = foundUsers.length;
                     const usernameFollowersInfo = document.createElement("div");
-                    usernameFollowersInfo.textContent = usernameFollowersNumber + " Followers";
+                    usernameFollowersInfo.textContent = foundUsers + " Followers";
                     if (usernameFollowersNumber === 1){
-                        usernameFollowersInfo.textContent = usernameFollowersNumber + " Follower";
+                        usernameFollowersInfo.textContent = foundUsers + " Follower";
                     }
 
-                    usernameFollowersInfo.textContent = usernameFollowersNumber;
+                    usernameFollowersInfo.textContent = foundUsers;
                     usernameFollowersInfo.className = "usernameFollowersInfo";
                     
 
@@ -180,7 +183,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 });
             }
         } catch (error) {
-            alert(error);
+            console.log(error);
         }
         //BUSCAR USUARIO ---------------------------------------------
     });
@@ -198,8 +201,16 @@ searchQuizzButton.addEventListener('click', async function () {
         const quizzResultsContainer = document.getElementById("quizzResultsContainer");
         quizzResultsContainer.innerHTML="";
         quizzResultsContainer.classList.add("quizz-selection")
+    
         var input = document.getElementById('search-tab-input').value.toString().trim();        
-        
+        /*for (quizz of Object.values(allQuizzes)) {
+            if (quizz.title === input){
+                found.push(quizz)
+            }
+        }
+        console.log(found)
+
+        */
         const quizzes = await getAllQuizzes();
         let found = Object.values(quizzes).find(quizz => quizz.title === input)
         selectedQuizzes.push(found)
@@ -213,30 +224,35 @@ searchQuizzButton.addEventListener('click', async function () {
             quizzContainer.style.display = "flex"; 
             quizzContainer.style.flexDirection = "column"; 
         
-            //Titulp
+            // Añadir título centrado
             const quizzTitle = document.createElement("h2");
             quizzTitle.textContent = result.title;
             quizzTitle.style.textAlign = "center"; 
             quizzContainer.appendChild(quizzTitle);
         
-            //Nombre del autor
+            // Contenedor para el autor
             const authorContainer = document.createElement("div");
             authorContainer.style.marginBottom = "10px"; 
             authorContainer.style.textAlign = "left"; 
+        
+            // Añadir autor a la izquierda
             const quizzAuthor = document.createElement("p");
             quizzAuthor.textContent = "Author: " + result.author;
             authorContainer.appendChild(quizzAuthor);
             quizzContainer.appendChild(authorContainer);
         
-            //Numero de preguntas y puntuacion
+            // Contenedor para la información (número de preguntas y estrellas)
             const infoContainer = document.createElement("div");
             infoContainer.style.display = "flex"; 
             infoContainer.style.justifyContent = "space-between"; 
             infoContainer.style.alignItems = "center"; 
+        
+            // Añadir tamaño del array de preguntas
             const quizzSize = document.createElement("p");
             quizzSize.textContent = "Number of Questions: " + result.questions.length;
             infoContainer.appendChild(quizzSize);
         
+            // Generar estrellas de calificación
             const starsHTML = Array.from({ length: 5 }, (_, index) => {
                 if (index < Math.round(result.rating)) {
                     return '<i class="fa fa-star enable" aria-hidden="true"></i>';
@@ -249,9 +265,10 @@ searchQuizzButton.addEventListener('click', async function () {
             ratingStars.classList.add("rating-stars");
             ratingStars.innerHTML = starsHTML;
             infoContainer.appendChild(ratingStars);
+        
             quizzContainer.appendChild(infoContainer);
         
-            //Imagen
+            // Resto del contenido del cuestionario (imagen, etc.)
             const quizzImage = document.createElement("img");
             quizzImage.src = result.imageUrl;
             quizzImage.alt = "Quizz Image";
@@ -264,7 +281,6 @@ searchQuizzButton.addEventListener('click', async function () {
         
             const quizzLink = document.createElement("a");
 
-            //Siguiente pagina
             const ident = quizzData.find(item => item.quizzname === result.title)?.id;
             quizzLink.href = "quizz-preview.html?id=" + ident;
             quizzLink.appendChild(quizzContainer);

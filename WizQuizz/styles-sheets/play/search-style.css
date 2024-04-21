@@ -216,6 +216,8 @@ aside {
     background-color: #6E1EB4;
     padding: 3px;
     border-radius: 10px;
+    border-bottom: 10px;
+    object-fit: cover;
 }
 
 .quizz h2 {
@@ -319,24 +321,63 @@ aside {
     background-color: #000000;
     box-shadow: 0 0 15px rgb(0, 0, 0);
 }
-/*BUSCAR USUARIO*/
-
-#resultsContainer {
-    
+/*BUSCAR USUARIO//////////////////////////////////////////////////////////////////////////*/
+.quizzTitle{
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 70px;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
-.userContainer {
-    
-    font-family: Poppins, serif;
+.fa-star {
+    color: #ccc; /* Color de las estrellas deshabilitadas */
+}
+
+.fa-star.enable {
+    color: gold; /* Color de las estrellas habilitadas */
+}
+
+/*/////////////////////////////////////////////////////////*/
+.quizzResultContainer {
+    overflow: hidden;
+    padding-top: 90px;
+    padding-bottom: 90px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.quizzResultContainer img{
+    vertical-align: middle;
+    display: table-cell;
+    font-family: Poppins, serif;
     border-radius: 4px;
     text-align: center;
-    color: #ADFFDE;
+    padding: 8px;
+    margin: 10px;
+    background-color: #9F77C6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#resultsContainer {
+    display: block;
+}
+.UserNotfoundContainer{
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; 
+    font-size: 22px;
+    margin-bottom: 13%;
+
+    font-family: Poppins, serif;
+    display: absolute;
+    border-radius: 4px;
+    text-align: center;
     padding: 2%;
-    margin-left: 25%;
-    margin-right: 35%;
-    margin-top: 5%;
-    width: 25%;
-    height: 10%;
+    margin-left: 28%;
+    margin-right: 45%;
+    margin-top: 1%;
+    height: 8%;
     background-color: #9F77C6;
     border: 1px solid #7B2CBF;
     box-shadow: 0 0 0 5px #7B2CBF;
@@ -344,53 +385,83 @@ aside {
     color: #FFFFFF;
     display: flex;
     align-items: center; 
+    font-size: 22px;
+    margin-bottom: 13%;
+}
+
+.userContainer {
+    
+    font-family: Poppins, serif;
+    display: absolute;
+    border-radius: 4px;
+    text-align: center;
+    padding: 2%;
+    margin-left: 28%;
+    margin-right: 45%;
+    margin-top: 1%;
+    height: 6%;
+    background-color: #9F77C6;
+    border: 1px solid #7B2CBF;
+    box-shadow: 0 0 0 5px #7B2CBF;
+    outline: 2px solid #ffffff;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; 
+    margin-bottom: 2%;
 }
 
 .userContainer:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
-    color: #73F6D0;
-    background-color: #9059a7;
+    text-decoration-color: #73F6D0;
+    background-color: #ab59ce;
     cursor: pointer;
 
 }
 
 .users-found-profile-image{
-    height: 75%;
-	width: 15%;
-
-	max-width: 75%;
-	max-height: 15%;
-
+    width: 30px; 
+    height: 30px;
     margin-right: 5%; 
     border-radius: 50%; 
     border: 2px solid #000000; 
     flex-shrink: 0; 
+    align-items: left; 
 }
 
 .usernameQuizzezInfo{
     font-family: Poppins, serif;
-    font-size: 300%;
+    font-size: 320%;
     color: #ffffff;
-    margin-left: 17%;
+    margin-left: 40%;
+}
+
+.usernameFollowersInfo{
+    font-family: Poppins, serif;
+    font-size: 60%;
+    color: #ffffff;
+    margin-left: -40%; 
+    margin-top: 5%;
+    display: inline-block;
 }
 
 .usernameInfo{
     font-family: Poppins, serif;
-    font-size: 140%;
+    font-size: 180%;
     color: #ffffff;
-    margin-bottom: 10%;
+    margin-bottom: 13%;
 }
 
 .QuizzesPlayedText{
     font-family: Poppins, serif;
-    font-size: 14px;
+    font-size: 60%;
     color: #ffffff;
     margin-top: 9%;
-    margin-right: 0%;
+    margin-left: 1%;
 }
 
-/* BUSCAR USUARIO */
+
+/* BUSCAR USUARIO ///////////////////////////////////////////////////////
   
 /* Phone */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
