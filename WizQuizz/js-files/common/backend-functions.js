@@ -177,6 +177,8 @@ export async function setQuizzQuestion(id, number, question, imageUrl, answer1, 
 export async function getUser(email){
 	const id = await stringToHash(email);
 	const reference = ref(db, "users/" + id);
+    const snapshot = await get(reference);
+    return snapshot.val();
 	return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
             resolve(snapshot.val());
@@ -213,10 +215,14 @@ export async function getUserByName(name){
     }
 }
 
-export function getQuizz(id) {
+export async function getQuizz(id) {
     const app = initializeApp(firebaseConfig);
     const db = getDatabase();
     const reference = ref(db, 'quizzes/' + id);
+
+    const snapshot = await get(reference);
+
+    return snapshot.val();
 
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
@@ -227,9 +233,12 @@ export function getQuizz(id) {
     });
 }
 
-export function getAllQuizzes(){
+export async function getAllQuizzes(){
     const reference = ref(db, "quizzes");
     let data;
+
+    const snapshot = await get(reference);
+    return await snapshot.val();
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
             data = snapshot.val();
@@ -240,9 +249,12 @@ export function getAllQuizzes(){
     })
 }
 
-export function getAllUsers(){
+export async function getAllUsers(){
     const reference = ref(db, "users");
     let data;
+    const snapshot = await get(reference);
+    return await snapshot.val();
+
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
             data = snapshot.val();
@@ -253,9 +265,12 @@ export function getAllUsers(){
     })
 }
 
-export function getQuizzField(id, field){
+export async function getQuizzField(id, field){
     const reference = ref(db, "quizzes/" + id + "/" + field);
     let data;
+    
+    const snapshot = await get(reference);
+    return await snapshot.val();
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
             data = snapshot.val();
@@ -296,6 +311,13 @@ export async function follow(userMail, userToFollow){
     })
 }
 
+/*
+database.ref('data').once('value', function(snapshot) {
+  var data = snapshot.val();
+  console.log(data.name);
+  console.log(data.age);
+});
+*/
 
 
 // GETTER AND SETTERS EXAMPLES
