@@ -1,4 +1,4 @@
-import { getAllUsers, createUser } from "../common/backend-functions.js";
+import { getUser, createUser } from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -50,18 +50,18 @@ document.addEventListener('DOMContentLoaded', async function() {
             mostrarAviso("The password must be at least 8 characters long, including uppercase, lowercase and numbers");
             return;
         }
-
+        
         if (password === confirmPassword) {
             sessionStorage.setItem("actualUser", username);
             sessionStorage.setItem("userMail", email);
             try {
                 // Obtener todos los usuarios
-                const users = await getAllUsers();
-
+                const users = await getUser(email);
+                
                 // Verificar si el usuario ya existe
-                const existingUser = Object.values(users).find(user => user.email === email);
+                // const existingUser = Object.values(users).find(user => user.email === email);
 
-                if (existingUser) {
+                if (users) {
                     mostrarAviso("Account already registered. Please sign up");
                 } else {
                     // Crear la cuenta

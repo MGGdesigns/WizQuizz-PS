@@ -1,5 +1,3 @@
-import { getAllUsers } from "../common/backend-functions.js"
-
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
