@@ -1,6 +1,5 @@
 import {getAllQuizzes, getUserQuizzes, getQuizz, getUserByName} from "../common/backend-functions.js";
 
-/////////////////////////////
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
@@ -48,6 +47,7 @@ function handleStarRating() {
 }
 */
 ////////////////////////////////////////////////////////////////
+
 
 document.addEventListener('DOMContentLoaded', async function() {
 
