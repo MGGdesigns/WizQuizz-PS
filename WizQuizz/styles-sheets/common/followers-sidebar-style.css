@@ -11,6 +11,10 @@
     
 }
 
+.user-box{
+	margin-left: 100px;
+}
+
 .results {
     position: absolute;
     top: 0;

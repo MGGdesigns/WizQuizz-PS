@@ -64,6 +64,7 @@ document.getElementById("follow-button").addEventListener('click', async functio
     } else {
         console.log("already followed")
     /////MODIFICADO //////
+    }
 });
 
 nickname_display.innerHTML = userToLoad.username;
