@@ -52,7 +52,7 @@ document.getElementById("follow-button").addEventListener('click', async functio
     await follow(actualUser, userToLoad);*/
     
 
-    //////MODIFICADO //////
+    //////MODIFICADO ///////////
     const actualUserMail = sessionStorage.getItem("userMail");
     const actualUser = await getUser(actualUserMail)
     console.log(actualUser)
