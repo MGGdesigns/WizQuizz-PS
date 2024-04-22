@@ -1,23 +1,40 @@
+import { getUser, getUserQuizzes } from "../common/backend-functions.js";
+
 document.addEventListener('DOMContentLoaded', async function() {
-    const followersList = document.getElementById('followers-list');
+    const userToLoad = sessionStorage.getItem("userMail")
+    
+    var followers = []
+    const foundUsers = userToLoad.followers
+    for (const result of foundUsers) {
+        let followedUser=await getUser(result)
+        followers.push(followedUser)
+    };
 
-    const currentUrl = window.location.href.split('=');
-    const userToLoad = await getUserByName(currentUrl[1]);
+    
 
-    try {
-        const user = userToLoad; // Función para obtener los datos del usuario
-        const followers = user.followers;
+    const resultsFoundContainer = document.querySelector(".followers-search-info")
+    if (userToLoad){
+            
+//Si el usuario no existe
+if (followers.length===0 ) {
+    console.log(followers)
+    const userContainer = document.createElement("div");
+        userContainer.classList.add("UserNotfoundContainer");
+        userContainer.textContent = "User not found";
+        resultsContainer.appendChild(userContainer); 
 
-        if (followers.length === 0){
-            const userContainer = document.createElement("div");
-            userContainer.classList.add("UserNotfoundContainer");
-            userContainer.textContent = "No followers found";
-            followersList.appendChild(userContainer); 
-        } else {
-            followers.forEach(result => {
-                const userContainer = document.createElement("div");
+//Preview de usuarios encontrados
+} else {
+    
+    console.log(followers)
+    for (let result of followers){
+        console.log("result")
+       
+        const userContainer = document.createElement("div");
+        
+        
                     userContainer.classList.add("userContainer");
-                
+                    console.log(result)
                     //Imagen de perfil
                     const profileImage = document.createElement("img");
                     profileImage.src = result.imageUrl; 
@@ -26,15 +43,21 @@ document.addEventListener('DOMContentLoaded', async function() {
                     userContainer.appendChild(profileImage);
                     
                     //Numero de usuarios
-                    var userListFollowers = result.followers;
-                    var usernameFollowersNumber = userListFollowers.length;
                     const usernameFollowersInfo = document.createElement("div");
+                    var usernameFollowersNumber = foundUsers.length;
+                    var userListFollowers = result.followers;
+                    
+                    
+                    
+                    if (userListFollowers === '0' || !result.followers){
+                        usernameFollowersNumber = 0 + " Followers";
+                    }
+                    
                     usernameFollowersInfo.textContent = usernameFollowersNumber + " Followers";
                     if (usernameFollowersNumber === 1){
                         usernameFollowersInfo.textContent = usernameFollowersNumber + " Follower";
                     }
 
-                    usernameFollowersInfo.textContent = usernameFollowersNumber;
                     usernameFollowersInfo.className = "usernameFollowersInfo";
                     
 
@@ -65,21 +88,21 @@ document.addEventListener('DOMContentLoaded', async function() {
                     const usernameInfo = document.createElement("div");
                     usernameInfo.textContent = result.username;
                     usernameInfo.className = "usernameInfo";
-
+                    
+                    //Añadimos los elementos
                     userContainer.appendChild(usernameInfo);
-                    userContainer.appendChild(usernameFollowersInfo);
-                    userContainer.appendChild(usernameQuizzezInfo);
+                userContainer.appendChild(usernameQuizzezInfo);
                     userContainer.appendChild(QuizzesPlayedText);
 
                     userContainer.classList.add("userContainer");
-                    userContainer.addEventListener('click', async function() {
-                    window.location.href = "../login/player-profile.html?id=" + result.username;
-                    });
-                    followersList.appendChild(userContainer); 
-                });
-            } 
-    }catch (error) {
-        console.error('Error fetching followers:', error);
-    }
-});
 
+                    //Al hacer click vamos al player profile del usuario seleccionado
+                    userContainer.addEventListener('click', async function() {
+                        window.location.href = "../login/player-profile.html?id=" + result.username;
+                    });
+                    resultsFoundContainer.appendChild(userContainer); 
+
+}
+}
+}
+})

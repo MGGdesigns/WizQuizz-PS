@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     } else {
         console.log("da error al crargar");
     }
-
+    
 /*
 alert("hace algo");
 let userName = sessionStorage.getItem("searchedUsername")
@@ -35,10 +35,12 @@ let userName = sessionStorage.getItem("searchedUsername")
     console.log(userName);
 
 
-sessionStorage.setItem("actualUser", username);
+sessionStorage.setItem("actualUser", username);s
 sessionStorage.setItem("userMail", email);
 */
 
+const mailActualUser = "followTest@gmail.com";
+    const userToLoad = await getUser(mailActualUser)
 
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
@@ -46,7 +48,7 @@ const account_date_display = document.querySelector(".account-creation-date p")
 const quizs_finished_display = document.querySelector(".quizs-finished p")
 const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
-
+/*
 //Recorremos todos los usuarios para seleccionar el de current session
 const users = await getAllUsers();
 let targetUser = sessionStorage.getItem("searchedUsername")
@@ -63,7 +65,7 @@ for (const user of Object.values(users)) {
         sessionStorage.setItem("userName", user.username);
         break;
     }
-}
+}*/
 
 //Dark Mode
 document.getElementById("darkMode").addEventListener('click', function(){
