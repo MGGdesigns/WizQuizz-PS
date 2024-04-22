@@ -22,33 +22,6 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-
-////////////////////////////////////////////////////////////////
-/*
-// Función para manejar la calificación con estrellas
-function handleStarRating() {
-    const stars = document.querySelectorAll('.fa-star');
-
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-            const rating = index + 1;
-            console.log(`Calificación: ${rating}`);
-            stars.forEach((s, i) => {
-                if (i < rating) {
-                    s.classList.remove('disable');
-                    s.classList.add('enable');
-                } else {
-                    s.classList.remove('enable');
-                    s.classList.add('disable');
-                }
-            });
-        });
-    });
-}
-*/
-////////////////////////////////////////////////////////////////
-
-
 document.addEventListener('DOMContentLoaded', async function() {
 
     const header = document.querySelector('header');
@@ -101,16 +74,23 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         try {
             //Buscamos el ususario
-            const user = await getUserByName(input);
+            console.log(input)
             
-
+            try {
+                const user = await getUserByName(input);
+            } catch{
+                const userContainer = document.createElement("div");
+                    userContainer.classList.add("UserNotfoundContainer");
+                    userContainer.textContent = "User not found";
+                    resultsContainer.appendChild(userContainer); 
+            }
+            
             if (user) {
                 foundUsers.push(user);
             }
 
-            console.log(foundUsers)
             //Si el usuario no existe
-            if (foundUsers.length === 0) {
+            if (foundUsers.length === 0 || !user) {
                 const userContainer = document.createElement("div");
                     userContainer.classList.add("UserNotfoundContainer");
                     userContainer.textContent = "User not found";
@@ -170,26 +150,29 @@ document.addEventListener('DOMContentLoaded', async function() {
                     usernameInfo.textContent = result.username;
                     usernameInfo.className = "usernameInfo";
                     
-
+                    //Añadimos los elementos
                     userContainer.appendChild(usernameInfo);
                     userContainer.appendChild(usernameFollowersInfo);
                     userContainer.appendChild(usernameQuizzezInfo);
                     userContainer.appendChild(QuizzesPlayedText);
 
                     userContainer.classList.add("userContainer");
+
+                    //Al hacer click vamos al player profile del usuario seleccionado
                     userContainer.addEventListener('click', async function() {
                         window.location.href = "../login/player-profile.html?id=" + result.username;
                     });
                     resultsContainer.appendChild(userContainer); 
                 });
             }
+
+        //En caso de error se imprime por consola
         } catch (error) {
             console.log(error);
         }
+
         //BUSCAR USUARIO ---------------------------------------------
     });
-
-
 });
 
 //BUSCAR QUIZZ ----------------------------------------------------------------------------------
@@ -204,20 +187,13 @@ searchQuizzButton.addEventListener('click', async function () {
         quizzResultsContainer.classList.add("quizz-selection")
     
         var input = document.getElementById('search-tab-input').value.toString().trim();        
-        /*for (quizz of Object.values(allQuizzes)) {
-            if (quizz.title === input){
-                found.push(quizz)
-            }
-        }
-        console.log(found)
-
-        */
         const quizzes = await getAllQuizzes();
         let found = Object.values(quizzes).find(quizz => quizz.title === input)
         selectedQuizzes.push(found)
-        console.log(found)
 
         selectedQuizzes.forEach(async result => {
+
+            //Contenedor del quizz
             const quizzContainer = document.createElement("div");
             quizzContainer.classList.add('quizz');  
             quizzContainer.style.width = "400px"; 
@@ -225,35 +201,30 @@ searchQuizzButton.addEventListener('click', async function () {
             quizzContainer.style.display = "flex"; 
             quizzContainer.style.flexDirection = "column"; 
         
-            // Añadir título centrado
+            //Titulp
             const quizzTitle = document.createElement("h2");
             quizzTitle.textContent = result.title;
             quizzTitle.style.textAlign = "center"; 
             quizzContainer.appendChild(quizzTitle);
         
-            // Contenedor para el autor
+            //Autor
             const authorContainer = document.createElement("div");
             authorContainer.style.marginBottom = "10px"; 
             authorContainer.style.textAlign = "left"; 
-        
-            // Añadir autor a la izquierda
             const quizzAuthor = document.createElement("p");
             quizzAuthor.textContent = "Author: " + result.author;
             authorContainer.appendChild(quizzAuthor);
             quizzContainer.appendChild(authorContainer);
         
-            // Contenedor para la información (número de preguntas y estrellas)
+            //Numero de preguntas y puntuacion
             const infoContainer = document.createElement("div");
             infoContainer.style.display = "flex"; 
             infoContainer.style.justifyContent = "space-between"; 
             infoContainer.style.alignItems = "center"; 
-        
-            // Añadir tamaño del array de preguntas
             const quizzSize = document.createElement("p");
             quizzSize.textContent = "Number of Questions: " + result.questions.length;
             infoContainer.appendChild(quizzSize);
         
-            // Generar estrellas de calificación
             const starsHTML = Array.from({ length: 5 }, (_, index) => {
                 if (index < Math.round(result.rating)) {
                     return '<i class="fa fa-star enable" aria-hidden="true"></i>';
@@ -269,7 +240,7 @@ searchQuizzButton.addEventListener('click', async function () {
         
             quizzContainer.appendChild(infoContainer);
         
-            // Resto del contenido del cuestionario (imagen, etc.)
+            //Imagen de perfil
             const quizzImage = document.createElement("img");
             quizzImage.src = result.imageUrl;
             quizzImage.alt = "Quizz Image";

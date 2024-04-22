@@ -33,6 +33,7 @@
     align-items: center;
     background-color: #FFFFFF;
     transition: opacity 30s, visibility 2s;
+	
 }
 
 .loader-hidden {
@@ -69,7 +70,6 @@ main {
 	padding-bottom: 12%;
 	margin: 0 20%;
 }
-
 
 .main-user-info{
 	display: flex;
@@ -350,6 +350,10 @@ main {
 
 #image-input-file{
 	display: none;
+}
+
+.sidebar.active + .main-content {
+    margin-left: 500px; 
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

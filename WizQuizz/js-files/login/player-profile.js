@@ -1,4 +1,4 @@
-import {stringToHash, follow, getUserByName, getUserQuizzes, getQuizz} from "../common/backend-functions.js"
+import {stringToHash, follow, getUserByName, getUserQuizzes, getQuizz, getUser} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -45,11 +45,20 @@ if(sessionStorage.getItem("screenMode" === 1)){
 
 //Follow
 document.getElementById("follow-button").addEventListener('click', async function(){
-    alert("nice");
+    /*alert("nice");
     const actualUser = sessionStorage.getItem("userName");
     console.log(actualUser);
     //Falta comprobar si se está o no siguiendo al usuario para que lo siga o lo deje de seguir
-    await follow(actualUser, userToLoad);
+    await follow(actualUser, userToLoad);*/
+    
+
+    //////MODIFICADO //////
+    let followers = []
+    followers.push(userToLoad.email)
+    
+    await follow(actualUser.username,actualUser.email, actualUser.password, actualUser.description, actualUser.imageUrl, actualUser.accountCreationDate, actualUser.quizzesFinished, followers);
+    console.log(followers)
+    /////MODIFICADO //////
 });
 
 nickname_display.innerHTML = userToLoad.username;
@@ -134,7 +143,3 @@ account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDa
     }
     //-----------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
-    const createQuizzButton = document.getElementById("createQuizzButton");
-    createQuizzButton.addEventListener("click", function() {
-        window.location.href = "../../src/create/quizz-create.html";
-    });

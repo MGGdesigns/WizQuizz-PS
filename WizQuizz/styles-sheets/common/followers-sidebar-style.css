@@ -3,17 +3,192 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 200px;
-    background-color: #8D77C6;
+    width: 250px;
+    background-color: #7B2CBF;
     padding: 20px;
-    z-index: -1;
+    border:rgba(0, 0, 0, 0.5)
+
+    
 }
 
-#followers-list {
+.results {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 20px;
+    border:rgba(0, 0, 0, 0.5);
+    z-index: 1;
+
+    
+}
+.followers-list-container{
+    font-size: 100%;
+    color:rgba(0, 0, 0, 0.5)
+}
+
+.followers-search-info  {
+    z-index: 1;
+    margin-top: 80px;
+    color:#ffffff;
+    border-radius: 15px;
+    border: 1px solid black; /* Establece un borde de 1px de ancho y color negro */
+    padding: 10px; /* Agrega espacio interno alrededor del texto */
+    background-color: #8D77C6;
+}
+
+#resultsContainer {
+    z-index: 1;
+    margin-top: 250px;
+    color:#ffffff;
+    border-radius: 15px;
+    border: 1px solid black; /* Establece un borde de 1px de ancho y color negro */
+    padding: 10px; /* Agrega espacio interno alrededor del texto */
+    background-color: #8D77C6;
+    align-items: center;
+}
+.default-message{
+
+}
+#followers-list h2 {
     list-style-type: none;
     padding: 0;
+    
 }
 
 #followers-list li {
     margin-bottom: 10px;
 }
+
+
+/* SE COPIO LO OTRO*/
+.quizzResultContainer {
+    overflow: hidden;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.quizzResultContainer img{
+    vertical-align: middle;
+    display: table-cell;
+    font-family: Poppins, serif;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    margin: 10px;
+    background-color: #9F77C6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#followers-list-container {
+    display: block;
+}
+.UserNotfoundContainer{
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; 
+    font-size: 22px;
+    margin-bottom: 13%;
+
+    font-family: Poppins, serif;
+    display: absolute;
+    border-radius: 4px;
+    text-align: center;
+    padding: 2%;
+    margin-left: 28%;
+    margin-right: 45%;
+    margin-top: 1%;
+    height: 8%;
+    background-color: #9F77C6;
+    border: 1px solid #7B2CBF;
+    box-shadow: 0 0 0 5px #7B2CBF;
+    outline: 2px solid #ffffff;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; 
+    font-size: 22px;
+    margin-bottom: 13%;
+}
+
+.userContainer {
+    
+    font-family: Poppins, serif;
+    display: absolute;
+    border-radius: 4px;
+    text-align: center;
+    padding: 2%;
+    margin-top: 10%;
+    height: 7%;
+    background-color: #9F77C6;
+    border: 1px solid #7B2CBF;
+    box-shadow: 0 0 0 5px #7B2CBF;
+    outline: 2px solid #ffffff;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; 
+    margin-bottom: 2%;
+}
+
+.userContainer:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    text-decoration-color: #73F6D0;
+    background-color: #ab59ce;
+    cursor: pointer;
+
+}
+
+.users-found-profile-image{
+    width: 30px; 
+    height: 30px;
+    margin-right: 3%; 
+    border-radius: 50%; 
+    border: 2px solid #000000; 
+    flex-shrink: 0; 
+    align-items: left; 
+}
+
+.usernameQuizzezInfo{
+    font-family: Poppins, serif;
+    font-size: 240%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.usernameFollowersInfo{
+    font-family: Poppins, serif;
+    font-size: 50%;
+    color: #ffffff;
+    margin-top: 5%;
+    display: inline-block;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.usernameInfo{
+    font-family: Poppins, serif;
+    font-size: 130%;
+    color: #ffffff;
+    margin-bottom: 7%;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.QuizzesPlayedText{
+    font-family: Poppins, serif;
+    font-size: 60%;
+    color: #ffffff;
+    margin-top: 9%;
+    margin-left: 1%;
+}
+
+/**/

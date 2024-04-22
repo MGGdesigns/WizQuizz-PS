@@ -1,4 +1,4 @@
-import {getAllUsers, modifyUserImage, stringToHash} from "../common/backend-functions.js"
+import {getAllUsers, getUser, modifyUserImage, stringToHash} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -32,13 +32,12 @@ let screenMode = sessionStorage.getItem("screenMode") | 0;
 //Recorremos todos los usuarios para seleccionar el de current session
 const users = await getAllUsers();
 let targetUser = sessionStorage.getItem("userMail");
-
 //------------------------------------------------------------------
-
+/*
 if (sessionStorage.getItem("foundUserMail")!=null){
     targetUser = sessionStorage.getItem("foundUserMail");
     console.log(targetUser);
-}
+}*/
 //-------------------------------------------------------------------
 
 

@@ -362,6 +362,10 @@ aside {
 #resultsContainer {
     display: block;
 }
+.hola{
+    font-size: 60px;
+    color:brown;
+}
 .UserNotfoundContainer{
     color: #FFFFFF;
     display: flex;
