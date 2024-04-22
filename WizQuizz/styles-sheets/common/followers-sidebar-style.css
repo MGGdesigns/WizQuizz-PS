@@ -52,6 +52,11 @@
     background-color: #8D77C6;
     align-items: center;
 }
+
+.resultsContainer p{
+    font-family: 'Poppins';
+}
+
 .default-message{
 
 }
