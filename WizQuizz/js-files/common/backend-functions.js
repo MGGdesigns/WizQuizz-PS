@@ -65,7 +65,7 @@ async function generateId() {
     }
 }
 
-export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
     const reference = ref(db, "users/" + stringToHash(email));
     const refUsername = ref(db, "username-user/" + stringToHash(username));
     await set(refUsername, {
@@ -79,11 +79,12 @@ export async function createUser(username, email, password, description, imageUr
         description: description,
         imageUrl: imageUrl,
         accountCreationDate: accountCreationDate,
-        quizzesFinished: quizzesFinished
+        quizzesFinished: quizzesFinished,
+        following: following
     });
 }
 
-export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished){
+export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
     //El id tiene que ser esto stringToHash(email)
     set(ref(db, "users/" + id), {
 		username: username,
@@ -92,7 +93,8 @@ export function modifyUserImage(id, username, email, password, description, imag
         description: description,
         imageUrl: imageUrl,
 		accountCreationDate: accountCreationDate,
-		quizzesFinished: quizzesFinished
+		quizzesFinished: quizzesFinished,
+        following: following
     });
 }
 
@@ -302,14 +304,51 @@ export function updateRating(id, rating, timesReviewed) {
     });
 }
 
-export async function follow(userMail, userToFollow){
-    const user = stringToHash(userMail);
+export async function follow(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
+    
+    /*const user = stringToHash(userMail);
     const reference = ref(db, "users/" + user + "/following/" + stringToHash(userToFollow.email));
 
     set(reference, {
         dummy:"empty"
-    })
+    })*/
+    
+    const user = stringToHash(userMail);
+    set(ref(db, "users/" + user), {
+		username: username,
+        email: email,
+		password: password,
+        description: description,
+        imageUrl: imageUrl,
+		accountCreationDate: accountCreationDate,
+		quizzesFinished: quizzesFinished,
+        following: following
+    });
+
+
 }
+/*
+export async function getFollowing(userMail){
+    const user = stringToHash(userMail);
+	const reference = ref(db, "users/" + user + "/following/");
+    let data;
+    const snapshot = await get(reference);
+    const r = await snapshot.val();
+    console.log(r)
+    return r
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            data = snapshot.val();
+            console.log(data)
+            resolve(data);
+        }, (error) => {
+            reject(error);
+        })
+    })
+}*/
+
+
 
 /*
 database.ref('data').once('value', function(snapshot) {

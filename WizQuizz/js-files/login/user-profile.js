@@ -1,4 +1,4 @@
-import {getAllUsers, modifyUserImage, stringToHash} from "../common/backend-functions.js"
+import {getAllUsers, getUser, modifyUserImage, stringToHash} from "../common/backend-functions.js"
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -30,18 +30,20 @@ const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
-const users = await getAllUsers();
-let targetUser = sessionStorage.getItem("userMail");
-
+//const users = await getAllUsers();
+//let targetUser = sessionStorage.getItem("userMail");
+let targetUser = getUser("pepe@gmail.com")
+console.log(targetUser.following)
+const userToLoad = targetUser
 //------------------------------------------------------------------
-
+/*
 if (sessionStorage.getItem("foundUserMail")!=null){
     targetUser = sessionStorage.getItem("foundUserMail");
     console.log(targetUser);
-}
+}*/
 //-------------------------------------------------------------------
 
-
+/*
 let userToLoad;
 for (const user of Object.values(users)) {
     if (user.email === targetUser) {
@@ -52,7 +54,7 @@ for (const user of Object.values(users)) {
         break;
     }
 }
-
+*/
 document.getElementById("circleMode").addEventListener('click', function(){
     if(screenMode === 0){
         screenMode = 1;
