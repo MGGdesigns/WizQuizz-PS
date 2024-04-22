@@ -68,8 +68,7 @@ document.getElementById("follow-button").addEventListener('click', async functio
     
     
     /////MODIFICADO //////
-    }
-});
+    });
 
 nickname_display.innerHTML = userToLoad.username;
 user_image_display.src = userToLoad.imageUrl;
