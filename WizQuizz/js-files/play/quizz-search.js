@@ -108,10 +108,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                     profileImage.alt = "Profile Image";
                     profileImage.classList.add("users-found-profile-image");
                     userContainer.appendChild(profileImage);
-                    
+                    /*
                     //Numero de usuarios
-                    var userListFollowers = result.followers;
-                    var usernameFollowersNumber = foundUsers.length;
+                    var userListFollowers = result.following;
+                    console.log(userListFollowers)
+                    var usernameFollowersNumber = userListFollowers.length;
                     const usernameFollowersInfo = document.createElement("div");
                     usernameFollowersInfo.textContent = foundUsers + " Followers";
                     if (usernameFollowersNumber === 1){
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                     usernameFollowersInfo.textContent = foundUsers;
                     usernameFollowersInfo.className = "usernameFollowersInfo";
-                    
+                    */
 
                     //Quizzes del usuario
                     var quizzByUser = await getUserQuizzes(result.username);
@@ -143,7 +144,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     if (usernameQuizzezNumber === 1){
                         QuizzesPlayedText.textContent = "Quizz";
                     }
-                    usernameFollowersInfo.textContent = usernameFollowersNumber;
 
                     //Nombre de usuario
                     const usernameInfo = document.createElement("div");
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     
                     //Añadimos los elementos
                     userContainer.appendChild(usernameInfo);
-                    userContainer.appendChild(usernameFollowersInfo);
+                    //userContainer.appendChild(usernameFollowersInfo);
                     userContainer.appendChild(usernameQuizzezInfo);
                     userContainer.appendChild(QuizzesPlayedText);
 
