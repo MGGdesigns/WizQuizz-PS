@@ -124,7 +124,7 @@ function renderDescriptionContent(content, containerSelector) {
             }
         }).join('');
         aux_section.innerHTML = `<h1>${content.title}</h1>
-                                <h2>${ratingStarsHTML}</h2>
+                                <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
                                 <p>${content.description}</p>`;
         container.appendChild(section);
         container.appendChild(aux_section);

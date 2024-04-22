@@ -114,6 +114,10 @@ main {
     text-shadow: 0 0 2px #000000;
 }
 
+.quizz-description h2 {
+    color: #2c2c2f;
+}
+
 .quizz-start-button {
     font-family: "Arial Black", sans-serif;
     width: auto;
