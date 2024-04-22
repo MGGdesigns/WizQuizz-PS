@@ -2,10 +2,10 @@ import { getUser, getUserQuizzes } from "../common/backend-functions.js";
 
 document.addEventListener('DOMContentLoaded', async function() {
     const userToLoadMail = sessionStorage.getItem("userMail")
-    const userToLoad = getUser(userToLoadMail)
-    var followers = []
+    const userToLoad = await getUser(userToLoadMail)
     const foundUsers = userToLoad.following
-    console.log(foundUsers)
+    console.log(userToLoad)
+    let followers = []
     if (foundUsers){
        for (const result of foundUsers) {
         let followedUser=await getUser(result)

@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         try {
             //Buscamos el ususario
             console.log(input)
-            
+            let user
             try {
-                const user = await getUserByName(input);
+                 user = await getUserByName(input);
             } catch{
                 const userContainer = document.createElement("div");
                     userContainer.classList.add("UserNotfoundContainer");
