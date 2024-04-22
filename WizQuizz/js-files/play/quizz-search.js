@@ -98,13 +98,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             
             //Preview de usuarios encontrados
             } else {
-                foundUsers.forEach(async result => {
+                for (const result of foundUsers) {
                     const userContainer = document.createElement("div");
                     userContainer.classList.add("userContainer");
-                
+
                     //Imagen de perfil
                     const profileImage = document.createElement("img");
-                    profileImage.src = result.imageUrl; 
+                    profileImage.src = result.imageUrl;
                     profileImage.alt = "Profile Image";
                     profileImage.classList.add("users-found-profile-image");
                     userContainer.appendChild(profileImage);
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     QuizzesPlayedText.className = "QuizzesPlayedText";
                     usernameQuizzezInfo.textContent = usernameQuizzezNumber;
                     QuizzesPlayedText.textContent = "Quizzes";
-                    
+
                     if (usernameQuizzezNumber === 1){
                         QuizzesPlayedText.textContent = "Quizz";
                     }
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     const usernameInfo = document.createElement("div");
                     usernameInfo.textContent = result.username;
                     usernameInfo.className = "usernameInfo";
-                    
+
                     //Añadimos los elementos
                     userContainer.appendChild(usernameInfo);
                     //userContainer.appendChild(usernameFollowersInfo);
@@ -162,8 +162,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                     userContainer.addEventListener('click', async function() {
                         window.location.href = "../login/player-profile.html?id=" + result.username;
                     });
-                    resultsContainer.appendChild(userContainer); 
-                });
+                    resultsContainer.appendChild(userContainer);
+                }
             }
 
         //En caso de error se imprime por consola
@@ -191,40 +191,40 @@ searchQuizzButton.addEventListener('click', async function () {
         let found = Object.values(quizzes).find(quizz => quizz.title === input)
         selectedQuizzes.push(found)
 
-        selectedQuizzes.forEach(async result => {
+        for (const result of selectedQuizzes) {
 
             //Contenedor del quizz
             const quizzContainer = document.createElement("div");
-            quizzContainer.classList.add('quizz');  
-            quizzContainer.style.width = "400px"; 
+            quizzContainer.classList.add('quizz');
+            quizzContainer.style.width = "400px";
             quizzContainer.style.height = "380px";
-            quizzContainer.style.display = "flex"; 
-            quizzContainer.style.flexDirection = "column"; 
-        
+            quizzContainer.style.display = "flex";
+            quizzContainer.style.flexDirection = "column";
+
             //Titulp
             const quizzTitle = document.createElement("h2");
             quizzTitle.textContent = result.title;
-            quizzTitle.style.textAlign = "center"; 
+            quizzTitle.style.textAlign = "center";
             quizzContainer.appendChild(quizzTitle);
-        
+
             //Autor
             const authorContainer = document.createElement("div");
-            authorContainer.style.marginBottom = "10px"; 
-            authorContainer.style.textAlign = "left"; 
+            authorContainer.style.marginBottom = "10px";
+            authorContainer.style.textAlign = "left";
             const quizzAuthor = document.createElement("p");
             quizzAuthor.textContent = "Author: " + result.author;
             authorContainer.appendChild(quizzAuthor);
             quizzContainer.appendChild(authorContainer);
-        
+
             //Numero de preguntas y puntuacion
             const infoContainer = document.createElement("div");
-            infoContainer.style.display = "flex"; 
-            infoContainer.style.justifyContent = "space-between"; 
-            infoContainer.style.alignItems = "center"; 
+            infoContainer.style.display = "flex";
+            infoContainer.style.justifyContent = "space-between";
+            infoContainer.style.alignItems = "center";
             const quizzSize = document.createElement("p");
             quizzSize.textContent = "Number of Questions: " + result.questions.length;
             infoContainer.appendChild(quizzSize);
-        
+
             const starsHTML = Array.from({ length: 5 }, (_, index) => {
                 if (index < Math.round(result.rating)) {
                     return '<i class="fa fa-star enable" aria-hidden="true"></i>';
@@ -232,25 +232,25 @@ searchQuizzButton.addEventListener('click', async function () {
                     return '<i class="fa fa-star disable" aria-hidden="true"></i>';
                 }
             }).join('');
-        
+
             const ratingStars = document.createElement("div");
             ratingStars.classList.add("rating-stars");
             ratingStars.innerHTML = starsHTML;
             infoContainer.appendChild(ratingStars);
-        
+
             quizzContainer.appendChild(infoContainer);
-        
+
             //Imagen de perfil
             const quizzImage = document.createElement("img");
             quizzImage.src = result.imageUrl;
             quizzImage.alt = "Quizz Image";
-            quizzImage.style.width = "98%"; 
+            quizzImage.style.width = "98%";
             quizzImage.style.height = "70%";
-            quizzImage.style.marginBottom = "10px"; 
+            quizzImage.style.marginBottom = "10px";
             quizzImage.style.marginRight = "10px";
             quizzImage.style.marginTop = "10px";
             quizzContainer.appendChild(quizzImage);
-        
+
             const quizzLink = document.createElement("a");
 
             const ident = quizzData.find(item => item.quizzname === result.title)?.id;
@@ -258,8 +258,8 @@ searchQuizzButton.addEventListener('click', async function () {
             quizzLink.appendChild(quizzContainer);
             quizzResultsContainer.appendChild(quizzLink);
 
-        });
-    });
+        }
+});
 
     //BUSCAR QUIZZ ----------------------------------------------------------
 async function loadTemplate(url) {
@@ -302,6 +302,7 @@ function renderContent(content, containerSelector) {
                 quizzContainer.innerHTML = '';
                 let quizz;
                 let countFilteredQuizz = 1;
+                let allQuizzes = await getAllQuizzes();
                 for (quizz of Object.values(allQuizzes)) {
                     if (quizz.category === item.text) {
                         quizzId = countFilteredQuizz;
