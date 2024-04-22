@@ -224,7 +224,7 @@ export async function getQuizz(id) {
 
     const snapshot = await get(reference);
 
-    return snapshot.val();
+    return await snapshot.val();
 
     return new Promise((resolve, reject) => {
         onValue(reference, (snapshot) => {
