@@ -74,14 +74,23 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         try {
             //Buscamos el ususario
-            const user = await getUserByName(input);
+            console.log(input)
+            
+            try {
+                const user = await getUserByName(input);
+            } catch{
+                const userContainer = document.createElement("div");
+                    userContainer.classList.add("UserNotfoundContainer");
+                    userContainer.textContent = "User not found";
+                    resultsContainer.appendChild(userContainer); 
+            }
             
             if (user) {
                 foundUsers.push(user);
             }
 
             //Si el usuario no existe
-            if (foundUsers.length === 0) {
+            if (foundUsers.length === 0 || !user) {
                 const userContainer = document.createElement("div");
                     userContainer.classList.add("UserNotfoundContainer");
                     userContainer.textContent = "User not found";
@@ -253,7 +262,6 @@ searchQuizzButton.addEventListener('click', async function () {
     });
 
     //BUSCAR QUIZZ ----------------------------------------------------------
-    
 async function loadTemplate(url) {
     const response = await fetch(url);
     if (!response.ok) {

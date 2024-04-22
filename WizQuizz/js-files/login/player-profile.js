@@ -45,19 +45,20 @@ if(sessionStorage.getItem("screenMode" === 1)){
 
 //Follow
 document.getElementById("follow-button").addEventListener('click', async function(){
-    alert("nice");
-    /**CAMBIADA//////////////////////////////////////////////// */
-    const actualUser = await getUserByName("Óscar");
+    /*alert("nice");
+    const actualUser = sessionStorage.getItem("userName");
     console.log(actualUser);
     //Falta comprobar si se está o no siguiendo al usuario para que lo siga o lo deje de seguir
-    //await follow(actualUser, userToLoad);
+    await follow(actualUser, userToLoad);*/
     
 
-    //////77
-    const followers = actualUser.following.add(userToLoad.email)
-    //await follow(actualUser.username,actualUser.email, actualUser.password, actualUser.description, actualUser.imageUrl, actualUser.accountCreationDate, actualUser.quizzesFinished, followers);
+    //////MODIFICADO //////
+    let followers = []
+    followers.push(userToLoad.email)
+    
+    await follow(actualUser.username,actualUser.email, actualUser.password, actualUser.description, actualUser.imageUrl, actualUser.accountCreationDate, actualUser.quizzesFinished, followers);
     console.log(followers)
-    /////
+    /////MODIFICADO //////
 });
 
 nickname_display.innerHTML = userToLoad.username;

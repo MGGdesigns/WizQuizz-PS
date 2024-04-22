@@ -1,14 +1,18 @@
 import { getUser, getUserQuizzes } from "../common/backend-functions.js";
 
 document.addEventListener('DOMContentLoaded', async function() {
-    const userToLoad = sessionStorage.getItem("userMail")
-    
+    const userToLoadMail = sessionStorage.getItem("userMail")
+    const userToLoad = getUser(userToLoadMail)
     var followers = []
-    const foundUsers = userToLoad.followers
-    for (const result of foundUsers) {
+    const foundUsers = userToLoad.following
+    console.log(foundUsers)
+    if (foundUsers){
+       for (const result of foundUsers) {
         let followedUser=await getUser(result)
         followers.push(followedUser)
-    };
+    }; 
+    }
+    
 
     
 
@@ -22,6 +26,7 @@ if (followers.length===0 ) {
         userContainer.classList.add("UserNotfoundContainer");
         userContainer.textContent = "User not found";
         resultsContainer.appendChild(userContainer); 
+        
 
 //Preview de usuarios encontrados
 } else {

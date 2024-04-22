@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 200px;
+    width: 250px;
     background-color: #7B2CBF;
     padding: 20px;
     border:rgba(0, 0, 0, 0.5)
@@ -40,12 +40,13 @@
 
 #resultsContainer {
     z-index: 1;
-    margin-top: 80px;
+    margin-top: 250px;
     color:#ffffff;
     border-radius: 15px;
     border: 1px solid black; /* Establece un borde de 1px de ancho y color negro */
     padding: 10px; /* Agrega espacio interno alrededor del texto */
     background-color: #8D77C6;
+    align-items: center;
 }
 .default-message{
 
@@ -145,7 +146,7 @@
 .users-found-profile-image{
     width: 30px; 
     height: 30px;
-    margin-right: 5%; 
+    margin-right: 3%; 
     border-radius: 50%; 
     border: 2px solid #000000; 
     flex-shrink: 0; 
@@ -154,26 +155,32 @@
 
 .usernameQuizzezInfo{
     font-family: Poppins, serif;
-    font-size: 320%;
+    font-size: 240%;
     color: #ffffff;
-    margin-left: 40%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
 .usernameFollowersInfo{
     font-family: Poppins, serif;
-    font-size: 60%;
+    font-size: 50%;
     color: #ffffff;
-    margin-left: -40%; 
     margin-top: 5%;
     display: inline-block;
+    margin-bottom: auto;
+    margin-left: auto;
 }
 
 .usernameInfo{
     font-family: Poppins, serif;
-    font-size: 180%;
+    font-size: 130%;
     color: #ffffff;
-    margin-bottom: 13%;
-    max-width:150px;
+    margin-bottom: 7%;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .QuizzesPlayedText{

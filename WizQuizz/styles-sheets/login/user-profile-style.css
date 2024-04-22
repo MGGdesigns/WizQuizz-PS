@@ -69,13 +69,7 @@ main {
 	padding-top: 12%;
 	padding-bottom: 12%;
 	margin: 0 20%;
-	margin-left: 500px;
 }
-
-.sidebar.active + .main {
-    margin-left: 500px; /* Ajustar el margen izquierdo cuando el sidebar esté activo */
-}
-
 
 .main-user-info{
 	display: flex;

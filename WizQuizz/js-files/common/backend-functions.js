@@ -313,7 +313,7 @@ export async function follow(username, email, password, description, imageUrl, a
         dummy:"empty"
     })*/
     
-    const user = stringToHash(userMail);
+    const user = stringToHash(email);
     set(ref(db, "users/" + user), {
 		username: username,
         email: email,

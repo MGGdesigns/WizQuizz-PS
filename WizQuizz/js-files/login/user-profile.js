@@ -30,11 +30,8 @@ const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
-//const users = await getAllUsers();
-//let targetUser = sessionStorage.getItem("userMail");
-let targetUser = getUser("pepe@gmail.com")
-console.log(targetUser.following)
-const userToLoad = targetUser
+const users = await getAllUsers();
+let targetUser = sessionStorage.getItem("userMail");
 //------------------------------------------------------------------
 /*
 if (sessionStorage.getItem("foundUserMail")!=null){
@@ -43,7 +40,7 @@ if (sessionStorage.getItem("foundUserMail")!=null){
 }*/
 //-------------------------------------------------------------------
 
-/*
+
 let userToLoad;
 for (const user of Object.values(users)) {
     if (user.email === targetUser) {
@@ -54,7 +51,7 @@ for (const user of Object.values(users)) {
         break;
     }
 }
-*/
+
 document.getElementById("circleMode").addEventListener('click', function(){
     if(screenMode === 0){
         screenMode = 1;
