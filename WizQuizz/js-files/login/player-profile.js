@@ -53,11 +53,16 @@ document.getElementById("follow-button").addEventListener('click', async functio
     
 
     //////MODIFICADO //////
-    let followers = []
-    followers.push(userToLoad.email)
-    
-    await follow(actualUser.username,actualUser.email, actualUser.password, actualUser.description, actualUser.imageUrl, actualUser.accountCreationDate, actualUser.quizzesFinished, followers);
-    console.log(followers)
+    const actualUserMail = sessionStorage.getItem("userMail");
+    const actualUser = await getUser(actualUserMail)
+    let followers = actualUser.following
+
+    if (!followers.includes(userToLoad.email)){
+        followers.push(userToLoad.email)
+        await follow(actualUser.username,actualUser.email, actualUser.password, actualUser.description, actualUser.imageUrl, actualUser.accountCreationDate, actualUser.quizzesFinished, followers);
+        console.log(followers)
+    } else {
+        console.log("already followed")
     /////MODIFICADO //////
 });
 
