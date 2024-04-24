@@ -36,12 +36,21 @@ document.addEventListener('DOMContentLoaded', async function() {
             //BOTON COPIAR LINK--------------------------------------------
     
             const copyLinkButton = document.getElementById('copyLinkButton');
+            const copyMessage = document.getElementById('copyMessage');
+            
             copyLinkButton.addEventListener('click', async function () {
                 try {
                     const currentUrl = window.location.href;
                     await navigator.clipboard.writeText(currentUrl);
                     console.log("Enlace copiado correctamente:", currentUrl);
-                    // Puedes mostrar un mensaje de éxito o hacer otras acciones aquí
+                    
+                    // Mostrar el mensaje de "Link Copiado"
+                    copyMessage.style.display = 'block';
+                    
+                    // Ocultar el mensaje después de 2 segundos (2000 milisegundos)
+                    setTimeout(() => {
+                        copyMessage.style.display = 'none';
+                    }, 2000);
                 } catch (error) {
                     console.error("Error al copiar el enlace:", error);
                     // Puedes manejar el error mostrando un mensaje de error o haciendo otras acciones aquí
@@ -145,6 +154,7 @@ function renderDescriptionContent(content, containerSelector) {
                                 <div class="lol">
                                     <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
                                     <button id="copyLinkButton">Copy Link</button>
+                                    <div id="copyMessage" class="button" style="display: none;">Link Copiado</div>
                                 </div>
                                 <p>${content.description}</p>`;
         ////////////////////

@@ -143,7 +143,7 @@ main {
     flex: max-content;
 }
 
-.lol {
+.quizz-upper-info {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -154,14 +154,25 @@ main {
     border: none;
     color: grey; 
     cursor: pointer;
-    padding: 10px; 
     flex: max-content;
-    margin-left: 0px;
-    text-align:end;
+    text-align: end;
 }
 
 .quizz-description button:hover{
     text-decoration: underline;
+}
+
+.quizz-description .copyMessage {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: grey; 
+    font-style: italic;
+    cursor: pointer;
+    margin-left: 0px;
+    text-align: end;
+    font-size: 12px;
+    margin-left: 5px;
 }
 
 .quizz-description h1 {
