@@ -42,18 +42,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                 try {
                     const currentUrl = window.location.href;
                     await navigator.clipboard.writeText(currentUrl);
-                    console.log("Enlace copiado correctamente:", currentUrl);
+                    console.log("Se copia: ", currentUrl);
                     
-                    // Mostrar el mensaje de "Link Copiado"
                     copyMessage.style.display = 'block';
                     
-                    // Ocultar el mensaje después de 2 segundos (2000 milisegundos)
-                    setTimeout(() => {
-                        copyMessage.style.display = 'none';
-                    }, 2000);
+                    setTimeout(() => {copyMessage.style.display = 'none';}, 1000);
                 } catch (error) {
                     console.error("Error al copiar el enlace:", error);
-                    // Puedes manejar el error mostrando un mensaje de error o haciendo otras acciones aquí
                 }
             });
             //BOTON COPIAR LINK--------------------------------------------
@@ -149,15 +144,13 @@ function renderDescriptionContent(content, containerSelector) {
             }
         }).join('');
 
-        //////////////////// AÑADI LA VISUALIZACIÓN DEL BOTON PARA HACER COPY LINK 
-        aux_section.innerHTML = `<h1>${content.title}</h1>
-                                <div class="lol">
+      aux_section.innerHTML = `<h1>${content.title}</h1>
+                                <div class="quizz-lower-info">
                                     <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
                                     <button id="copyLinkButton">Copy Link</button>
-                                    <div id="copyMessage" class="button" style="display: none;">Link Copiado</div>
+                                    <div id="copyMessage" class="copyMessage" style="display: none;">link coppied</div>
                                 </div>
                                 <p>${content.description}</p>`;
-        ////////////////////
         container.appendChild(section);
         container.appendChild(aux_section);
     }
