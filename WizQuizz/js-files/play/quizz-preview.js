@@ -32,6 +32,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         renderQuestionsContent(data.questions, '.quizz-questions');
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
+    
+            //BOTON COPIAR LINK--------------------------------------------
+    
+            const copyLinkButton = document.getElementById('copyLinkButton');
+            copyLinkButton.addEventListener('click', async function () {
+                try {
+                    const currentUrl = window.location.href;
+                    await navigator.clipboard.writeText(currentUrl);
+                    console.log("Enlace copiado correctamente:", currentUrl);
+                    // Puedes mostrar un mensaje de éxito o hacer otras acciones aquí
+                } catch (error) {
+                    console.error("Error al copiar el enlace:", error);
+                    // Puedes manejar el error mostrando un mensaje de error o haciendo otras acciones aquí
+                }
+            });
+            //BOTON COPIAR LINK--------------------------------------------
     });
 
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
@@ -124,11 +140,11 @@ function renderDescriptionContent(content, containerSelector) {
             }
         }).join('');
 
-        ////////////////////
+        //////////////////// AÑADI LA VISUALIZACIÓN DEL BOTON PARA HACER COPY LINK 
         aux_section.innerHTML = `<h1>${content.title}</h1>
                                 <div class="lol">
                                     <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
-                                    <button class="button">Copy Link</button>
+                                    <button id="copyLinkButton">Copy Link</button>
                                 </div>
                                 <p>${content.description}</p>`;
         ////////////////////
@@ -157,3 +173,4 @@ if(sessionStorage.getItem("screenMode") === "1"){
     console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
 }
+
