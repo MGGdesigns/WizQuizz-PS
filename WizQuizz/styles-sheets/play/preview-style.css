@@ -143,6 +143,27 @@ main {
     flex: max-content;
 }
 
+.lol {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.quizz-description button {
+    background-color: transparent;
+    border: none;
+    color: grey; 
+    cursor: pointer;
+    padding: 10px; 
+    flex: max-content;
+    margin-left: 0px;
+    text-align:end;
+}
+
+.quizz-description button:hover{
+    text-decoration: underline;
+}
+
 .quizz-description h1 {
     font-family: 'Harry Potter', sans-serif;
     color: #73F6D0;

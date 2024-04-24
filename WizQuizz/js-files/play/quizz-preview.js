@@ -123,9 +123,15 @@ function renderDescriptionContent(content, containerSelector) {
                 return '<i class="fa fa-star disable" aria-hidden="true"></i>';
             }
         }).join('');
+
+        ////////////////////
         aux_section.innerHTML = `<h1>${content.title}</h1>
-                                <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
+                                <div class="lol">
+                                    <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
+                                    <button class="button">Copy Link</button>
+                                </div>
                                 <p>${content.description}</p>`;
+        ////////////////////
         container.appendChild(section);
         container.appendChild(aux_section);
     }
