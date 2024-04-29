@@ -22,18 +22,23 @@
             <main>
                 <button class="clear-filters hidden"><span><img src="../../website-images/filters/clear.png" alt="NavIcon" width="64" height="64"></span>
                     <span>Clear Filters</span></button>
-                    
 
 
-                    <div class="input-group">
+                <div class="top-quizzes">
+                    <h2 class="top hidden">Top Quizzes</h2>
+                    <div class="top-quizz-wrapper"></div>
+                </div>
+                <div class="input-group">
                         <input type="text" id="search-tab-input" placeholder="Type here...">
                         <button class="search-tab-button" id="search-tab-button" type="button">User</button>
-                        <button class="search-quizz-button" id="search-quizz-button" type="button">Quizzes</button>  
-                        
+                        <button class="search-quizz-button" id="search-quizz-button" type="button">Quizzes</button>
                     </div> 
                     <div id="resultsContainer"></div>
                     <div id="quizzResultsContainer"></div>
-                    <section class="quizz-selection"></section>
+                    <section class="quizz-selection">
+                        <h2 class="community hidden">Community Quizzes</h2>
+                        <div class="quizz-wrapper"></div>
+                    </section>
 
             </main>
         </div>
