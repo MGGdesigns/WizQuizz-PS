@@ -37,14 +37,16 @@ document.addEventListener('DOMContentLoaded', async function() {
         mobileMenu.classList.toggle('show-menu');
     });
 
-    const [filtersData, quizzData] = await Promise.all([
+    const [filtersData] = await Promise.all([
         loadJSON('../../data/play/filters_content.json'),
-        loadJSON('../../data/play/quizz_content.json')
     ]);
 
     renderContent(filtersData.filters, 'aside');
     getAllQuizzes().then((data) => {
-        renderContent(data, '.quizz-selection');
+        renderContent(data, '.quizz-wrapper');
+        const sortedQuizzes = Object.values(data).sort((a, b) => b.rating - a.rating);
+        const topQuizzes = sortedQuizzes.slice(0, 3);
+        renderTopQuizzes(topQuizzes, '.top-quizz-wrapper');
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
     });
@@ -184,7 +186,7 @@ searchQuizzButton.addEventListener('click', async function () {
 
         const quizzResultsContainer = document.getElementById("quizzResultsContainer");
         quizzResultsContainer.innerHTML="";
-        quizzResultsContainer.classList.add("quizz-selection")
+        quizzResultsContainer.classList.add("quizz-wrapper")
     
         var input = document.getElementById('search-tab-input').value.toString().trim();        
         const quizzes = await getAllQuizzes();
@@ -298,7 +300,7 @@ function renderContent(content, containerSelector) {
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
                          <span>${item.text}</span>`;
             div.addEventListener('click', async () => {
-                const quizzContainer = document.querySelector('.quizz-selection');
+                const quizzContainer = document.querySelector('.quizz-wrapper');
                 quizzContainer.innerHTML = '';
                 let quizz;
                 let countFilteredQuizz = 1;
@@ -306,7 +308,7 @@ function renderContent(content, containerSelector) {
                 for (quizz of Object.values(allQuizzes)) {
                     if (quizz.category === item.text) {
                         quizzId = countFilteredQuizz;
-                        renderQuizz(quizz, '.quizz-selection');
+                        renderQuizz(quizz, '.quizz-wrapper');
                     }
                     
                     countFilteredQuizz++;
@@ -321,7 +323,7 @@ function renderContent(content, containerSelector) {
                 const hiddenElements = document.querySelectorAll('.hidden');
                 hiddenElements.forEach((el) => observer.observe(el));
             });
-        } else if (containerSelector === '.quizz-selection') {
+        } else if (containerSelector === '.quizz-wrapper') {
             div.classList.add('quizz');
             div.classList.add('hidden');
             div.innerHTML = `<a href="quizz-preview.html?id=${quizzIds[countQuizz]}">
@@ -338,20 +340,37 @@ function renderContent(content, containerSelector) {
 function renderQuizz(content, containerSelector) {
     const container = document.querySelector(containerSelector);
     const div = document.createElement('div');
-    if (containerSelector === '.quizz-selection') {
+    if (containerSelector === '.quizz-wrapper') {
         div.classList.add('quizz');
         div.classList.add('hidden');
         div.innerHTML = `<a href="quizz-preview.html?id=${quizzId}">
                         <img src="${content.imageUrl}" width="400" height="225" class="image">
                         <h2>${content.title}</h2>
                         </a>`;
-    console.log(content.title)
-    console.log(quizzId)
-    console.log("ahora")
     quizzData.push({quizzname: content.title, id: quizzId})
     }
-    
     container.appendChild(div);
+}
+
+async function renderTopQuizzes(content, containerSelector) {
+    let countTop = 0;
+    const container = document.querySelector(containerSelector);
+    const topData = await loadJSON('../../data/play/podium.json');
+    content.forEach((quizz) => {
+        const div = document.createElement('div');
+        const quizzDataIndex = quizzData.findIndex(item => item.quizzname === quizz.title);
+        const quizzId = quizzDataIndex !== -1 ? quizzData[quizzDataIndex].id : null;
+        if (quizzId) {
+            div.classList.add('top-quizz');
+            div.innerHTML = `<img class="medal" src="${topData.top[countTop].icon}" width="32" height="32" class="image">
+                            <a href="quizz-preview.html?id=${quizzId}">
+                            <img src="${quizz.imageUrl}" width="256" height="144" class="image">
+                            <h2>${quizz.title}</h2>
+                            </a>`;
+            countTop++;
+            container.appendChild(div);
+        }
+    });
 }
 
 const clearFilters = document.querySelector('.clear-filters');
@@ -362,9 +381,9 @@ clearFilters.addEventListener('click', async async => {
         selected[0].classList.remove('selected');
     }
     const quizzes = await getAllQuizzes();
-    const quizzContainer = document.querySelector('.quizz-selection');
+    const quizzContainer = document.querySelector('.quizz-wrapper');
     quizzContainer.innerHTML = '';
-    renderContent(quizzes, '.quizz-selection');
+    renderContent(quizzes, '.quizz-wrapper');
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
 });

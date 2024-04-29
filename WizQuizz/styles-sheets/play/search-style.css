@@ -186,17 +186,37 @@ aside {
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.quizz-selection {
+.quizz-wrapper {
     overflow: hidden;
-    padding-top: 90px;
+    padding-top: 20px;
     padding-bottom: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: auto;
+    flex-direction: row;
 }
 
-.quizz-selection a {
+.quizz-wrapper a {
+    text-decoration: none;
+}
+
+.top-quizz-wrapper {
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    flex-direction: row;
+}
+
+.top-quizz-wrapper a {
+    text-decoration: none;
+}
+
+.top-quizzes a {
     text-decoration: none;
 }
 
@@ -209,6 +229,7 @@ aside {
     background-color: #9F77C6;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: block;
 }
 
 .quizz img {
@@ -218,6 +239,7 @@ aside {
     border-radius: 10px;
     border-bottom: 10px;
     object-fit: cover;
+    transition: opacity 0.5s ease;
 }
 
 .quizz h2 {
@@ -262,6 +284,67 @@ aside {
     transform: scale(1);
 }
 
+.top-quizzes {
+    text-align: center;
+}
+
+.community {
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 80px;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.top {
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 60px;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.top-quizz {
+    font-family: Poppins, serif;
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
+    margin: 10px;
+    background-color: #9F77C6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.medal {
+    display: block;
+    position: absolute;
+    transition: opacity 0.5s ease;
+}
+
+.top-quizz img {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #6E1EB4;
+    padding: 3px;
+    border-radius: 10px;
+    border-bottom: 10px;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.top-quizz h2 {
+    color: #FFFFFF;
+}
+
+.top-quizz:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.top-quizz:hover img {
+    opacity: 0.8;
+}
+
+.top-quizz:hover h2 {
+    color: #ADFFDE;
+}
+
 .quizz.hidden {
     opacity: 0;
     filter: blur(2px);
@@ -273,6 +356,24 @@ aside {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+.top-quizz.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(-20px);
+    transition: all 2.25s;
+}
+
+.top-quizz.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+.quizz-selection {
+    text-align: center;
+    margin-top: 35px;
 }
 
 .input-group {
@@ -538,13 +639,18 @@ aside {
         transform: translateX(0);
     }
 
-    .quizz-selection {
-        padding-top: 60px;
+    .quizz-wrapper {
+        padding-top: 85px;
         padding-bottom: 60px;
         margin-inline: 5px;
     }
 
     .quizz img {
+        height: 144px;
+        width: 256px;
+    }
+
+    .top-quizz img {
         height: 144px;
         width: 256px;
     }
@@ -601,7 +707,7 @@ aside {
         transform: translateX(0);
     }
 
-    .quizz-selection {
+    .quizz-wrapper {
         padding-top: 60px;
         padding-bottom: 60px;
         margin-inline: 5px;
@@ -610,5 +716,10 @@ aside {
     .quizz img {
         height: 180px;
         width: 320px;
+    }
+
+    .top-quizz img {
+        height: 144px;
+        width: 256px;
     }
 }
