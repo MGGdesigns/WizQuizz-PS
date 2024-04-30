@@ -9,6 +9,8 @@ import {
     update
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -81,6 +83,19 @@ export async function createUser(username, email, password, description, imageUr
         accountCreationDate: accountCreationDate,
         quizzesFinished: quizzesFinished,
         following: following
+    });
+
+    const auth = await getAuth();
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
     });
 }
 
