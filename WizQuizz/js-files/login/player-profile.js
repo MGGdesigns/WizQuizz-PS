@@ -19,6 +19,26 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.getElementById("username").style.color = '#060100'
 }
 
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
+}
+
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
@@ -134,6 +154,11 @@ account_date_display.innerHTML = "MEMBER SINCE: " + userToLoad.accountCreationDa
             </a>
         </div>`;
         Maincontainer.appendChild(section);
+        if(sessionStorage.getItem("cursorView") === "Default"){
+            setCursor('Default');
+        }else if (sessionStorage.getItem("cursorView") === "Wand") {
+            setCursor('Wand');
+        }
         //Ranking de cada Quizz
         let quizzRanking = quizz.rating;
         if(quizzRanking >= 0 && quizzRanking <= 0.99){

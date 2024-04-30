@@ -32,6 +32,20 @@ window.onload = function() {
     fadeOutAudio(music, 129000);
 };
 
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 function fadeOutAudio(audio, duration) {
     const intervalDuration = 50;
     const steps = duration / intervalDuration;
@@ -221,6 +235,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }
                 localStorage.setItem("results", results);
             });
-        });    
+        });
+
+        if(sessionStorage.getItem("cursorView") === "Default"){
+            setCursor('Default');
+        }else if (sessionStorage.getItem("cursorView") === "Wand") {
+            setCursor('Wand');
+        }
     }
 });

@@ -14,6 +14,12 @@ window.addEventListener("load", () => {
     })
 })
 
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
 
     const menuIcon = document.querySelector('.mobile-bars');
@@ -59,6 +65,26 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     if(resultado === null){
         mark.innerHTML = "Leave";
+    }
+
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
+
+    function setCursor(cursor) {
+        const allElements = document.querySelectorAll('*');
+
+        if (cursor === 'Default') {
+            allElements.forEach(element => {
+                element.style.cursor = 'default';
+            });
+        } else if (cursor === 'Wand') {
+            allElements.forEach(element => {
+                element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+            });
+        }
     }
 
     localStorage.clear();

@@ -18,6 +18,26 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById("username").style.color = '#060100'
 }
+
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
+}
+
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
 document.addEventListener('DOMContentLoaded', async function() {
     let nickname = sessionStorage.getItem("searchedUsername");
     if ( nickname != ""){

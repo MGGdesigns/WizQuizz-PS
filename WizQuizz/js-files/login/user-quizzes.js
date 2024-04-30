@@ -95,6 +95,27 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById("rankigAboutQuizz" + j).innerHTML = `<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>`;
         }
     }
+
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
+
+    function setCursor(cursor) {
+        const allElements = document.querySelectorAll('*');
+
+        if (cursor === 'Default') {
+            allElements.forEach(element => {
+                element.style.cursor = 'default';
+            });
+        } else if (cursor === 'Wand') {
+            allElements.forEach(element => {
+                element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+            });
+        }
+    }
+
     //-----------------------------------------------------------------------------------
     function noQuizzAdded(){
         document.getElementById("infoaboutQuizzes").style.display = "none";

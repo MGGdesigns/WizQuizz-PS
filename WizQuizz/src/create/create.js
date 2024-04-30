@@ -7,6 +7,20 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#FFFFFF';
 }
 
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 //LO DE CAMBIAR LA IMAGEN
 document.addEventListener('DOMContentLoaded', async function() {
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
@@ -232,13 +246,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         questionCount++;
                         localStorage.setItem("questionCount", questionCount);
-                        Maincontainer.appendChild(section); 
-                    }
+                        Maincontainer.appendChild(section);
+                        if(sessionStorage.getItem("cursorView") === "Default"){
+                            setCursor('Default');
+                        }else if (sessionStorage.getItem("cursorView") === "Wand") {
+                            setCursor('Wand');
+                        }
+
+                        function setCursor(cursor) {
+                            const allElements = document.querySelectorAll('*');
+
+                            if (cursor === 'Default') {
+                                allElements.forEach(element => {
+                                    element.style.cursor = 'default';
+                                });
+                            } else if (cursor === 'Wand') {
+                                allElements.forEach(element => {
+                                    element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+                                });
+                            }
+                        }                    }
                 }
             })
             .catch(error => {
                 console.error(error); 
-            });   
+            });
     }
 
     //Comprobamos si se ha añadido alguna pregunta

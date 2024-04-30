@@ -37,6 +37,25 @@ document.addEventListener('DOMContentLoaded', async function() {
         userImage.src = sessionStorage.getItem("imageUrl");
         userImage.style.display = "block";
     }
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
+
+    function setCursor(cursor) {
+        const allElements = document.querySelectorAll('*');
+
+        if (cursor === 'Default') {
+            allElements.forEach(element => {
+                element.style.cursor = 'default';
+            });
+        } else if (cursor === 'Wand') {
+            allElements.forEach(element => {
+                element.style.cursor = 'url("website-images/common/wand-cursor.png"), auto';
+            });
+        }
+    }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
 });
 

@@ -20,6 +20,26 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#FFFFFF';
 }
 
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
+}
+
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 document.getElementById("circleMode").addEventListener('click', function(){
     if(screenMode === 0){
         screenMode = 1;

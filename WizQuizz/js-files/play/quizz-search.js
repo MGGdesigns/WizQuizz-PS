@@ -10,6 +10,20 @@ window.addEventListener("load", () => {
     })
 })
 
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 const quizzData = [];
 
 const observer = new IntersectionObserver(entries => {
@@ -165,6 +179,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                         window.location.href = "../login/player-profile.html?id=" + result.username;
                     });
                     resultsContainer.appendChild(userContainer);
+                    if(sessionStorage.getItem("cursorView") === "Default"){
+                        setCursor('Default');
+                    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+                        setCursor('Wand');
+                    }
                 }
             }
 
@@ -263,7 +282,11 @@ searchQuizzButton.addEventListener('click', async function () {
             quizzLink.href = "quizz-preview.html?id=" + ident;
             quizzLink.appendChild(quizzContainer);
             quizzResultsContainer.appendChild(quizzLink);
-
+            if(sessionStorage.getItem("cursorView") === "Default"){
+                setCursor('Default');
+            }else if (sessionStorage.getItem("cursorView") === "Wand") {
+                setCursor('Wand');
+            }
         }
 });
 
@@ -338,7 +361,11 @@ function renderContent(content, containerSelector) {
         }
         container.appendChild(div);
     });
-    
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
 }
 
 function renderQuizz(content, containerSelector) {
@@ -354,6 +381,11 @@ function renderQuizz(content, containerSelector) {
     quizzData.push({quizzname: content.title, id: quizzId})
     }
     container.appendChild(div);
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
 }
 
 async function renderTopQuizzes(content, containerSelector) {
@@ -378,6 +410,11 @@ async function renderTopQuizzes(content, containerSelector) {
     });
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
+    if(sessionStorage.getItem("cursorView") === "Default"){
+        setCursor('Default');
+    }else if (sessionStorage.getItem("cursorView") === "Wand") {
+        setCursor('Wand');
+    }
 }
 
 const clearFilters = document.querySelector('.clear-filters');
@@ -403,4 +440,4 @@ if(sessionStorage.getItem("screenMode") === "1"){
 }else{
     console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
-} 
+}

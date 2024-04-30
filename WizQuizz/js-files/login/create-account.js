@@ -10,6 +10,26 @@ window.addEventListener("load", () => {
     })
 })
 
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
+}
+
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', async function() {
     var createAccountButton = document.querySelector(".create-account-button");

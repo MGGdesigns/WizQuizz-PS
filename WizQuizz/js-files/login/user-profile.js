@@ -21,22 +21,34 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.getElementById("username").style.color = '#060100'
 }
 
-if (sessionStorage.getItem("cursorView") === "Default") {
-    document.body.style.cursor = "auto";
-    console.log("didn't enter")
-} else if (sessionStorage.getItem("cursorView") === "Wand") {
-    document.body.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
-    console.log("entered")
+if(sessionStorage.getItem("cursorView") === "Default"){
+    setCursor('Default');
+}else if (sessionStorage.getItem("cursorView") === "Wand") {
+    setCursor('Wand');
 }
 
-let selectedCursor;
+const formCursor = document.getElementById("cursors");
+let selectedCursor = sessionStorage.getItem("cursorView") || "Default";
 
-let formCursor = document.getElementById("cursors");
+function setCursor(cursor) {
+    const allElements = document.querySelectorAll('*');
+
+    if (cursor === 'Default') {
+        allElements.forEach(element => {
+            element.style.cursor = 'default';
+        });
+    } else if (cursor === 'Wand') {
+        allElements.forEach(element => {
+            element.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+        });
+    }
+}
+
 formCursor.addEventListener('change', function(){
-    const selectedOption = this.options[formCursor.selectedIndex];
+    const selectedOption = this.options[this.selectedIndex];
     selectedCursor = selectedOption.text;
     sessionStorage.setItem("cursorView", selectedCursor);
-    console.log(sessionStorage.getItem("cursorView"));
+    setCursor(selectedCursor);
 });
 
 const nickname_display = document.getElementById("username")
