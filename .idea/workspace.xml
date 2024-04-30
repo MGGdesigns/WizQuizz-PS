@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0ceebfaf-82e8-43a1-8336-39622319487a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-preview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-search.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WizQuizz/src/play/quizz-search.html" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/src/play/quizz-search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/preview-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/preview-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/search-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/search-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,22 +29,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.index.html.executor": "Run",
-    "Node.js.quizz-search.js.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Mauro Gómez/WebstormProjects/PS/WizQuizz-PS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.quizz-search.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mauro Gómez/WebstormProjects/PS/WizQuizz-PS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -58,7 +57,8 @@
       <workItem from="1714384827372" duration="30000" />
       <workItem from="1714385861097" duration="26000" />
       <workItem from="1714462282726" duration="988000" />
-      <workItem from="1714463599656" duration="2188000" />
+      <workItem from="1714463599656" duration="2526000" />
+      <workItem from="1714476988026" duration="1371000" />
     </task>
     <servers />
   </component>

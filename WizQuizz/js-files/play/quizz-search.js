@@ -203,7 +203,7 @@ searchQuizzButton.addEventListener('click', async function () {
             quizzContainer.style.display = "flex";
             quizzContainer.style.flexDirection = "column";
 
-            //Titulp
+            //Titulo
             const quizzTitle = document.createElement("h2");
             quizzTitle.textContent = result.title;
             quizzTitle.style.textAlign = "center";
@@ -213,6 +213,8 @@ searchQuizzButton.addEventListener('click', async function () {
             const authorContainer = document.createElement("div");
             authorContainer.style.marginBottom = "10px";
             authorContainer.style.textAlign = "left";
+            authorContainer.style.fontFamily = "Poppins";
+            authorContainer.style.color = "#FFFF";
             const quizzAuthor = document.createElement("p");
             quizzAuthor.textContent = "Author: " + result.author;
             authorContainer.appendChild(quizzAuthor);
@@ -223,6 +225,8 @@ searchQuizzButton.addEventListener('click', async function () {
             infoContainer.style.display = "flex";
             infoContainer.style.justifyContent = "space-between";
             infoContainer.style.alignItems = "center";
+            infoContainer.style.fontFamily = "Poppins";
+            infoContainer.style.color = "#FFFF";
             const quizzSize = document.createElement("p");
             quizzSize.textContent = "Number of Questions: " + result.questions.length;
             infoContainer.appendChild(quizzSize);
@@ -327,7 +331,7 @@ function renderContent(content, containerSelector) {
             div.classList.add('quizz');
             div.classList.add('hidden');
             div.innerHTML = `<a href="quizz-preview.html?id=${quizzIds[countQuizz]}">
-                        <img src="${item.imageUrl}" width="400" height="225" class="image">
+                        <img src="${item.imageUrl}" width="384" height="216" class="image">
                         <h2>${item.title}</h2>
                         </a>`;
             countQuizz++;
@@ -344,7 +348,7 @@ function renderQuizz(content, containerSelector) {
         div.classList.add('quizz');
         div.classList.add('hidden');
         div.innerHTML = `<a href="quizz-preview.html?id=${quizzId}">
-                        <img src="${content.imageUrl}" width="400" height="225" class="image">
+                        <img src="${content.imageUrl}" width="384" height="216" class="image">
                         <h2>${content.title}</h2>
                         </a>`;
     quizzData.push({quizzname: content.title, id: quizzId})
@@ -365,7 +369,7 @@ async function renderTopQuizzes(content, containerSelector) {
             div.classList.add('hidden');
             div.innerHTML = `<img class="medal" src="${topData.top[countTop].icon}" width="32" height="32" class="image">
                             <a href="quizz-preview.html?id=${quizzId}">
-                            <img src="${quizz.imageUrl}" width="256" height="144" class="image">
+                            <img src="${quizz.imageUrl}" width="288" height="162" class="image">
                             <h2>${quizz.title}</h2>
                             </a>`;
             countTop++;

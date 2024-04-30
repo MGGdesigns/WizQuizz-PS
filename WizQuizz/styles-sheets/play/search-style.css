@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
-    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -68,6 +67,7 @@
     min-height: 100vh;
     padding-top: 80px;
     display: flex;
+    overflow-x: hidden;
 }
 
 main {
@@ -117,6 +117,7 @@ main {
 }
 
 aside {
+    z-index: 1;
     display: grid;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -189,7 +190,7 @@ aside {
 
 .quizz-wrapper {
     overflow: hidden;
-    padding-top: 20px;
+    padding-top: 55px;
     padding-bottom: 90px;
     display: flex;
     flex-wrap: wrap;
@@ -204,8 +205,8 @@ aside {
 
 .top-quizz-wrapper {
     overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 45px;
+    padding-top: 50px;
+    padding-bottom: 35px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -424,6 +425,8 @@ aside {
     align-items: center; /* Alinea verticalmente los elementos */
     margin-left: 27%;
     margin-right: 35%;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .input-group input {
