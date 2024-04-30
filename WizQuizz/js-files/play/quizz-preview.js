@@ -146,7 +146,8 @@ function renderDescriptionContent(content, containerSelector) {
 
       aux_section.innerHTML = `<h1>${content.title}</h1>
                                 <div class="quizz-lower-info">
-                                    <h2>${ratingStarsHTML} (${content.timesReviewed})</h2>
+                                    <h2>${ratingStarsHTML}</h2>
+                                    <h3>(${content.timesReviewed})</h3>
                                     <button id="copyLinkButton">Copy Link</button>
                                     <div id="copyMessage" class="copyMessage" style="display: none;">link coppied</div>
                                 </div>

@@ -115,7 +115,10 @@ main {
     text-shadow: 0 0 2px #000000;
 }
 
-.quizz-description h2 {
+.quizz-description h3 {
+    margin-inline: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
     color: #2c2c2f;
 }
 

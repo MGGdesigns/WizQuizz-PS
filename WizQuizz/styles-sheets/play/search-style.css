@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     cursor: url("../../website-images/common/wand-cursor.png"), auto !important;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -291,15 +292,17 @@ aside {
 .community {
     font-family: 'Harry Potter', sans-serif;
     color: #73F6D0;
-    font-size: 80px;
+    font-size: 45px;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 .top {
     font-family: 'Harry Potter', sans-serif;
     color: #73F6D0;
-    font-size: 60px;
+    font-size: 45px;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 .top-quizz {
@@ -368,7 +371,46 @@ aside {
 .top-quizz.show {
     opacity: 1;
     filter: blur(0);
+    transform: translateY(0);
+}
+
+.quizz-banner.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(200px);
+    transition: all 1.5s;
+}
+
+.quizz-banner.show {
+    opacity: 1;
+    filter: blur(0);
     transform: translateX(0);
+}
+
+.medal img {
+    transition: .5s ease;
+}
+
+.top-quizzes hr {
+    margin: 0 auto;
+    border: none;
+    height: 2px;
+    background-color: #73F6D0;
+}
+
+.quizz-selection hr {
+    margin: 0 auto;
+    border: none;
+    height: 2px;
+    background-color: #73F6D0;
+}
+
+.quizz-banner {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #8D77C6;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .quizz-selection {
