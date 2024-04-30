@@ -30,27 +30,23 @@ const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
-const users = await getAllUsers();
 let targetUser = sessionStorage.getItem("userMail");
 //------------------------------------------------------------------
-/*
-if (sessionStorage.getItem("foundUserMail")!=null){
+
+if (sessionStorage.getItem("foundUserMail")!==null){
     targetUser = sessionStorage.getItem("foundUserMail");
     console.log(targetUser);
-}*/
+}
 //-------------------------------------------------------------------
 
 
 let userToLoad;
-for (const user of Object.values(users)) {
-    if (user.email === targetUser) {
-        userToLoad = user;
-        //GUARDAMOS LA IMAGEN PARA QUE NO SE TENGA QUE CARGAR TODO EL RATO DESDE LA DB
-        sessionStorage.setItem("imageUrl", user.imageUrl);
-        sessionStorage.setItem("userName", user.username);
-        break;
-    }
-}
+
+console.log(targetUser);
+userToLoad = await getUser(targetUser);
+console.log(userToLoad);
+sessionStorage.setItem("imageUrl", userToLoad.imageUrl);
+sessionStorage.setItem("userName", userToLoad.username);
 
 document.getElementById("circleMode").addEventListener('click', function(){
     if(screenMode === 0){
