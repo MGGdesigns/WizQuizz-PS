@@ -68,8 +68,24 @@ async function generateId() {
 }
 
 export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
-    const reference = ref(db, "users/" + stringToHash(email));
-    const refUsername = ref(db, "username-user/" + stringToHash(username));
+    const auth = await getAuth();
+    let userId;
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed up 
+        userId = userCredential.user.uid;
+        alert(userId);
+        console.log(userId);
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+
+    const reference = ref(db, "users/" + userId);
+    const refUsername = ref(db, "username-user/" + userId);
     await set(refUsername, {
         email: email
     });
@@ -85,18 +101,7 @@ export async function createUser(username, email, password, description, imageUr
         following: following
     });
 
-    const auth = await getAuth();
-    await createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed up 
-        const user = userCredential.user;
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-    });
+    
 }
 
 export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
