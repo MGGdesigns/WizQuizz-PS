@@ -48,11 +48,19 @@
 						<a href="user-quizzes.html"><p class="quizzFinished">107 QUIZS FINISHED</p></a>
 					</section>
 				</div>
-                    
-                <div class="configButtons">
-                    <section class="sectionlogOut" id="log-out">
-                        <input id="log-out" class="logOut" type="button" value="Log-Out">
-                    </section>
+                <div class="bottom-wrapper">
+                    <form class="cursor-selector">
+                        <select name="cursors" id="cursors">
+                            <option value="" disabled selected>Choose your cursor</option>
+                            <option value="Default">Default</option>
+                            <option value="Wand">Wand</option>
+                        </select>
+                    </form>
+                    <div class="configButtons">
+                        <section class="sectionlogOut" id="log-out">
+                            <input id="log-out" class="logOut" type="button" value="Log-Out">
+                        </section>
+                    </div>
                 </div>
             </div>
             <aside include-file="../../src/common/followers-sidebar.html" class = "sidebar"></aside>
