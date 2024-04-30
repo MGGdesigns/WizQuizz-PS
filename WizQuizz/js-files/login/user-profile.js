@@ -21,6 +21,24 @@ if(sessionStorage.getItem("screenMode") === "1"){
     document.getElementById("username").style.color = '#060100'
 }
 
+if (sessionStorage.getItem("cursorView") === "Default") {
+    document.body.style.cursor = "auto";
+    console.log("didn't enter")
+} else if (sessionStorage.getItem("cursorView") === "Wand") {
+    document.body.style.cursor = 'url("../../website-images/common/wand-cursor.png"), auto';
+    console.log("entered")
+}
+
+let selectedCursor;
+
+let formCursor = document.getElementById("cursors");
+formCursor.addEventListener('change', function(){
+    const selectedOption = this.options[formCursor.selectedIndex];
+    selectedCursor = selectedOption.text;
+    sessionStorage.setItem("cursorView", selectedCursor);
+    console.log(sessionStorage.getItem("cursorView"));
+});
+
 const nickname_display = document.getElementById("username")
 const user_image_display = document.getElementById("user-image-button")
 const user_description_display = document.querySelector(".description p")
