@@ -399,18 +399,18 @@ aside {
 }
 
 .input-group button {
-    margin-left: 5%; /* Movido para alinear verticalmente */
-    margin-top: 0%;
+    margin-left: 20px; /* Movido para alinear verticalmente */
+    margin-top: 0;
     margin-bottom: 2%;
     padding: 0.05% 0.5%;
-    height: 35px;
-
+    height: 40px;
+    width: 140px;
     border-radius: 20px;
-    font-family: "Roboto Thin", sans-serif;
+    font-family: Poppins, sans-serif;
 
     background-color: #7B2CBF;
     color: #FFFFFF;
-    font-size: 30px;
+    font-size: 20px;
 
     border: 2px solid rgba(0, 0, 0);
 
@@ -421,6 +421,11 @@ aside {
 #input-group button:hover {
     background-color: #000000;
     box-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+#search-tab-input {
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
 }
 /*BUSCAR USUARIO//////////////////////////////////////////////////////////////////////////*/
 .quizzTitle{

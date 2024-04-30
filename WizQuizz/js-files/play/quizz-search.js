@@ -362,6 +362,7 @@ async function renderTopQuizzes(content, containerSelector) {
         const quizzId = quizzDataIndex !== -1 ? quizzData[quizzDataIndex].id : null;
         if (quizzId) {
             div.classList.add('top-quizz');
+            div.classList.add('hidden');
             div.innerHTML = `<img class="medal" src="${topData.top[countTop].icon}" width="32" height="32" class="image">
                             <a href="quizz-preview.html?id=${quizzId}">
                             <img src="${quizz.imageUrl}" width="256" height="144" class="image">
@@ -371,6 +372,8 @@ async function renderTopQuizzes(content, containerSelector) {
             container.appendChild(div);
         }
     });
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
 }
 
 const clearFilters = document.querySelector('.clear-filters');
