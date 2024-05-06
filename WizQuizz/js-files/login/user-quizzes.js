@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     ///LO DE ROSMARY------------------------------------------------------
     if ( userName === ""){
         userName = sessionStorage.getItem("userName");
-        userName = sessionStorage.getItem("userName"); ////
+        userName = sessionStorage.getItem("userName"); 
     }
     ///LO DE ROSMARY------------------------------------------------------
 
