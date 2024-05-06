@@ -148,8 +148,8 @@ function renderDescriptionContent(content, containerSelector) {
                                 <div class="quizz-lower-info">
                                     <h2>${ratingStarsHTML}</h2>
                                     <h3>(${content.timesReviewed})</h3>
-                                    <button id="copyLinkButton">Copy Link</button>
-                                    <div id="copyMessage" class="copyMessage" style="display: none;">link coppied</div>
+                                    <button id="copyLinkButton"><img src="../../website-images/common/share.png"></button>
+                                    <div id="copyMessage" class="copyMessage" style="display: none;">Link coppied</div>
                                 </div>
                                 <p>${content.description}</p>`;
         container.appendChild(section);
