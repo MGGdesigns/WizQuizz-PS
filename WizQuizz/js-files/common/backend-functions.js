@@ -9,7 +9,7 @@ import {
     update
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -40,6 +40,23 @@ export function stringToHash(string) {
         hash = hash & hash;
     }
     return hash;
+}
+
+export async function login(email, password) {
+    const auth = getAuth();
+    let result = [];
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        result.push(user.uid);
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        result.push(errorCode, errorMessage);
+    }
+
+    return result;
 }
 
 function resetId(){
@@ -85,9 +102,9 @@ export async function createUser(username, email, password, description, imageUr
     });
 
     const reference = ref(db, "users/" + userId);
-    const refUsername = ref(db, "username-user/" + userId);
+    const refUsername = ref(db, "username-user/" + stringToHash(username));
     await set(refUsername, {
-        email: email
+        uid: userId
     });
 
     await set(reference, {
@@ -197,6 +214,7 @@ export async function setQuizzQuestion(id, number, question, imageUrl, answer1, 
     });
 }
 export async function getUser(email){
+    
 	const id = await stringToHash(email);
 	const reference = ref(db, "users/" + id);
     const snapshot = await get(reference);

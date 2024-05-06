@@ -30,7 +30,7 @@ const input_image = document.getElementById("image-input-file")
 let screenMode = sessionStorage.getItem("screenMode") | 0;
 
 //Recorremos todos los usuarios para seleccionar el de current session
-let targetUser = sessionStorage.getItem("userMail");
+let targetUser = sessionStorage.getItem("actualUser");
 //------------------------------------------------------------------
 
 if (sessionStorage.getItem("foundUserMail")!==null){
