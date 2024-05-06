@@ -1,0 +1,22 @@
+{
+    "quizzInfo":
+    {
+        "addImage": "+ AÑADIR IMAGEN",
+        "cathegory": "Seleccionar categoría",
+        "title": "Título del Quizz",
+        "description": "Escribe aquí la descripción.",
+        "save": "Guardar"
+    },
+
+    "noQuestions":
+    {
+        "info1": "¡Hasta el momento no tienes ninguna pregunta!",
+        "info2": "Haz click en el botón de abajo para añadir una.",
+        "addQuestion": "+ AÑADIR PREGUNTA"
+    },
+
+    "quizzQuestions":
+    {
+        "finishQuizz": "Terminar Quizz"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "quizzInfo":
+    {
+        "title": "Título de la pregunta"
+    },
+
+    "quizzQuestions":
+    {
+        "answer1": "Escribe aquí la respuesta 1",
+        "answer2": "Escribe aquí la respuesta 2",
+        "answer3": "Escribe aquí la respuesta 3",
+        "answer4": "Escribe aquí la respuesta 4",
+
+        "cancel": "Cancelar pregunta",
+        "addAnswer": "Guardar Pregunta"
+    }
+}

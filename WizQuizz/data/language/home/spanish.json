@@ -1,28 +1,18 @@
 {
-    "banner1":
+    "who":
     {
-        "title": "¿Quiénes somos?"
-    },
-
-    "info1":
-    {
+        "banner1": "¿Quiénes somos?",
         "hugeText1": "¡Embárcate en un viaje fascinante al reino del conocimiento con WizQuizz, donde las artes arcanas del aprendizaje se fusionan con el encanto del entretenimiento! Prepárate para deslumbrarte al adentrarte en un dominio digital rebosante de maravillas y sabiduría, diseñado para encender las llamas de la curiosidad en tu interior. WizQuizz no es meramente una plataforma; es una magna obra de ingenio e innovación, meticulosamente elaborada para redefinir el panorama de la educación interactiva. Con un toque de magia y un rocío de polvo de estrellas, hemos conjurado un santuario en línea donde los buscadores de la iluminación, desde novatos hasta sabios, pueden converger en busca de la gloria intelectual. Dentro de los sagrados pasillos de WizQuizz, te espera una cornucopia de conocimiento para descubrir. Adéntrate en un tesoro de cuestionarios meticulosamente elaborados que abarcan una variedad de disciplinas esotéricas, desde los anales de la historia hasta los misterios celestiales de la astronomía, desde las maravillas alquímicas de la ciencia hasta las encantadoras telas de la literatura y la tradición. Sea cual sea tu pasión, sea cual sea tu búsqueda, hay un cuestionario para cautivar tu imaginación y estimular tu intelecto.",
-        "hugeText2": "Pero WizQuizz no es simplemente un repositorio de cuestionarios; es un escenario en el que se despliega el gran teatro del aprendizaje. Prepárate para quedar cautivado mientras convocas a tu mago interior, personalizando cuestionarios con la destreza de un maestro encantador. Con características fascinantes como cuestionarios en vivo, avatares personalizables imbuidos con el encanto mágico y tablas de clasificación ardiendo con la pasión competitiva, WizQuizz transforma a simples mortales en luminarias de iluminación. Así que, atiende el llamado de la aventura, intrépido viajero, y emprende un viaje de descubrimiento con WizQuizz. Libera a tu mago interior del conocimiento y deja que la magia del aprendizaje ilumine tu camino hacia la iluminación. El cosmos te llama, ¿estás listo para responder al llamado?"
+        "hugeText2": "Pero WizQuizz no es simplemente un repositorio de cuestionarios; es un escenario en el que se despliega el gran teatro del aprendizaje. Prepárate para quedar cautivado mientras convocas a tu mago interior, personalizando cuestionarios con la destreza de un maestro encantador. Con características fascinantes como cuestionarios en vivo, avatares personalizables imbuidos con el encanto mágico y tablas de clasificación ardiendo con la pasión competitiva, WizQuizz transforma a simples mortales en luminarias de iluminación. Así que, atiende el llamado de la aventura, intrépido viajero, y emprende un viaje de descubrimiento con WizQuizz. Libera a tu mago interior del conocimiento y deja que la magia del aprendizaje ilumine tu camino hacia la iluminación. El cosmos te llama, ¿estás listo para responder al llamado?",
+        
+        "banner2": "Noticias",
+        "text1": "Concurso de Elixires Encantados: ¡Los Magos de WizQuizz Preparan Pociones Mágicas!",
+        "descriptionInfo1": "¡Adéntrate en el mundo místico de la alquimia y el encantamiento mientras se desarrolla el Concurso de Elixires Encantados de WizQuizz! Magos de todas partes han convergido para mostrar su maestría en la fabricación de pociones en este deslumbrante espectáculo de magia. Dentro de los grandes salones de la academia encantada, los calderos burbujean con brebajes misteriosos y los frascos brillan con tonalidades de otro mundo. La competencia es intensa mientras cada mago revela su mezcla única de ingredientes, desde plumas de fénix pulverizadas hasta gotas de rocío iluminadas por la luna. Los jueces, alquimistas renombrados ellos mismos, observan atentamente mientras los concursantes entonan antiguas invocaciones y agitan sus mezclas con precisión. Desde elixires curativos hasta pociones de invisibilidad, las creaciones presentadas van desde lo práctico hasta lo fantástico. El aire está cargado de anticipación mientras los momentos finales se acercan, y la pregunta en la mente de todos es: ¿Quién será coronado el Gran Hechicero de los Elixires y ganará la admiración de sus compañeros y espectadores por igual?",
 
-    },
+        "text2": "Encuentro de Hechiceros Fascinantes: ¡Varitas de WizQuizz Listas para la Acción!" ,
+        "descriptionInfo2": "¡Prepárate para quedar deslumbrado por la destreza mágica que se exhibirá en el Encuentro de Hechiceros Fascinantes de WizQuizz! Las varitas chisporrotean con energía mientras los hechiceros de todos los rincones del reino místico se reúnen para mostrar sus habilidades de lanzamiento de hechizos en un gran espectáculo de encantamiento. La arena está cargada de anticipación mientras cada lanzador de hechizos se adentra en el foco de atención, listo para desatar una asombrosa variedad de habilidades mágicas. Desde conjurar feroces tormentas hasta tejer intrincadas ilusiones, los concursantes empujan los límites de lo que la magia puede lograr. Los espectadores contienen el aliento maravillados mientras los hechizos chocan en una hipnotizante danza de luz y energía. Los jueces, hechiceros y brujas experimentados con siglos de experiencia, asienten en aprecio ante la maestría mostrada por los participantes. A medida que la competencia se intensifica, la pregunta permanece en el aire: ¿Qué hechicero surgirá victorioso y reclamará el codiciado título de Hechicero Supremo, ganando fama y reconocimiento en toda la comunidad mágica?",
 
-    "banner2":
-    {
-        "title": "Noticias"
-    },
-
-    "info2":
-    {
-        "title1": "Mystical Creatures Quest: WizQuizz Seekers Seek Fantastic Beasts!",
-        "hugeText1": "",
-
-        "": "",
-        "": "",
-        "": ""
+        "text3": "Búsqueda de Criaturas Místicas: ¡Los Buscadores de WizQuizz Buscan Bestias Fantásticas!",
+        "descriptionInfo3": "¡Embárcate en una emocionante aventura hacia el corazón del reino mágico con la Búsqueda de Criaturas Místicas de WizQuizz! Valientes buscadores e intrépidos aventureros se han reunido para explorar bosques encantados, ruinas antiguas y valles ocultos en busca de criaturas legendarias que desafían la imaginación. Desde la majestuosa gracia de los unicornios hasta las travesuras traviesas de las hadas, cada bestia fantástica capturó los corazones y mentes de los participantes mientras se embarcaban en una búsqueda como ninguna otra. Armados con conocimientos de la sabiduría mágica y ojos agudos, los buscadores escudriñaron el paisaje en busca de rastros de criaturas elusivas. En el camino, se encontraron con desafíos que pusieron a prueba su ingenio y coraje, desde acertijos planteados por sabios dragones ancianos hasta pruebas de habilidad contra astutas esfinges. Cada descubrimiento los acercó más a desentrañar los misterios de las criaturas mágicas que habitan en las sombras. Ahora, a medida que la búsqueda alcanza su clímax, la emoción es palpable. ¿Puedes adivinar qué bestia legendaria robó el protagonismo en esta épica aventura, dejando tanto a participantes como a espectadores maravillados por las maravillas del mundo mágico?"
     }
 }
