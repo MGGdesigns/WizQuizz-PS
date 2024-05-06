@@ -165,17 +165,28 @@ main {
     text-decoration: underline;
 }
 
+#copyLinkButton img {
+    width: 24px;
+    height: 24px;
+    background-color: rgb(159, 119, 198);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+#copyLinkButton img:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 .quizz-description .copyMessage {
     display: none;
     background-color: transparent;
     border: none;
-    color: grey; 
+    color: rgb(123, 44, 191);
     font-style: italic;
     cursor: pointer;
-    margin-left: 0px;
+    margin-left: 10px;
     text-align: end;
-    font-size: 12px;
-    margin-left: 5px;
+    font-size: 18px;
 }
 
 .quizz-description h1 {
