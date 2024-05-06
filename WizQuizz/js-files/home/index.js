@@ -8,6 +8,9 @@ window.addEventListener("load", () => {
     })
 })
 
+//Variables
+let language;
+
 document.addEventListener('DOMContentLoaded', async function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -66,6 +69,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
+    //LANGUAGE---------------------------------------
+    let formCategory = document.getElementById("languages");
+    formCategory.addEventListener('change', function(){
+        var selectedOption = this.options[formCategory.selectedIndex];
+        language = selectedOption.text;
+        sessionStorage.setItem("languageStorage", language);
+    });
+    //LANGUAGE---------------------------------------
 });
 
 async function loadTemplate(url) {
@@ -123,6 +135,13 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 });
+
+//Comprobamos en que idioma esta
+if(sessionStorage.getItem("languageStorage") === "Spanish"){
+    console.log("Soy es");
+}else{
+    console.log("Soy en");
+}
 
 //Comprobamos si estamos en DarkMode o LightMode
 if(sessionStorage.getItem("screenMode") === "1"){
