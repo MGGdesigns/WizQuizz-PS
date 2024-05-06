@@ -1,0 +1,31 @@
+{
+    "filters":
+    {
+        "clear": "Limpiar filtros",
+        "science": "Ciencia",
+        "music": "Música",
+        "geography": "Geografía",
+        "sports": "Deportes",
+        "movies": "Películas",
+        "animals": "Animales",
+        "nature": "Naturaleza",
+        "love": "Amor",
+        "technology": "Tecnología",
+        "food": "Comida",
+        "education": "Educación",
+        "space": "Espacio",
+        "economy": "Economía",
+        "gaming": "Videojuegos",
+        "art": "Arte"
+    },
+
+    "banner1":
+    {
+        "title": "Mejores Cuestionarios"
+    },
+
+    "banner2":
+    {
+        "title": "Cuestionarios de Comunidad"
+    }
+}
