@@ -9,6 +9,8 @@ import {
     update
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -40,6 +42,23 @@ export function stringToHash(string) {
     return hash;
 }
 
+export async function login(email, password) {
+    const auth = getAuth();
+    let result = [];
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        result.push(user.uid);
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        result.push(errorCode, errorMessage);
+    }
+
+    return result;
+}
+
 function resetId(){
     const reference = ref(db, "idGenerator/");
     set(reference, {
@@ -66,10 +85,26 @@ async function generateId() {
 }
 
 export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
-    const reference = ref(db, "users/" + stringToHash(email));
+    const auth = await getAuth();
+    let userId;
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed up 
+        userId = userCredential.user.uid;
+        alert(userId);
+        console.log(userId);
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+
+    const reference = ref(db, "users/" + userId);
     const refUsername = ref(db, "username-user/" + stringToHash(username));
     await set(refUsername, {
-        email: email
+        uid: userId
     });
 
     await set(reference, {
@@ -82,6 +117,8 @@ export async function createUser(username, email, password, description, imageUr
         quizzesFinished: quizzesFinished,
         following: following
     });
+
+    
 }
 
 export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
@@ -177,6 +214,7 @@ export async function setQuizzQuestion(id, number, question, imageUrl, answer1, 
     });
 }
 export async function getUser(email){
+    
 	const id = await stringToHash(email);
 	const reference = ref(db, "users/" + id);
     const snapshot = await get(reference);

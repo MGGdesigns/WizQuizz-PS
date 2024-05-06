@@ -1,4 +1,4 @@
-import { getUser } from "../common/backend-functions.js";
+import { getUser, login } from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -68,19 +68,29 @@ document.addEventListener('DOMContentLoaded', function(event) {
         var email = document.getElementById('email-input').value.toString().trim();
         var password = document.getElementById('password-input').value.toString().trim();
         console.log(email, password);
-            const user = await getUser(email);
-            console.log(user);
-            let loggedIn = false;
-            if (user.email === email && user.password === password) {
-                loggedIn = true;
-                event.preventDefault();
-                sessionStorage.setItem("actualUser", user.username);
-                sessionStorage.setItem("userMail", user.email);
-                window.location.href = '../../src/login/user-profile.html';
-            }
+        let result = [];
+        result = await login(email, password);
+        console.log(result);
+        if(result.length === 1){
+            console.log("authentication correct");
+            sessionStorage.setItem("actualUser", result[0]);
+            window.location.href = '../../src/login/user-profile.html';
+        } else {
+            console.log(result);
+        }
+        // const user = await getUser(email);
+        // console.log(user);
+        // let loggedIn = false;
+        // if (user.email === email && user.password === password) {
+        //     loggedIn = true;
+        //     event.preventDefault();
+        //     sessionStorage.setItem("actualUser", user.username);
+        //     sessionStorage.setItem("userMail", user.email);
+        //     window.location.href = '../../src/login/user-profile.html';
+        // }
 
-            if (!loggedIn) {
-                alert("Correo electrónico o contraseña incorrectos");
-            }
+        // if (!loggedIn) {
+        //     alert("Correo electrónico o contraseña incorrectos");
+        // }
     });
 });
