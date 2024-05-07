@@ -9,7 +9,7 @@ import {
     update
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -93,6 +93,7 @@ export async function createUser(username, email, password, description, imageUr
         userId = userCredential.user.uid;
         alert(userId);
         console.log(userId);
+        sendEmailVerification(auth.currentUser);
         // ...
     })
     .catch((error) => {
