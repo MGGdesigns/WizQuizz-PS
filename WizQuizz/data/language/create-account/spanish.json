@@ -1,0 +1,14 @@
+{
+    "info":
+    {
+        "banner1": "Creacion de cuenta",
+        "username": "Nombre en el juego",
+        "mail": "Correo electrónico",
+        "password": "Contraseña",
+        "password2": "Confirma tu contraseña",
+        "button1": "Crear cuenta",
+        "info1": "Al continuar, aceptas los Términos de uso y la Política de privacidad.",
+        "info2": "¿Ya tienes una cuenta?",
+        "button2": "Iniciar sesión"
+    }
+}
