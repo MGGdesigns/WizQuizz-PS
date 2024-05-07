@@ -292,14 +292,13 @@ document.addEventListener("DOMContentLoaded", function() {
 //CAMBIO DE IDIOMA CREATE-------------------------------
 let typeLanguage = sessionStorage.getItem("languageStorage");
 if(typeLanguage === "Spanish"){
-    console.log("es");
     fetch("../../data/language/create-quizz/spanish.json")
     .then(response => response.json())
     .then(data => {
         document.getElementById("addimage").value = data.quizzInfo.addImage;
-        document.getElementById("categories").value = data.quizzInfo.cathegory;
-        document.getElementById("titulo").value = data.quizzInfo.title;
-        document.getElementById("littledescription").value = data.quizzInfo.description;
+        document.querySelector('#categories option[value="default"]').textContent = data.quizzInfo.cathegory;
+        document.getElementById("titulo").setAttribute("placeholder", data.quizzInfo.title);
+        document.getElementById("littledescription").setAttribute("placeholder", data.quizzInfo.description);
         document.getElementById("save").innerHTML = data.quizzInfo.save;
         document.getElementById("info1").innerHTML = data.noQuestions.info1;
         document.getElementById("info2").innerHTML = data.noQuestions.info2;

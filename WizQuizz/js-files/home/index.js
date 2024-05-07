@@ -77,6 +77,25 @@ document.addEventListener('DOMContentLoaded', async function() {
     //LANGUAGE---------------------------------------
 
     //CAMBIO DE IDIOMA HOME-------------------------------
+    //Comprobamos idioma
+    const actualLanguage = sessionStorage.getItem("languageStorage");
+    if(actualLanguage === "Spanish"){
+        fetch('data/language/home/spanish.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("who").innerHTML = data.who.banner1;
+            document.getElementById("hugeText1").innerHTML = data.who.hugeText1;
+            document.getElementById("hugeText2").innerHTML = data.who.hugeText2;
+            document.getElementById("news").innerHTML = data.who.banner2;
+            document.getElementById("text1").innerHTML = data.who.text1;
+            document.getElementById("descriptionInfo1").innerHTML = data.who.descriptionInfo1;
+            document.getElementById("text2").innerHTML = data.who.text2;
+            document.getElementById("descriptionInfo2").innerHTML = data.who.descriptionInfo2;
+            document.getElementById("text3").innerHTML = data.who.text3;
+            document.getElementById("descriptionInfo3").innerHTML = data.who.descriptionInfo3;
+        })
+    }
+
     document.getElementById("languages").addEventListener("change", function() {
         const selectedValue = document.getElementById("languages").value;
 
@@ -171,8 +190,6 @@ const observer = new IntersectionObserver(entries => {
 //Comprobamos si estamos en DarkMode o LightMode
 if(sessionStorage.getItem("screenMode") === "1"){
     document.body.style.backgroundColor = '#292e39';
-    document.getElementById("username").style.color = '#FFFFFF'
 }else{
     document.body.style.backgroundColor = '#FFFFFF';
-    document.getElementById("username").style.color = '#060100'
 }

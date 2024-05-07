@@ -98,4 +98,25 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         }
     });
+
+    //CAMBIO DE IDIOMA CREATE-------------------------------
+    let typeLanguage = sessionStorage.getItem("languageStorage");
+    if(typeLanguage === "Spanish"){
+        fetch("../../data/language/create-account/spanish.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("banner1").innerHTML = data.info.banner1;
+            document.getElementById("username").innerHTML = data.info.username;
+            document.getElementById("mail").innerHTML = data.info.mail;
+            document.getElementById("password").innerHTML = data.info.password;
+            document.getElementById("password2").innerHTML = data.info.password2;
+            document.getElementById("create-account-button").value = data.info.button1;
+            document.getElementById("info1").innerHTML = data.info.info1;
+            document.getElementById("info2").innerHTML = data.info.info2;
+            document.getElementById("button2").innerHTML = data.info.button2;
+        })
+    }else if(typeLanguage === "English"){
+        console.log("en");
+    }
+    //CAMBIO DE IDIOMA CREATE-------------------------------
 });
