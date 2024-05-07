@@ -279,12 +279,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const questionscontainer2 = document.getElementById("goat2");
         questionscontainer2.innerHTML = `<div class="noquestions">
         <div class="define">
-            <h1 class="h1define">At the moment you dont have questions!</h1>
+            <h1 id="info1" class="h1define">At the moment you dont have questions!</h1>
             <p></p>
-            <h2 class="h2define">Click in the button below to add questions</h2>
+            <h2 id="info2" class="h2define">Click in the button below to add questions</h2>
         </div>
         </div>`;
 
         Maincontainer2.appendChild(questionscontainer2); 
     }
 });
+
+//CAMBIO DE IDIOMA CREATE-------------------------------
+let typeLanguage = sessionStorage.getItem("languageStorage");
+if(typeLanguage === "Spanish"){
+    console.log("es");
+    fetch("../../data/language/create-quizz/spanish.json")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("addimage").value = data.quizzInfo.addImage;
+        document.getElementById("categories").value = data.quizzInfo.cathegory;
+        document.getElementById("titulo").value = data.quizzInfo.title;
+        document.getElementById("littledescription").value = data.quizzInfo.description;
+        document.getElementById("save").innerHTML = data.quizzInfo.save;
+        document.getElementById("info1").innerHTML = data.noQuestions.info1;
+        document.getElementById("info2").innerHTML = data.noQuestions.info2;
+        document.getElementById("AddQuestioN").value = data.noQuestions.addQuestion;
+    })
+}else if(typeLanguage === "English"){
+    console.log("en");
+}
+//CAMBIO DE IDIOMA CREATE-------------------------------
