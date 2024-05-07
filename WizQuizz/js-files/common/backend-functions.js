@@ -87,6 +87,7 @@ async function generateId() {
 export async function createUser(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
     const auth = await getAuth();
     let userId;
+    console.log("creating User ...");
     await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed up 
@@ -99,6 +100,7 @@ export async function createUser(username, email, password, description, imageUr
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode + " " + errorMessage);
         // ..
     });
 
@@ -119,7 +121,7 @@ export async function createUser(username, email, password, description, imageUr
         following: following
     });
 
-    
+    return userId;
 }
 
 export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
@@ -214,38 +216,29 @@ export async function setQuizzQuestion(id, number, question, imageUrl, answer1, 
         correctAnswers: correctAnswers
     });
 }
-export async function getUser(email){
+export async function getUser(uid){
     
-	const id = await stringToHash(email);
-	const reference = ref(db, "users/" + id);
+	const reference = ref(db, "users/" + uid);
     const snapshot = await get(reference);
     return snapshot.val();
-	return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            resolve(snapshot.val());
-        }, (error) => {
-            reject(error);
-        });
-    });
 }
 
 export async function getUserByName(name){
     try {
         const id = await stringToHash(name);
         
-        const usernameUserRef = ref(db, "username-user/" + id + "/email");
+        const usernameUserRef = ref(db, "username-user/" + id + "/uid");
         
         const snapshot = await get(usernameUserRef);
         console.log(snapshot.val());
-        const userEmail = snapshot.val();
+        const userId = snapshot.val();
         
-        if (!userEmail) {
+        if (!userId) {
             throw new Error('Usuario no encontrado');
             // return null;
         }
         
-        const userHash = await stringToHash(userEmail);
-        const userRef = ref(db, "users/" + userHash);
+        const userRef = ref(db, "users/" + userId);
         
         const userSnapshot = await get(userRef);
 
