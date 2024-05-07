@@ -11,6 +11,26 @@ window.addEventListener("load", () => {
 })
 
 document.addEventListener("DOMContentLoaded", async function() {
+    //CAMBIO DE IDIOMA CREATE-------------------------------
+    let typeLanguage = sessionStorage.getItem("languageStorage");
+    if(typeLanguage === "Spanish"){
+        console.log("es");
+        fetch("../../data/language/create-question/spanish.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("questionTittle").setAttribute("placeholder", data.quizzInfo.title);
+            document.getElementById("answer1").setAttribute("placeholder", data.quizzQuestions.answer1);
+            document.getElementById("answer2").setAttribute("placeholder", data.quizzQuestions.answer2);
+            document.getElementById("answer3").setAttribute("placeholder", data.quizzQuestions.answer3);
+            document.getElementById("answer4").setAttribute("placeholder", data.quizzQuestions.answer4);
+            document.getElementById("cancel").value = data.quizzQuestions.cancel;
+            document.getElementById("submit").value = data.quizzQuestions.addAnswer;
+        })
+    }else if(typeLanguage === "English"){
+        console.log("en");
+    }
+    //CAMBIO DE IDIOMA CREATE-------------------------------
+
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
     let actualUser = sessionStorage.getItem("actualUser");
     let actualUserMail = sessionStorage.getItem("userMail");
@@ -105,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         var jsonData1 = JSON.stringify(data);
         localStorage.setItem("questionsInfo", jsonData1);
-        await setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
+        setQuizzQuestion(quizzId, numberofQuestions, title, "../../website-images/common/insert-image.png", answer1, answer2, answer3, answer4, respuesta);
         varAdd = 1;
         numberofQuestions++;
         localStorage.setItem("varAdd", varAdd);

@@ -83,4 +83,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 alert("Correo electrónico o contraseña incorrectos");
             }
     });
+
+    //CAMBIO DE IDIOMA LOGIN-------------------------------
+    let typeLanguage = sessionStorage.getItem("languageStorage");
+    if(typeLanguage === "Spanish"){
+        fetch("../../data/language/sign-in/spanish.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("banner1").innerHTML = data.info.banner1;
+            document.getElementById("mail").innerHTML = data.info.mail;
+            document.getElementById("password").innerHTML = data.info.password;
+            document.getElementById("button1").innerHTML = data.info.button1;
+            document.getElementById("info1").innerHTML = data.info.info1;
+            document.getElementById("info2").innerHTML = data.info.info2;
+            document.getElementById("button2").innerHTML = data.info.button2;
+        })
+    }else if(typeLanguage === "English"){
+        console.log("en");
+    }
+    //CAMBIO DE IDIOMA LOGIN-------------------------------
 });

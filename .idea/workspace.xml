@@ -5,41 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ceebfaf-82e8-43a1-8336-39622319487a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WizQuizz/website-images/common/share.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WizQuizz/src/play/waiting-lobby.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/waiting-lobby-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/common/privacy-policy.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/common/privacy-policy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/create-account.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/create-account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/player-profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/player-profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/search-profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/search-profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/user-profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/user-profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/user-quizz-modify.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/user-quizz-modify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/login/user-quizzes.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/login/user-quizzes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/in-game.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/in-game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-finish.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-finish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-preview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-search.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/quizz-search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/src/create/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/src/create/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/common/privacy-policy-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/common/privacy-policy-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/create/create-questions-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/create/create-questions-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/create/create-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/create/create-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/home/index-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/home/index-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/create-account-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/create-account-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/search-profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/search-profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/sign-in.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/sign-in.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-profile-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-profile-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-quizz-modify.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-quizz-modify.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-quizzes.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/login/user-quizzes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/finish-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/finish-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/in-game-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/in-game-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/preview-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/preview-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/search-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/search-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WizQuizz/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,12 +39,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.index.html.executor": "Run",
     "Node.js.quizz-search.js.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/Join-game-button",
     "last_opened_file_path": "C:/Users/Mauro Gómez/WebstormProjects/PS/WizQuizz-PS",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
