@@ -2,30 +2,34 @@
     "filters":
     {
         "clear": "Limpiar filtros",
-        "science": "Ciencia",
-        "music": "Música",
-        "geography": "Geografía",
-        "sports": "Deportes",
-        "movies": "Películas",
-        "animals": "Animales",
-        "nature": "Naturaleza",
-        "love": "Amor",
-        "technology": "Tecnología",
-        "food": "Comida",
-        "education": "Educación",
-        "space": "Espacio",
-        "economy": "Economía",
-        "gaming": "Videojuegos",
-        "art": "Arte"
+        "filter1": "Ciencia",
+        "filter2": "Música",
+        "filter3": "Geografía",
+        "filter4": "Deportes",
+        "filter5": "Películas",
+        "filter6": "Animales",
+        "filter7": "Naturaleza",
+        "filter8": "Amor",
+        "filter9": "Tecnología",
+        "filter10": "Comida",
+        "filter11": "Educación",
+        "filter12": "Espacio",
+        "filter13": "Economía",
+        "filter14": "Videojuegos",
+        "filter15": "Arte"
     },
 
     "banner1":
     {
-        "title": "Mejores Cuestionarios"
+        "title1": "Mejores Cuestionarios"
     },
 
     "banner2":
     {
-        "title": "Cuestionarios de Comunidad"
+        "title2": "Cuestionarios de Comunidad"
+    },
+    "searcher":
+    {
+        "writeHere": "Escribe aquí..."
     }
 }

@@ -194,6 +194,38 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         //BUSCAR USUARIO ---------------------------------------------
     });
+
+    //CAMBIO DE IDIOMA -------------------------------
+    let typeLanguage = sessionStorage.getItem("languageStorage");
+    if(typeLanguage === "Spanish"){
+    fetch("../../data/language/quizz-search/spanish.json")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("clear").innerHTML = data.filters.clear;
+        document.getElementById("filter1").innerHTML = data.filters.filter1;
+        document.getElementById("filter2").innerHTML = data.filters.filter2;
+        document.getElementById("filter3").innerHTML = data.filters.filter3;
+        document.getElementById("filter4").innerHTML = data.filters.filter4;
+        document.getElementById("filter5").innerHTML = data.filters.filter5;
+        document.getElementById("filter6").innerHTML = data.filters.filter6;
+        document.getElementById("filter7").innerHTML = data.filters.filter7;
+        document.getElementById("filter8").innerHTML = data.filters.filter8;
+        document.getElementById("filter9").innerHTML = data.filters.filter9;
+        document.getElementById("filter10").innerHTML = data.filters.filter10;
+        document.getElementById("filter11").innerHTML = data.filters.filter11;
+        document.getElementById("filter12").innerHTML = data.filters.filter12;
+        document.getElementById("filter13").innerHTML = data.filters.filter13;
+        document.getElementById("filter14").innerHTML = data.filters.filter14;
+        document.getElementById("filter15").innerHTML = data.filters.filter15;
+        document.getElementById("title1").innerHTML = data.banner1.title1;
+        document.getElementById("title2").innerHTML = data.banner2.title2;
+        document.getElementById("search-tab-input").setAttribute("placeholder" , data.searcher.writeHere);
+
+    })
+    }else if(typeLanguage === "English"){
+    console.log("en");
+    }
+    //CAMBIO DE IDIOMA -------------------------------
 });
 
 //BUSCAR QUIZZ ----------------------------------------------------------------------------------
@@ -317,6 +349,7 @@ function renderContent(content, containerSelector) {
     const container = document.querySelector(containerSelector);
     const quizzIds = Object.keys(content);
     let countQuizz = 0;
+    let count = 1;
     content.forEach(item => {
         quizzData.push({quizzname: item.title, id: quizzIds[countQuizz]})
         
@@ -325,7 +358,7 @@ function renderContent(content, containerSelector) {
         if (containerSelector === 'aside') {
             div.classList.add('filter');
             div.innerHTML = `<span><img src="${item.icon}" alt="NavIcon" width="64" height="64"></span>
-                         <span>${item.text}</span>`;
+                         <span id = "filter${count}">${item.text}</span>`;
             div.addEventListener('click', async () => {
                 const quizzContainer = document.querySelector('.quizz-wrapper');
                 quizzContainer.innerHTML = '';
@@ -360,6 +393,7 @@ function renderContent(content, containerSelector) {
             countQuizz++;
         }
         container.appendChild(div);
+        count++;
     });
     if(sessionStorage.getItem("cursorView") === "Default"){
         setCursor('Default');
@@ -441,3 +475,4 @@ if(sessionStorage.getItem("screenMode") === "1"){
     console.log("light");
     document.body.style.backgroundColor = '#FFFFFF';
 }
+

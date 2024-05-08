@@ -114,6 +114,19 @@ main {
     text-shadow: 0 0 2px #000000;
 }
 
+.additional-info .box1{
+    display: flex;
+    
+}
+
+.box1 p{
+    margin-right: 3%;
+}
+
+.additional-info .box2{
+    display: flex;
+}
+
 .quizz-description h3 {
     margin-inline: 5px;
     margin-bottom: 20px;

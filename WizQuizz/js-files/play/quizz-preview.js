@@ -71,6 +71,22 @@ document.addEventListener('DOMContentLoaded', async function() {
                 });
             }
         }
+
+        //CAMBIO DE IDIOMA -------------------------------
+        let typeLanguage = sessionStorage.getItem("languageStorage");
+        if(typeLanguage === "Spanish"){
+        fetch("../../data/language/quizz-preview/spanish.json")
+        .then(response => response.json())
+        .then(data => {
+            console.log(document.getElementById("author"));
+            document.getElementById("author").innerHTML = data.quizz.author;
+            document.getElementById("submit").innerHTML = data.quizz.submit;
+
+        })
+        }else if(typeLanguage === "English"){
+        console.log("en");
+        }
+        //CAMBIO DE IDIOMA -------------------------------
     });
 
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
@@ -86,6 +102,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         userImage.style.display = "block";
     }
     //PRUEBA CAMBIAR IMAGEN---------------------------------------
+
+    
 });
 
 async function loadTemplate(url) {
@@ -148,8 +166,15 @@ function renderDescriptionContent(content, containerSelector) {
         section.innerHTML = `<img src="${content.imageUrl}" width="560" height="315">
                      <div class="quizz-lower-info">
                          <div class="additional-info">
-                             <p>Author: ${content.author}</p>
-                             <p>Submit date: ${content.submitDate}</p>
+                            <div class="box1">
+                                <p id="author">Author: </p> 
+                                <p>${content.author}</p>
+                            </div>
+
+                            <div class="box2">
+                                <p id="submit">Submit date: </p> 
+                                <p class = "xd">${ content.submitDate}</p>
+                            </div>
                          </div>
                          <a href="in-game.html?id=${idQuizz}"><input class="quizz-start-button" type="button" value="START GAME"></a>
                      </div>`;

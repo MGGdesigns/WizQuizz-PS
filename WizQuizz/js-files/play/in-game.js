@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                                     <button class="mage-staff-button"><span><img src="../../website-images/answer-options/mage-staff-x45.png"></span><span>${quizzData.questions[index].answer2}</span></button>
                                     <button class="mana-button"><span><img src="../../website-images/answer-options/mana-x45.png"></span><span>${quizzData.questions[index].answer3}</span></button>
                                     <button class="magic-ball-button"><span><img src="../../website-images/answer-options/magic-ball-x45.png"></span><span>${quizzData.questions[index].answer4}</span></button>
-                                    <a href=""> <button class="next-question" id="next-question"> <span>Next Question</span></button></a>
+                                    <a href=""> <button class="next-question" id="next-question"> <span id = "next">Next Question</span></button></a>
                                 </div>`;
         main.appendChild(answersBox);
         
@@ -242,5 +242,19 @@ document.addEventListener('DOMContentLoaded', async function() {
         }else if (sessionStorage.getItem("cursorView") === "Wand") {
             setCursor('Wand');
         }
+
+        //CAMBIO DE IDIOMA -------------------------------
+        let typeLanguage = sessionStorage.getItem("languageStorage");
+        if(typeLanguage === "Spanish"){
+        fetch("../../data/language/in-game/spanish.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("next").innerHTML = data.question.next;
+
+        })
+        }else if(typeLanguage === "English"){
+        console.log("en");
+        }
+        //CAMBIO DE IDIOMA -------------------------------
     }
 });

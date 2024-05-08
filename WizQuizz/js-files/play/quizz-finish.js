@@ -54,18 +54,45 @@ document.addEventListener('DOMContentLoaded', async function() {
     const currentUrl = window.location.href.split('=');
     const idQuizz = currentUrl[1];
 
-    console.log(numofquestions);
+    //CAMBIO DE IDIOMA -------------------------------
+    let typeLanguage = sessionStorage.getItem("languageStorage");
+    if(typeLanguage === "Spanish"){
+    fetch("../../data/language/finish-quizz/spanish.json")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("exit").value = data.buttons.play;
+        document.getElementById("download").value = data.buttons.download;
+        document.getElementById("review").innerHTML = data.right.review;
 
-    if(resultado >= varInteger/2){
-        finish.innerHTML = "Congratulations!";
-        mark.innerHTML = resultado + "/" + numofquestions;
-    }else{
-        finish.innerHTML = "Bad Luck!";
-        mark.innerHTML = resultado  + "/" + numofquestions;
+        if(resultado >= varInteger/2){
+            finish.innerHTML = data.left.good;
+            description.innerHTML = data.left.textGood;
+            mark.innerHTML = resultado + "/" + numofquestions;
+        }else{
+            finish.innerHTML = data.left.bad;
+            description.innerHTML = data.left.textBad;
+            mark.innerHTML = resultado  + "/" + numofquestions;
+        }
+        if(resultado === null){
+            mark.innerHTML = "Leave";
+        }
+
+    })
+    }else if(typeLanguage === "English"){
+        if(resultado >= varInteger/2){
+            finish.innerHTML = "Congratulations!";
+            description.innerHTML = "Congratulations! You have passed the quiz. You are a phenomenon, thank you very much for demonstrating your skills on WizQuizz!";
+            mark.innerHTML = resultado + "/" + numofquestions;
+        }else{
+            finish.innerHTML = "Bad Luck!";
+            description.innerHTML = "You failed... but nothing happens, don't be discouraged. Keep trying and you will see how little by little you learn and manage to pass, cheer up!";
+            mark.innerHTML = resultado  + "/" + numofquestions;
+        }
+        if(resultado === null){
+            mark.innerHTML = "Leave";
+        }
     }
-    if(resultado === null){
-        mark.innerHTML = "Leave";
-    }
+    //CAMBIO DE IDIOMA -------------------------------
 
     if(sessionStorage.getItem("cursorView") === "Default"){
         setCursor('Default');

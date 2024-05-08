@@ -3,8 +3,8 @@
     {
         "good": "¡Felicidades!",
         "bad": "¡Mala Suerte!",
-        "text-good": "Enhorabuena! Has aprobado el cuestionario. Eres todo un fenómeno, muchas gracias por demostrar tus habilidades en WizQuizz!",
-        "text-bad": "Has suspendido... pero no pasa nada, no te desanimes. Sigue intentándolo y verás como poco a poco aprendes y consigues aprobar, ánimo!"
+        "textGood": "Enhorabuena! Has aprobado el cuestionario. Eres todo un fenómeno, muchas gracias por demostrar tus habilidades en WizQuizz!",
+        "textBad": "Has suspendido... pero no pasa nada, no te desanimes. Sigue intentándolo y verás como poco a poco aprendes y consigues aprobar, ánimo!"
     },
 
     "buttons":
