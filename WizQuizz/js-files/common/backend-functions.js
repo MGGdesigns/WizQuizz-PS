@@ -112,8 +112,6 @@ export async function createUser(username, email, password, description, imageUr
 
     await set(reference, {
         username: username,
-        email: email,
-        password: password,
         description: description,
         imageUrl: imageUrl,
         accountCreationDate: accountCreationDate,
@@ -137,12 +135,10 @@ export async function resetPassword(email){
     }
 }
 
-export function modifyUserImage(id, username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
+export function modifyUserImage(uid, username, description, imageUrl, accountCreationDate, quizzesFinished, following){
     //El id tiene que ser esto stringToHash(email)
-    set(ref(db, "users/" + id), {
+    set(ref(db, "users/" + uid), {
 		username: username,
-        email: email,
-		password: password,
         description: description,
         imageUrl: imageUrl,
 		accountCreationDate: accountCreationDate,
@@ -211,9 +207,9 @@ export async function removeQuizz(id){
     await remove(ref(db, "username-quizzes/" + authorHash + "/" + id));
 }
 
-export async function unfollow(user, userToUnfollow){
-    
-    await remove (ref(db, "users/" + user + "/following/" + userToUnfollow));
+export async function unfollow(uid, usernameToUnfollow){
+    const hashToUnfollow = stringToHash(usernameToUnfollow);
+    await remove (ref(db, "users/" + uid + "/following/" + hashToUnfollow));
 }
 
 export async function setQuizzQuestion(id, number, question, imageUrl, answer1, answer2, answer3, answer4, correctAnswers){
@@ -270,14 +266,6 @@ export async function getQuizz(id) {
     const snapshot = await get(reference);
 
     return await snapshot.val();
-
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            resolve(snapshot.val());
-        }, (error) => {
-            reject(error);
-        });
-    });
 }
 
 export async function getAllQuizzes(){
@@ -286,14 +274,6 @@ export async function getAllQuizzes(){
 
     const snapshot = await get(reference);
     return await snapshot.val();
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
 }
 
 export async function getAllUsers(){
@@ -301,15 +281,6 @@ export async function getAllUsers(){
     let data;
     const snapshot = await get(reference);
     return await snapshot.val();
-
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
 }
 
 export async function getQuizzField(id, field){
@@ -318,14 +289,6 @@ export async function getQuizzField(id, field){
     
     const snapshot = await get(reference);
     return await snapshot.val();
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
 }
 
 export async function querySearch(query){
@@ -349,60 +312,22 @@ export function updateRating(id, rating, timesReviewed) {
     });
 }
 
-export async function follow(username, email, password, description, imageUrl, accountCreationDate, quizzesFinished, following){
-    
-    /*const user = stringToHash(userMail);
-    const reference = ref(db, "users/" + user + "/following/" + stringToHash(userToFollow.email));
-
-    set(reference, {
-        dummy:"empty"
-    })*/
-    
-    const user = stringToHash(email);
-    set(ref(db, "users/" + user), {
-		username: username,
-        email: email,
-		password: password,
-        description: description,
-        imageUrl: imageUrl,
-		accountCreationDate: accountCreationDate,
-		quizzesFinished: quizzesFinished,
-        following: following
-    });
-
-
-}
-/*
-export async function getFollowing(userMail){
+export async function follow(uid, userToFollow){
     const user = stringToHash(userMail);
-	const reference = ref(db, "users/" + user + "/following/");
+    const reference = ref(db, "users/" + uid + "/following/" + stringToHash(userToFollow.username));
+    const currentDate = new Date().toDateString();
+    set(reference, {
+        dummy:currentDate
+    })
+}
+
+
+export async function getFollowing(uid){
+    const reference = ref(db, "users/" + uid + "/following");
     let data;
     const snapshot = await get(reference);
-    const r = await snapshot.val();
-    console.log(r)
-    return r
-
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            data = snapshot.val();
-            console.log(data)
-            resolve(data);
-        }, (error) => {
-            reject(error);
-        })
-    })
-}*/
-
-
-
-/*
-database.ref('data').once('value', function(snapshot) {
-  var data = snapshot.val();
-  console.log(data.name);
-  console.log(data.age);
-});
-*/
-
+    return await snapshot.val();
+}
 
 // GETTER AND SETTERS EXAMPLES
 
