@@ -5,6 +5,7 @@
         <link rel="icon" href="../../website-images/common/wizquizz-logo.png" type="image/png/jpg" sizes="32x32">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="module" src="../../js-files/play/waiting-lobby.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8919236467232978"
                 crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../../styles-sheets/play/waiting-lobby-style.css">
@@ -16,15 +17,15 @@
     <body>
         <div class="wrapper">
             <div class="waiting-top">
-                <h1>Waiting for players...</h1>
+                <h1 class="hidden">Waiting for players...</h1>
                 <div id="code-div">
-                    <h2>Code game:</h2>
-                    <h2 id="code">3456</h2>
+                    <h2 id="code-text" class="hidden">Code game:</h2>
+                    <h2 id="code" class="hidden">3456</h2>
                 </div>
             </div>
             <div class="waiting-bottom">
                 <div class="input-group">
-                    <div id="input-wrapper">
+                    <div id="input-wrapper" class="hidden">
                         <input type="text" id="waiting-tab-input" placeholder="Select your username...">
                         <button class="confirm-user-button" id="confirm-user-button" type="button">Confirm</button>
                     </div>
@@ -32,4 +33,5 @@
             </div>
         </div>
     </body>
+    <div class="loader"></div>
 </html>
