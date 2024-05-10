@@ -26,7 +26,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getDatabase()
 const firestore = getFirestore(app);
-export{ firestore };
+const lobbyRef = ref(db, 'lobbys/1');
+export{ firestore, onValue, lobbyRef };
 
 export function stringToHash(string) {
  
@@ -101,15 +102,24 @@ export function modifyUserImage(id, username, email, password, description, imag
     });
 }
 
-export async function createLobby(code, quizzTitle){
+export async function createLobby(code, quizzTitle, numOfUsers){
 	const id = 1;
 
     await set(ref(db, "lobbys/" + id), {
 		code: code,
-        quizzTitle: quizzTitle
+        quizzTitle: quizzTitle,
+        numOfUsers: numOfUsers
     });
 
     return id;
+}
+
+export async function updateNumOfUsers(numOfUsers){
+    const id = 1;
+
+    await update(ref(db, "lobbys/" + id), {
+        numOfUsers: numOfUsers
+    });
 }
 
 export async function getInfoLobby(id) {
@@ -127,6 +137,14 @@ export async function getInfoLobby(id) {
         }, (error) => {
             reject(error);
         });
+    });
+}
+
+//FALTA HACER DE ALGUNA MANERA DE QUE CUANDO SE AÑADA UN USER MAS, SE SUME COMO SU ID PARA QUE NO SE SOBREESCRIBAN, (ALGO SIMILAR A LO DE CUANDO AÑADES PREGUNTAS AL UN QUIZZ)
+export async function addUserIntoLobby(userName, num){
+
+    await update(ref(db, "lobbys/" + 1 + "/users/" + num), {
+        userName: userName
     });
 }
 

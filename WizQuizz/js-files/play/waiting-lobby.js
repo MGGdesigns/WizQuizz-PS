@@ -1,5 +1,5 @@
-import {getInfoLobby} from "../common/backend-functions.js";
-import {firestore} from "../common/backend-functions.js";
+import { getInfoLobby, addUserIntoLobby, updateNumOfUsers } from "../common/backend-functions.js";
+import { firestore } from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -28,8 +28,8 @@ document.getElementById("nextBox").style.display = "none";
 window.addEventListener('DOMContentLoaded', async function(){
     const gameCode = await getInfoLobby(1);
     const gameTitle = await getInfoLobby(1);
-    const numOfPlayers = await getInfoLobby(1);
-
+    let num = await getInfoLobby(1);
+    let finalNum = num.numOfUsers;
     this.document.getElementById("title").innerHTML = gameTitle.quizzTitle;
     this.document.getElementById("code").innerHTML = gameCode.code;
 
@@ -43,16 +43,9 @@ window.addEventListener('DOMContentLoaded', async function(){
         var newParagraph = document.createElement("p");
         newParagraph.textContent = userName;
         listPlayersDiv.appendChild(newParagraph);
-    });
 
-    const usersCollection = firestore.collection('lobbys/1/users');
-
-    // Escuchar cambios en la colección de usuarios
-    usersCollection.onSnapshot(snapshot => {
-        snapshot.docChanges().forEach(change => {
-            if (change.type === 'added') {
-                console.log('Se ha añadido un nuevo usuario:', change.doc.data());
-            }
-        });
+        await addUserIntoLobby(userName, finalNum);
+        finalNum++;
+        await updateNumOfUsers(finalNum);
     });
 });
