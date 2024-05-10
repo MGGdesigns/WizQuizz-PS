@@ -194,17 +194,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         
 
         const nextQuizzQuestion = document.getElementById("next-question");
-        nextQuizzQuestion.addEventListener('click', function() {
+        nextQuizzQuestion.addEventListener('click', async function () {
             event.preventDefault();
             if (index < totalQuestions - 1) {
-                
+
                 main.innerHTML = '';
                 renderQuestion(index + 1);
             } else {
                 localStorage.setItem("questionCount", 1);
                 createPDFdoc();
-                window.location.href = 'quizz-finish.html?id='+ idQuizz;
-                
+                await nextQuestion();
+                window.location.href = 'quizz-finish.html?id=' + idQuizz;
             }
 
             if (sessionStorage.getItem("onlineHost", "Yes")) {
@@ -280,6 +280,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         getCurrentQuestion().then(data => {
             console.log("Data.val():", data.val());
             console.log("Question:", question);
+            console.log(totalQuestions);
             if (data.val() !== question) {
                 if (question < totalQuestions) {
                     question = data.val();
@@ -287,7 +288,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     main.innerHTML = '';
                     renderQuestion(question - 1);
                 } else {
-                    window.location.href = 'quizz-finish.html?id='+ idQuizz
+                    window.location.href = 'quizz-finish.html?id='+ idQuizz;
                 }
             }
         });
