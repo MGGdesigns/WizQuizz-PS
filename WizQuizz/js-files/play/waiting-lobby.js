@@ -57,6 +57,7 @@ window.addEventListener('DOMContentLoaded', async function(){
         newParagraph.textContent = userName;
         listPlayersDiv.appendChild(newParagraph);
 
+        sessionStorage.setItem("onlineNick", userName);
         await addUserIntoLobby(userName, finalNum);
         finalNum++;
         await updateNumOfUsers(finalNum);
