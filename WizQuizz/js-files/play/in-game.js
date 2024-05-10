@@ -1,4 +1,10 @@
-import {getQuizz, getAllQuizzes, getQuizzField} from "../../js-files/common/backend-functions.js";
+import {
+    getQuizz,
+    getAllQuizzes,
+    getQuizzField,
+    getCurrentQuestion,
+    getInfoLobby
+} from "../../js-files/common/backend-functions.js";
 
 const currentUrl = window.location.href.split('=');
 const idQuizz = currentUrl[1];
@@ -135,8 +141,25 @@ document.addEventListener('DOMContentLoaded', async function() {
         const buttonSelector =  document.querySelectorAll('.cauldron-button, .mage-staff-button, .mana-button, .magic-ball-button');
         const correctAnswers = buttonSelector[correctButtonIndex -1];
         correctAnswers.id = "correct-answer";
-        
-        
+
+        if (sessionStorage.getItem("onlinePlayer") === "Yes") {
+            document.getElementById("next-question").style.display = "none";
+            setInterval(checkCurrentQuestion, 1000)
+        }
+
+        let question = 0;
+
+        async function checkCurrentQuestion() {
+            getCurrentQuestion().then(async data => {
+                if (data.val() !== (question + 1)) {
+                    question = data.val() - 1;
+                    main.innerHTML = '';
+                    renderQuestion(question);
+                }
+            });
+        }
+
+
         ///Voy loco
         function createPDFdoc(){
             const doc = new jsPDF();
