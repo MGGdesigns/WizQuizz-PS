@@ -184,8 +184,22 @@ export async function getInfoLobby(id) {
 export async function addUserIntoLobby(userName, num){
 
     await update(ref(db, "lobbys/" + 1 + "/users/" + num), {
-        userName: userName
+        userName: userName,
+        score: 0
     });
+}
+
+export async function addScore(num, score){
+    let newScore = await getScore(num);
+    newScore = Number(newScore) + Number(score);
+    await update(ref(db, "lobbys/" + 1 + "/users/" + num), {
+        userName: userName,
+        score: newScore
+    });
+}
+
+export async function getScore(num){
+    return await get(ref(db, "lobbys/" + 1 + "/users/" + num + "/score"));
 }
 
 export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
