@@ -25,6 +25,7 @@ hiddenElements.forEach((el) => observer.observe(el));
 
 document.addEventListener('DOMContentLoaded', async function() {
     const nameofQuizz = sessionStorage.getItem("nameofQuizz");
+    const quizzId = sessionStorage.getItem("onlineQuizzId");
     const numOfPlayers = "";
     const numOfUsers = 0;
     document.getElementById("title").innerHTML = nameofQuizz;
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById("confirmCode").addEventListener('click', async function(){
         //Se crea el lobby
         const gameCode = document.getElementById("code").value;
-        await createLobby(gameCode, nameofQuizz, numOfUsers);
+        await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
         alert("Lobby created successfully!");
     });
 

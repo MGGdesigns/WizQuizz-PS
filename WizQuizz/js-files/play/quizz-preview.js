@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     getQuizz(idQuizz).then((data) => {
         sessionStorage.setItem("nameofQuizz", data.title);
+        sessionStorage.setItem("onlineQuizzId", idQuizz);
         renderDescriptionContent(data, '.preview');
         renderQuestionsContent(data.questions, '.quizz-questions');
         const hiddenElements = document.querySelectorAll('.hidden');

@@ -151,16 +151,31 @@ export function modifyUserImage(uid, username, description, imageUrl, accountCre
     });
 }
 
-export async function createLobby(code, quizzTitle, numOfUsers){
+export async function createLobby(code, quizzTitle, quizzId, numOfUsers){
 	const id = 1;
 
     await set(ref(db, "lobbys/" + id), {
 		code: code,
+        quizzId: quizzId,
         quizzTitle: quizzTitle,
-        numOfUsers: numOfUsers
+        numOfUsers: numOfUsers,
+        currentQuestion: 0
     });
 
     return id;
+}
+
+export async function nextQuestion(){
+    const id = 1;
+    let currentQuestion = await getCurrentQuestion();
+    await update(ref(db, "lobbys/" + id), {
+        currentQuestion: 0
+    });
+}
+
+export async function getCurrentQuestion(){
+    const id = 1;
+    return await get(ref(db, "lobbys/" + id + "/currentQuestion"))
 }
 
 export async function updateNumOfUsers(numOfUsers){
