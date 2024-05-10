@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 import {
     getDatabase,
     ref,
@@ -24,6 +25,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const db = getDatabase()
+const firestore = getFirestore(app);
+export{ firestore };
 
 export function stringToHash(string) {
  

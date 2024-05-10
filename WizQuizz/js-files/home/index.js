@@ -1,3 +1,5 @@
+import {getInfoLobby} from "../common/backend-functions.js";
+
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
@@ -128,9 +130,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     //CAMBIO DE IDIOMA FOOTER-------------------------------
     
-    document.getElementById("join-game-button").addEventListener('click', function(){
+    document.getElementById("join-game-button").addEventListener('click', async function(){
         const gameId = document.getElementById("index-tab-input").value;
-        if(gameId === "1234"){
+        const lobbyCode = await getInfoLobby(1);
+        
+        if(gameId === lobbyCode.code){
             sessionStorage.setItem("gamecode", gameId);
             window.location.href = "src/play/waiting-lobby.html";
         }else{
