@@ -134,6 +134,25 @@ main {
     color: #2c2c2f;
 }
 
+.quizz-start-button1 {
+    font-family: "Arial Black", sans-serif;
+    width: auto;
+    height: auto;
+    background-color: #7B2CBF;
+    color: #FFFFFF;
+    margin-left: 50%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.quizz-start-button1:hover {
+    background-color: #6E1EB4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
 .quizz-start-button {
     font-family: "Arial Black", sans-serif;
     width: auto;

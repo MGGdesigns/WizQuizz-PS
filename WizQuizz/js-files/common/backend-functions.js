@@ -98,6 +98,35 @@ export function modifyUserImage(id, username, email, password, description, imag
     });
 }
 
+export async function createLobby(code, quizzTitle){
+	const id = 1;
+
+    await set(ref(db, "lobbys/" + id), {
+		code: code,
+        quizzTitle: quizzTitle
+    });
+
+    return id;
+}
+
+export async function getInfoLobby(id) {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const reference = ref(db, 'lobbys/' + id);
+
+    const snapshot = await get(reference);
+
+    return await snapshot.val();
+
+    return new Promise((resolve, reject) => {
+        onValue(reference, (snapshot) => {
+            resolve(snapshot.val());
+        }, (error) => {
+            reject(error);
+        });
+    });
+}
+
 export async function createQuizz(title, description, imageUrl, author, submitDate, rating, timesReviewed, category){
 	const id = await generateId();
 

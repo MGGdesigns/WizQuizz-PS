@@ -127,6 +127,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
     //CAMBIO DE IDIOMA FOOTER-------------------------------
+    
+    document.getElementById("join-game-button").addEventListener('click', function(){
+        const gameId = document.getElementById("index-tab-input").value;
+        if(gameId === "1234"){
+            sessionStorage.setItem("gamecode", gameId);
+            window.location.href = "src/play/waiting-lobby.html";
+        }else{
+            alert("¡No hay ninguna lobby con ese código!");
+        }
+    });
 });
 
 async function loadTemplate(url) {

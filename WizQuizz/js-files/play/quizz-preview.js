@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     getQuizz(idQuizz).then((data) => {
+        sessionStorage.setItem("nameofQuizz", data.title);
         renderDescriptionContent(data, '.preview');
         renderQuestionsContent(data.questions, '.quizz-questions');
         const hiddenElements = document.querySelectorAll('.hidden');
@@ -176,6 +177,7 @@ function renderDescriptionContent(content, containerSelector) {
                                 <p class = "xd">${ content.submitDate}</p>
                             </div>
                          </div>
+                         <a href="../../src/play/lobby-creator.html"><input class="quizz-start-button1" type="button" value="CREATE LOBBY"></a>
                          <a href="in-game.html?id=${idQuizz}"><input class="quizz-start-button" type="button" value="START GAME"></a>
                      </div>`;
 
