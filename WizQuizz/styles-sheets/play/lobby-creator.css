@@ -29,6 +29,25 @@ body {
     justify-content: center;
 }
 
+#allPlayers{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    text-align: center;
+
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
+#allPlayers p{
+    border: 2px solid red;
+    padding: 1%;
+    background-color: gray;
+    border-radius: 10px;
+    margin: 4%;
+}
+
 .waiting-top h1 {
     font-family: Poppins, serif;
     font-size: 64px;
