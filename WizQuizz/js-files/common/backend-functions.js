@@ -172,21 +172,12 @@ export async function updateNumOfUsers(numOfUsers){
 }
 
 export async function getInfoLobby(id) {
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
+    
     const reference = ref(db, 'lobbys/' + id);
 
     const snapshot = await get(reference);
 
     return await snapshot.val();
-
-    return new Promise((resolve, reject) => {
-        onValue(reference, (snapshot) => {
-            resolve(snapshot.val());
-        }, (error) => {
-            reject(error);
-        });
-    });
 }
 
 //FALTA HACER DE ALGUNA MANERA DE QUE CUANDO SE AÑADA UN USER MAS, SE SUME COMO SU ID PARA QUE NO SE SOBREESCRIBAN, (ALGO SIMILAR A LO DE CUANDO AÑADES PREGUNTAS AL UN QUIZZ)
