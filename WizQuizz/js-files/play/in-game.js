@@ -3,6 +3,7 @@ import {
     getAllQuizzes,
     getQuizzField,
     getCurrentQuestion,
+    nextQuestion,
     getInfoLobby
 } from "../../js-files/common/backend-functions.js";
 
@@ -142,23 +143,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         const correctAnswers = buttonSelector[correctButtonIndex -1];
         correctAnswers.id = "correct-answer";
 
-        if (sessionStorage.getItem("onlinePlayer") === "Yes") {
-            document.getElementById("next-question").style.display = "none";
-            setInterval(checkCurrentQuestion, 1000)
-        }
-
-        let question = 0;
-
-        async function checkCurrentQuestion() {
-            getCurrentQuestion().then(async data => {
-                if (data.val() !== (question + 1)) {
-                    question = data.val() - 1;
-                    main.innerHTML = '';
-                    renderQuestion(question);
-                }
-            });
-        }
-
 
         ///Voy loco
         function createPDFdoc(){
@@ -209,8 +193,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
         
 
-        const nextQuestion = document.getElementById("next-question");
-        nextQuestion.addEventListener('click', function() {
+        const nextQuizzQuestion = document.getElementById("next-question");
+        nextQuizzQuestion.addEventListener('click', function() {
             event.preventDefault();
             if (index < totalQuestions - 1) {
                 
@@ -222,7 +206,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 window.location.href = 'quizz-finish.html?id='+ idQuizz;
                 
             }
+
+            if (sessionStorage.getItem("onlineHost", "Yes")) {
+                nextQuestion();
+            }
         });
+
+        if (sessionStorage.getItem("onlinePlayer") === "Yes") {
+            document.getElementById("next-question").style.display = "none";
+            setInterval(checkCurrentQuestion, 1000)
+        }
 
         const buttons = document.querySelectorAll('.answers button:not(.next-question)');
         const correctButton = document.getElementById("correct-answer");
@@ -279,5 +272,24 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.log("en");
         }
         //CAMBIO DE IDIOMA -------------------------------
+    }
+
+    let question = 0;
+
+    async function checkCurrentQuestion() {
+        getCurrentQuestion().then(data => {
+            console.log("Data.val():", data.val());
+            console.log("Question:", question);
+            if (data.val() !== question) {
+                if (question < totalQuestions) {
+                    question = data.val();
+                    console.log("Updated question:", question);
+                    main.innerHTML = '';
+                    renderQuestion(question - 1);
+                } else {
+                    window.location.href = 'quizz-finish.html?id='+ idQuizz
+                }
+            }
+        });
     }
 });
