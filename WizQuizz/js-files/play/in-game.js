@@ -236,13 +236,21 @@ document.addEventListener('DOMContentLoaded', async function() {
                 });
     
                 if (button === correctButton) {
+                    let countUsers = 0;
                     if (sessionStorage.getItem("onlinePlayer") === "Yes") {
                         const nickname = sessionStorage.getItem("onlineNick");
                         getInfoLobby(1).then(data => {
-                            console.log(data.users);
+                            data.users.forEach(user => {
+                                console.log(user);
+                                if (user.userName === nickname) {
+                                    addScore(countUsers, 1);
+                                    countUsers = 0;
+                                }
+                                else {
+                                    countUsers++;
+                                }
+                            })
                         })
-                        console.log()
-                        addScore(0, 1);
                     } else {
                         results++;
                     }
