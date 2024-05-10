@@ -14,6 +14,9 @@ window.addEventListener("load", () => {
     })
 })
 
+sessionStorage.setItem("onlinePlayer", "No");
+sessionStorage.setItem("onlineHost", "No");
+
 if(sessionStorage.getItem("cursorView") === "Default"){
     setCursor('Default');
 }else if (sessionStorage.getItem("cursorView") === "Wand") {
