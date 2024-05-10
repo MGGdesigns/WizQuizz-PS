@@ -4,7 +4,7 @@ import {
     getQuizzField,
     getCurrentQuestion,
     nextQuestion,
-    getInfoLobby
+    getInfoLobby, addScore
 } from "../../js-files/common/backend-functions.js";
 
 const currentUrl = window.location.href.split('=');
@@ -236,12 +236,29 @@ document.addEventListener('DOMContentLoaded', async function() {
                 });
     
                 if (button === correctButton) {
+                    let countUsers = 0;
+                    if (sessionStorage.getItem("onlinePlayer") === "Yes") {
+                        const nickname = sessionStorage.getItem("onlineNick");
+                        getInfoLobby(1).then(data => {
+                            data.users.forEach(user => {
+                                console.log(user);
+                                if (user.userName === nickname) {
+                                    addScore(countUsers, 1);
+                                    countUsers = 0;
+                                }
+                                else {
+                                    countUsers++;
+                                }
+                            })
+                        })
+                    } else {
+                        results++;
+                    }
                     correctButton.style.backgroundColor = '#28fc64';
                     music.volume = 0.1;
                     correct.volume = 0.9;
                     fadeOutAudio(correct, 3000);
                     correct.play().then(r => fadeOutAudio(incorrect, 3000));
-                    results++;
                 } else {
                     correctButton.style.backgroundColor = '#28fc64';
                     button.style.backgroundColor = '#FF3333';

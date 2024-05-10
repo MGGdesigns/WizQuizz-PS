@@ -65,15 +65,16 @@ body {
 
     font-family: Poppins, sans-serif;
     font-size: 20px;
-    color: black;
+    color: #FFFFFF;
 }
 
 #listPlayers p{
-    border: 2px solid red;
+    border: 2px solid #73F6D0;
     padding: 1%;
-    background-color: gray;
+    background-color: #9C63E3;
     border-radius: 10px;
-    margin: 4%;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .input-group {

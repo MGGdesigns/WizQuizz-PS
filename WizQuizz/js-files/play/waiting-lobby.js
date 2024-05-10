@@ -28,8 +28,10 @@ const observer = new IntersectionObserver(entries => {
         getCurrentQuestion().then(async data => {
             question = data.val();
             if (question === 1) {
-                let quizzId = await getInfoLobby(1).quizzId;
-                window.location.href = `in-game.html?id=1`;
+                getInfoLobby(1).then(data => {
+                    let quizzId = data.quizzId
+                    window.location.href = `in-game.html?id=${parseInt(quizzId)}`;
+                })
             }
         });
     }
@@ -57,6 +59,7 @@ window.addEventListener('DOMContentLoaded', async function(){
         newParagraph.textContent = userName;
         listPlayersDiv.appendChild(newParagraph);
 
+        sessionStorage.setItem("onlineNick", userName);
         await addUserIntoLobby(userName, finalNum);
         finalNum++;
         await updateNumOfUsers(finalNum);
