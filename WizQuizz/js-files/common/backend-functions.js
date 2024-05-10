@@ -168,8 +168,9 @@ export async function createLobby(code, quizzTitle, quizzId, numOfUsers){
 export async function nextQuestion(){
     const id = 1;
     let currentQuestion = await getCurrentQuestion();
+    let updateQuestion = currentQuestion.val() + 1;
     await update(ref(db, "lobbys/" + id), {
-        currentQuestion: 0
+        currentQuestion: updateQuestion
     });
 }
 

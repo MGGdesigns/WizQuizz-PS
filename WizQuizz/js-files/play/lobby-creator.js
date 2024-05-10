@@ -1,4 +1,13 @@
-import {createLobby, lobbyRef, onValue} from "../common/backend-functions.js";
+import {
+    createLobby,
+    getCurrentQuestion,
+    getInfoLobby,
+    lobbyRef,
+    nextQuestion,
+    onValue
+} from "../common/backend-functions.js";
+const currentUrl = window.location.href.split('=');
+const idQuizz = currentUrl[1];
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -29,13 +38,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     const numOfPlayers = "";
     const numOfUsers = 0;
     document.getElementById("title").innerHTML = nameofQuizz;
-
-    document.getElementById("confirmCode").addEventListener('click', async function(){
-        //Se crea el lobby
-        const gameCode = document.getElementById("code").value;
-        await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
-        alert("Lobby created successfully!");
-    });
+    const gameCode = Math.floor(1000 + Math.random() * 9000);
+    await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
+    document.getElementById("code").innerHTML = gameCode.toString();
 
     let userName;
     onValue(lobbyRef, (snapshot) => {
@@ -43,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (lobbyData && lobbyData.users) {
             const users = lobbyData.users;
+            console.log(users);
     
             // Limpiar el contenedor de usuarios antes de agregar los nuevos
             var listPlayersDiv = document.getElementById("allPlayers");
@@ -61,9 +67,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     document.getElementById("startGame").addEventListener('click', async function(){
-        //FALTA IMPLEMENTARLO
-        if(numOfPlayers === 0){
-            alert("There are no players!");
-        }
+        sessionStorage.setItem("onlineHost", "Yes");
+        await nextQuestion();
+        window.location.href = `in-game.html?id=${quizzId}`
     });
 });

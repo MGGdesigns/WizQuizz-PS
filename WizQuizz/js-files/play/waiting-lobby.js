@@ -1,4 +1,4 @@
-import { getInfoLobby, addUserIntoLobby, updateNumOfUsers } from "../common/backend-functions.js";
+import {getInfoLobby, addUserIntoLobby, updateNumOfUsers, getCurrentQuestion} from "../common/backend-functions.js";
 import { firestore } from "../common/backend-functions.js";
 
 window.addEventListener("load", () => {
@@ -20,6 +20,19 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 });
+
+    sessionStorage.setItem("onlinePlayer", "Yes");
+    let question = 0;
+    setInterval(checkCurrentQuestion, 1000);
+    async function checkCurrentQuestion() {
+        getCurrentQuestion().then(async data => {
+            question = data.val();
+            if (question === 1) {
+                let quizzId = await getInfoLobby(1).quizzId;
+                window.location.href = `in-game.html?id=1`;
+            }
+        });
+    }
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));

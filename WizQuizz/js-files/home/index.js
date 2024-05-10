@@ -131,12 +131,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     //CAMBIO DE IDIOMA FOOTER-------------------------------
     
     document.getElementById("join-game-button").addEventListener('click', async function(){
-        const gameId = document.getElementById("index-tab-input").value;
+        const gameId = parseInt(document.getElementById("index-tab-input").value);
         const lobbyCode = await getInfoLobby(1);
-        
+
+        console.log("Type of gameId:", typeof gameId);
+        console.log("Type of lobbyCode:", typeof lobbyCode);
+        console.log("Type of gameId === lobbyCode:", typeof gameId === typeof lobbyCode);
+        console.log(gameId);
+        console.log(lobbyCode.code);
+        console.log(gameId === lobbyCode)
         if(gameId === lobbyCode.code){
             sessionStorage.setItem("gamecode", gameId);
-            window.location.href = "src/play/waiting-lobby.html";
+            window.location.href = `src/play/waiting-lobby.html`;
         }else{
             alert("¡No hay ninguna lobby con ese código!");
         }
