@@ -169,6 +169,28 @@ label:active .circle{
     border-radius: 50%;
 }
 
+/* Estilo para el selector de opciones con ID "languages" */
+#languages {
+    width: 100%;
+    padding: 10px;
+    margin-left: 15px;
+    border: 1px solid #6E1EB4; /* Color del borde del selector */
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #7B2CBF; /* Color de fondo morado */
+    color: white; /* Color del texto blanco */
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+#languages:hover{
+    background-color: #6E1EB4;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    
+}
+
 .mobile-bars {
     color: #FFFFFF;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
