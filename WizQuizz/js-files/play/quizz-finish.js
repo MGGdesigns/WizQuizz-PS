@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
     })
-    }else if(typeLanguage === "English"){
+    }else{
         if(resultado >= varInteger/2){
             finish.innerHTML = "Congratulations!";
             description.innerHTML = "Congratulations! You have passed the quiz. You are a phenomenon, thank you very much for demonstrating your skills on WizQuizz!";
