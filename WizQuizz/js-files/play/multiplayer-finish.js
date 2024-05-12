@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     */
     const winnersContainer = document.getElementById("winners-container");
 
+
     if (winnersContainer) {
         winnersContainer.innerHTML = "";
 
@@ -73,6 +74,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         
             const userContainer = document.createElement("div");
             userContainer.classList.add("user-container");
+
+            const lowUserInfoContainer = document.createElement("div");
+            lowUserInfoContainer.classList.add("low-user-info-container");
 
             
 
@@ -99,11 +103,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             userImage.alt = user.userName; // Añade un atributo "alt" con el nombre del usuario para accesibilidad
             winnersInfo.appendChild(userImage);
 
+            lowUserInfoContainer.appendChild(winnersInfo);
+
             const scoreElement = document.createElement("div");
             scoreElement.classList.add("score");
             scoreElement.textContent = "Score: " + user.score;
             winnersInfo.appendChild(scoreElement);
-            userContainer.appendChild(winnersInfo);
+            userContainer.appendChild(lowUserInfoContainer);
             
 
             winnersContainer.appendChild(userContainer);
