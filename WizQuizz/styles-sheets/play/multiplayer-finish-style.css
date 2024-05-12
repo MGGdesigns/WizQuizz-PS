@@ -54,7 +54,7 @@ main hr {
     color: #73F6D0;
     font-size: 70px;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 #quizz-name{
@@ -75,7 +75,7 @@ main hr {
     justify-content: center;
     width: 180px; /* Ancho del contenedor de usuario */
     height: 100px; /* Altura del contenedor de usuario */
-    background-color:#6E1EB4; /* Color lila */
+    background-color:#7320bcb3; /* Color lila */
     margin: 10px; /* Espaciado entre los contenedores de usuario */
     border-radius: 10px; /* Borde redondeado */
     padding: 10px; /* Espaciado interno */
@@ -83,8 +83,9 @@ main hr {
     font-size: 24px;
     font-family: Popins;
     color: aliceblue;
-    border-color:#943ac5;
-    border
+    border: 10px solid #6E1EB4;
+
+    
 }
 
 /*
@@ -105,7 +106,7 @@ main hr {
 .username{
     color:rgb(255, 255, 255);
     font-size: 40px;
-    padding-top: 5%;
+    margin-top: 10%;
 }
 
 .winners-info{
@@ -119,17 +120,23 @@ main hr {
 }
 
 .low-user-info-container {
-    display:inline-flex
+    display:inline-flex;
     justify-content: space-between; /* Para distribuir los elementos a lo largo del contenedor */
-    margin: 10px;
+    margin-inline: 50px;
 }
 
 .low-user-info-container img {
     align-self: flex-start; /* Para alinear la imagen a la parte superior del contenedor */
-    width: 35px; 
-    height: 35px; 
+    width: 25px; 
+    height: 25px;
+    position: absolute;
+    margin-left: -55px;
+    margin-top: 10px;
 }
 
 .low-user-info-container div {
     align-self: flex-end; /* Para alinear el texto del puntaje a la parte inferior del contenedor */
+    position: relative;
+    margin-top: 10px;
+    text-align: right;
 }
