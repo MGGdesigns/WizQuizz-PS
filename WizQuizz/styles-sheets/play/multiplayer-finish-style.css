@@ -1,0 +1,115 @@
+/* Cambio: Muevo los estilos a un archivo CSS externo */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+main hr {
+    border: none;
+    width: 3px;
+    border-radius: 50px;
+    background-color: rgba(110, 30, 180, 0.5);
+    margin-inline: 20px;
+    height: 55vh;
+    margin-top: 8%;
+}
+
+.general-message {
+    flex: 1;
+    text-align: center;
+}
+
+.general-message h1{
+    padding-top: 15%;
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 70px;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+#wand-icon img {
+    height: 300px;
+    padding-top: 2%;
+    padding-bottom: 7%;
+}
+
+.top-players {
+    flex: 1;
+    text-align: center;
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 70px;
+}
+
+#top-3-players {
+    font-family: 'Harry Potter', sans-serif;
+    color: #73F6D0;
+    font-size: 70px;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#quizz-name{
+    font-family: Popins, serif;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+.winners-container{
+    display: flex;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px; /* Ancho del contenedor de usuario */
+    height: 100px; /* Altura del contenedor de usuario */
+    background-color:#6E1EB4; /* Color lila */
+    margin: 10px; /* Espaciado entre los contenedores de usuario */
+    border-radius: 10px; /* Borde redondeado */
+    padding: 10px; /* Espaciado interno */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    font-size: 24px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: aliceblue;
+    border-color:#943ac5;
+    border
+}
+
+.user-container img {
+    width: 50px; /* Ancho de la imagen */
+    height: 50px; /* Altura de la imagen */
+    border-radius: 50%; /* Para hacer la imagen circular */
+    margin-bottom: 10px; /* Espaciado entre la imagen y el nombre/puntuación */
+    align-self: left;
+}
+
+.user-container div {
+    margin: 5px 0; /* Espaciado entre los elementos dentro del contenedor */
+}
+
+.username{
+    color:rgb(255, 255, 255);
+    font-size: 40px;
+    padding-top: 5%;
+}
+
+.winners-info{
+    display: flex;
+    margin-left: auto;
+}
+
+.main-container{
+    color: #ab73c9;
+}

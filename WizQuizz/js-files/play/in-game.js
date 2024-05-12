@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 localStorage.setItem("questionCount", 1);
                 createPDFdoc();
                 await nextQuestion();
-                window.location.href = 'quizz-finish.html?id=' + idQuizz;
+                window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
             }
 
             if (sessionStorage.getItem("onlineHost", "Yes")) {
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     main.innerHTML = '';
                     renderQuestion(question - 1);
                 } else {
-                    window.location.href = 'quizz-finish.html?id='+ idQuizz;
+                    window.location.href = 'multiplayer-finish.html?id='+ idQuizz;
                 }
             }
         });
