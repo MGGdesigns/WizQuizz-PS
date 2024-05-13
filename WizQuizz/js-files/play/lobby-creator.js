@@ -29,9 +29,6 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe(el));
-
 document.addEventListener('DOMContentLoaded', async function() {
     const nameofQuizz = sessionStorage.getItem("nameofQuizz");
     const quizzId = sessionStorage.getItem("onlineQuizzId");
@@ -59,11 +56,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                     const userName = users[userId].userName;
     
                     var newParagraph = document.createElement("p");
+                    newParagraph.classList.add("hidden");
                     newParagraph.textContent = userName;
                     listPlayersDiv.appendChild(newParagraph);
                 }
             }
         }
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     });
 
     document.getElementById("startGame").addEventListener('click', async function(){
