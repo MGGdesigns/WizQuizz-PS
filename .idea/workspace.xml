@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ceebfaf-82e8-43a1-8336-39622319487a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/lobby-creator.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/lobby-creator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/js-files/play/waiting-lobby.js" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/js-files/play/waiting-lobby.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/src/play/lobby-creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/src/play/lobby-creator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/lobby-creator.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/lobby-creator.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/waiting-lobby-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WizQuizz/styles-sheets/play/waiting-lobby-style.css" afterDir="false" />
-    </list>
+    <list default="true" id="0ceebfaf-82e8-43a1-8336-39622319487a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +73,7 @@
       <workItem from="1714476988026" duration="5464000" />
       <workItem from="1714988558958" duration="12000" />
       <workItem from="1714988771030" duration="1493000" />
-      <workItem from="1715593097405" duration="3760000" />
+      <workItem from="1715593097405" duration="4082000" />
     </task>
     <servers />
   </component>
