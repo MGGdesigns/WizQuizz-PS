@@ -77,18 +77,7 @@ document.getElementById("follow-button").addEventListener('click', async functio
     const actualUser = await getUser(actualUserUID);
     console.log(actualUser);
 
-    let followers = actualUser.following
-    
-    if (followers === undefined){
-        await follow(actualUserUID, userToLoad);
-    }else if (!followers.includes(actualUser.following)){
-        followers.push(userToLoad.email)
-        await follow(actualUser.uid, userToLoad);
-        console.log(followers)
-    } else {
-        console.log("already followed")
-    }
-    
+    await follow(actualUserUID, userToLoad);
     
     /////MODIFICADO //////
     });

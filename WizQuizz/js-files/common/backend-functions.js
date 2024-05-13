@@ -323,6 +323,31 @@ export async function getUserByName(name){
     }
 }
 
+export async function getUserByHashName(id){
+    try {
+        
+        const usernameUserRef = ref(db, "username-user/" + id + "/uid");
+        
+        const snapshot = await get(usernameUserRef);
+        console.log(snapshot.val());
+        const userId = snapshot.val();
+        
+        if (!userId) {
+            throw new Error('Usuario no encontrado');
+            // return null;
+        }
+        
+        const userRef = ref(db, "users/" + userId);
+        
+        const userSnapshot = await get(userRef);
+
+        return userSnapshot.val();
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
 export async function getQuizz(id) {
     const app = initializeApp(firebaseConfig);
     const db = getDatabase();
