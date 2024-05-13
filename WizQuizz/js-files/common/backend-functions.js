@@ -139,15 +139,10 @@ export async function resetPassword(email){
     }
 }
 
-export function modifyUserImage(uid, username, description, imageUrl, accountCreationDate, quizzesFinished, following){
+export function modifyUserImage(uid, imageUrl){
     //El id tiene que ser esto stringToHash(email)
-    set(ref(db, "users/" + uid), {
-		username: username,
-        description: description,
-        imageUrl: imageUrl,
-		accountCreationDate: accountCreationDate,
-		quizzesFinished: quizzesFinished,
-        following: following
+    update(ref(db, "users/" + uid), {
+        imageUrl: imageUrl
     });
 }
 
@@ -383,11 +378,10 @@ export function updateRating(id, rating, timesReviewed) {
 }
 
 export async function follow(uid, userToFollow){
-    const user = stringToHash(userMail);
     const reference = ref(db, "users/" + uid + "/following/" + stringToHash(userToFollow.username));
     const currentDate = new Date().toDateString();
     set(reference, {
-        dummy:currentDate
+        followingSince:currentDate
     })
 }
 
