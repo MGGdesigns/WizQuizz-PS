@@ -139,15 +139,10 @@ export async function resetPassword(email){
     }
 }
 
-export function modifyUserImage(uid, username, description, imageUrl, accountCreationDate, quizzesFinished, following){
+export function modifyUserImage(uid, imageUrl){
     //El id tiene que ser esto stringToHash(email)
-    set(ref(db, "users/" + uid), {
-		username: username,
-        description: description,
-        imageUrl: imageUrl,
-		accountCreationDate: accountCreationDate,
-		quizzesFinished: quizzesFinished,
-        following: following
+    update(ref(db, "users/" + uid), {
+        imageUrl: imageUrl
     });
 }
 
@@ -207,7 +202,10 @@ export async function addUserIntoLobby(userName, num){
 
 export async function addScore(num){
     let newScore = await getScore(num);
+    console.log("old score" + newScore);
     newScore = parseInt(newScore.val()) + 1;
+    console.log("new score" + newScore);
+
     await update(ref(db, "lobbys/" + 1 + "/users/" + num), {
         score: newScore
     });
@@ -328,6 +326,31 @@ export async function getUserByName(name){
     }
 }
 
+export async function getUserByHashName(id){
+    try {
+        
+        const usernameUserRef = ref(db, "username-user/" + id + "/uid");
+        
+        const snapshot = await get(usernameUserRef);
+        console.log(snapshot.val());
+        const userId = snapshot.val();
+        
+        if (!userId) {
+            throw new Error('Usuario no encontrado');
+            // return null;
+        }
+        
+        const userRef = ref(db, "users/" + userId);
+        
+        const userSnapshot = await get(userRef);
+
+        return userSnapshot.val();
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
 export async function getQuizz(id) {
     const app = initializeApp(firebaseConfig);
     const db = getDatabase();
@@ -383,11 +406,10 @@ export function updateRating(id, rating, timesReviewed) {
 }
 
 export async function follow(uid, userToFollow){
-    const user = stringToHash(userMail);
     const reference = ref(db, "users/" + uid + "/following/" + stringToHash(userToFollow.username));
     const currentDate = new Date().toDateString();
     set(reference, {
-        dummy:currentDate
+        followingSince:currentDate
     })
 }
 

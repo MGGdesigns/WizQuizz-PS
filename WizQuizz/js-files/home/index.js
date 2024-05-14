@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.log(gameId === lobbyCode)
         if(gameId === lobbyCode.code){
             sessionStorage.setItem("gamecode", gameId);
-            window.location.href = `src/play/waiting-lobby.html`;
+            window.location.href = `src/play/waiting-lobby.html?id=online`;
         }else{
             alert("¡No hay ninguna lobby con ese código!");
         }

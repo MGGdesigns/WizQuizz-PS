@@ -3,6 +3,23 @@
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9C63E3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8860d0;
+}
+
 body {
     background-color: #22242A;
 }
@@ -59,21 +76,26 @@ body {
 
 #listPlayers{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 1%;
+    margin-top: 10px;
     text-align: center;
+    margin-inline: 150px;
 
     font-family: Poppins, sans-serif;
-    font-size: 20px;
     color: #FFFFFF;
 }
 
 #listPlayers p{
     border: 2px solid #73F6D0;
-    padding: 1%;
+    padding: 10px;
     background-color: #9C63E3;
+    font-size: 20px;
+    font-family: Poppins, sans-serif;
     border-radius: 10px;
-    margin: 20px;
+    margin-inline: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,7 +115,7 @@ body {
 
 #players{
     text-align: center;
-    margin-top: 1%;
+    margin-top: 10px;
     font-family: Poppins, sans-serif;
     font-size: 20px;
     color: white;
@@ -158,8 +180,7 @@ body {
     cursor: pointer;
     transition: all 0.2s linear;
 
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10px;
 }
 
 .hidden {
@@ -248,5 +269,33 @@ body {
     }
     to {
         transform: rotate(1turn);
+    }
+}
+
+/* PHONE */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+    .waiting-top h1 {
+        font-size: 32px;
+    }
+
+    .waiting-top h2 {
+        font-size: 24px;
+    }
+
+    #confirm-user-button {
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    #waiting-tab-input {
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        width: 200px;
+        height: 45px;
+    }
+
+    #listPlayers {
+        margin-inline: 20px;
     }
 }

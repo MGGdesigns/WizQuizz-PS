@@ -1,4 +1,5 @@
 import {
+    addUserIntoLobby,
     createLobby,
     getCurrentQuestion,
     getInfoLobby,
@@ -7,7 +8,6 @@ import {
     onValue
 } from "../common/backend-functions.js";
 const currentUrl = window.location.href.split('=');
-const idQuizz = currentUrl[1];
 
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
@@ -29,17 +29,18 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe(el));
-
 document.addEventListener('DOMContentLoaded', async function() {
     const nameofQuizz = sessionStorage.getItem("nameofQuizz");
     const quizzId = sessionStorage.getItem("onlineQuizzId");
-    const numOfPlayers = "";
-    const numOfUsers = 0;
+
+    const numOfUsers = 1;
+    console.log("user added");
+
     document.getElementById("title").innerHTML = nameofQuizz;
     const gameCode = Math.floor(1000 + Math.random() * 9000);
     await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
+    await addUserIntoLobby("Admin", 0);
+
     document.getElementById("code").innerHTML = gameCode.toString();
 
     let userName;
@@ -59,16 +60,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                     const userName = users[userId].userName;
     
                     var newParagraph = document.createElement("p");
+                    newParagraph.classList.add("hidden");
                     newParagraph.textContent = userName;
                     listPlayersDiv.appendChild(newParagraph);
                 }
             }
         }
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     });
 
     document.getElementById("startGame").addEventListener('click', async function(){
         sessionStorage.setItem("onlineHost", "Yes");
         await nextQuestion();
-        window.location.href = `in-game.html?id=${quizzId}`
+        window.location.href = `in-game.html?id=online`
     });
 });
