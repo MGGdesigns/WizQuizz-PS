@@ -50,25 +50,47 @@ function setCursor(cursor) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
+    const code = sessionStorage.getItem(actualLobbyCode);
+    if (quizz.code != code){
+        console.log("Wrong lobby code");
+    }
     const quizz = await getInfoLobby(idQuizz)
-    console.log(quizz.users);
-/*
-    var quizzName = document.getElementById("quizz-name");
-    quizzName.textContent = quizz.quizzTitle;
-    quizzName.classList.add("quizz-name");
-    */
-    const winnersContainer = document.getElementById("winners-container");
 
+    const mark = document.getElementById("mark");
+    const quizzInfo = await getQuizz(idQuizz);
+    const actualUserName = sessionStorage.getItem("onlineNick");
+
+    const quizzTotalNumberOfQuestions = quizzInfo.questions.length;
+    const sortedUsers = quizz.users.sort((a, b) => b.score - a.score);
+
+    let actualUser;
+    let position;
+
+    sortedUsers.forEach(user => {
+        if (user.userName === actualUserName){
+            actualUser = user;
+            position = quizz.users.indexOf(user) + 1;
+        } else {
+            console.log("User not found");
+        }
+    });
+
+
+    mark.textContent = "actualUser.score" + "/" + quizzTotalNumberOfQuestions;
+
+    const ranking = document.getElementById("ranking-position");
+    ranking.textContent = "You are in position: ";
+    const rankingNumber = document.getElementById("ranking-number");
+    rankingNumber.textContent =position;
+
+    const winnersContainer = document.getElementById("winners-container");
 
     if (winnersContainer) {
         winnersContainer.innerHTML = "";
 
-        const sortedUsers = quizz.users.sort((a, b) => b.score - a.score);
-
-        // Tomar solo los tres primeros usuarios (los tres con la puntuación más alta)
+        //Cogemos los 3 mejores usuarios y los mostramos
         const topThreeUsers = sortedUsers.slice(0, 3);
         var i = 1;
-
 
         topThreeUsers.forEach(user => {
         
@@ -78,9 +100,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const lowUserInfoContainer = document.createElement("div");
             lowUserInfoContainer.classList.add("low-user-info-container");
 
-            
-
-            // Crear elementos para mostrar el nombre y la puntuación del usuario
+            //Username
             const userNameElement = document.createElement("div");
             userNameElement.classList.add("username");
             userNameElement.textContent = user.userName;
@@ -89,32 +109,32 @@ document.addEventListener('DOMContentLoaded', async function() {
             const winnersInfo = document.createElement("div");
             winnersInfo.classList.add("winners-info");
 
-            // Crear elemento de imagen para la foto del usuario
+            //Imagen en función del puesto final
             const userImage = document.createElement("img");
 
             if (i===1){
-                userImage.src = '../../website-images/top/first-place.png'; // Suponiendo que "photoUrl" es la URL de la foto del usuario
+                userImage.src = '../../website-images/top/first-place.png'; 
             } else if (i===2){
-                userImage.src = '../../website-images/top/second-place.png'; // Suponiendo que "photoUrl" es la URL de la foto del usuario
+                userImage.src = '../../website-images/top/second-place.png'; 
             } else {
-                userImage.src = '../../website-images/top/third-place.png'; // Suponiendo que "photoUrl" es la URL de la foto del usuario
+                userImage.src = '../../website-images/top/third-place.png'; 
             }
             i += 1;
-            userImage.alt = user.userName; // Añade un atributo "alt" con el nombre del usuario para accesibilidad
-            winnersInfo.appendChild(userImage);
 
+            userImage.alt = user.userName; 
+            winnersInfo.appendChild(userImage);
             lowUserInfoContainer.appendChild(winnersInfo);
 
+            //Puntuación
             const scoreElement = document.createElement("div");
             scoreElement.classList.add("score");
             scoreElement.textContent = "Score: " + user.score;
             winnersInfo.appendChild(scoreElement);
             userContainer.appendChild(lowUserInfoContainer);
             
-
             winnersContainer.appendChild(userContainer);
-
         });
+
     } else {
         console.error("Elemento #winnersContainer no encontrado");
     }

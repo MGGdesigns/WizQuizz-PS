@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById("startGame").addEventListener('click', async function(){
         sessionStorage.setItem("onlineHost", "Yes");
         await nextQuestion();
+        sessionStorage.setItem("actualLobbycode", gameCode);
         window.location.href = `in-game.html?id=${quizzId}`
     });
 });

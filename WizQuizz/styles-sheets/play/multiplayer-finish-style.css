@@ -35,10 +35,66 @@ main hr {
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
+.player-results{
+    display: flex;
+    justify-content:center;
+}
+
 #wand-icon img {
     height: 300px;
     padding-top: 2%;
     padding-bottom: 7%;
+    margin-right: 175px;
+}
+
+#player-mark{
+    width: 300px; /* Ancho del contenedor de usuario */
+    height: 180px; /* Altura del contenedor de usuario */
+    background-color:#7320bcb3; /* Color lila */
+    border-radius: 10px; /* Borde redondeado */
+    padding: 2px; /* Espaciado interno */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    font-size: 24px;
+    font-family: Popins;
+    color: aliceblue;
+    border: 10px solid #6E1EB4;
+    margin-bottom: 40px;
+}
+
+.player-results h2 {
+    font-family: "Arial Black", sans-serif;
+    background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+    font-size: 65px;
+    background-size: 600%; /* Aumentar el tamaño del gradiente */
+    font-weight: 600;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text; /* Agregar para navegadores no WebKit */
+    -moz-background-clip: text; /* Prefijo para Firefox */
+    animation: animate 5s linear reverse infinite; /* Reducir la duración de la animación */
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+@keyframes animate {
+    0% { background-position: 0% }
+    100% { background-position: 100% }
+}
+
+#ranking-position{
+    margin-top: 20px;
+    font-family: "Arial Black", sans-serif;
+    font-size: 23px;
+    color: #000000;
+}
+
+#ranking-number{
+    font-family: "Arial Black", sans-serif;
+    font-size: 80px;
+    color: #73F6D0;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .top-players {
@@ -87,21 +143,6 @@ main hr {
 
     
 }
-
-/*
-.user-container img {
-    width: 50px; 
-    height: 50px; 
-    border-radius: 50%; 
-    margin-bottom: 10px; 
-    margin-left: 0vw;
-    flex-grow: 1;
-}
-/*
-.user-container div {
-    margin: 5px 0; 
-}
-*/
 
 .username{
     color:rgb(255, 255, 255);
