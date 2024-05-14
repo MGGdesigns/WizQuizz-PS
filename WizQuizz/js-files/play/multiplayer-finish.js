@@ -50,32 +50,24 @@ function setCursor(cursor) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
-   /* const code = sessionStorage.getItem(actualLobbyCode);
-    if (quizz.code != code){
-        console.log("Wrong lobby code");
-    }*/
     const quizz = await getInfoLobby(idQuizz)
 
     const mark = document.getElementById("mark");
     const quizzInfo = await getQuizz(idQuizz);
-    const actualUserName = sessionStorage.getItem("onlineNick");
-
-    console.log(quizzInfo);
+    let actualUserName = sessionStorage.getItem("onlineNick");
+    console.log(actualUserName);
     const quizzTotalNumberOfQuestions = quizzInfo.questions.length;
     const sortedUsers = quizz.users.sort((a, b) => b.score - a.score);
-
+    console.log(sortedUsers);
     let actualUser;
     let position;
 
     sortedUsers.forEach(user => {
         if (user.userName === actualUserName){
             actualUser = user;
-            position = quizz.users.indexOf(user) + 1;
-        } else {
-            console.log("User not found");
+            position = sortedUsers.indexOf(user) + 1;
         }
     });
-
 
     mark.textContent = actualUser.score + "/" + quizzTotalNumberOfQuestions;
 

@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', async function(){
                     finalNum++;
                     //await updateNumOfUsers(finalNum);
                 } else {
-                    alert("Username already taken!");
+                    console.log("Username already taken!");
                 }
             })
         }
