@@ -118,7 +118,7 @@ input_image.onchange = function (evt){
         fr.onload = function () {
             user_image_display.src = fr.result;
             sessionStorage.setItem("imageUrl", fr.result); 
-            modifyUserImage(stringToHash(userToLoad.email), userToLoad.username, userToLoad.email, userToLoad.password, userToLoad.description, fr.result, userToLoad.accountCreationDate, "");
+            modifyUserImage(targetUser, fr.result);
             alert("Image changed correctly");
         }
         fr.readAsDataURL(files[0]);
