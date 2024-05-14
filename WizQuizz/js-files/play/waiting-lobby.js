@@ -3,7 +3,8 @@ import {
     addUserIntoLobby,
     updateNumOfUsers,
     getCurrentQuestion,
-    lobbyRef
+    lobbyRef,
+    querySearch
 } from "../common/backend-functions.js";
 import { firestore } from "../common/backend-functions.js";
 import {onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
@@ -72,7 +73,7 @@ window.addEventListener('DOMContentLoaded', async function(){
 
                 if (lobbyData && lobbyData.users) {
                     const users = lobbyData.users;
-                    console.log(users);
+                    //console.log(users);
 
                     // Limpiar el contenedor de usuarios antes de agregar los nuevos
                     var listPlayersDiv = document.getElementById("listPlayers");
@@ -94,11 +95,67 @@ window.addEventListener('DOMContentLoaded', async function(){
             });
 
             sessionStorage.setItem("onlineNick", userName);
+            finalNum = await querySearch("lobbys/1/users/numOfUsers");
             await addUserIntoLobby(userName, finalNum);
             sessionStorage.setItem("onlineId", finalNum);
             finalNum++;
-            await updateNumOfUsers(finalNum);
+            //await updateNumOfUsers(finalNum);
         } else {
+            let infoLobby = await getInfoLobby(1);
+            let usersLobby = infoLobby.users;
+
+            usersLobby.forEach(user => {
+                if (user.userName === userName) {
+                    countRepetition++;
+                    console.log(countRepetition);
+                }
+            })
+
+            if (countRepetition === 0) {
+                document.getElementById("nextBox").style.display = "block";
+                document.getElementById("prevBox").style.display = "none";
+                var listPlayersDiv = document.getElementById("listPlayers");
+                var newParagraph = document.createElement("p");
+                newParagraph.textContent = userName;
+                listPlayersDiv.appendChild(newParagraph);
+
+                onValue(lobbyRef, (snapshot) => {
+                    const lobbyData = snapshot.val();
+
+                    if (lobbyData && lobbyData.users) {
+                        const users = lobbyData.users;
+                        //console.log(users);
+
+                        // Limpiar el contenedor de usuarios antes de agregar los nuevos
+                        var listPlayersDiv = document.getElementById("listPlayers");
+                        listPlayersDiv.innerHTML = ''; // Esto borra todos los elementos hijos del contenedor
+
+                        for (const userId in users) {
+                            if (Object.hasOwnProperty.call(users, userId)) {
+                                const userName = users[userId].userName;
+
+                                var newParagraph = document.createElement("p");
+                                newParagraph.classList.add("hidden");
+                                newParagraph.textContent = userName;
+                                listPlayersDiv.appendChild(newParagraph);
+                            }
+                        }
+                    }
+                    const hiddenElements = document.querySelectorAll('.hidden');
+                    hiddenElements.forEach((el) => observer.observe(el));
+                });
+
+                sessionStorage.setItem("onlineNick", userName);
+                finalNum = await querySearch("lobbys/1/numOfUsers");
+                console.log(finalNum);
+                await addUserIntoLobby(userName, finalNum);
+                sessionStorage.setItem("onlineId", finalNum);
+                finalNum++;
+                //await updateNumOfUsers(finalNum);
+            } else {
+                alert("Username already taken!");
+            }
+
             getInfoLobby(1).then(async data => {
                 data.users.forEach(user => {
                     if (user.userName === userName) {
@@ -141,10 +198,11 @@ window.addEventListener('DOMContentLoaded', async function(){
                     });
 
                     sessionStorage.setItem("onlineNick", userName);
+                    finalNum = await querySearch("lobbys/1/users/numOfUsers");
                     await addUserIntoLobby(userName, finalNum);
                     sessionStorage.setItem("onlineId", finalNum);
                     finalNum++;
-                    await updateNumOfUsers(finalNum);
+                    //await updateNumOfUsers(finalNum);
                 } else {
                     alert("Username already taken!");
                 }

@@ -33,13 +33,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     const nameofQuizz = sessionStorage.getItem("nameofQuizz");
     const quizzId = sessionStorage.getItem("onlineQuizzId");
 
-    const numOfUsers = 1;
-    console.log("user added");
+    const numOfUsers = 0;
 
     document.getElementById("title").innerHTML = nameofQuizz;
     const gameCode = Math.floor(1000 + Math.random() * 9000);
     await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
     await addUserIntoLobby("Admin", 0);
+    console.log("user added");
+
 
     document.getElementById("code").innerHTML = gameCode.toString();
 

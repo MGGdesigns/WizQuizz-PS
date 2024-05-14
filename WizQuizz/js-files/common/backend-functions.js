@@ -198,6 +198,9 @@ export async function addUserIntoLobby(userName, num){
         userName: userName,
         score: 0
     });
+    let numOfUsers = await querySearch("lobbys/1/numOfUsers");
+    numOfUsers = numOfUsers + 1;
+    await updateNumOfUsers(numOfUsers);
 }
 
 export async function addScore(num){
