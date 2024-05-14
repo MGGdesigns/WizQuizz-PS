@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 createPDFdoc();
                 await nextQuestion();
                 if(idQuizz === "online"){
-                    window.location.href = 'multiplayer-finish.html';
+                    window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
 
                 } else {
                     window.location.href = 'quizz-finish.html?id=' + idQuizz;
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     renderQuestion(question - 1);
                 } else {
                     if(idQuizz === "online"){
-                        window.location.href = 'multiplayer-finish.html';
+                        window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
 
                     } else {
                         window.location.href = 'quizz-finish.html?id='+ idQuizz;

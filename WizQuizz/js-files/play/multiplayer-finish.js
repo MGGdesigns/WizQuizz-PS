@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const quizzInfo = await getQuizz(idQuizz);
     const actualUserName = sessionStorage.getItem("onlineNick");
 
+    console.log(quizzInfo);
     const quizzTotalNumberOfQuestions = quizzInfo.questions.length;
     const sortedUsers = quizz.users.sort((a, b) => b.score - a.score);
 
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     sortedUsers.forEach(user => {
         if (user.userName === actualUserName){
             actualUser = user;
-            position = quizz.users.indexOf(user) + 1;
+            position = quizz.users.indexOf(user);
         } else {
             console.log("User not found");
         }
