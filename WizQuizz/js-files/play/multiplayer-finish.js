@@ -20,21 +20,6 @@ window.addEventListener("load", () => {
     })
 })
 
-window.onload = function() {
-    music.play();
-
-    window.addEventListener('focus', function() {
-        music.play();
-    });
-
-    window.addEventListener('blur', function() {
-        music.pause();
-    });
-    music.loop = true;
-    music.volume = 0.4;
-    fadeOutAudio(music, 129000);
-};
-
 function setCursor(cursor) {
     const allElements = document.querySelectorAll('*');
 
