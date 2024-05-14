@@ -50,10 +50,10 @@ function setCursor(cursor) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
-    const code = sessionStorage.getItem(actualLobbyCode);
+   /* const code = sessionStorage.getItem(actualLobbyCode);
     if (quizz.code != code){
         console.log("Wrong lobby code");
-    }
+    }*/
     const quizz = await getInfoLobby(idQuizz)
 
     const mark = document.getElementById("mark");
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
 
-    mark.textContent = "actualUser.score" + "/" + quizzTotalNumberOfQuestions;
+    mark.textContent = actualUser.score + "/" + quizzTotalNumberOfQuestions;
 
     const ranking = document.getElementById("ranking-position");
     ranking.textContent = "You are in position: ";
