@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const correctArray = [];
     let results = parseInt(sessionStorage.getItem("results")) || 0;
 
-    if(idQuizz !== "online"){
+    if(idQuizz !== "online" &&  sessionStorage.getItem("onlineHost") !== "Yes"){
         await getQuizz(idQuizz).then((data) => {
             quizzData = data;
         });
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const section = document.createElement('section');
         let questionCount;
-        if(idQuizz !== "online"){
+        if(idQuizz !== "online" &&  sessionStorage.getItem("onlineHost") !== "Yes"){
             questionCount = localStorage.getItem("questionCount") || 1;
         } else {
             questionCount = await querySearch("lobbys/1/currentQuestion");
@@ -255,7 +255,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 if (button === correctButton) {
                     let countUsers = 0;
                     // await addScore(sessionStorage.getItem("onlineId"));
-                    if (sessionStorage.getItem("onlinePlayer") === "Yes") {
+                    console.log("acierto");
+                    if (sessionStorage.getItem("onlinePlayer") === "Yes" ||  sessionStorage.getItem("onlineHost") === "Yes") {
                         await addScore(sessionStorage.getItem("onlineId"), 1);
                     } else {
                         results++;

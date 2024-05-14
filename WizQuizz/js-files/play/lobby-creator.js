@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const gameCode = Math.floor(1000 + Math.random() * 9000);
     await createLobby(gameCode, nameofQuizz, quizzId, numOfUsers);
     await addUserIntoLobby("Admin", 0);
+    sessionStorage.setItem("onlineId", 0);
     console.log("user added");
 
 
