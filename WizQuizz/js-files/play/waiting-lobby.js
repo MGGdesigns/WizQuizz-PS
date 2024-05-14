@@ -37,7 +37,7 @@ const observer = new IntersectionObserver(entries => {
             if (question === 1) {
                 getInfoLobby(1).then(data => {
                     let quizzId = data.quizzId
-                    window.location.href = `in-game.html?id=${parseInt(quizzId)}`;
+                    window.location.href = `in-game.html?id=online`;
                 })
             }
         });
@@ -95,6 +95,7 @@ window.addEventListener('DOMContentLoaded', async function(){
 
             sessionStorage.setItem("onlineNick", userName);
             await addUserIntoLobby(userName, finalNum);
+            sessionStorage.setItem("onlineId", finalNum);
             finalNum++;
             await updateNumOfUsers(finalNum);
         } else {
@@ -141,6 +142,7 @@ window.addEventListener('DOMContentLoaded', async function(){
 
                     sessionStorage.setItem("onlineNick", userName);
                     await addUserIntoLobby(userName, finalNum);
+                    sessionStorage.setItem("onlineId", finalNum);
                     finalNum++;
                     await updateNumOfUsers(finalNum);
                 } else {

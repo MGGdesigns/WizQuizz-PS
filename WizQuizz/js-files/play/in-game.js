@@ -4,7 +4,8 @@ import {
     getQuizzField,
     getCurrentQuestion,
     nextQuestion,
-    getInfoLobby, addScore
+    getInfoLobby, addScore,
+    querySearch
 } from "../../js-files/common/backend-functions.js";
 
 const currentUrl = window.location.href.split('=');
@@ -59,7 +60,9 @@ function fadeOutAudio(audio, duration) {
     const stepSize = audio.volume / steps;
 
     const fadeOutInterval = setInterval(() => {
-        audio.volume -= stepSize;
+        try{
+            audio.volume -= stepSize;
+        } catch {}
         if (audio.volume <= 0) {
             audio.pause();
             clearInterval(fadeOutInterval);
@@ -91,26 +94,40 @@ document.addEventListener('DOMContentLoaded', async function() {
     const correctArray = [];
     let results = parseInt(sessionStorage.getItem("results")) || 0;
 
-    await getQuizz(idQuizz).then((data) => {
-        quizzData = data;
-    });
+    if(idQuizz !== "online"){
+        await getQuizz(idQuizz).then((data) => {
+            quizzData = data;
+        });
+    } else {
+        const id = await querySearch("/lobbys/1/quizzId");
+        quizzData = await getQuizz(id);
+        console.log(quizzData);
+    }
+    
 
-    totalQuestions = quizzData.questions.length ;
+    totalQuestions = quizzData.questions.length;
    
     sessionStorage.setItem("totalQuestions", totalQuestions);
     
-    renderQuestion(0);
+    await renderQuestion(0);
     
-    function renderQuestion(index) {
+    async function renderQuestion(index) {
         document.getElementById("quizTitle").innerHTML = quizzData.title;
 
         const section = document.createElement('section');
-        let questionCount = localStorage.getItem("questionCount") || 1;
+        let questionCount;
+        if(idQuizz !== "online"){
+            questionCount = localStorage.getItem("questionCount") || 1;
+        } else {
+            questionCount = await querySearch("lobbys/1/currentQuestion");
+        }
+
         if (questionCount < 10) {
             questionsNum = "0" + questionCount;
         } else {
             questionsNum = questionCount;
         }
+
         section.classList.add('question');
         section.innerHTML = ` <div class="leftSide">
                                 <img src="${quizzData.questions[index].imageUrl}" width="200" height="200" class="portrait">
@@ -204,7 +221,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 localStorage.setItem("questionCount", 1);
                 createPDFdoc();
                 await nextQuestion();
-                window.location.href = 'quizz-finish.html?id=' + idQuizz;
+                if(idQuizz === "online"){
+                    window.location.href = 'quizz-finish.html?id=online';
+
+                } else {
+                    window.location.href = 'quizz-finish.html?id=' + idQuizz;
+                }
             }
 
             if (sessionStorage.getItem("onlineHost", "Yes")) {
@@ -224,7 +246,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             button.style.transition = 'background-color 2s ease';
         });
         buttons.forEach(button => {
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', async function(event) {
                 if (button.disabled) {
                     return;
                 }
@@ -237,20 +259,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     
                 if (button === correctButton) {
                     let countUsers = 0;
+                    // await addScore(sessionStorage.getItem("onlineId"));
                     if (sessionStorage.getItem("onlinePlayer") === "Yes") {
-                        const nickname = sessionStorage.getItem("onlineNick");
-                        getInfoLobby(1).then(data => {
-                            data.users.forEach(user => {
-                                console.log(user);
-                                if (user.userName === nickname) {
-                                    addScore(countUsers, 1);
-                                    countUsers = 0;
-                                }
-                                else {
-                                    countUsers++;
-                                }
-                            })
-                        })
+                        await addScore(sessionStorage.getItem("onlineId"), 1);
                     } else {
                         results++;
                     }
@@ -295,9 +306,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     async function checkCurrentQuestion() {
         getCurrentQuestion().then(data => {
-            console.log("Data.val():", data.val());
-            console.log("Question:", question);
-            console.log(totalQuestions);
+            // console.log("Data.val():", data.val());
+            // console.log("Question:", question);
+            // console.log(totalQuestions);
             if (data.val() !== question) {
                 if (question < totalQuestions) {
                     question = data.val();
@@ -305,7 +316,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                     main.innerHTML = '';
                     renderQuestion(question - 1);
                 } else {
-                    window.location.href = 'quizz-finish.html?id='+ idQuizz;
+                    if(idQuizz === "online"){
+                        window.location.href = 'quizz-finish.html?id=online';
+
+                    } else {
+                        window.location.href = 'quizz-finish.html?id='+ idQuizz;
+
+                    }
                 }
             }
         });

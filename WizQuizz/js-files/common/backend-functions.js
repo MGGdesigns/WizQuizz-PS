@@ -202,7 +202,10 @@ export async function addUserIntoLobby(userName, num){
 
 export async function addScore(num){
     let newScore = await getScore(num);
+    console.log("old score" + newScore);
     newScore = parseInt(newScore.val()) + 1;
+    console.log("new score" + newScore);
+
     await update(ref(db, "lobbys/" + 1 + "/users/" + num), {
         score: newScore
     });
