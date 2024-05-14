@@ -73,6 +73,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById("startGame").addEventListener('click', async function(){
         sessionStorage.setItem("onlineHost", "Yes");
         await nextQuestion();
-        window.location.href = `in-game.html?id=online`
+        window.location.href = `in-game.html?id=${quizzId}`;
     });
 });

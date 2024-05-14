@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     sortedUsers.forEach(user => {
         if (user.userName === actualUserName){
             actualUser = user;
-            position = quizz.users.indexOf(user);
+            position = quizz.users.indexOf(user) + 1;
         } else {
             console.log("User not found");
         }

@@ -221,12 +221,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 localStorage.setItem("questionCount", 1);
                 createPDFdoc();
                 await nextQuestion();
-                if(idQuizz === "online"){
-                    window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
-
-                } else {
-                    window.location.href = 'quizz-finish.html?id=' + idQuizz;
-                }
+                window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
             }
 
             if (sessionStorage.getItem("onlineHost", "Yes")) {
@@ -316,13 +311,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     main.innerHTML = '';
                     renderQuestion(question - 1);
                 } else {
-                    if(idQuizz === "online"){
-                        window.location.href = 'multiplayer-finish.html?id=' + idQuizz;
-
-                    } else {
-                        window.location.href = 'quizz-finish.html?id='+ idQuizz;
-
-                    }
+                    window.location.href = 'multiplayer-finish.html?id='+ idQuizz;
                 }
             }
         });

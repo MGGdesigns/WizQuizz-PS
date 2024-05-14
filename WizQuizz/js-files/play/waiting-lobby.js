@@ -37,7 +37,7 @@ const observer = new IntersectionObserver(entries => {
             if (question === 1) {
                 getInfoLobby(1).then(data => {
                     let quizzId = data.quizzId
-                    window.location.href = `in-game.html?id=online`;
+                    window.location.href = `in-game.html?id=${quizzId}`;
                 })
             }
         });
