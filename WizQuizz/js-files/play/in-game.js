@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     renderQuestion(question - 1);
                 } else {
                     if(idQuizz === "online"){
-                        window.location.href = 'quizz-finish.html?id=online';
+                        window.location.href = 'multijugador-finish.html';
 
                     } else {
                         window.location.href = 'quizz-finish.html?id='+ idQuizz;
