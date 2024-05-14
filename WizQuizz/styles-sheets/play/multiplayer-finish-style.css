@@ -1,5 +1,3 @@
-/* Cambio: Muevo los estilos a un archivo CSS externo */
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -48,12 +46,12 @@ main hr {
 }
 
 #player-mark{
-    width: 300px; /* Ancho del contenedor de usuario */
-    height: 180px; /* Altura del contenedor de usuario */
-    background-color:#7320bcb3; /* Color lila */
-    border-radius: 10px; /* Borde redondeado */
-    padding: 2px; /* Espaciado interno */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    width: 300px;
+    height: 180px;
+    background-color:#7320bcb3;
+    border-radius: 10px;
+    padding: 2px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     font-size: 24px;
     font-family: Popins;
     color: aliceblue;
@@ -65,13 +63,13 @@ main hr {
     font-family: "Arial Black", sans-serif;
     background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
     font-size: 65px;
-    background-size: 600%; /* Aumentar el tamaño del gradiente */
+    background-size: 600%;
     font-weight: 600;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    background-clip: text; /* Agregar para navegadores no WebKit */
-    -moz-background-clip: text; /* Prefijo para Firefox */
-    animation: animate 5s linear reverse infinite; /* Reducir la duración de la animación */
+    background-clip: text;
+    -moz-background-clip: text;
+    animation: animate 5s linear reverse infinite;
     text-shadow: 0 2px rgba(0, 0, 0, 0.2);
     text-align: center;
     justify-content: center;
@@ -129,19 +127,17 @@ main hr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 180px; /* Ancho del contenedor de usuario */
-    height: 100px; /* Altura del contenedor de usuario */
-    background-color:#7320bcb3; /* Color lila */
-    margin: 10px; /* Espaciado entre los contenedores de usuario */
-    border-radius: 10px; /* Borde redondeado */
-    padding: 10px; /* Espaciado interno */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    width: 180px;
+    height: 100px;
+    background-color:#7320bcb3;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     font-size: 24px;
     font-family: Popins;
     color: aliceblue;
     border: 10px solid #6E1EB4;
-
-    
 }
 
 .username{
@@ -153,7 +149,6 @@ main hr {
 .winners-info{
     display: flex;
     margin-left: auto;
-
 }
 
 .main-container{
@@ -162,12 +157,12 @@ main hr {
 
 .low-user-info-container {
     display:inline-flex;
-    justify-content: space-between; /* Para distribuir los elementos a lo largo del contenedor */
+    justify-content: space-between;
     margin-inline: 50px;
 }
 
 .low-user-info-container img {
-    align-self: flex-start; /* Para alinear la imagen a la parte superior del contenedor */
+    align-self: flex-start;
     width: 25px; 
     height: 25px;
     position: absolute;
@@ -176,7 +171,7 @@ main hr {
 }
 
 .low-user-info-container div {
-    align-self: flex-end; /* Para alinear el texto del puntaje a la parte inferior del contenedor */
+    align-self: flex-end;
     position: relative;
     margin-top: 10px;
     text-align: right;

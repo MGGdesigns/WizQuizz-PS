@@ -258,6 +258,9 @@ document.addEventListener('DOMContentLoaded', async function() {
                     console.log("acierto");
                     if (sessionStorage.getItem("onlinePlayer") === "Yes" ||  sessionStorage.getItem("onlineHost") === "Yes") {
                         await addScore(sessionStorage.getItem("onlineId"), 1);
+                    } else if (sessionStorage.getItem("onlineNick") === "Admin"){
+                        console.log("admin");
+                        await addScore(0, 1);
                     } else {
                         results++;
                     }
@@ -273,6 +276,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     incorrect.volume = 0.9;
                     incorrect.play().then(r => fadeOutAudio(incorrect, 3000));
                 }
+                console.log(results);
                 localStorage.setItem("results", results);
             });
         });
